@@ -1,13 +1,13 @@
 # Setup
-title:        Project or Site name
+title:        Youngwon Seo
 tagline:      A responsive theme for your project on GitHub Pages
 baseurl:      ""
 paginate:     1
 
 # About/contact
 author:
-  name:       Author name
-  url:        http://yourhomepage.com 
+  name:       YoungwonSeo
+  url:        http://youngwonseo.github.io
 
 # Gems
 gems:
