@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: http://youngwonseo.github.io/sitemap.xml
