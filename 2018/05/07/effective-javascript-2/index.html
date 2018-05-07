@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>
+    
+      이펙티브 자바스크립트 #2 &middot; Youngwon Seo
+    
+  </title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/assets/main.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
+</head>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-118401942-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-118401942-1');
+</script>
+
+  <body>
+    <nav class="nav">
+      <div class="nav-container">
+        <a href="/">
+          <h2 class="nav-title">Youngwon Seo</h2>
+        </a>
+        <ul>
+          <li><a href="/about">About</a></li>
+          <li><a href="/">Posts</a></li>
+        </ul>
+    </div>
+  </nav>
+
+    <main>
+      <div class="post">
+  <div class="post-info">
+    <span>Written by</span>
+    
+        Youngwon Seo
+    
+
+    
+      <br>
+      <span>on&nbsp;</span><time datetime="2018-05-07 00:00:00 +0900">May 07, 2018</time>
+    
+  </div>
+
+  <h1 class="post-title">이펙티브 자바스크립트 #2</h1>
+  <div class="post-line"></div>
+
+  <h1 id="2장-변수-스코프">2장 변수 스코프</h1>
+
+<h2 id="item8-전역-객체의-사용을-최소화하라">Item8. 전역 객체의 사용을 최소화하라</h2>
+
+<ul>
+  <li>자바스크립트는 쉽게 전역변수를 만들 수 있다(선언하지 않고 사용하면된다).</li>
+  <li>그러나 숙련된 프로그래머라면 전역변수를 사용하지 않아야 하는 이유을 알고 있을 것이다.
+    <ul>
+      <li>공통 네임스페이스에 대한 침해(이름충돌의 가능성)</li>
+    </ul>
+  </li>
+  <li>그럼에도 불구하고 전역변수는, 특히 자바스크립트에서의 전역변수는 “일단 사용하고 나중에 정리하자” 라는 식으로 사용될 정도로 편리하다.
+    <ul>
+      <li>그러나 당연히 좋지 않은 방법이다.</li>
+    </ul>
+  </li>
+  <li>다음과 같은 경우에는 전역 변수의 사용은 불가피하다.
+    <ul>
+      <li><strong>외부 라이브러리나 컴포넌트</strong>들을 사용자에게 제공하기 위해서는 window(전역변수)에 바인딩된다.</li>
+      <li><strong>기능탐지 여부</strong>를 위해 해당기능에 대한 전역변수의 존재여부를 검사한다.</li>
+    </ul>
+  </li>
+</ul>
+
+<h4 id="기억할-점">기억할 점</h4>
+
+<ul>
+  <li>(가능하다면)전역변수를 사용하지 말자.</li>
+  <li>단 외부라이브러리, 또는 플랫폼의 기능탐지 여부를 검사할때만 사용하자.</li>
+</ul>
+
+<h2 id="item9-항상-지역-변수를-선언하라">Item9. 항상 지역 변수를 선언하라</h2>
+
+<ul>
+  <li>
+    <p>항상 지역변수를 사용하라는 것이 아니라 <strong>선언</strong>하라는 것을 이해하자.</p>
+  </li>
+  <li>
+    <p>즉 특정 구역에서 var선언 없이 변수를 사용하면 전역객체에 바인딩된다.</p>
+
+    <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">for</span><span class="p">(</span><span class="nx">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="nx">i</span><span class="o">&lt;</span><span class="mi">10</span><span class="p">;</span><span class="nx">i</span><span class="o">++</span><span class="p">){</span>
+    <span class="nx">temp</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="p">...</span>
+<span class="p">}</span>
+      
+<span class="k">for</span><span class="p">(</span><span class="kd">var</span> <span class="nx">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="nx">i</span><span class="o">&lt;</span><span class="mi">10</span><span class="p">;</span><span class="nx">i</span><span class="o">++</span><span class="p">){</span>
+    <span class="kd">var</span> <span class="nx">temp</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="p">...</span>
+<span class="p">}</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>위의 경우 i와 temp가 선언(var)이 없다. 즉 전역객체에 i와 temp가 선언된다.</p>
+  </li>
+  <li>
+    <p>해당 스코프 이외에서 사용하지도 않을 변수들이 전역변수 사용됨으로써 네임스코드가 더러워진다.</p>
+  </li>
+</ul>
+
+<h4 id="기억할-점-1">기억할 점</h4>
+
+<ul>
+  <li>지역변수 사용시 항상 var를 붙혀 선언을 하자.</li>
+</ul>
+
+<h2 id="item10-with를-사용하지-마라">Item10. with를 사용하지 마라</h2>
+
+<ul>
+  <li>​</li>
+</ul>
+
+<h2 id="item11-클로저closure에-익숙해져라">Item11. 클로저(closure)에 익숙해져라</h2>
+
+<h4 id="클로저를-이해하기위해서는-단지-세-가지-기본적인-사실만-배우면된다">클로저를 이해하기위해서는 단지 세 가지 기본적인 사실만 배우면된다.</h4>
+
+<h5 id="첫-번째-자바스크립트는-현재-함수-외부make에서-선언된-변수를-참조할-수-있다">첫 번째, 자바스크립트는 현재 함수 외부(make)에서 선언된 변수를 참조할 수 있다.</h5>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">makeSandwich</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">magicIngredient</span> <span class="o">=</span> <span class="s2">"peanut butter"</span><span class="p">;</span>
+    <span class="kd">function</span> <span class="nx">make</span><span class="p">(</span><span class="nx">filling</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nx">magicIngredient</span> <span class="o">+</span> <span class="s2">" and "</span> <span class="o">+</span> <span class="nx">filling</span><span class="p">;</span> <span class="c1">//내부변수 masicIngredient 참조!</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="nx">make</span><span class="p">(</span><span class="s2">"jelly"</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="nx">makeSandwitch</span><span class="p">();</span> <span class="c1">//"peanut butter and jellly"</span>
+</code></pre></div></div>
+
+<ul>
+  <li>makeSandwich함수 내부의 make함수가 함수 외부에 선언된 magicIngredient를 참조한다는 사실을 주목하라!</li>
+</ul>
+
+<h5 id="두-번째-외부함수sandwichmaker에서-내부함수make를-리턴한-후에도-외부함수의-변수를-참조할-수-있다">두 번째, 외부함수(sandwichMaker)에서 내부함수(make)를 리턴한 후에도 외부함수의 변수를 참조할 수 있다.</h5>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">sandwichMaker</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">magicIngredient</span> <span class="o">=</span> <span class="s2">"peanut butter"</span><span class="p">;</span>
+    <span class="kd">function</span> <span class="nx">make</span><span class="p">(</span><span class="nx">filling</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nx">magicIngredient</span> <span class="o">+</span> <span class="s2">" and "</span> <span class="o">+</span> <span class="nx">filling</span><span class="p">;</span> 
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="nx">make</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kd">var</span> <span class="nx">f</span> <span class="o">=</span> <span class="nx">sandwichMaker</span><span class="p">();</span>
+<span class="nx">f</span><span class="p">(</span><span class="s2">"jelly"</span><span class="p">);</span> <span class="c1">//"peanut butter and jelly"</span>
+<span class="nx">f</span><span class="p">(</span><span class="s2">"bananas"</span><span class="p">);</span> <span class="c1">//"peanut butter and bananas"</span>
+<span class="nx">f</span><span class="p">(</span><span class="s2">"marshmallows"</span><span class="p">);</span> <span class="c1">//"peanut butter and marshmallows"</span>
+</code></pre></div></div>
+
+<ul>
+  <li>자바스크립트에서는 함수가 일종의 객체이기 때문에 리턴이 가능하다.
+    <ul>
+      <li>이것이 이해가지 않는다면 Item19를 참조</li>
+    </ul>
+  </li>
+  <li>중요한점은 sandwichMaker함수가 호출이 완료(리턴이 완료)된 상황에서도 make함수는 외부함수의magicIngredient를 기억하고 있다.</li>
+  <li>어떻게 이런일이 가능할까?</li>
+  <li>이유는 자바스크립트에서는 함수가 <strong>현재 스코프에서 참조가능한 모든 변수를 내부적으로 보관</strong>한다.</li>
+  <li>함수 자신이 포함된 스코프의 변수를 추적하는 함수를 <strong>클로저</strong>라고 한다.
+    <ul>
+      <li>즉 위예에서  make는 magicIngredient와 filling 두 개의 외부 변수를 참조하는 클로저이다.</li>
+    </ul>
+  </li>
+  <li>클로저는 자바스크립트에서 가장 우아하고 표현력이 높은 기능 중 하나이고, 많은 유용한 코딩 관례들의 중심이 된다.
+    <ul>
+      <li>제대로 우아하게 사용하기 위해서는 많은 연습이 필요하다.</li>
+    </ul>
+  </li>
+</ul>
+
+<h5 id="세-번째-클로저가-외부-변수의-값을-변경할-수-있다">세 번째, 클로저가 외부 변수의 값을 변경할 수 있다,</h5>
+
+<ul>
+  <li>클로저는 외부 변수값을 복사해서 가지고 있는 것이 아니라 참조를 가지고 있다.</li>
+  <li>즉 위예에서 여러개의 make를 반환해도 외부참조인 masicIngredient는 하나이다.</li>
+</ul>
+
+<h4 id="기억할-점-2">기억할 점</h4>
+
+<ul>
+  <li>함수는 외부 스코프에 선언된 변수를 참조할 수 있다,</li>
+  <li>클로저는 자신을 생성한 함수보다 더 오래 지속된다.</li>
+  <li>클로저는 내부적으로 외부 변수에 대한 참조를 저장 및 변경할 수 있다.</li>
+</ul>
+
+<h2 id="item12-변수-호이스팅에-대해-이해하라">Item12. 변수 호이스팅에 대해 이해하라</h2>
+
+<ul>
+  <li>
+    <p>자바스크립트에서는 몇몇 예외를 제외하고는 어휘적 스코프(lexical scope)를 지원한다,</p>
+  </li>
+  <li>
+    <p>특정 변수에 접근 시,  해당 변수가 정의된 가장 가까운 스코프를 향한다.</p>
+  </li>
+  <li>
+    <p>다음과 같은 예를 보자.</p>
+
+    <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">isWinner</span><span class="p">(</span><span class="nx">player</span><span class="p">,</span> <span class="nx">others</span><span class="p">){</span>
+    <span class="kd">var</span> <span class="nx">highest</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">for</span><span class="p">(</span><span class="kd">var</span> <span class="nx">i</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="nx">n</span><span class="o">=</span><span class="nx">others</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">&lt;</span><span class="nx">n</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">){</span>
+     	<span class="kd">var</span> <span class="nx">player</span> <span class="o">=</span> <span class="nx">others</span><span class="p">[</span><span class="nx">i</span><span class="p">];</span>
+        <span class="k">if</span><span class="p">(</span><span class="nx">player</span><span class="p">.</span><span class="nx">score</span> <span class="o">&gt;</span> <span class="nx">highest</span><span class="p">){</span>
+            <span class="nx">highest</span> <span class="o">=</span> <span class="nx">player</span><span class="p">.</span><span class="nx">score</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="nx">player</span><span class="p">.</span><span class="nx">score</span> <span class="o">&gt;</span> <span class="nx">highest</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>특정 플레이어가 나머지 플레이어들의 최고점수보다 높냐를 판단한다.</p>
+  </li>
+  <li>
+    <p>자바스크립트를 제외한 몇몇의 언어에서는 위와 같은 식의 표현이 가능하다. 하지만 자바스크립트에서는 의도한데로 동작하지 않는다.</p>
+  </li>
+  <li>
+    <p>이유는 반복문안의 var player에 있다. player의 내부선언은 해당 반복문안에서의 스코프가 아닌 외부(파라미터)의 player에 대한 재선언일 뿐이다.</p>
+  </li>
+  <li>
+    <p>또한 반복문이 반복될때마다 동일한 변수를 덮어쓰는 꼴이 된다.</p>
+  </li>
+  <li>
+    <p>그래서 결과로 return 을 할때 player는 입력된 파라미터의 player가 아닌 마지막 반복시 선언된 player가 된다.</p>
+  </li>
+  <li>
+    <p><strong>즉, 변수의 스코프는 중괄호가 아닌 함수이다.</strong></p>
+  </li>
+  <li>
+    <p>다음의 예제를 보자</p>
+
+    <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">test</span><span class="p">(){</span>
+    <span class="k">for</span><span class="p">(</span><span class="kd">var</span> <span class="nx">i</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="nx">n</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="nx">i</span> <span class="p">...){...}</span>
+    <span class="k">for</span><span class="p">(</span><span class="kd">var</span> <span class="nx">i</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="nx">n</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="nx">i</span> <span class="p">...){...}</span>
+    <span class="k">for</span><span class="p">(</span><span class="kd">var</span> <span class="nx">i</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="nx">n</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="nx">i</span> <span class="p">...){...}</span>
+<span class="p">}</span>
+          
+<span class="c1">//호이스팅</span>
+<span class="kd">function</span> <span class="nx">test</span><span class="p">(){</span>
+    <span class="kd">var</span> <span class="nx">i</span><span class="p">,</span><span class="nx">n</span><span class="p">;</span>
+    <span class="k">for</span><span class="p">(</span><span class="nx">i</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="nx">n</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="nx">i</span> <span class="p">...){...}</span>
+    <span class="k">for</span><span class="p">(</span><span class="nx">i</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="nx">n</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="nx">i</span> <span class="p">...){...}</span>
+    <span class="k">for</span><span class="p">(</span><span class="nx">i</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="nx">n</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="nx">i</span> <span class="p">...){...}</span>
+<span class="p">}</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>위의 test는 각 반복문에서 i와 n을 선언하고 있지만 자바스크립트의 스코프는 함수이다.</p>
+  </li>
+  <li>
+    <p>즉 세개의 반복문에서 참조하는 i와 n은 같다.</p>
+  </li>
+  <li>
+    <p>자바스크립트에서는 내부적으로 위의 test를 아래와 같이 변경한다.</p>
+
+    <ul>
+      <li>그리고 선언이 스코프가장 위에 올리는 것의 호이스팅이라 한다.</li>
+    </ul>
+  </li>
+  <li>
+    <p>한 가지 변수 스코프의 예외적인 사항이 있다면 try catch의 exception에 대한 변수이다.</p>
+
+    <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">test</span><span class="p">(){</span>
+    <span class="kd">var</span> <span class="nx">x</span> <span class="o">=</span> <span class="p">..</span>    
+    <span class="k">try</span><span class="p">{</span>        
+    <span class="p">}</span><span class="k">catch</span><span class="p">(</span><span class="nx">x</span><span class="p">){</span>
+        <span class="nx">x</span> <span class="c1">//위 선언된 x와는 다른 x</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<h4 id="기억할-점-3">기억할 점</h4>
+
+<ul>
+  <li>블록 내의 변수는 암묵적으로 그 변수가 해당하는 스코프의 가장윗부분으로 호이스팅된다,</li>
+  <li>변수재선언은 하나의 변수처럼 처리된다.</li>
+  <li>혼란을 막기위에 프로그래머가 직접 가장위에 선언하는 것을 고려하라.</li>
+</ul>
+
+<h2 id="item13-지역-변수-스코프를-만들기-위해-즉시-실행-함수-표현식을-사용하라">Item13. 지역 변수 스코프를 만들기 위해 즉시 실행 함수 표현식을 사용하라</h2>
+
+<h2 id="item14-기명-함수-표현식의-스코프에-주의하라">Item14. 기명 함수 표현식의 스코프에 주의하라</h2>
+
+<h2 id="item15-블록-지역-함수-선언문의-스코프에-주의하라">Item15. 블록-지역 함수 선언문의 스코프에 주의하라</h2>
+
+<h2 id="item16-eval을-사용해서-지역-변수를-생성하지-마라">Item16. eval을 사용해서 지역 변수를 생성하지 마라</h2>
+
+<h2 id="item17-직접적인-eval보다-간접적인-eval을-사용하라">Item17. 직접적인 eval보다 간접적인 eval을 사용하라</h2>
+
+<h2 id="references">References</h2>
+<ul>
+  <li><a href="http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&amp;mallGb=KOR&amp;barcode=9788966260850&amp;orderClick=LAG&amp;Kc=">이펙티브 자바스트립트 - 데이티브 허먼지음, 김준기 옮김(인사이트)</a></li>
+</ul>
+
+
+  
+  <div class="post-disqus">
+      <section id="disqus_thread"></section>
+      <div id="disqus_thread"></div>
+<script>
+
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+/*
+var disqus_config = function () {
+this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://youngwonseo.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+                            
+  </div>
+  
+</div>
+
+<div class="pagination">
+  
+  
+    <a href="/2018/05/03/gilbut-modoo-deep-learning/" class="right arrow">&#8594;</a>
+  
+
+  <a href="#" class="top">Top</a>
+</div>
+
+    </main>
+
+    <footer>
+      <span>
+        &copy; <time datetime="2018-05-07 14:57:31 +0900">2018</time> Youngwon Seo. Made with Jekyll using the <a href="https://github.com/chesterhow/tale/">Tale</a> theme.
+      </span>
+    </footer>
+  </body>
+</html>
