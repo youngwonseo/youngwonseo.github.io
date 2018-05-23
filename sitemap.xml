@@ -2,6 +2,14 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     
     <url>
+        <loc>http://localhost:4000/2018/05/23/effective-javascript-5/</loc>
+    </url>
+    
+    <url>
+        <loc>http://localhost:4000/2018/05/23/effective-javascript-4/</loc>
+    </url>
+    
+    <url>
         <loc>http://localhost:4000/2018/05/13/effective-javascript-3/</loc>
     </url>
     
@@ -27,6 +35,14 @@
     
     <url>
         <loc>http://localhost:4000/2018/02/22/hello-world/</loc>
+    </url>
+    
+    <url>
+        <loc>http://localhost:4000/2017/05/16/centos-setting/</loc>
+    </url>
+    
+    <url>
+        <loc>http://localhost:4000/2017/05/11/MDP/</loc>
     </url>
     
 
@@ -55,6 +71,14 @@
     
     <url>
         <loc>http://localhost:4000/page2/</loc>
+    </url>
+    
+    
+    
+    
+    
+    <url>
+        <loc>http://localhost:4000/page3/</loc>
     </url>
     
     
