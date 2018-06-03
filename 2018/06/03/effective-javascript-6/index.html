@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>
+    
+      이펙티브 자바스크립트 #6 &middot; Youngwon Seo
+    
+  </title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/assets/main.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
+</head>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-118401942-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-118401942-1');
+</script>
+
+  <body>
+    <nav class="nav">
+      <div class="nav-container">
+        <a href="/">
+          <h2 class="nav-title">Youngwon Seo</h2>
+        </a>
+        <ul>
+          <li><a href="/about">About</a></li>
+          <li><a href="/">Posts</a></li>
+        </ul>
+    </div>
+  </nav>
+
+    <main>
+      <div class="post">
+  <div class="post-info">
+    <span>Written by</span>
+    
+        Youngwon Seo
+    
+
+    
+      <br>
+      <span>on&nbsp;</span><time datetime="2018-06-03 00:00:00 +0900">June 03, 2018</time>
+    
+  </div>
+
+  <h1 class="post-title">이펙티브 자바스크립트 #6</h1>
+  <div class="post-line"></div>
+
+  <h1 id="6장-라이브러리와-api설계">6장 라이브러리와 API설계</h1>
+
+<h2 id="item53-일관된-컨벤션을-유지하라">Item53. 일관된 컨벤션을 유지하라</h2>
+
+<p>API사용자에게 <strong>일괄되고 일반화된</strong> 컨벤션을 제공하여 혼란을 없애고 학습시간을 최소화 하도록 하여야 한다. 예로들면 넓이와 높이를 지정하는 생성자에서는 아래처럼 넓이가 먼저나오는게 일반적이다.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">new</span> <span class="nx">Widget</span><span class="p">(</span><span class="mi">320</span><span class="p">,</span> <span class="mi">240</span><span class="p">)</span>   <span class="c1">//width : 320, height : 240</span>
+</code></pre></div></div>
+
+<p>좋은 라이브러리는 문서도 빈틈없이 제공하지만, 최고의 라이브러리는 문서를 자전거의 보조 바퀴처럼 대한다는 사실을 기억하자. 즉, 함수의 이름만 보고 기능이 유추가능해야하며 위처럼 일반화된 컨벤션을 따르도록 라이브러리를 설계해야한다.</p>
+
+<h2 id="item54-undefined를-값이-없는것처럼-처리하라">Item54. undefined를 ‘값이 없는’것처럼 처리하라</h2>
+
+<p>자바스크립트에서는 값이 없음을 의미하는 undefined가 존재한다. 다음과 같은 상황들을 살펴보자.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">x</span><span class="p">;</span>
+<span class="nx">x</span><span class="p">;</span> <span class="c1">//undefined</span>
+
+<span class="kd">var</span> <span class="nx">obj</span> <span class="o">=</span><span class="p">{};</span>
+<span class="nx">obj</span><span class="p">.</span><span class="nx">x</span><span class="p">;</span> <span class="c1">//undefined</span>
+
+<span class="kd">function</span> <span class="nx">f</span><span class="p">(){</span>
+    <span class="k">return</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="kd">function</span> <span class="nx">g</span><span class="p">(){}</span>
+<span class="nx">f</span><span class="p">();</span> <span class="c1">//undefined</span>
+<span class="nx">g</span><span class="p">();</span> <span class="c1">//undefined</span>
+</code></pre></div></div>
+
+<p>변수가 초기화가 되지 않거나 정의되지 않은 프로퍼티접근, 파라미터없이 return 등에서 나타내야하는 ‘값이 없는’ 상황을 자바스크립트에서는 undefined로 처리한다.</p>
+
+<p>undefined는 값이 없는것을 나타내기 위한 자바스크립트 자체 컨벤션이다.</p>
+
+<h2 id="item55-키워드-인자를-위해-옵션-객체를-받아들여라">Item55. 키워드 인자를 위해 옵션 객체를 받아들여라</h2>
+
+<p>Item53에서 제안한 것처럼 인자순서에 대한 일관된 컨벤션을 제공해야한다.</p>
+
+<h2 id="item56-불필요한-상태-유지를-피하라">Item56. 불필요한 상태 유지를 피하라</h2>
+
+<p>API는 상태유지(stateful) 또는 무상태(stateless)로 나뉜다. 무상태 API의 대표적인 예는 RESTful API로써 REST는 서버의 세션 및 쿠키등의 상태유지를 지향하지 않고 각각의 API호출이 독립적으로 이루어진다.</p>
+
+<p>자바스크립트에서 대표적인 상태유지와 무상태 API는 String과 Date객체이다. String의 경우 “foo”.toUpperCase()와 같이 내부 상태에 관계없이 항상 “FOO”를 리턴한다(문자열 값 자체가 상태라고 할 수 있으나 스트링은 Constant객체임을 명시하자). 반면 Date객체는 상태에 따라 toString의 결과값이 다르다. 상태가 꼭필요할 때도 있지만 무상태 API가 더 익히기 쉽고, 사용하기 쉬우며 오류를 만들 가능성이 더 낮다.</p>
+
+<p>여기서는 무상태 라이브러리 중 하나인 Canvas라이브러리의 코드를 살펴보며 무상태의 장점을 살펴보자</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">//상태유지</span>
+<span class="nx">c</span><span class="p">.</span><span class="nx">fillStyle</span> <span class="o">=</span> <span class="s2">"bule"</span><span class="p">;</span>
+<span class="nx">c</span><span class="p">.</span><span class="nx">font</span> <span class="o">=</span> <span class="s2">"24pt serif"</span><span class="p">;</span>
+<span class="nx">c</span><span class="p">.</span><span class="nx">textAlign</span> <span class="o">=</span> <span class="s2">"center"</span><span class="p">;</span>
+<span class="nx">c</span><span class="p">.</span><span class="nx">fillText</span><span class="p">(</span><span class="s2">"hello, world!"</span><span class="p">,</span> <span class="mi">75</span><span class="p">,</span> <span class="mi">25</span><span class="p">);</span>
+
+<span class="c1">//무상태</span>
+<span class="nx">c</span><span class="p">.</span><span class="nx">fillText</span><span class="p">(</span><span class="s2">"hello, world!"</span><span class="p">,</span><span class="mi">75</span><span class="p">,</span><span class="mi">25</span><span class="p">,{</span>
+   	<span class="nx">fillStyle</span> <span class="o">=</span> <span class="s2">"bule"</span><span class="p">,</span>
+	<span class="nx">font</span> <span class="o">=</span> <span class="s2">"24pt serif"</span><span class="p">,</span>
+	<span class="nx">textAlign</span> <span class="o">=</span> <span class="s2">"center"</span>
+<span class="p">});</span>
+</code></pre></div></div>
+
+<p>위는 상태유지버전와 무상태버전이다. <strong>당연히 무상태버전이 더 선호되는데 그 이유는 다음과 같다.</strong></p>
+
+<p>첫 번째, <strong>깨지리 염려가 훨씬 적다.</strong></p>
+
+<p>생각해 보자. 그리기 동작을 위해 내부 상태를 변경하는 것을 사용자가 파악하고 있어야하고, 디폴트값을 사용자 지정값으로 변경할 시 디폴트값을 사용하기 위해서는 다시 디폴트값으로 지정해야한다. 즉 디폴트값에 대한 정확한 명세를 사용자가 알아야한고 이러한 부분은 사용자의 실수가 더 많이 노출될 환경을 만든다. 이것은 가독성에도 영향을 미친다(위 코드를 살펴보면 알수 있다).</p>
+
+<p>두 번째, <strong>배우기 쉽다.</strong></p>
+
+<p>첫 번째에서 명시한것과 같이 디폴트 값을 모두 알고있어야 정확한 사용이 가능하다.  이를 위해 불필요한 문서내용이 들어가고 사용자는 그것들을 익혀야 한다. 무상태에서는 전혀 고민하지 않아야 될 많은 부분들을 상태유지에서는 신경쓰게 만든다.</p>
+
+<p>세 번째, <strong>간결하다.</strong></p>
+
+<p>위 예제 코드와 같이 상태유지 API는 상태변경에 대한 코드를 급격하게 늘려야 하는 경우가 발생할 수 있다.</p>
+
+<h2 id="item57-유연한-인터페이스를-위해-구조화된-형식을-사용하라">Item57. 유연한 인터페이스를 위해 구조화된 형식을 사용하라</h2>
+
+<p>위키를 구성하는 자바스크립트 라이브러리를 상상해보자.</p>
+
+<p>유연한 사용성을 제공하는 위키는 다양한 포맷으로 문서를 작성할 수 있도록 지원한다. 이를 위해 API는 사용자가 생성한 마크업 텍스트를 잘 관리하고 사용자가 작성한 텍스트와 위키의 기능, 예로들면 HTML로의 변환등에서 필요한 프로퍼티가 분리되어 유연하게 동작해야한다. 위키에서 컨텐트 추출을 위해 어떤 종류의 인터페이스가 존재하는지 조금 더 자세히 살펴보자.</p>
+
+<p>필요한 기능을 몇가지 나열해보자.</p>
+
+<p>메타데이터를 추출할 수 있어야하고 HTML로 포맷팅해서 보여주는 기능 필요한다. getTitle, getAuthor등의 메서드와 toHTML와 같은 메서드를 제공해야 한다는 말이다.</p>
+
+<p>또한, 마크업 포맷에 대해 설정이 가능해야 한다. 마크업언어는 여러가지 포맷이 존재하는데 예로들어 미디어위키의 포맷을 지원하는 객체를 생성할 때는 new Wiki(Wiki.formats.MEDIAWIKI)와 같이 포맷을 입력받아 지원하도록 한다.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">Wiki</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">displayPage</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">source</span><span class="p">){</span>
+    <span class="kd">var</span> <span class="nx">page</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">format</span><span class="p">(</span><span class="nx">source</span><span class="p">);</span>
+    <span class="kd">var</span> <span class="nx">title</span> <span class="o">=</span> <span class="nx">page</span><span class="p">.</span><span class="nx">getTitle</span><span class="p">();</span>
+    <span class="kd">var</span> <span class="nx">author</span> <span class="o">=</span> <span class="nx">page</span><span class="p">.</span><span class="nx">getAuthor</span><span class="p">();</span>
+    <span class="kd">var</span> <span class="nx">output</span> <span class="o">=</span> <span class="nx">page</span><span class="p">.</span><span class="nx">toHTML</span><span class="p">();</span>
+    <span class="c1">//...</span>
+<span class="p">}</span>
+    
+<span class="kd">function</span> <span class="nx">MWPage</span><span class="p">(</span><span class="nx">source</span><span class="p">){</span>
+	<span class="nx">Page</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="nx">source</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="nx">MWPage</span><span class="p">.</span><span class="nx">prototype</span> <span class="o">=</span> <span class="nb">Object</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="nx">Page</span><span class="p">.</span><span class="nx">prototype</span><span class="p">);</span>
+<span class="nx">MWPage</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">getTitle</span> <span class="o">=</span> <span class="p">...</span>
+<span class="nx">MWPage</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">getAuth</span> <span class="o">=</span> <span class="p">...</span>
+<span class="p">...</span>
+<span class="nx">Wiki</span><span class="p">.</span><span class="nx">formats</span><span class="p">.</span><span class="nx">MEDIAWIKI</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">source</span><span class="p">){</span>
+    <span class="k">return</span> <span class="k">new</span> <span class="nx">MWPage</span><span class="p">(</span><span class="nx">source</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h2 id="item58-배열과-유사-배열-객체를-구별하라">Item58. 배열과 유사 배열 객체를 구별하라</h2>
+
+<h2 id="item59-과도한-강제-형변환을-피하라">Item59. 과도한 강제 형변환을 피하라</h2>
+
+<h2 id="item60-메서드-체이닝을-지원하라">Item60. 메서드 체이닝을 지원하라</h2>
+
+<p>Item56에서 설명한 무상태 API의 강력함 중 하나는 체이닝과 같은 다음과 같은 유연성이다.</p>
+
+<p>다음은 메서드 체이닝사용된 문자열의 replace함수이다.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">//체이닝 스타일</span>
+<span class="kd">function</span> <span class="nx">escapeBasicHTML</span><span class="p">(</span><span class="nx">str</span><span class="p">){</span>
+    <span class="k">return</span> <span class="nx">str</span><span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="sr">/&amp;/g</span><span class="p">,</span> <span class="s2">"&amp;amp;"</span><span class="p">)</span>
+    		<span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="sr">/&lt;/g</span><span class="p">,</span><span class="s2">"&amp;lt;"</span><span class="p">)</span>
+    		<span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="sr">/&gt;/g</span><span class="p">,</span><span class="s2">"&amp;gt;"</span><span class="p">)</span>
+    		<span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="sr">/"/g</span><span class="p">,</span><span class="s2">"&amp;quot;"</span><span class="p">)</span>
+    		<span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="sr">/'/g</span><span class="p">,</span><span class="s2">"&amp;apos;"</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">//반복된 메서드 스타일</span>
+<span class="kd">function</span> <span class="nx">escapeBasicHTML</span><span class="p">(</span><span class="nx">str1</span><span class="p">){</span>
+    <span class="kd">var</span> <span class="nx">str2</span> <span class="o">=</span> <span class="nx">str1</span><span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="sr">/&amp;/g</span><span class="p">,</span> <span class="s2">"&amp;amp;"</span><span class="p">);</span>
+    <span class="kd">var</span> <span class="nx">str3</span> <span class="o">=</span> <span class="nx">str2</span><span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="sr">/&lt;/g</span><span class="p">,</span><span class="s2">"&amp;lt;"</span><span class="p">);</span>
+    <span class="kd">var</span> <span class="nx">str4</span> <span class="o">=</span> <span class="nx">str3</span><span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="sr">/&gt;/g</span><span class="p">,</span><span class="s2">"&amp;gt;"</span><span class="p">);</span>
+    <span class="kd">var</span> <span class="nx">str5</span> <span class="o">=</span> <span class="nx">str4</span><span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="sr">/"/g</span><span class="p">,</span><span class="s2">"&amp;quot;"</span><span class="p">);</span>
+    <span class="kd">var</span> <span class="nx">str6</span> <span class="o">=</span> <span class="nx">str5</span><span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="sr">/'/g</span><span class="p">,</span><span class="s2">"&amp;apos;"</span><span class="p">);</span>
+    <span class="k">return</span> <span class="nx">str6</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>두 방법을 살펴보면 체이닝방법이 훨신 간결하다(가독성이 좋다).</p>
+
+
+
+  
+  <div class="post-disqus">
+      <section id="disqus_thread"></section>
+      <div id="disqus_thread"></div>
+<script>
+
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+/*
+var disqus_config = function () {
+this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://youngwonseo.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+                            
+  </div>
+  
+</div>
+
+<div class="pagination">
+  
+  
+    <a href="/2018/05/30/monitoring-system-using-vue/" class="right arrow">&#8594;</a>
+  
+
+  <a href="#" class="top">Top</a>
+</div>
+
+    </main>
+
+    <footer>
+      <span>
+        &copy; <time datetime="2018-06-03 16:39:40 +0900">2018</time> Youngwon Seo. Made with Jekyll using the <a href="https://github.com/chesterhow/tale/">Tale</a> theme.
+      </span>
+    </footer>
+  </body>
+</html>
