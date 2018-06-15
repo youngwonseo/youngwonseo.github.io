@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>
+    
+      대용량 데이터베이스 솔루션#1 &middot; Youngwon Seo
+    
+  </title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/assets/main.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
+</head>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-118401942-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-118401942-1');
+</script>
+
+  <body>
+    <nav class="nav">
+      <div class="nav-container">
+        <a href="/">
+          <h2 class="nav-title">Youngwon Seo</h2>
+        </a>
+        <ul>
+          <li><a href="/about">About</a></li>
+          <li><a href="/">Posts</a></li>
+        </ul>
+    </div>
+  </nav>
+
+    <main>
+      <div class="post">
+  <div class="post-info">
+    <span>Written by</span>
+    
+        Youngwon Seo
+    
+
+    
+      <br>
+      <span>on&nbsp;</span><time datetime="2018-06-15 00:00:00 +0900">June 15, 2018</time>
+    
+  </div>
+
+  <h1 class="post-title">대용량 데이터베이스 솔루션#1</h1>
+  <div class="post-line"></div>
+
+  <h1 id="1장-데이터-저장구조와-특징-1">1장 데이터 저장구조와 특징 #1</h1>
+
+<ul>
+  <li>2018년 5월 24일 목요일</li>
+</ul>
+
+<p><strong>데이터를 저장하는 방식은 데이터의 저장이나 수정, 검색에 직접적인 영향</strong>을 미친다. 즉 데이터 저장 구조에 따라 데이터 조작에 대한 성능이 결정되는데, 개발자는 비즈니스에 대한 요구사항을 정확히 이해하고 최적의 저장구조를 선택할 필요가 있다.</p>
+
+<h2 id="11-테이블과-인덱스의-분리형">1.1 테이블과 인덱스의 분리형</h2>
+
+<ul>
+  <li>데이터와 인덱스를 따로 저장하는 방식, 여기서 인덱스란 데이터를 검색할 때 사용하는 Key</li>
+  <li>즉 인덱스에 실제 데이터가 저장된 주소를 참조</li>
+  <li>가장 큰 장점은 실제 인덱스가 데이터의 영향을 받지 않으므로 데이터를 무조건적으로 저장가능
+    <ul>
+      <li>저장속도가 빠름</li>
+    </ul>
+  </li>
+  <li>관계형 데이터베이스의 가장 일반적인 데이터 저장형식</li>
+</ul>
+
+<h3 id="111-분리형-테이블-구조">1.1.1 분리형 테이블 구조</h3>
+
+<ul>
+  <li>실제 데이터는 데이터의 논리적 의미와 전혀 무관한 형식으로 블록(Block)에 저장되어 있음
+    <ul>
+      <li>하나의 데이터(row)가 끊어저 저장되어 있을 수도 있고, 심지어 하나의 데이터가 여러 블록에 분포되어 있을 수 있음</li>
+    </ul>
+  </li>
+  <li>하나의 데이터를 한 조각으로 끊어지지 않게 저장할 수 없을 때, 재배치(Condensing)를 통해 공간을 만듬
+    <ul>
+      <li>테이블 정의시 로우의 길이변화를 수용하기 위한 공간크기(FREE SPACE) 지정가능, 파라미터 “PCTFREE”</li>
+    </ul>
+  </li>
+  <li>용어정의(추후 그림추가)
+    <ul>
+      <li>테이블스페이스(Tablespace)
+        <ul>
+          <li>논리적인 저장공간</li>
+          <li>데이터파일로 구성</li>
+        </ul>
+      </li>
+      <li>데이터파일(Datafile)
+        <ul>
+          <li>물리적인 저장공간</li>
+          <li>테이블스페이스의 구성단위</li>
+          <li>즉 여러개의 데이터파일이 테이블스페이스를 구성</li>
+        </ul>
+      </li>
+      <li>세그먼트(Segment)
+        <ul>
+          <li>테이블스페이스를 용도별로 나눈것</li>
+          <li>즉 논리적인 단위</li>
+        </ul>
+      </li>
+      <li>오브젝트(Object)
+        <ul>
+          <li>세그먼트의 구성단위</li>
+        </ul>
+      </li>
+      <li>파티션(Partition)
+        <ul>
+          <li>테이블이나 인덱스는 각각의 파티션이 단위 오브젝트가 됨</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>데이터파일의 식별자를 테이블스페이스단위로 구성가능
+    <ul>
+      <li>다른 테이블스페이스라면 같은 데이터파일 식별자가 존재가능</li>
+      <li>이것은 <strong>로우식별자(Rowid)를 보다 짧게 구성하도록 할 수 있는 매우 중요한 의미를 가짐</strong></li>
+      <li>6페이지 하단 그림에서 Datafile식별자가 상대적인 식별자</li>
+    </ul>
+  </li>
+  <li>실제 ROWID에서 오브젝트 번호와 데이터파일 번호를 통해 물리적인 저장위치를 찾고, 거기에 있는 블록번호를 찾아가면 슬롯이 나온다.  슬롯에는 슬롯번호가 존재하고 그 속에는 로우의 위치정보가 존재한다.</li>
+  <li>즉 ROWID는 로우의 실제 위치가 아닌 위치가 들어있는 슬롯의 번호에 해당한다.</li>
+  <li>이러한 이유로 ROWID의 변경없이 로우의 위치이동이 자유롭다(슬롯안에 로우의 위치정보만 바꾸면 되기 때문에).</li>
+  <li>하지만 계속되서 로우의 이동이 발생하면 블록내부의 수많은 조각(Fragmentation)이 발생
+    <ul>
+      <li>비슷한 예로 운영체제의 단편화</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="112-클러스터링-팩터clustering-factor">1.1.2 클러스터링 팩터(Clustering Factor)</h3>
+
+<ul>
+  <li>인덱스와 인덱스에 해당하는 로우의 순서가 얼마나 비슷한 순서로 저장되어있느냐에 대한 정도를 “클러스터링 팩터”라고 함</li>
+</ul>
+
+<h3 id="113-분리형-테이블의-액세스-영향요소">1.1.3 분리형 테이블의 액세스 영향요소</h3>
+<ul>
+  <li>분리형 테이블은 필연적으로 액세스의 효율에 커다란 영향을 미친다.
+    <h4 id="가-넓은-범위의-액세스-처리에-대한-대처방안">가) 넓은 범위의 액세스 처리에 대한 대처방안</h4>
+  </li>
+  <li>분리형은 데이터가 들어오는 대로 아무곳에 저장하는 형태</li>
+  <li>즉 넓은 범위에 흩어져 저장되면 그만큼 많은 블럭에 대한 IO가 발생</li>
+  <li>이러한 분리형 구조에 대량의 처리를 위한 방법들이 존재
+    <ul>
+      <li>병렬처리, 파티션, 각종 인덱스 기법</li>
+    </ul>
+  </li>
+  <li>대량의 액세스가 발생하는 상황에서도 분리형 테이블을 적용해야하는 이뉴는 물론 입력(Insert)시 부하가 부담되기 때문에</li>
+  <li>넓은 범위로 흩어져 저장되는것 때문에 항상 임의의 영역(버퍼)에 저장을 해두었다가 시간이 나면 실제 저장을 실행하는 방법도 쉽게 선택할 수 있는 방법은 아님
+    <ul>
+      <li>실제 RDBMS는 메모리에 임시저장 해두고 리소스에 여유가 생기면 실제 디스크에 저장하는 지연기록(Differed write) 방식을 취함</li>
+    </ul>
+  </li>
+  <li>앞으로 이를 위한 해결방안들을 제시</li>
+  <li>다음은 테이블 크기에 따라 테이블 구조의 결정에 어떤 고려요소가 존재하는지 나타냄
+    <h5 id="소형테이블">소형테이블</h5>
+  </li>
+  <li>보유 데이터가 작다는 말이기 때문에 등록에 부담이 적음(입력이 많이 발생하지 않음)</li>
+  <li>또한 흩어져 있더라고 그 반경이 별로 멀지 않음
+    <ul>
+      <li>즉 최소한의 블럭 I/O로 접근가능</li>
+      <li>cache friendly 한 속성을 가짐
+        <h5 id="중형테이블">중형테이블</h5>
+      </li>
+    </ul>
+  </li>
+  <li>중형역시 대형에 비해 작은크기이므로 비용이 적게 들지만 활용도에 따라 액세스가 빈번하게 발생할 가능성이 존재함</li>
+  <li>그러므로 등록 시 부담이 되더라도 좋은 액세스를 위해서는 좋은 액세스를 위해서는 찾기좋은 형태로 저장필요</li>
+  <li>실제 사용시 다양한 형태(여러가지 컬럼에 대한)로 접근이 발생하기 때문에 특정한 모양으로 저장한다는 것이 무조건 좋은 해결책은 될 수 없음</li>
+  <li>그러나 특정한 액세스가 매우 중요하면 거기에 대한 대비가 필요
+    <h5 id="대형테이블">대형테이블</h5>
+  </li>
+  <li>대형테이블의 경우 유형별로 세가지 형태로 구분가능함</li>
+  <li>첫 번째, 단순 저장형 개념
+    <ul>
+      <li>자주 사용되지도, 다양한 액세스 형태를 가질필요도 없음</li>
+      <li>엑세스보다는 입력이 자주 발생하므로 신속한 저장이 필요</li>
+      <li>분리형이 가장 적절</li>
+      <li>필요에 따라 파티션 같은 조치가 필요</li>
+    </ul>
+  </li>
+  <li>두 번째, 랜덤 액세스 위주의 테이블지만 다양한 형태의 액세스를 갖지 않는 구조
+    <ul>
+      <li>당연히 분리형 구조가 적합</li>
+      <li>클러스터링이나 파티션을 하더라도 큰 혜택이 없음</li>
+    </ul>
+  </li>
+  <li>세 번째, 대량의 데이터가 지속적으로 증가하며, 매우 다양한 액세스를 가지는 경우
+    <ul>
+      <li>지속적으로 증가하는 데이터에 대한 관리적인 측면의 부담이 크다면 더 이상 망설이지 말고 파티션을 적용해야함</li>
+      <li>자주 대량의 범위 스캔을 수행하므로 불필요한 데이터를 많이 처리한다면 심각한 상황이 발생할 가능성이 높음</li>
+      <li>이러한 구조에서 가장 중요한것은 인<strong>덱스를 전략적으로 구성</strong>하고 <strong>SQL의 실행계획을 최적화</strong> 시키는 방법이 중요
+        <h4 id="나클러스터링-팩터-향상-전략">나)클러스터링 팩터 향상 전략</h4>
+      </li>
+    </ul>
+  </li>
+  <li>분리형 구조라는 것은 정해지지 않는 순서로 데이터가 저장된다는 것</li>
+  <li>이것은 아무렇게 저장해도 된다는 것이지만, 의도적으로 우리에게 유리한 형태로 저장하다는 것이 가능다하는 의미</li>
+  <li>즉, 우리가 얼마나 전략적으로 접근하느냐에 따라 의외의 효율을 얻을 수 있음</li>
+  <li>가장 보편적인 방법은 주기적인 테이블 재생성</li>
+  <li>즉 흩어져 저장된 데이터를 새로 저장해 Chain의 깊이를 줄여 응집(cohesion)도를 높임</li>
+  <li>이는 또한 인덱스의 깊이(B Tree의 depth)를 정리하는 효과가 있음</li>
+  <li>또 다른 방법은 자주 사용되는 컬럼들 순으로 정렬하여 저장</li>
+  <li>테이블 재생성시에는 인덱스에 대한 모든 기능을 비활성화 시키고 저장 후 다시 활성화</li>
+</ul>
+
+<h2 id="12--인덱스-일체형-테이블">1.2  인덱스 일체형 테이블</h2>
+<h3 id="121-분리형과-일체형의-비교">1.2.1 분리형과 일체형의 비교</h3>
+<h3 id="122-일체형-테이블의-구조-및-특징">1.2.2 일체형 테이블의 구조 및 특징</h3>
+<h3 id="123-논리적-rowid와-물리적-주소physical-guess">1.2.3 논리적 ROWID와 물리적 주소(Physical Guess)</h3>
+<h3 id="124-오버플로우-영역overflow-area">1.2.4 오버플로우 영역(Overflow Area)</h3>
+<h3 id="125-일체형-테이블의-생성">1.2.5 일체형 테이블의 생성</h3>
+
+
+  
+  <div class="post-disqus">
+      <section id="disqus_thread"></section>
+      <div id="disqus_thread"></div>
+<script>
+
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+/*
+var disqus_config = function () {
+this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://youngwonseo.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+                            
+  </div>
+  
+</div>
+
+<div class="pagination">
+  
+  
+    <a href="/2018/06/03/effective-javascript-6/" class="right arrow">&#8594;</a>
+  
+
+  <a href="#" class="top">Top</a>
+</div>
+
+    </main>
+
+    <footer>
+      <span>
+        &copy; <time datetime="2018-06-15 15:57:53 +0900">2018</time> Youngwon Seo. Made with Jekyll using the <a href="https://github.com/chesterhow/tale/">Tale</a> theme.
+      </span>
+    </footer>
+  </body>
+</html>
