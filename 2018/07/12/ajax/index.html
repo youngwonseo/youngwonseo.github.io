@@ -110,7 +110,46 @@
 
 <h4 id="지연로딩">지연로딩</h4>
 
+<p>지연로딩은 렌더링 속도 향상에 중점을 둔 성능 최적화 방법으로, 웹 페이지 구성 요소들의 다운로드 시점을 조절하여 렌더링 속도를 높이는 방법이다. 다음은 대표적인 두 가지의 웹 로딩(구성요소 다운로드)에 대한 순서이다.</p>
+
+<ul>
+  <li>HTML &gt; 스타일시트 &gt; 자바스크립트 &gt; 이미지</li>
+  <li>HTML &gt; 스타일시트 &gt; 이미지 &gt; 자바스크립트</li>
+</ul>
+
+<p>위 두 유형중 어느것이 빠를까? 아래항목 더 빠르다. 이유는 위의 경우 자바스크립트를 파싱하고 실행하는 동안에는 블로킹(자바스크립트에 대한 독립적이고 안정적인 실행을 보장하기위해)이 발생해 다른작업과 병행하지 않으므로 이미지 다운로드가 지연되기 때문이다.</p>
+
+<p>그렇다면 아래의 유형을 구현 방법은 어떻게 될까? 방법은 간단하다! 그것은 스크립트에 대한 코드를 body의 마지막에 두는것이다.</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;html&gt;</span>
+    <span class="nt">&lt;body&gt;</span>
+    	...
+		<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"..."</span><span class="nt">&gt;&lt;/script&gt;</span>
+		<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"..."</span><span class="nt">&gt;&lt;/script&gt;</span>
+    <span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</code></pre></div></div>
+
 <h4 id="온디멘드-로딩">온디멘드 로딩</h4>
+
+<p>온디멘드는 사용자의 요구사항이 발생하면 필요한 요소들을 다운로는 하는 최적화 방식이다.  요소들에는 이미지나 텍스트가 될 수도 있지만 여기서는 자바스크립트 소스코드 자체를 예로 든다. 즉 자바스크립트를 동적으로 로딩하는 방식으로 다음과 같은 방법들이 존재한다.</p>
+
+<ul>
+  <li>XHR 기술들을 활용한 자바스크립트 동적 다운로드</li>
+  <li>Script DOM Injection 방식을 활용한 자바스크립트 동적 다운로드</li>
+  <li>IFrame을 활용한 자바스크립트 동적 다운로드</li>
+  <li>document.write() 메서드를 활용한 자바스크립트 동적 다운로드</li>
+</ul>
+
+<p>이 네 가지 방법은 브라우저의 자바스크립트 블로킹을 최소화하면서 자바스크립트를 다운로드 하는 방식으로 script태그를 활용해 정적으로 추가하는 방식이아닌 비동기식, 즉 동적으로 다운로드하는 것이 핵심원리이다. 즉 사용하지 않는 기능의 스크립트들을 미리 다운로드 하는것이 아닌 필요할 경우 다운로드하고 사용하는 것이다. 그럼 여기서 하나씩 살펴보자. 여기서는 핵심적인 부분과 이에 해당하는 코드위주로 설명하니 자세한 설명은 책을 참조하길 바란다.</p>
+
+<h5 id="xhr-기술을-활용한-자바스크립트-동적-다운로드">XHR 기술을 활용한 자바스크립트 동적 다운로드</h5>
+
+<h5 id="script-dom-injection방식을-활용한-자바스크립트-동적-다운로드">Script DOM Injection방식을 활용한 자바스크립트 동적 다운로드</h5>
+
+<h5 id="iframe을-활용한-자바스크립트-동적-다운로드">IFrame을 활용한 자바스크립트 동적 다운로드</h5>
+
+<h5 id="documentwrite-메서드를-활용한-자바스크립트-동적-다운로드">document.write() 메서드를 활용한 자바스크립트 동적 다운로드</h5>
 
 <h3 id="references">References</h3>
 <ul>
@@ -148,6 +187,8 @@ s.setAttribute('data-timestamp', +new Date());
 
 <div class="pagination">
   
+    <a href="/2018/07/13/start-algorithms-02/" class="left arrow">&#8592;</a>
+  
   
     <a href="/2018/06/27/GC/" class="right arrow">&#8594;</a>
   
@@ -159,7 +200,7 @@ s.setAttribute('data-timestamp', +new Date());
 
     <footer>
       <span>
-        &copy; <time datetime="2018-07-12 17:34:19 +0900">2018</time> Youngwon Seo. Made with Jekyll using the <a href="https://github.com/chesterhow/tale/">Tale</a> theme.
+        &copy; <time datetime="2018-07-13 16:59:14 +0900">2018</time> Youngwon Seo. Made with Jekyll using the <a href="https://github.com/chesterhow/tale/">Tale</a> theme.
       </span>
     </footer>
   </body>
