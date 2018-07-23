@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>
+    
+      자바스크립트 - 함수형프로그래밍#2 &middot; Youngwon Seo
+    
+  </title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/assets/main.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
+</head>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-118401942-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-118401942-1');
+</script>
+
+  <body>
+    <nav class="nav">
+      <div class="nav-container">
+        <a href="/">
+          <h2 class="nav-title">Youngwon Seo</h2>
+        </a>
+        <ul>
+          <li><a href="/about">About</a></li>
+          <li><a href="/">Posts</a></li>
+        </ul>
+    </div>
+  </nav>
+
+    <main>
+      <div class="post">
+  <div class="post-info">
+    <span>Written by</span>
+    
+        Youngwon Seo
+    
+
+    
+      <br>
+      <span>on&nbsp;</span><time datetime="2018-07-23 00:00:00 +0900">July 23, 2018</time>
+    
+  </div>
+
+  <h1 class="post-title">자바스크립트 - 함수형프로그래밍#2</h1>
+  <div class="post-line"></div>
+
+  <h1 id="함수형-자바스크립트-2">함수형 자바스크립트 #2</h1>
+<ul>
+  <li>본 글은 함수형 자바스크립트 프로그래밍(유인동 저)에 대한 저의 정리입니다. 상세한 사항은 책에서 확인해주세요.</li>
+</ul>
+
+<h2 id="함수형-자바스크립트를-위한-문법정리">함수형 자바스크립트를 위한 문법정리</h2>
+<p>1장에서 잠시나마 자바스크립트 함수사용에 대해 언급하였다. 2장에서는 함수형 자바스크립트에 대한 이해를 위해 자바스크립트 전반적인 문법을 다시한번 정리하고 넘어가자. 어떤 언어든 library, api 등 추상화된 결과대신 기초 문법에 대한 이해가 정확해야 언어에 대한 올바른 사용이 가능하다.</p>
+
+<h2 id="1-객체와-대괄호">1. 객체와 대괄호</h2>
+<p>자바스크립트는 실제 다양한 방법으로 사용된다. 사용하는 사람에 따라, 용도에 따라 매우 달라지며, 이것은 기존 library들만 봐도 확인할 수 있다. 다음은 자바스크립트 코드가 다양한 형식으 개발되는 이유들이다.</p>
+<ul>
+  <li>더 짧은 코드를 위해</li>
+  <li>추상화의 다양한 기법</li>
+  <li>if를 없애기 위해</li>
+  <li>특별한 로직을 위해</li>
+  <li>캐시를 위해</li>
+  <li>은닉을 위해</li>
+  <li>함수를 선언하고 참조하기 위해</li>
+  <li>컨텍스트를 이어주기 위해</li>
+</ul>
+
+<p>실제 다양한 상황들에 대한 케이스를 살펴보고 분석하는 것은 코딩실력을 키우는 데 매우 도움이 된다. 본 책에서는 이러한 연습을 통해 <strong>아무 곳에서나 함수 열기, 함수 실행을 원하는 시점으로 미뤄서 실행하기</strong> 를 이해할 수 있게 된다고 명시되어 있다.</p>
+
+<h3 id="12-객체와-키">1.2 객체와 키</h3>
+<p>자바스크립트에서 객체(오브젝트, 딕셔너리)에 값을 할당하는 방법과  몇가지 방법에 대한 차이점을 아래에 나타내고 있다.</p>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">//값을 할당하는 몇가지 방법</span>
+<span class="kd">var</span> <span class="nx">obj</span> <span class="o">=</span> <span class="p">{</span> <span class="na">a</span> <span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">"b"</span> <span class="p">:</span> <span class="mi">2</span> <span class="p">};</span>
+<span class="nx">obj</span><span class="p">.</span><span class="nx">c</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>
+<span class="nx">obj</span><span class="p">[</span><span class="s1">'d'</span><span class="p">]</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span>
+<span class="nx">obj</span><span class="p">[</span><span class="s1">'d-a'</span><span class="p">]</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span> <span class="c1">//특수문자</span>
+<span class="nx">obj</span><span class="p">[</span><span class="s1">' a a a '</span><span class="p">]</span> <span class="o">=</span> <span class="mi">6</span><span class="p">;</span> <span class="c1">//띄어쓰기</span>
+
+
+<span class="c1">//{}와 []의 차이점 - 코드의 실행가능여부</span>
+<span class="kd">var</span> <span class="nx">obj</span> <span class="o">=</span> <span class="p">{(</span><span class="kc">true</span> <span class="p">?</span> <span class="s2">"a"</span> <span class="p">:</span> <span class="s2">"b"</span><span class="p">)</span> <span class="p">:</span> <span class="mi">1</span><span class="p">};</span> <span class="c1">//불가능</span>
+
+<span class="kd">var</span> <span class="nx">obj</span> <span class="o">=</span> <span class="p">{};</span>
+<span class="nx">obj</span><span class="p">[</span><span class="kc">true</span><span class="p">?</span> <span class="s2">"a"</span> <span class="p">:</span> <span class="s2">"b"</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>  <span class="c1">//가능</span>
+
+
+<span class="c1">//ES6부도 가능한 코드</span>
+<span class="kd">var</span> <span class="nx">obj5</span> <span class="o">=</span> <span class="p">{</span> <span class="p">[</span><span class="kc">true</span> <span class="p">?</span> <span class="s2">"a"</span> <span class="p">:</span> <span class="s2">"b"</span><span class="p">]</span> <span class="p">:</span> <span class="mi">1</span> <span class="p">};</span> 
+</code></pre></div></div>
+<p>오브젝트에 어떤식으로 변수들이 할당될 수 있는지 살펴보았다. 추가적으로 나의 생각은 문법은 정해진 규칙이다. 너무 이해할려고 하지말고 외우는 것이 좋다고 생각한다.</p>
+
+<h3 id="13-함수나-배열에-달기">1.3 함수나 배열에 달기</h3>
+<p>자바스크립트는 함수도 객체다.</p>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">obj</span><span class="p">(){}</span>
+<span class="nx">obj</span><span class="p">.</span><span class="nx">a</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+<span class="nx">obj</span><span class="p">.</span><span class="nx">b</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
+
+
+
+</code></pre></div></div>
+<p>호이스팅에 대한 설명은 다음절에 나온다.</p>
+
+<h2 id="2-함수-정의-다시보기">2. 함수 정의 다시보기</h2>
+<h3 id="21-함수-기본정의">2.1 함수 기본정의</h3>
+<p>다음은 자바스크립트에서의 다양한 함수 정의 방법이다.</p>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">add1</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">)</span> <span class="p">{</span>
+	<span class="k">return</span> <span class="nx">a</span> <span class="o">+</span> <span class="nx">b</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="kd">var</span> <span class="nx">add2</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">)</span> <span class="p">{</span>
+	<span class="k">return</span> <span class="nx">a</span> <span class="o">+</span> <span class="nx">b</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="kd">var</span> <span class="nx">m</span> <span class="o">=</span> <span class="p">{</span>
+	<span class="na">add3</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">)</span> <span class="p">{</span>
+		<span class="k">return</span> <span class="nx">a</span> <span class="o">+</span> <span class="nx">b</span><span class="p">;</span>
+	<span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="22-호이스팅">2.2 호이스팅</h3>
+
+<p>호이스팅(hoisting)은 선언부가 전부 함수 스코프 초기로 올라가는 것으로 보다 정확한 이해를 위해 다음과 같은 예제를 살펴보자.</p>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">add1</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">);</span>  <span class="c1">//15</span>
+<span class="nx">add2</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">);</span>  <span class="c1">//add2 is not a function(..)</span>
+
+<span class="kd">function</span> <span class="nx">add1</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">){</span>
+	<span class="k">return</span> <span class="nx">a</span> <span class="o">+</span> <span class="nx">b</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="kd">var</span> <span class="nx">add2</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">){</span>
+	<span class="k">return</span> <span class="nx">a</span> <span class="o">+</span> <span class="nx">b</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+<p>둘다 함수에 대한 사용이 정의보다 먼저 명시되어 있다. 보통 이럴 경우 에러를 생각할 수 있다. 하지만 자바스크립트에서는 호이스팅이라는 개념이 적용되어 add1의 경우 실행이 된다!</p>
+
+<h1 id="references">References</h1>
+<ul>
+  <li>함수형 자바스크립트 프로그래밍(인사이트) - 유인동지음</li>
+</ul>
+
+
+  
+  <div class="post-disqus">
+      <section id="disqus_thread"></section>
+      <div id="disqus_thread"></div>
+<script>
+
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+/*
+var disqus_config = function () {
+this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://youngwonseo.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+                            
+  </div>
+  
+</div>
+
+<div class="pagination">
+  
+  
+    <a href="/2018/07/21/functional-javascript-1/" class="right arrow">&#8594;</a>
+  
+
+  <a href="#" class="top">Top</a>
+</div>
+
+    </main>
+
+    <footer>
+      <span>
+        &copy; <time datetime="2018-07-23 09:04:13 +0900">2018</time> Youngwon Seo. Made with Jekyll using the <a href="https://github.com/chesterhow/tale/">Tale</a> theme.
+      </span>
+    </footer>
+  </body>
+</html>
