@@ -62,9 +62,11 @@
   <div class="post-line"></div>
 
   <h2 id="1-자바에서의-동기화">1. 자바에서의 동기화</h2>
+<p>자바는 멀티쓰레딩을 지원합니다(정확하게 JVM이). 그리고 각 쓰레드를 동기화 하기 위해 Monitor를 사용합니다. 여기거 동기화란 여러 쓰레드가 동시에 한 메모리영역에 접근시 데이터의 무결정을 위해 락을 걸어 동시에 한 쓰레드만 접근가능하게 하는 것입니다. 자바는 동기화를 위해 문법적으로 synchronized를 이용하며 실제로는 Monitor의 메커니즘을 사용합니다. 정확하게 설명하면 Critical Section(여러쓰레드가 동시에 접근할려고 하는 구간)에 특정 쓰레드가 접근할 시 Lock 에대한 Object Monitor를 1증가시켜 해당 구간을 실행하고 빠져나오면 다시 1증가 시켰던 Monitor를 -1하여 다른 쓰레드가 접근가능하도록 만듭니다. 이를 위해 자바는 문법적으로 synchronized를 실행하는 것이죠. (멀티쓰레딩과 동기화 부분의 이론적 내용을 자세히 알고싶으신 분은 운영체제를 공부하시는 것을 추천합니다)
+이렇게 쓰레드에 대한 동기화를 위해 각 쓰레드는 상태를  변경하며 프로그램이 실행되는데 이는 두 번째 절인 Thread의 상태 및 종류에서 살펴봅니다.</p>
 
 <h2 id="2-thread-상태-및-종류">2. Thread 상태 및 종류</h2>
-<h3 id="31-thread-상태">3.1 Thread 상태</h3>
+<h3 id="21-thread-상태">2.1 Thread 상태</h3>
 <p>다음은 JVM에서의 Thread들 가지는 상태들이다. 여러가지 예외 발생(성능저하 또는 메모리관련, 데드락 등) 시 Thread Dump 분석을 통해서 해결해야 하는데 이때 다음과 같은 Thread 상태들을 정확히 이해하고 있어야 한다.</p>
 <ul>
   <li>NEW - Thread가 생성되어있지만 아직 실행되지 않은 상태</li>
@@ -75,7 +77,7 @@
 </ul>
 
 <p><img src="https://qph.ec.quoracdn.net/main-qimg-bb9b26ebdf42c3f502f1a6318664e04e" alt="" /></p>
-<h3 id="33-thread-종류">3.3 Thread 종류</h3>
+<h3 id="22-thread-종류">2.2 Thread 종류</h3>
 <p>JVM Thread는 데몬(Daemon) 또는 비 데몬(Non-daemon) Thread로 나뉜다. 데몬 Thread 는 비 데몬 Thread가 존재하지 않으면 자동으로  은 JVM에 의해, 비 데몬은 사용자에 의해 생선되는 Thread이다. 예로 들면 GC는 데몬,</p>
 <ul>
   <li>VM-Background Thread - compile, optimization, GC 등 JVM 내부의 일을 수행하는  Background Thread등</li>
@@ -276,7 +278,7 @@ s.setAttribute('data-timestamp', +new Date());
 
     <footer>
       <span>
-        &copy; <time datetime="2018-08-16 08:29:27 +0900">2018</time> Youngwon Seo. Made with Jekyll using the <a href="https://github.com/chesterhow/tale/">Tale</a> theme.
+        &copy; <time datetime="2018-08-18 10:58:55 +0900">2018</time> Youngwon Seo. Made with Jekyll using the <a href="https://github.com/chesterhow/tale/">Tale</a> theme.
       </span>
     </footer>
   </body>
