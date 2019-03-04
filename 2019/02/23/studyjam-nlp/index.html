@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>
+    
+      구글 NLP 스터디잼 - API소개 &middot; Youngwon Seo
+    
+  </title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/assets/main.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
+</head>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-118401942-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-118401942-1');
+</script>
+
+  <body>
+    <nav class="nav">
+      <div class="nav-container">
+        <a href="/">
+          <h2 class="nav-title">Youngwon Seo</h2>
+        </a>
+        <ul>
+          <li><a href="/about">About</a></li>
+          <li><a href="/">Posts</a></li>
+          <li><a href="/study"/>Study</a></li>
+          <li><a href="/people"/>People</a></li>
+          <!-- <li><a href="/spring"/>Spring</a></li>
+          <li><a href="/deeplearning"/>Deeplearning</a></li> -->
+        </ul>
+    </div>
+  </nav>
+
+    <main>
+      <div class="post">
+  <div class="post-info">
+    <span>Written by</span>
+    
+        Youngwon Seo
+    
+
+    
+      <br>
+      <span>on&nbsp;</span><time datetime="2019-02-23 00:00:00 +0900">February 23, 2019</time>
+    
+  </div>
+
+  <h1 class="post-title">구글 NLP 스터디잼 - API소개</h1>
+  <div class="post-line"></div>
+
+  <p>이번에 구글에서 진행하는 스터디잼 진행에 대한 정리글 입니다. 다음과 같은 4가지 과정을 quicklab을 통해 수행하였습니다.</p>
+<ul>
+  <li><a href="https://www.qwiklabs.com/focuses/588?catalog_rank=%7B%22rank%22%3A7%2C%22num_filters%22%3A3%2C%22has_search%22%3Atrue%7D&amp;parent=catalog&amp;search_id=1896374">Google Cloud Speech API: Qwik Start</a></li>
+  <li><a href="https://www.qwiklabs.com/focuses/582?catalog_rank=%7B%22rank%22%3A8%2C%22num_filters%22%3A3%2C%22has_search%22%3Atrue%7D&amp;parent=catalog&amp;search_id=1896374">Cloud Natural Language API: Qwik Start</a></li>
+  <li><a href="https://www.qwiklabs.com/focuses/2187?catalog_rank=%7B%22rank%22%3A5%2C%22num_filters%22%3A3%2C%22has_search%22%3Atrue%7D&amp;parent=catalog&amp;search_id=1896403">Speech to Text Transcription with the Cloud Speech API</a></li>
+  <li><a href="https://www.qwiklabs.com/focuses/1843?catalog_rank=%7B%22rank%22%3A7%2C%22num_filters%22%3A3%2C%22has_search%22%3Atrue%7D&amp;parent=catalog&amp;search_id=1896403">Entity and Sentiment Analysis with the Natural Language API</a></li>
+</ul>
+
+<p>이번 스터디잼을 이수한 결과 사실상 대부분이 API호출이었습니다. CURL을 통하여 json으로 구성된 config파일을  사용하여 NLP API를 호출하고 호출결과를 json으로 응답받는 것입니다.</p>
+
+<h2 id="google-cloud-speech-api-quick-start">Google Cloud Speech API: Quick Start</h2>
+<p>Google Cloud Speech는 <strong>Speech-to-Text</strong>를 제공하는 API입니다.  즉 오디오에 포함된 언어를 recognition하여 텍스트로 변환하는 기능을 제공합니다.
+API를 사용하기 위해 GCP 콘솔에서 API키를 생성합니다.
+<img src="/public/gcp-api-1.png" alt="" />
+<img src="/public/gcp-api-2.png" alt="" />
+<img src="/public/gcp-api-3.png" alt="" /></p>
+
+<p>다음 키를 API_KEY라는 환경변수로 할당합니다. 이것은 리눅스를 사용할 경우 이고 API를 호출할때 키를 직접 입력해도 상관없습니다.</p>
+<blockquote>
+  <p>export API_KEY=&lt;YOUR_API_KEY&gt;</p>
+</blockquote>
+
+<p>다음은 요청한 config입니다.</p>
+<h3 id="requestjson">request.json</h3>
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+	</span><span class="s2">"config"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> 
+		</span><span class="s2">"encoding"</span><span class="p">:</span><span class="s2">"FLAC"</span><span class="p">,</span><span class="w"> 
+		</span><span class="s2">"sample_rate"</span><span class="p">:</span><span class="w"> </span><span class="mi">16000</span><span class="p">,</span><span class="w"> 
+		</span><span class="s2">"language_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"en-US"</span><span class="w"> 
+	</span><span class="p">},</span><span class="w">
+	</span><span class="s2">"audio"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+		</span><span class="s2">"uri"</span><span class="p">:</span><span class="s2">"gs://cloud-samples-tests/speech/brooklyn.flac"</span><span class="w"> 
+	</span><span class="p">}</span><span class="w"> 
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+<p>각 항목에 대한 설명입니다.</p>
+<ul>
+  <li>encoding : speech에 대한 파일 인코딩</li>
+  <li>sample_rate : 오디오 데이터의 Hertz</li>
+</ul>
+
+<p>위 두 항목은 필수 파라미터입니다. 그 외 다른 옵션에 대해서는 <a href="https://cloud.google.com/speech/reference/rest/v1/RecognitionConfig">문서</a> 를 확인해 주세요. 
+ audio의 uri에 text로 변환할려고하는 음성파일이 존재합니다. 음성파일은 <a href="https://storage.cloud.google.com/speech-demo/brooklyn.wav" target="_blank">여기서</a> 들을 수 있습니다.</p>
+
+<p>다음은 실제 API호출입니다. curl 명령어를 통해 api서버로 요청을 보내고 json포맷으로 응답을 받습니다. ${API_KEY}는 위에서 설정한 환경변수입니다.</p>
+
+<blockquote>
+  <p>curl -s -X POST -H “Content-Type: application/json” –data-binary @request.json \ “https://speech.googleapis.com/v1beta1/speech:syncrecognize?key=${API_KEY}”</p>
+</blockquote>
+
+<p>응답결과는 다음과 같습니다.</p>
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">  
+	</span><span class="s2">"results"</span><span class="p">:</span><span class="w">  </span><span class="p">[</span><span class="w">  
+		</span><span class="p">{</span><span class="w">  
+			</span><span class="s2">"alternatives"</span><span class="p">:</span><span class="w">  </span><span class="p">[</span><span class="w">  
+				</span><span class="p">{</span><span class="w">  
+					</span><span class="s2">"transcript"</span><span class="p">:</span><span class="w">  </span><span class="s2">"how old is the Brooklyn Bridge"</span><span class="p">,</span><span class="w">  
+					</span><span class="s2">"confidence"</span><span class="p">:</span><span class="w">  </span><span class="mf">0.98267895</span><span class="w">  
+				</span><span class="p">}</span><span class="w">  
+			</span><span class="p">]</span><span class="w">  
+		</span><span class="p">}</span><span class="w">  
+	</span><span class="p">]</span><span class="w">  
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+<p>transcript가 변환된 텍스트이고 confidence가 정확도입니다.
+위에서 curl을 통해 api를 요청할 때 syncrecognize라고 명시된 부분이 있었습니다. speech api는 동기와 비동기 모두를 지원합니다. 즉 하나의 파일로 구성된 파일이 아니라 스트리밍을 통한 오디오가 생성되는 동안에도 text로 변환하는 기능을 제공합니다. 스터디잼에서는 이 부분은 진행되지 않았지만 문서를 참조하면 async하게 사용하는 방법을 학습할 수 있습니다.</p>
+
+<h2 id="cloud-natural-language-api-quick-start">Cloud Natural Language API: Quick Start</h2>
+<p>두 번째는 자연어처리 API입니다. 사람의 말에 대해 semantic한 부분을 recognition해주는 API입니다. 챗봇 등의 어플리케이션을 구현할때 사용하면 유용할 것 입니다. 
+한 가지 명심해야 할 부분은 gcloud 콘솔에서 실습이 진행됩니다.</p>
+
+<p>먼저 구글 클라우드 프로젝트 키를 환경변수에 할당합니다.</p>
+<blockquote>
+  <p>export GOOGLE_CLOUD_PROJECT=$(gcloud config get-value core/project)</p>
+</blockquote>
+
+<p>다음 NL API의 계성 생성</p>
+<blockquote>
+  <p>gcloud iam service-accounts create my-natlang-sa \ –display-name “my natural language service account”</p>
+</blockquote>
+
+<p>다음 위에서 생성된 계정을 통해 credentials을 생성합니다. 해당 credentials은 key.json파일로 생성됩니다.</p>
+<blockquote>
+  <p>gcloud iam service-accounts keys create ~/key.json \ –iam-account my-natlang-sa@${GOOGLE_CLOUD_PROJECT}.iam.gserviceaccount.com</p>
+</blockquote>
+
+<p>해당 key파일의 위치를 환경변수에 할당합니다.</p>
+<blockquote>
+  <p>export GOOGLE_APPLICATION_CREDENTIALS=”/home/USER/key.json”</p>
+</blockquote>
+
+<p>마지막으로 실제 api를 호출합니다.</p>
+<blockquote>
+  <p>gcloud ml language analyze-entities –content=”Michelangelo Caravaggio, Italian painter, is known for ‘The Calling of Saint Matthew’.”</p>
+</blockquote>
+
+<p>다음은 응답으로 출력되는 분석결과입니다.</p>
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+	</span><span class="s2">"entities"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+		</span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Michelangelo Caravaggio"</span><span class="p">,</span><span class="w">
+		</span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PERSON"</span><span class="p">,</span><span class="w">
+		</span><span class="s2">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+			</span><span class="s2">"wikipedia_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://en.wikipedia.org/wiki/Caravaggio"</span><span class="p">,</span><span class="w">
+			</span><span class="s2">"mid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/m/020bg"</span><span class="w">
+		</span><span class="p">},</span><span class="w">
+		</span><span class="s2">"salience"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.83047235</span><span class="p">,</span><span class="w">
+		</span><span class="s2">"mentions"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+			</span><span class="s2">"text"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+				</span><span class="s2">"content"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Michelangelo Caravaggio"</span><span class="p">,</span><span class="w">
+				</span><span class="s2">"beginOffset"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+			</span><span class="p">},</span><span class="w">
+			</span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PROPER"</span><span class="w">
+		</span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
+			</span><span class="s2">"text"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+				</span><span class="s2">"content"</span><span class="p">:</span><span class="w"> </span><span class="s2">"painter"</span><span class="p">,</span><span class="w">
+				</span><span class="s2">"beginOffset"</span><span class="p">:</span><span class="w"> </span><span class="mi">33</span><span class="w">
+			</span><span class="p">},</span><span class="w">
+			</span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"COMMON"</span><span class="w">
+		</span><span class="p">}]</span><span class="w">
+	</span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
+		</span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Italian"</span><span class="p">,</span><span class="w">
+		</span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LOCATION"</span><span class="p">,</span><span class="w">
+		</span><span class="s2">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+			</span><span class="s2">"mid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/m/03rjj"</span><span class="p">,</span><span class="w">
+			</span><span class="s2">"wikipedia_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://en.wikipedia.org/wiki/Italy"</span><span class="w">
+		</span><span class="p">},</span><span class="w">
+		</span><span class="s2">"salience"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.13870546</span><span class="p">,</span><span class="w">
+		</span><span class="s2">"mentions"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+			</span><span class="s2">"text"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+				</span><span class="s2">"content"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Italian"</span><span class="p">,</span><span class="w">
+				</span><span class="s2">"beginOffset"</span><span class="p">:</span><span class="w"> </span><span class="mi">25</span><span class="w">
+			</span><span class="p">},</span><span class="w">
+			</span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PROPER"</span><span class="w">
+		</span><span class="p">}]</span><span class="w">
+	</span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
+		</span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The Calling of Saint Matthew"</span><span class="p">,</span><span class="w">
+		</span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EVENT"</span><span class="p">,</span><span class="w">
+		</span><span class="s2">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+			</span><span class="s2">"mid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/m/085_p7"</span><span class="p">,</span><span class="w">
+			</span><span class="s2">"wikipedia_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://en.wikipedia.org/wiki/The_Calling_of_St_Matthew_(Caravaggio)"</span><span class="w">
+		</span><span class="p">},</span><span class="w">
+		</span><span class="s2">"salience"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.030822212</span><span class="p">,</span><span class="w">
+		</span><span class="s2">"mentions"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+			</span><span class="s2">"text"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+				</span><span class="s2">"content"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The Calling of Saint Matthew"</span><span class="p">,</span><span class="w">
+				</span><span class="s2">"beginOffset"</span><span class="p">:</span><span class="w"> </span><span class="mi">69</span><span class="w">
+			</span><span class="p">},</span><span class="w">
+			</span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PROPER"</span><span class="w">
+		</span><span class="p">}]</span><span class="w">
+	</span><span class="p">}],</span><span class="w">
+	</span><span class="s2">"language"</span><span class="p">:</span><span class="w"> </span><span class="s2">"en"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+<ul>
+  <li>name : entity 이름</li>
+  <li>type : entity 타입, person ?  location ?  event ? etc..</li>
+  <li>metadata : 관련 위키피디아 URL</li>
+  <li>salience : 해당 entity가 전체 텍스트에서 나타내는 중요도를 [0,1]로 표현</li>
+  <li>mentions :  입력된 문장에서 동일한 의미를 가지는 키워드, (예, "나는 사람이다" 에서 “나”는 “사람”과 같은 의미)</li>
+</ul>
+
+<h2 id="speech-to-text-transcription-with-the-cloud-speech-api">Speech to Text Transcription with the Cloud Speech API</h2>
+<p>첫 번째 실습과 거의 유사한 API입니다. speech를 text로 변경하는데 옵션이나 사용방법이 거의 유사합니다.</p>
+
+<p>첫 번째의 실습과 같이 API KEY를 먼저 발급받습니다. 그 후 환경변수에 할당합니다.</p>
+
+<blockquote>
+  <p>export API_KEY=&lt;YOUR_API_KEY&gt;</p>
+
+  <p><a href="https://storage.cloud.google.com/speech-demo/brooklyn.wav">오디오파일</a>을 text로 변경합니다.</p>
+</blockquote>
+
+<h3 id="requestjson-1">request.json</h3>
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+	</span><span class="s2">"config"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+		</span><span class="s2">"encoding"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FLAC"</span><span class="p">,</span><span class="w">
+		</span><span class="s2">"languageCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"en-US"</span><span class="w">
+	</span><span class="p">},</span><span class="w">
+	</span><span class="s2">"audio"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+		</span><span class="s2">"uri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"gs://cloud-samples-tests/speech/brooklyn.flac"</span><span class="w">
+	</span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+<ul>
+  <li>encoding : 파일 인코딩</li>
+  <li>languageCode : 언어코드</li>
+</ul>
+
+<p>encoding은 필수 파라미터 입니다. 더 많은 정보는 <a href="https://cloud.google.com/speech/reference/rest/v1/RecognitionConfig">documentation</a>를 확인해주세요</p>
+
+<p>다음은 실제 API호출입니다.</p>
+<blockquote>
+  <p>curl -s -X POST -H “Content-Type: application/json” –data-binary @request.json \ “https://speech.googleapis.com/v1/speech:recognize?key=${API_KEY}”</p>
+</blockquote>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+	</span><span class="s2">"results"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+		</span><span class="s2">"alternatives"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+			</span><span class="s2">"transcript"</span><span class="p">:</span><span class="w"> </span><span class="s2">"how old is the Brooklyn Bridge"</span><span class="p">,</span><span class="w">
+			</span><span class="s2">"confidence"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.98267895</span><span class="w">
+		</span><span class="p">}]</span><span class="w">
+	</span><span class="p">}]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<p>다음은 불어에 대한 요청과 응답입니다. 오디오파일은 <a href="https://storage.googleapis.com/speech-language-samples/fr-sample.flac">여기서</a> 들을 수 있습니다.</p>
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+	</span><span class="s2">"config"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+		</span><span class="s2">"encoding"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FLAC"</span><span class="p">,</span><span class="w">
+		</span><span class="s2">"languageCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fr"</span><span class="w">
+	</span><span class="p">},</span><span class="w">
+	</span><span class="s2">"audio"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+		</span><span class="s2">"uri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"gs://speech-language-samples/fr-sample.flac"</span><span class="w">
+	</span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+	</span><span class="s2">"results"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+		</span><span class="s2">"alternatives"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+			</span><span class="s2">"transcript"</span><span class="p">:</span><span class="w"> </span><span class="s2">"maître corbeau sur un arbre perché tenait en son bec un fromage"</span><span class="p">,</span><span class="w">
+			</span><span class="s2">"confidence"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.9710122</span><span class="w">
+		</span><span class="p">}]</span><span class="w">
+	</span><span class="p">}]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<h2 id="entity-and-sentiment-analysis-with-the-natural-language-api">Entity and Sentiment Analysis with the Natural Language API</h2>
+<p>이번 실습에서는 주어진 문장으로 부터 entity를 추출하고 sentiment와 syntactic을 분석 그리고 category별로 분류를 수행합니다(두 번째 실습과 유사). 즉 Natual Language API를 사용하여 linguistic analysis를 수행한다고 할 수 있습니다.</p>
+
+<p>이전 실습과 유사하게 API키를 생성하고 환경변수로 설정합니다.</p>
+<blockquote>
+  <p>export API_KEY=&lt;YOUR_API_KEY&gt;</p>
+</blockquote>
+
+<p>먼저 NL API를 사용해서 분석할 파일을 생성합니다. json으로 구성되어 있으며 분석할 text가 포함되어있습니다.</p>
+<h4 id="requestjson-2">request.json</h4>
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+	</span><span class="s2">"document"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+		</span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PLAIN_TEXT"</span><span class="p">,</span><span class="w">
+		</span><span class="s2">"content"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Joanne Rowling, who writes under the pen names J. K. Rowling and Robert Galbraith, is a British novelist and screenwriter who wrote the Harry Potter fantasy series."</span><span class="w">
+	</span><span class="p">},</span><span class="w">
+	</span><span class="s2">"encodingType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"UTF8"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+<ul>
+  <li>type : 분석할 텍스트 타입(PLAIN_TEXT or HTML)</li>
+  <li>content : 분석할 텍스트, 필요에 따라 Cloud Storage의 파일을 바로 분석할 수 있습니다(gcsContentUri)</li>
+  <li>encodingType : 텍스트의 인코딩 타입</li>
+</ul>
+
+<p>curl을 이용하여 api를 호출합니다.</p>
+<blockquote>
+  <p>curl “https://language.googleapis.com/v1/documents:analyzeEntities?key=${API_KEY}” \ -s -X POST -H “Content-Type: application/json” –data-binary @request.json</p>
+</blockquote>
+
+<p>위 request.json에 대한 분석 결과는 다음과 같습니다.</p>
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+	</span><span class="s2">"entities"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+		</span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Robert Galbraith"</span><span class="p">,</span><span class="w">
+		</span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PERSON"</span><span class="p">,</span><span class="w">
+		</span><span class="s2">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+			</span><span class="s2">"mid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/m/042xh"</span><span class="p">,</span><span class="w">
+			</span><span class="s2">"wikipedia_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://en.wikipedia.org/wiki/J._K._Rowling"</span><span class="w">
+		</span><span class="p">},</span><span class="w">
+		</span><span class="s2">"salience"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.7980405</span><span class="p">,</span><span class="w">
+		</span><span class="s2">"mentions"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+			</span><span class="s2">"text"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+				</span><span class="s2">"content"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Joanne Rowling"</span><span class="p">,</span><span class="w">
+				</span><span class="s2">"beginOffset"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+			</span><span class="p">},</span><span class="w">
+			</span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PROPER"</span><span class="w">
+		</span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
+			</span><span class="s2">"text"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+				</span><span class="s2">"content"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Rowling"</span><span class="p">,</span><span class="w">
+				</span><span class="s2">"beginOffset"</span><span class="p">:</span><span class="w"> </span><span class="mi">53</span><span class="w">
+			</span><span class="p">},</span><span class="w">
+			</span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PROPER"</span><span class="w">
+		</span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
+			</span><span class="s2">"text"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+				</span><span class="s2">"content"</span><span class="p">:</span><span class="w"> </span><span class="s2">"novelist"</span><span class="p">,</span><span class="w">
+				</span><span class="s2">"beginOffset"</span><span class="p">:</span><span class="w"> </span><span class="mi">96</span><span class="w">
+			</span><span class="p">},</span><span class="w">
+			</span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"COMMON"</span><span class="w">
+		</span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
+			</span><span class="s2">"text"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+				</span><span class="s2">"content"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Robert Galbraith"</span><span class="p">,</span><span class="w">
+				</span><span class="s2">"beginOffset"</span><span class="p">:</span><span class="w"> </span><span class="mi">65</span><span class="w">
+			</span><span class="p">},</span><span class="w">
+			</span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PROPER"</span><span class="w">
+		</span><span class="p">}]</span><span class="w">
+	</span><span class="p">},</span><span class="w"> 
+	</span><span class="err">...</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+<p>이번 실습은 두 번째 실습에 대한 설명과 비슷합니다.</p>
+<ul>
+  <li>type : entity의 type</li>
+  <li>salience : 해당 entity가 전체텍스트에서의 중요도를 [0,1]로 표현</li>
+  <li>mentions : 주어진 텍스트에서 해당 entity와 동일한 의미를 나타내는 텍스트들</li>
+</ul>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+	</span><span class="s2">"document"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+		</span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PLAIN_TEXT"</span><span class="p">,</span><span class="w">
+		</span><span class="s2">"content"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Harry Potter is the best book. I think everyone should read it."</span><span class="w">
+	</span><span class="p">},</span><span class="w">
+	</span><span class="s2">"encodingType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"UTF8"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<h3 id="sentiment-analysis-with-the-natural-language-api">Sentiment analysis with the Natural Language API</h3>
+<p>이번에는 sentiment analysis에 대한 실습을 수행해 봅니다.
+먼저 다음과 같이 요청파일을 생성합니다.</p>
+<h3 id="requestjson-3">request.json</h3>
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="w"> </span><span class="p">{</span><span class="w">
+ 	</span><span class="s2">"document"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+ 		</span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PLAIN_TEXT"</span><span class="p">,</span><span class="w">
+ 		</span><span class="s2">"content"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Harry Potter is the best book. I think everyone should read it."</span><span class="w">
+ 	</span><span class="p">},</span><span class="w">
+ 	</span><span class="s2">"encodingType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"UTF8"</span><span class="w">
+ </span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+<p>curl을 사용하여 api를 호출합니다. 앤드포인트가 analyzeSentiment입니다.</p>
+<blockquote>
+  <p>curl “https://language.googleapis.com/v1/documents:analyzeSentiment?key=${API_KEY}” \ -s -X POST -H “Content-Type: application/json” –data-binary @request.json</p>
+</blockquote>
+
+<p>응답 json입니다.</p>
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+	</span><span class="s2">"documentSentiment"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+		</span><span class="s2">"magnitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.8</span><span class="p">,</span><span class="w">
+		</span><span class="s2">"score"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.4</span><span class="w">
+	</span><span class="p">},</span><span class="w">
+	</span><span class="s2">"language"</span><span class="p">:</span><span class="w"> </span><span class="s2">"en"</span><span class="p">,</span><span class="w">
+	</span><span class="s2">"sentences"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+		</span><span class="s2">"text"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+			</span><span class="s2">"content"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Harry Potter is the best book."</span><span class="p">,</span><span class="w">
+			</span><span class="s2">"beginOffset"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+		</span><span class="p">},</span><span class="w">
+		</span><span class="s2">"sentiment"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+			</span><span class="s2">"magnitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.7</span><span class="p">,</span><span class="w">
+			</span><span class="s2">"score"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.7</span><span class="w">
+		</span><span class="p">}</span><span class="w">
+	</span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
+		</span><span class="s2">"text"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+			</span><span class="s2">"content"</span><span class="p">:</span><span class="w"> </span><span class="s2">"I think everyone should read it."</span><span class="p">,</span><span class="w">
+			</span><span class="s2">"beginOffset"</span><span class="p">:</span><span class="w"> </span><span class="mi">31</span><span class="w">
+		</span><span class="p">},</span><span class="w">
+		</span><span class="s2">"sentiment"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+			</span><span class="s2">"magnitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.1</span><span class="p">,</span><span class="w">
+			</span><span class="s2">"score"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.1</span><span class="w">
+		</span><span class="p">}</span><span class="w">
+	</span><span class="p">}]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+<ul>
+  <li>score : 부정(-1.0)과 긍정(1.0)의 지수, 0은 중립</li>
+  <li>magnitute [0, infinity] - positive, negative와 관계없이 문상에서의 sentiment의 weight, 즉 감정의 크기를 0에서 무한대로 표현, 0은 중립(보통의 상태)</li>
+</ul>
+
+<p>또 다른 entity sentiment analysis에 대한 실습니다.
+요청 파일입니다.</p>
+
+<h3 id="requestjson-4">request.json</h3>
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+	</span><span class="s2">"document"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+		</span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PLAIN_TEXT"</span><span class="p">,</span><span class="w">
+		</span><span class="s2">"content"</span><span class="p">:</span><span class="w"> </span><span class="s2">"I liked the sushi but the service was terrible."</span><span class="w">
+	</span><span class="p">},</span><span class="w">
+	</span><span class="s2">"encodingType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"UTF8"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<p>curl을 사용해서 API를 호출합니다. 엔드 포인트가 analyzeEntitySentiment입니다.</p>
+<blockquote>
+  <p>curl “https://language.googleapis.com/v1/documents:analyzeEntitySentiment?key=${API_KEY}” \ -s -X POST -H “Content-Type: application/json” –data-binary @request.json</p>
+</blockquote>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+	</span><span class="s2">"entities"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+		</span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sushi"</span><span class="p">,</span><span class="w">
+		</span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CONSUMER_GOOD"</span><span class="p">,</span><span class="w">
+		</span><span class="s2">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+		</span><span class="s2">"salience"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.52716845</span><span class="p">,</span><span class="w">
+		</span><span class="s2">"mentions"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+			</span><span class="s2">"text"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+				</span><span class="s2">"content"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sushi"</span><span class="p">,</span><span class="w">
+				</span><span class="s2">"beginOffset"</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="w">
+			</span><span class="p">},</span><span class="w">
+			</span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"COMMON"</span><span class="p">,</span><span class="w">
+			</span><span class="s2">"sentiment"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+				</span><span class="s2">"magnitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.9</span><span class="p">,</span><span class="w">
+				</span><span class="s2">"score"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.9</span><span class="w">
+			</span><span class="p">}</span><span class="w">
+		</span><span class="p">}],</span><span class="w">
+		</span><span class="s2">"sentiment"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+			</span><span class="s2">"magnitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.9</span><span class="p">,</span><span class="w">
+			</span><span class="s2">"score"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.9</span><span class="w">
+		</span><span class="p">}</span><span class="w">
+	</span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
+		</span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"service"</span><span class="p">,</span><span class="w">
+		</span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OTHER"</span><span class="p">,</span><span class="w">
+		</span><span class="s2">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+		</span><span class="s2">"salience"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.47283158</span><span class="p">,</span><span class="w">
+		</span><span class="s2">"mentions"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+			</span><span class="s2">"text"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+				</span><span class="s2">"content"</span><span class="p">:</span><span class="w"> </span><span class="s2">"service"</span><span class="p">,</span><span class="w">
+				</span><span class="s2">"beginOffset"</span><span class="p">:</span><span class="w"> </span><span class="mi">26</span><span class="w">
+			</span><span class="p">},</span><span class="w">
+			</span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"COMMON"</span><span class="p">,</span><span class="w">
+			</span><span class="s2">"sentiment"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+				</span><span class="s2">"magnitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.9</span><span class="p">,</span><span class="w">
+				</span><span class="s2">"score"</span><span class="p">:</span><span class="w"> </span><span class="mf">-0.9</span><span class="w">
+			</span><span class="p">}</span><span class="w">
+		</span><span class="p">}],</span><span class="w">
+		</span><span class="s2">"sentiment"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+			</span><span class="s2">"magnitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.9</span><span class="p">,</span><span class="w">
+			</span><span class="s2">"score"</span><span class="p">:</span><span class="w"> </span><span class="mf">-0.9</span><span class="w">
+		</span><span class="p">}</span><span class="w">
+	</span><span class="p">}],</span><span class="w">
+	</span><span class="s2">"language"</span><span class="p">:</span><span class="w"> </span><span class="s2">"en"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+<p>결과에 대한 파라미터 설명은 다른 api들과 같습니다.</p>
+
+<p>이번에는 좀더 디테일한 linguistic analysis api입니다. 상세한 semantic and syntactic elements of the text 결과를 제공합니다.<br />
+요청파일입니다.</p>
+<h4 id="reqeuestjson">reqeuest.json</h4>
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+	</span><span class="s2">"document"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+		</span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PLAIN_TEXT"</span><span class="p">,</span><span class="w">
+		</span><span class="s2">"content"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Joanne Rowling is a British novelist, screenwriter and film producer."</span><span class="w">
+	</span><span class="p">},</span><span class="w">
+	</span><span class="s2">"encodingType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"UTF8"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+<p>api호출입니다.</p>
+<blockquote>
+  <p>curl “https://language.googleapis.com/v1/documents:analyzeSyntax?key=${API_KEY}” \ -s -X POST -H “Content-Type: application/json” –data-binary @request.json</p>
+</blockquote>
+
+<p>결과입니다.</p>
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+	</span><span class="s2">"text"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+		</span><span class="s2">"content"</span><span class="p">:</span><span class="w"> </span><span class="s2">"is"</span><span class="p">,</span><span class="w">
+		</span><span class="s2">"beginOffset"</span><span class="p">:</span><span class="w"> </span><span class="mi">15</span><span class="w">
+	</span><span class="p">},</span><span class="w">
+	</span><span class="s2">"partOfSpeech"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+		</span><span class="s2">"tag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"VERB"</span><span class="p">,</span><span class="w">
+		</span><span class="s2">"aspect"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ASPECT_UNKNOWN"</span><span class="p">,</span><span class="w">
+		</span><span class="s2">"case"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CASE_UNKNOWN"</span><span class="p">,</span><span class="w">
+		</span><span class="s2">"form"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FORM_UNKNOWN"</span><span class="p">,</span><span class="w">
+		</span><span class="s2">"gender"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GENDER_UNKNOWN"</span><span class="p">,</span><span class="w">
+		</span><span class="s2">"mood"</span><span class="p">:</span><span class="w"> </span><span class="s2">"INDICATIVE"</span><span class="p">,</span><span class="w">
+		</span><span class="s2">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SINGULAR"</span><span class="p">,</span><span class="w">
+		</span><span class="s2">"person"</span><span class="p">:</span><span class="w"> </span><span class="s2">"THIRD"</span><span class="p">,</span><span class="w">
+		</span><span class="s2">"proper"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PROPER_UNKNOWN"</span><span class="p">,</span><span class="w">
+		</span><span class="s2">"reciprocity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RECIPROCITY_UNKNOWN"</span><span class="p">,</span><span class="w">
+		</span><span class="s2">"tense"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PRESENT"</span><span class="p">,</span><span class="w">
+		</span><span class="s2">"voice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"VOICE_UNKNOWN"</span><span class="w">
+	</span><span class="p">},</span><span class="w">
+	</span><span class="s2">"dependencyEdge"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+		</span><span class="s2">"headTokenIndex"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+		</span><span class="s2">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ROOT"</span><span class="w">
+	</span><span class="p">},</span><span class="w">
+	</span><span class="s2">"lemma"</span><span class="p">:</span><span class="w"> </span><span class="s2">"be"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+<ul>
+  <li>partOfSpeech : 해당 text가 명사인가, 동사인가를 판단</li>
+  <li>
+    <p>dependencyEdge : <a href="https://en.wikipedia.org/wiki/Parse_tree#Dependency-based_parse_trees">dependency parse tree</a>의 생성 결과, sentence에 포함된 각 word들이 어떤 relation을 갖고 있는지 표현
+<img src="/public/dependency-parse-tree.png" alt="" /></p>
+  </li>
+  <li>headTokenIndex : 해당 text의 인덱스(sentense도 배열이므로 0부터 시작)</li>
+  <li>lemma : 입력된 동사에 대한 일반동사(the words <em>run</em>, <em>runs</em>, <em>ran</em>, and <em>running</em> all have a lemma of <em>run</em>)</li>
+</ul>
+
+<p>다음은 일본어 처리에 대한 예제입니다.</p>
+
+<h4 id="reqeustjson">reqeust.json</h4>
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+	</span><span class="s2">"document"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+		</span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PLAIN_TEXT"</span><span class="p">,</span><span class="w">
+		</span><span class="s2">"content"</span><span class="p">:</span><span class="w"> </span><span class="s2">"日本のグーグルのオフィスは、東京の六本木ヒルズにあります"</span><span class="w">
+	</span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+<blockquote>
+  <p>curl “https://language.googleapis.com/v1/documents:analyzeEntities?key=${API_KEY}” \ -s -X POST -H “Content-Type: application/json” –data-binary @request.json</p>
+</blockquote>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+	</span><span class="s2">"entities"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+		</span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"日本"</span><span class="p">,</span><span class="w">
+		</span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LOCATION"</span><span class="p">,</span><span class="w">
+		</span><span class="s2">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+			</span><span class="s2">"mid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/m/03_3d"</span><span class="p">,</span><span class="w">
+			</span><span class="s2">"wikipedia_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://en.wikipedia.org/wiki/Japan"</span><span class="w">
+		</span><span class="p">},</span><span class="w">
+		</span><span class="s2">"salience"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.23854347</span><span class="p">,</span><span class="w">
+		</span><span class="s2">"mentions"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+			</span><span class="s2">"text"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+				</span><span class="s2">"content"</span><span class="p">:</span><span class="w"> </span><span class="s2">"日本"</span><span class="p">,</span><span class="w">
+				</span><span class="s2">"beginOffset"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+			</span><span class="p">},</span><span class="w">
+			</span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PROPER"</span><span class="w">
+		</span><span class="p">}]</span><span class="w">
+	</span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
+		</span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"グーグル"</span><span class="p">,</span><span class="w">
+		</span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ORGANIZATION"</span><span class="p">,</span><span class="w">
+		</span><span class="s2">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+			</span><span class="s2">"mid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/m/045c7b"</span><span class="p">,</span><span class="w">
+			</span><span class="s2">"wikipedia_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://en.wikipedia.org/wiki/Google"</span><span class="w">
+		</span><span class="p">},</span><span class="w">
+		</span><span class="s2">"salience"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.21155767</span><span class="p">,</span><span class="w">
+		</span><span class="s2">"mentions"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+			</span><span class="s2">"text"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+				</span><span class="s2">"content"</span><span class="p">:</span><span class="w"> </span><span class="s2">"グーグル"</span><span class="p">,</span><span class="w">
+				</span><span class="s2">"beginOffset"</span><span class="p">:</span><span class="w"> </span><span class="mi">9</span><span class="w">
+			</span><span class="p">},</span><span class="w">
+			</span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PROPER"</span><span class="w">
+		</span><span class="p">}]</span><span class="w">
+	</span><span class="p">},</span><span class="w"> </span><span class="err">...</span><span class="p">]</span><span class="w">
+	</span><span class="s2">"language"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ja"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<h2 id="overview">Overview</h2>
+<p>개인적인 생각엔, 그리고 이전 쿠버네티스 스터디잼에 참가한 경험으로 인하면 이번 스터디는 너무 api호출이 전부였던것같습니다. api를 소개하는 느낌의 실습들이 었습니다. 다음번에 NLP중급 스터디를 진행한다고 하니 기대하면서 계속 공부하고 있어야 겠습니다.</p>
+
+
+  
+  <div class="post-disqus">
+      <section id="disqus_thread"></section>
+      <div id="disqus_thread"></div>
+<script>
+
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+/*
+var disqus_config = function () {
+this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://youngwonseo.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+                            
+  </div>
+  
+</div>
+
+<div class="pagination">
+  
+  
+    <a href="/2019/02/13/google-map-layer/" class="right arrow">&#8594;</a>
+  
+
+  <a href="#" class="top">Top</a>
+</div>
+
+    </main>
+
+    <footer>
+      <span>
+        &copy; <time datetime="2019-03-04 10:41:08 +0900">2019</time> Youngwon Seo. Made with Jekyll using the <a href="https://github.com/chesterhow/tale/">Tale</a> theme.
+      </span>
+    </footer>
+  </body>
+</html>
