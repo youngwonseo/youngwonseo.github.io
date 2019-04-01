@@ -52,6 +52,31 @@
       <div class="catalogue">
   
   
+    <a href="/2019/04/01/fisher-yates-shuffle/" class="catalogue-item">
+      <div>
+        <time datetime="2019-04-01 00:00:00 +0900" class="catalogue-time">April 01, 2019</time>
+        <h1 class="catalogue-title">Fisher-Yates-Shuffle 알고리즘</h1>
+        <div class="catalogue-line"></div>
+
+        <p>
+          무작위 셔플링 알고리즘
+
+import random
+def shuffle(xs):
+   for i in range(len(xs)-1, 0, -1):
+      idx = random.randint(0, i)
+      xs[i], xs[idx] = xs[idx], xs[i]
+
+
+깔끔하다. 내 스타일이다.
+
+        </p>
+
+      </div>
+    </a>
+  
+  
+  
     <a href="/2019/02/23/studyjam-nlp/" class="catalogue-item">
       <div>
         <time datetime="2019-02-23 00:00:00 +0900" class="catalogue-time">February 23, 2019</time>
@@ -111,21 +136,6 @@
     </a>
   
   
-  
-    <a href="/2019/01/01/2019-plan/" class="catalogue-item">
-      <div>
-        <time datetime="2019-01-01 00:00:00 +0900" class="catalogue-time">January 01, 2019</time>
-        <h1 class="catalogue-title">2019년도 계획</h1>
-        <div class="catalogue-line"></div>
-
-        <p>
-          2019년 계획 youngwon.io 영원.io에서 개발할 서비스 및 제품 onlyone - 글쓰기 플랫폼 beauty - robo advisor mllab - monitoring and analysis system based on IoT cowork travel talker 기타 외주...
-        </p>
-
-      </div>
-    </a>
-  
-  
 </div>
 
 <div class="pagination">
@@ -141,7 +151,7 @@
 
     <footer>
       <span>
-        &copy; <time datetime="2019-03-06 15:03:50 +0900">2019</time> Youngwon Seo. Made with Jekyll using the <a href="https://github.com/chesterhow/tale/">Tale</a> theme.
+        &copy; <time datetime="2019-04-01 16:54:02 +0900">2019</time> Youngwon Seo. Made with Jekyll using the <a href="https://github.com/chesterhow/tale/">Tale</a> theme.
       </span>
     </footer>
   </body>
