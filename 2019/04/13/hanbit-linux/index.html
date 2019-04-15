@@ -7,7 +7,7 @@
 
   <title>
     
-      2019년도 계획 &middot; Youngwon Seo
+      [한빛미디어] 실습과 그림으로 배우는 리눅스 구조 리뷰 &middot; Youngwon Seo
     
   </title>
 
@@ -58,43 +58,23 @@
 
     
       <br>
-      <span>on&nbsp;</span><time datetime="2019-01-01 00:00:00 +0900">January 01, 2019</time>
+      <span>on&nbsp;</span><time datetime="2019-04-13 00:00:00 +0900">April 13, 2019</time>
     
   </div>
 
-  <h1 class="post-title">2019년도 계획</h1>
+  <h1 class="post-title">[한빛미디어] 실습과 그림으로 배우는 리눅스 구조 리뷰</h1>
   <div class="post-line"></div>
 
-  <h1 id="2019년-계획">2019년 계획</h1>
+  <h2 id="무작위-셔플링-알고리즘">무작위 셔플링 알고리즘</h2>
 
-<h2 id="youngwonio">youngwon.io</h2>
-<p>영원.io에서 개발할 서비스 및 제품</p>
-<ul>
-  <li>onlyone - 글쓰기 플랫폼</li>
-  <li>beauty - robo advisor</li>
-  <li>mllab - monitoring and analysis system based on IoT</li>
-  <li>cowork</li>
-  <li>travel talker</li>
-  <li>기타 외주</li>
-</ul>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">random</span>
+<span class="k">def</span> <span class="nf">shuffle</span><span class="p">(</span><span class="n">xs</span><span class="p">):</span>
+   <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">xs</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+      <span class="n">idx</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>
+      <span class="n">xs</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">xs</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span> <span class="o">=</span> <span class="n">xs</span><span class="p">[</span><span class="n">idx</span><span class="p">],</span> <span class="n">xs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+</code></pre></div></div>
 
-<h2 id="tech">tech.</h2>
-<p>올해 학습하고 포스팅 할 기술목록</p>
-<ul>
-  <li>machine learning &amp; deep learning
-    <ul>
-      <li>paper, deeplearning.ai(Coursera), Bishop(Pattern Recognition and Machine Learning)</li>
-    </ul>
-  </li>
-  <li>jpa/spring</li>
-  <li>kubernetes</li>
-  <li>reactjs</li>
-  <li>flutter</li>
-  <li>kafka</li>
-</ul>
-
-<h2 id="기타">기타</h2>
-<p>적고보니 그냥 다한다는 생각?</p>
+<p>깔끔하다. 내 스타일이다.</p>
 
 
   
@@ -127,10 +107,8 @@ s.setAttribute('data-timestamp', +new Date());
 
 <div class="pagination">
   
-    <a href="/2019/01/21/java-map-object-convert/" class="left arrow">&#8592;</a>
   
-  
-    <a href="/2018/12/31/00-single-thread/" class="right arrow">&#8594;</a>
+    <a href="/2019/04/01/fisher-yates-shuffle/" class="right arrow">&#8594;</a>
   
 
   <a href="#" class="top">Top</a>
