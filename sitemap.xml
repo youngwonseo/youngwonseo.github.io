@@ -2,6 +2,10 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     
     <url>
+        <loc>http://localhost:4000/2019/04/22/decision-tree/</loc>
+    </url>
+    
+    <url>
         <loc>http://localhost:4000/2019/04/16/python-csv-mysql/</loc>
     </url>
     
@@ -11,6 +15,10 @@
     
     <url>
         <loc>http://localhost:4000/2019/02/23/studyjam-nlp/</loc>
+    </url>
+    
+    <url>
+        <loc>http://localhost:4000/2019/02/17/redis-quick-start/</loc>
     </url>
     
     <url>
