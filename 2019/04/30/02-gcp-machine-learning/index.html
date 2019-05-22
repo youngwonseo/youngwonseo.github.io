@@ -66,7 +66,69 @@
   <h1 class="post-title">GCP를 활용한 머신러닝2</h1>
   <div class="post-line"></div>
 
-  <p>Tensorflow playground</p>
+  <h1 id="dataflow-qwik-start---template">Dataflow: Qwik Start - Template</h1>
+<p>https://www.qwiklabs.com/focuses/1101?parent=catalog</p>
+
+<h2 id="클라우드-빅쿼리-데이터셋과-테이블-생성">클라우드 빅쿼리 데이터셋과 테이블 생성</h2>
+<h3 id="텍시라이버-데이터텟-생성">텍시라이버 데이터텟 생성</h3>
+<blockquote>
+  <p>bq mk taxirides</p>
+</blockquote>
+
+<h3 id="빅쿼리-테이블-초기화">빅쿼리 테이블 초기화</h3>
+<blockquote>
+  <p>bq mk \
+–time_partitioning_field timestamp \
+–schema ride_id:string,point_idx:integer,latitude:float,longitude:float,\
+timestamp:timestamp,meter_reading:float,meter_increment:float,ride_status:string,\
+passenger_count:integer -t taxirides.realtime</p>
+</blockquote>
+
+<h3 id="스토리지-버킷-생성">스토리지 버킷 생성</h3>
+<blockquote>
+  <p>export BUCKET_NAME=<your-unique-name>
+gsutil mb gs://$BUCKET_NAME/</your-unique-name></p>
+</blockquote>
+
+<h3 id="클라우드-빅쿼리-데이터셋과-테이블-gcp콘솔에서-사용하기">클라우드 빅쿼리 데이터셋과 테이블 GCP콘솔에서 사용하기</h3>
+<ol>
+  <li>왼쪽 메뉴의 [BigQuery]클릭</li>
+  <li>프로젝트 클릭</li>
+  <li>CREATE DATASET 클릭</li>
+  <li>taxirides 추가</li>
+</ol>
+
+<p>생성한 DATASET클릭후 CREATE TABLE</p>
+
+<p>왼쪽 메뉴의 Storage Browser에서 [CREATE BUCKET]</p>
+
+<p>Bucket 이름은 글러벌에서 유니크 해야한다.</p>
+
+<h3 id="run-the-pipeline">Run the Pipeline</h3>
+
+<p>Navigation menu에서 Dataflow
+[Create job from template]
+[Job name]</p>
+
+<p>[Pub/Sub] 선택</p>
+
+<blockquote>
+  <p>projects/pubsub-public-data/topics/taxirides-realtime</p>
+</blockquote>
+
+<blockquote>
+  <myprojectid>:taxirides.realtime
+</myprojectid>
+</blockquote>
+
+<blockquote>
+  <p>gs://Your_Bucket_Name/temp</p>
+</blockquote>
+
+<h1 id="dataflow-qwik-start---python">Dataflow: Qwik Start - Python</h1>
+<p>https://www.qwiklabs.com/focuses/1100?parent=catalog</p>
+
+<p>[Storage] [Create bucket]</p>
 
 
   
@@ -112,7 +174,7 @@ s.setAttribute('data-timestamp', +new Date());
 
     <footer>
       <span>
-        &copy; <time datetime="2019-05-02 19:13:12 +0900">2019</time> Youngwon Seo. Made with Jekyll using the <a href="https://github.com/chesterhow/tale/">Tale</a> theme.
+        &copy; <time datetime="2019-05-21 13:02:40 +0900">2019</time> Youngwon Seo. Made with Jekyll using the <a href="https://github.com/chesterhow/tale/">Tale</a> theme.
       </span>
     </footer>
   </body>
