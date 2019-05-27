@@ -2,15 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     
     <url>
-        <loc>http://localhost:4000/2019/04/30/03-gcp-machine-learning/</loc>
-    </url>
-    
-    <url>
-        <loc>http://localhost:4000/2019/04/30/02-gcp-machine-learning/</loc>
-    </url>
-    
-    <url>
-        <loc>http://localhost:4000/2019/04/30/01-gcp-machine-learning/</loc>
+        <loc>http://localhost:4000/2019/05/26/tdd-refactoring/</loc>
     </url>
     
     <url>
@@ -291,14 +283,6 @@
     
     <url>
         <loc>http://localhost:4000/page5/</loc>
-    </url>
-    
-    
-    
-    
-    
-    <url>
-        <loc>http://localhost:4000/page6/</loc>
     </url>
     
     
