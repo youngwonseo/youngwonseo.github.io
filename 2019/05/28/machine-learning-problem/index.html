@@ -7,7 +7,7 @@
 
   <title>
     
-      머신러닝 - K-means &middot; Youngwon Seo
+      머신러닝 시스템 &middot; Youngwon Seo
     
   </title>
 
@@ -59,63 +59,14 @@
 
     
       <br>
-      <span>on&nbsp;</span><time datetime="2018-11-12 00:00:00 +0900">November 12, 2018</time>
+      <span>on&nbsp;</span><time datetime="2019-05-28 00:00:00 +0900">May 28, 2019</time>
     
   </div>
 
-  <h1 class="post-title">머신러닝 - K-means</h1>
+  <h1 class="post-title">머신러닝 시스템</h1>
   <div class="post-line"></div>
 
-  <h1 id="k-means">K-means</h1>
-<p>Distance-Based Clustering</p>
-
-<h2 id="거리-측정-방법">거리 측정 방법</h2>
-<p>K-means에서 비슷한 데이터라고 판단하는 기준은 데이터들의 거리(또는 유사도)입니다.</p>
-
-<h3 id="euclidean-distance">Euclidean Distance</h3>
-<h3 id="cosine-similarity">Cosine Similarity</h3>
-
-<h3 id="minkowski-distance">Minkowski distance</h3>
-<p><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/4060cc840aeab9e41b5e47356088889e2e7a6f0f" alt="" /></p>
-
-<h3 id="common-properties-of-a-distance-and-similarity">Common properties of a distance and similarity</h3>
-<p>다음은 거리에 대한 속성입니다.</p>
-
-<ol>
-  <li>모든 p와 q에 대해서 d(p, q) &gt;= 0 이고 오직 p=q일 경우반 d(p,q)=0 이다. - <strong>Positive definiteness</strong></li>
-  <li>모든 p와 q에 대해 d(p, q) = d(q, p) 이다. - <strong>Symmetry</strong></li>
-  <li>모든 p와 q 그리고 r에 대해 d(p, r) &lt;= d(p, q) + d(q, r) 이다. - <strong>Triangle Inequality</strong></li>
-</ol>
-
-<p>다음은 유사도에 대한 속성입니다.</p>
-<ol>
-  <li>오직 p=q 일때만 s(p,q) = 1 이다.</li>
-  <li>모든 p와 q에 대해 s(p, q) = s(q, p) 이다. - <strong>Symmetry</strong></li>
-</ol>
-
-<h2 id="k-mean-clustering-algorithm">K-mean Clustering Algorithm</h2>
-
-<h2 id="evaluation-of-k-means-clusters">Evaluation of K-means clusters</h2>
-
-<h2 id="select-initial-centroid">Select initial centroid</h2>
-
-<h2 id="pre-processing-and-post-processing">Pre-processing and Post-processing</h2>
-
-<p>다음은 k-means로 clustering 수행에 대한 전처리 및 후처리 방법들입니다. 사실 이 방법들은 k-means에 종속된 방법은 아니고 다른 머신러닝 알고리즘과도 같이 사용됩니다.</p>
-<h3 id="pre-processing">Pre-processing</h3>
-<ul>
-  <li>데이터에 대한 정규화(Normalize)</li>
-  <li>이상치(outliers) 제거
-    <h3 id="post-processing">Post-processing</h3>
-  </li>
-  <li>작은(포함된 데이터의 수가 적은) 클러스터는 제거(이상치라고 판단)</li>
-  <li>loose하게 응집된 클러스터를 여러 클러스터로 나눔, loose하다는 것은 결국 클러스터의 SSE가 높다는것을 의미, 클러스터안의 데이터들의 거리가 멀다는것을 의미</li>
-  <li>close한 클러스터는 하나로 합침, close하다는 것은 SSE가 낮다는 것을 의미함, 서로 다른 클러스터에 포함된 데이터들의 거리가 짧음</li>
-</ul>
-
-<p><img src="http://latex.codecogs.com/gif.latex?Concentration%3D%5Cfrac%7BTotalTemplate%7D%7BTotalVolume%7D" alt="equation" /></p>
-
-<h1 id="references">References</h1>
+  
 
 
   
@@ -148,10 +99,8 @@ s.setAttribute('data-timestamp', +new Date());
 
 <div class="pagination">
   
-    <a href="/2018/11/26/test/" class="left arrow">&#8592;</a>
   
-  
-    <a href="/2018/10/12/js-datatype/" class="right arrow">&#8594;</a>
+    <a href="/2019/05/27/01-machine-learning-system/" class="right arrow">&#8594;</a>
   
 
   <a href="#" class="top">Top</a>

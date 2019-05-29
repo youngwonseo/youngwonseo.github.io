@@ -7,7 +7,7 @@
 
   <title>
     
-      머신러닝 - K-means &middot; Youngwon Seo
+      Markov Decision Process &middot; Youngwon Seo
     
   </title>
 
@@ -59,63 +59,71 @@
 
     
       <br>
-      <span>on&nbsp;</span><time datetime="2018-11-12 00:00:00 +0900">November 12, 2018</time>
+      <span>on&nbsp;</span><time datetime="2018-05-12 00:00:00 +0900">May 12, 2018</time>
     
   </div>
 
-  <h1 class="post-title">머신러닝 - K-means</h1>
+  <h1 class="post-title">Markov Decision Process</h1>
   <div class="post-line"></div>
 
-  <h1 id="k-means">K-means</h1>
-<p>Distance-Based Clustering</p>
+  <p>강화학습을 공부하기에 앞서 순차적 결정 문제에 대해 살펴보겠습니다. 순차적 결정 문제는 MDP(Markov Decision Process)로 정의할 수 있습니다.</p>
 
-<h2 id="거리-측정-방법">거리 측정 방법</h2>
-<p>K-means에서 비슷한 데이터라고 판단하는 기준은 데이터들의 거리(또는 유사도)입니다.</p>
+<p>MDP에서 학습을 위해 가치함수라는 것이 도입되는데, 이는 벨만 방정식과 연결됩니다.</p>
 
-<h3 id="euclidean-distance">Euclidean Distance</h3>
-<h3 id="cosine-similarity">Cosine Similarity</h3>
+<p>하나씩 차근히 정리해 갑시다.</p>
 
-<h3 id="minkowski-distance">Minkowski distance</h3>
-<p><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/4060cc840aeab9e41b5e47356088889e2e7a6f0f" alt="" /></p>
+<h2 id="mdp">MDP</h2>
 
-<h3 id="common-properties-of-a-distance-and-similarity">Common properties of a distance and similarity</h3>
-<p>다음은 거리에 대한 속성입니다.</p>
+<p>강화학습은 순차적으로 행동을 결정하는 문제를 푸는것인데, 이를 수학적으로 표현한 것이 MDP입니다. 다음은 <strong>MDP의 구성요소</strong> 들입니다.</p>
 
-<ol>
-  <li>모든 p와 q에 대해서 d(p, q) &gt;= 0 이고 오직 p=q일 경우반 d(p,q)=0 이다. - <strong>Positive definiteness</strong></li>
-  <li>모든 p와 q에 대해 d(p, q) = d(q, p) 이다. - <strong>Symmetry</strong></li>
-  <li>모든 p와 q 그리고 r에 대해 d(p, r) &lt;= d(p, q) + d(q, r) 이다. - <strong>Triangle Inequality</strong></li>
-</ol>
-
-<p>다음은 유사도에 대한 속성입니다.</p>
-<ol>
-  <li>오직 p=q 일때만 s(p,q) = 1 이다.</li>
-  <li>모든 p와 q에 대해 s(p, q) = s(q, p) 이다. - <strong>Symmetry</strong></li>
-</ol>
-
-<h2 id="k-mean-clustering-algorithm">K-mean Clustering Algorithm</h2>
-
-<h2 id="evaluation-of-k-means-clusters">Evaluation of K-means clusters</h2>
-
-<h2 id="select-initial-centroid">Select initial centroid</h2>
-
-<h2 id="pre-processing-and-post-processing">Pre-processing and Post-processing</h2>
-
-<p>다음은 k-means로 clustering 수행에 대한 전처리 및 후처리 방법들입니다. 사실 이 방법들은 k-means에 종속된 방법은 아니고 다른 머신러닝 알고리즘과도 같이 사용됩니다.</p>
-<h3 id="pre-processing">Pre-processing</h3>
 <ul>
-  <li>데이터에 대한 정규화(Normalize)</li>
-  <li>이상치(outliers) 제거
-    <h3 id="post-processing">Post-processing</h3>
-  </li>
-  <li>작은(포함된 데이터의 수가 적은) 클러스터는 제거(이상치라고 판단)</li>
-  <li>loose하게 응집된 클러스터를 여러 클러스터로 나눔, loose하다는 것은 결국 클러스터의 SSE가 높다는것을 의미, 클러스터안의 데이터들의 거리가 멀다는것을 의미</li>
-  <li>close한 클러스터는 하나로 합침, close하다는 것은 SSE가 낮다는 것을 의미함, 서로 다른 클러스터에 포함된 데이터들의 거리가 짧음</li>
+  <li>상태</li>
+  <li>행동</li>
+  <li>보상 함수</li>
+  <li>상태 변환 확률</li>
+  <li>감가율</li>
 </ul>
 
-<p><img src="http://latex.codecogs.com/gif.latex?Concentration%3D%5Cfrac%7BTotalTemplate%7D%7BTotalVolume%7D" alt="equation" /></p>
+<h3 id="상태">상태</h3>
 
-<h1 id="references">References</h1>
+<p>에이전트가 관찰할 수 있는 상태의 집합을 말합니다. 즉 5X5 그리드에서는 다음과 같은 상태집합을 가질 수 있습니다.</p>
+
+<p>[수식]</p>
+
+<p>또한 시간 t에 관찰 가능한 상태를 다음과 같이 표현합니다.</p>
+
+<p>[수식]</p>
+
+<h3 id="행동">행동</h3>
+
+<p>그리드 위를 움직이는 에이전트가 할 수 있는 가능한 행동집합은 다음과 같습니다.</p>
+
+<p>[수식]</p>
+
+<p>또한 시간 t에서 행동집합 A에서 특정한 행동 a를 했다면 다음과 같이 표현합니다.</p>
+
+<h3 id="보상함수">보상함수</h3>
+
+<p>보상은 에이전트가 학습할 수 있는 유일한 정보입니다.</p>
+
+<h3 id="상태-변환-확률">상태 변환 확률</h3>
+
+<h3 id="감가율">감가율</h3>
+
+<h3 id="정책">정책</h3>
+
+<h2 id="가치함수">가치함수</h2>
+
+<h3 id="가치함수-1">가치함수</h3>
+
+<h3 id="큐함수">큐함수</h3>
+
+<h2 id="벨만-방정식">벨만 방정식</h2>
+
+<h3 id="벨만-기대-방정식">벨만 기대 방정식</h3>
+
+<h3 id="벨만-최적-방적식">벨만 최적 방적식</h3>
+
 
 
   
@@ -148,10 +156,10 @@ s.setAttribute('data-timestamp', +new Date());
 
 <div class="pagination">
   
-    <a href="/2018/11/26/test/" class="left arrow">&#8592;</a>
+    <a href="/2018/05/13/effective-javascript-3/" class="left arrow">&#8592;</a>
   
   
-    <a href="/2018/10/12/js-datatype/" class="right arrow">&#8594;</a>
+    <a href="/2018/05/11/MDP/" class="right arrow">&#8594;</a>
   
 
   <a href="#" class="top">Top</a>

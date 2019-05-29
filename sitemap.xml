@@ -2,6 +2,14 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     
     <url>
+        <loc>http://localhost:4000/2019/05/28/machine-learning-problem/</loc>
+    </url>
+    
+    <url>
+        <loc>http://localhost:4000/2019/05/27/01-machine-learning-system/</loc>
+    </url>
+    
+    <url>
         <loc>http://localhost:4000/2019/05/26/tdd-refactoring/</loc>
     </url>
     
@@ -174,6 +182,10 @@
     </url>
     
     <url>
+        <loc>http://localhost:4000/2018/05/12/MDP2/</loc>
+    </url>
+    
+    <url>
         <loc>http://localhost:4000/2018/05/11/MDP/</loc>
     </url>
     
@@ -283,6 +295,14 @@
     
     <url>
         <loc>http://localhost:4000/page5/</loc>
+    </url>
+    
+    
+    
+    
+    
+    <url>
+        <loc>http://localhost:4000/page6/</loc>
     </url>
     
     
