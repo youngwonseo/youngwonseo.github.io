@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>
+    
+      몽고DB - 스토리지 엔진 &middot; Youngwon Seo
+    
+  </title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/assets/main.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
+</head>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-118401942-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-118401942-1');
+</script>
+
+  <body>
+    <nav class="nav">
+      <div class="nav-container">
+        <a href="/">
+          <h2 class="nav-title">Youngwon Seo</h2>
+        </a>
+        <ul>
+          <li><a href="/about">About</a></li>
+          <li><a href="/">Posts</a></li>
+          <li><a href="/study"/>Study</a></li>
+          <li><a href="/ml"/>Machine Learning</a></li>
+          <li><a href="/people"/>People</a></li>
+          <!-- <li><a href="/spring"/>Spring</a></li>
+          <li><a href="/deeplearning"/>Deeplearning</a></li> -->
+        </ul>
+    </div>
+  </nav>
+
+    <main>
+      <div class="post">
+  <div class="post-info">
+    <span>Written by</span>
+    
+        Youngwon Seo
+    
+
+    
+      <br>
+      <span>on&nbsp;</span><time datetime="2019-06-08 00:00:00 +0900">June 08, 2019</time>
+    
+  </div>
+
+  <h1 class="post-title">몽고DB - 스토리지 엔진</h1>
+  <div class="post-line"></div>
+
+  <p>다른 DBMS와 마찬가지로 몽고DB도 스토리지 엔진(Storage Engine)이 여러가지가 존재합니다.  스토리지 엔진은 사용자의 데이터를 디스크에 영구적으로 저장하거나 다시 읽어와 메모리에 적재하는 역활을 담당합니다. 즉 조회, 저장등의 쿼리를 실행하면 옵티아미저(Optimizer)가 실행계획을 최적화하는데, 이후 <strong>디스크에서 데이터를 읽어오고 저장하는 작업을 최적으로 선택하는것이 스토리지 엔진이 역활</strong>입니다. 아래의 그림에서 MMAP V1, Wired Tiger가 스토리지 엔진이며 다른 DBMS와 다르게 하나의 인스턴스에 여러가지 스토리지를 사용할 수는 없습니다. 대신 샤딩을 통해 여러 머신에서 각각의 스토리지 엔진을 결정하여 사용하는 형태입니다.</p>
+
+<p><img src="http://s3.amazonaws.com/info-mongodb-com/_com_assets/blog/figure2.png" alt="" /></p>
+
+<p>몽고DB는 다음과 같은 스토리지 엔진을 제공합니다.</p>
+<ul>
+  <li>MMAP v1</li>
+  <li>WiredTiger</li>
+  <li>In-Memory</li>
+  <li>RocksDB</li>
+  <li>TokuDB</li>
+</ul>
+
+<p>각각의 스토리지엔진들은 장단점이 다르기 때문에 사용용도에 따라 적합하게 선택해야합니다. 장단점은 다르지만 모든 스토리지 엔진의 쿼리나 DML은 같으므로 응용단의 변경없이 스토리지 엔진을 변경할 수 있습니다.</p>
+
+<p>다음은 각각의 스토리지엔진을 간략하게 비교한 표입니다(In-Memory는 엔터프라이즈 버전에서만 사용가능하고 아래의 표에서는  WiredTiger로 분류되었습니다).</p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>기능</td>
+      <td>MMAPv1</td>
+      <td>WiredTiger</td>
+      <td>RocksDB</td>
+      <td>TokuDB</td>
+    </tr>
+    <tr>
+      <td>잠금 수준</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>데이터 구조</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>빌트인 캐시</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>세컨트리 인덱스</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>데이터 압축</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>인덱스 압축</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>암호화</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>In-Memory 지원</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>컬렉션 파티션</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="1-mmapv1-스토리지-엔진">1. MMAPv1 스토리지 엔진</h2>
+
+<h2 id="2-wiredtiger-스토리지-엔진">2. WiredTiger 스토리지 엔진</h2>
+
+<h2 id="3-메모리-스토리지-엔진">3. 메모리 스토리지 엔진</h2>
+
+<h2 id="4-기타-스토리지-엔진">4. 기타 스토리지 엔진</h2>
+
+
+
+  
+  <div class="post-disqus">
+      <section id="disqus_thread"></section>
+      <div id="disqus_thread"></div>
+<script>
+
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+/*
+var disqus_config = function () {
+this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://youngwonseo.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+                            
+  </div>
+  
+</div>
+
+<div class="pagination">
+  
+    <a href="/2019/06/11/deep-learning-in-service/" class="left arrow">&#8592;</a>
+  
+  
+    <a href="/2019/05/30/deep-learning-architectures/" class="right arrow">&#8594;</a>
+  
+
+  <a href="#" class="top">Top</a>
+</div>
+
+    </main>
+
+    <footer>
+      <span>
+        &copy; <time datetime="2019-07-02 16:11:37 +0900">2019</time> Youngwon Seo. Made with Jekyll using the <a href="https://github.com/chesterhow/tale/">Tale</a> theme.
+      </span>
+    </footer>
+  </body>
+</html>

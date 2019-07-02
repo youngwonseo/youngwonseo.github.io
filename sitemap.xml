@@ -2,6 +2,38 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     
     <url>
+        <loc>http://localhost:4000/2019/07/01/design-pattern-4/</loc>
+    </url>
+    
+    <url>
+        <loc>http://localhost:4000/2019/06/22/design-pattern-3/</loc>
+    </url>
+    
+    <url>
+        <loc>http://localhost:4000/2019/06/21/mongodb-data-modeling/</loc>
+    </url>
+    
+    <url>
+        <loc>http://localhost:4000/2019/06/11/mongodb-storage-engine/</loc>
+    </url>
+    
+    <url>
+        <loc>http://localhost:4000/2019/06/11/deep-learning-in-service/</loc>
+    </url>
+    
+    <url>
+        <loc>http://localhost:4000/2019/06/08/mongodb-instruction/</loc>
+    </url>
+    
+    <url>
+        <loc>http://localhost:4000/2019/05/30/deep-learning-architectures/</loc>
+    </url>
+    
+    <url>
+        <loc>http://localhost:4000/2019/05/29/java-string/</loc>
+    </url>
+    
+    <url>
         <loc>http://localhost:4000/2019/05/28/machine-learning-problem/</loc>
     </url>
     
@@ -303,6 +335,14 @@
     
     <url>
         <loc>http://localhost:4000/page6/</loc>
+    </url>
+    
+    
+    
+    
+    
+    <url>
+        <loc>http://localhost:4000/page7/</loc>
     </url>
     
     
