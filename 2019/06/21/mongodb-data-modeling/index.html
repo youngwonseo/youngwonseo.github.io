@@ -7,7 +7,7 @@
 
   <title>
     
-      몽고DB - 스토리지 엔진 &middot; Youngwon Seo
+      몽고DB - 데이터 모델링 &middot; Youngwon Seo
     
   </title>
 
@@ -63,109 +63,10 @@
     
   </div>
 
-  <h1 class="post-title">몽고DB - 스토리지 엔진</h1>
+  <h1 class="post-title">몽고DB - 데이터 모델링</h1>
   <div class="post-line"></div>
 
-  <p>다른 DBMS와 마찬가지로 몽고DB도 스토리지 엔진(Storage Engine)이 여러가지가 존재합니다.  스토리지 엔진은 사용자의 데이터를 디스크에 영구적으로 저장하거나 다시 읽어와 메모리에 적재하는 역활을 담당합니다. 즉 조회, 저장등의 쿼리를 실행하면 옵티아미저(Optimizer)가 실행계획을 최적화하는데, 이후 <strong>디스크에서 데이터를 읽어오고 저장하는 작업을 최적으로 선택하는것이 스토리지 엔진이 역활</strong>입니다. 아래의 그림에서 MMAP V1, Wired Tiger가 스토리지 엔진이며 다른 DBMS와 다르게 하나의 인스턴스에 여러가지 스토리지를 사용할 수는 없습니다. 대신 샤딩을 통해 여러 머신에서 각각의 스토리지 엔진을 결정하여 사용하는 형태입니다.</p>
-
-<p><img src="http://s3.amazonaws.com/info-mongodb-com/_com_assets/blog/figure2.png" alt="" /></p>
-
-<p>몽고DB는 다음과 같은 스토리지 엔진을 제공합니다.</p>
-<ul>
-  <li>MMAP v1</li>
-  <li>WiredTiger</li>
-  <li>In-Memory</li>
-  <li>RocksDB</li>
-  <li>TokuDB</li>
-</ul>
-
-<p>각각의 스토리지엔진들은 장단점이 다르기 때문에 사용용도에 따라 적합하게 선택해야합니다. 장단점은 다르지만 모든 스토리지 엔진의 쿼리나 DML은 같으므로 응용단의 변경없이 스토리지 엔진을 변경할 수 있습니다.</p>
-
-<p>다음은 각각의 스토리지엔진을 간략하게 비교한 표입니다(In-Memory는 엔터프라이즈 버전에서만 사용가능하고 아래의 표에서는  WiredTiger로 분류되었습니다).</p>
-
-<table>
-  <tbody>
-    <tr>
-      <td>기능</td>
-      <td>MMAPv1</td>
-      <td>WiredTiger</td>
-      <td>RocksDB</td>
-      <td>TokuDB</td>
-    </tr>
-    <tr>
-      <td>잠금 수준</td>
-      <td>컬렉션</td>
-      <td> </td>
-      <td> </td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td>데이터 구조</td>
-      <td>B-Tree</td>
-      <td> </td>
-      <td> </td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td>빌트인 캐시</td>
-      <td>X(운영체제 캐시)</td>
-      <td> </td>
-      <td> </td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td>세컨트리 인덱스</td>
-      <td> </td>
-      <td> </td>
-      <td> </td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td>데이터 압축</td>
-      <td> </td>
-      <td> </td>
-      <td> </td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td>인덱스 압축</td>
-      <td> </td>
-      <td> </td>
-      <td> </td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td>암호화</td>
-      <td> </td>
-      <td> </td>
-      <td> </td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td>In-Memory 지원</td>
-      <td> </td>
-      <td> </td>
-      <td> </td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td>컬렉션 파티션</td>
-      <td> </td>
-      <td> </td>
-      <td> </td>
-      <td> </td>
-    </tr>
-  </tbody>
-</table>
-
-<h2 id="1-mmapv1-스토리지-엔진">1. MMAPv1 스토리지 엔진</h2>
-
-<h2 id="2-wiredtiger-스토리지-엔진">2. WiredTiger 스토리지 엔진</h2>
-
-<h2 id="3-메모리-스토리지-엔진">3. 메모리 스토리지 엔진</h2>
-
-<h2 id="4-기타-스토리지-엔진">4. 기타 스토리지 엔진</h2>
-
+  
 
 
   
@@ -211,7 +112,7 @@ s.setAttribute('data-timestamp', +new Date());
 
     <footer>
       <span>
-        &copy; <time datetime="2019-07-02 16:11:37 +0900">2019</time> Youngwon Seo. Made with Jekyll using the <a href="https://github.com/chesterhow/tale/">Tale</a> theme.
+        &copy; <time datetime="2019-07-03 10:11:24 +0900">2019</time> Youngwon Seo. Made with Jekyll using the <a href="https://github.com/chesterhow/tale/">Tale</a> theme.
       </span>
     </footer>
   </body>

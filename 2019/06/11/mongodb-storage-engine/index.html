@@ -66,9 +66,8 @@
   <h1 class="post-title">몽고DB - 스토리지 엔진</h1>
   <div class="post-line"></div>
 
-  <p>다른 DBMS와 마찬가지로 몽고DB도 스토리지 엔진(Storage Engine)이 여러가지가 존재합니다.  스토리지 엔진은 사용자의 데이터를 디스크에 영구적으로 저장하거나 다시 읽어와 메모리에 적재하는 역활을 담당합니다. 즉 조회, 저장등의 쿼리를 실행하면 옵티아미저(Optimizer)가 실행계획을 최적화하는데, 이후 <strong>디스크에서 데이터를 읽어오고 저장하는 작업을 최적으로 선택하는것이 스토리지 엔진이 역활</strong>입니다. 아래의 그림에서 MMAP V1, Wired Tiger가 스토리지 엔진이며 다른 DBMS와 다르게 하나의 인스턴스에 여러가지 스토리지를 사용할 수는 없습니다. 대신 샤딩을 통해 여러 머신에서 각각의 스토리지 엔진을 결정하여 사용하는 형태입니다.</p>
-
-<p><img src="http://s3.amazonaws.com/info-mongodb-com/_com_assets/blog/figure2.png" alt="" /></p>
+  <p>다른 DBMS와 마찬가지로 몽고DB도 스토리지 엔진(Storage Engine)이 여러가지가 존재합니다.  스토리지 엔진은 사용자의 데이터를 디스크에 영구적으로 저장하거나 다시 읽어와 메모리에 적재하는 역활을 담당합니다. 즉 조회, 저장등의 쿼리를 실행하면 옵티아미저(Optimizer)가 실행계획을 최적화하는데, 이후 <strong>디스크에서 데이터를 읽어오고 저장하는 작업을 최적으로 선택하는것이 스토리지 엔진이 역활</strong>입니다. 아래의 그림에서 MMAP V1, Wired Tiger가 스토리지 엔진이며 다른 DBMS와 다르게 하나의 인스턴스에 여러가지 스토리지를 사용할 수는 없습니다. 대신 샤딩을 통해 여러 머신에서 각각의 스토리지 엔진을 결정하여 사용하는 형태입니다.
+![](<a href="http://s3.amazonaws.com/info-mongodb-com/_com_assets/blog/figure2.png">http://s3.amazonaws.com/info-mongodb-com/_com_assets/blog/figure2.png</a></p>
 
 <p>몽고DB는 다음과 같은 스토리지 엔진을 제공합니다.</p>
 <ul>
@@ -76,10 +75,9 @@
   <li>WiredTiger</li>
   <li>In-Memory</li>
   <li>RocksDB</li>
-  <li>TokuDB</li>
+  <li>TokuDB
+각각의 스토리지엔진들은 장단점이 다르기 때문에 사용용도에 따라 적합하게 선택해야합니다. 장단점은 다르지만 모든 스토리지 엔진의 쿼리나 DML은 같으므로 응용단의 변경없이 스토리지 엔진을 변경할 수 있습니다.</li>
 </ul>
-
-<p>각각의 스토리지엔진들은 장단점이 다르기 때문에 사용용도에 따라 적합하게 선택해야합니다. 장단점은 다르지만 모든 스토리지 엔진의 쿼리나 DML은 같으므로 응용단의 변경없이 스토리지 엔진을 변경할 수 있습니다.</p>
 
 <p>다음은 각각의 스토리지엔진을 간략하게 비교한 표입니다(In-Memory는 엔터프라이즈 버전에서만 사용가능하고 아래의 표에서는  WiredTiger로 분류되었습니다).</p>
 
@@ -95,77 +93,145 @@
     <tr>
       <td>잠금 수준</td>
       <td>컬렉션</td>
-      <td> </td>
-      <td> </td>
-      <td> </td>
+      <td>도큐먼트</td>
+      <td>도큐먼트</td>
+      <td>도큐먼트</td>
     </tr>
     <tr>
       <td>데이터 구조</td>
       <td>B-Tree</td>
-      <td> </td>
-      <td> </td>
-      <td> </td>
+      <td>B-Tree</td>
+      <td>LSM</td>
+      <td>Fractal-Tree</td>
     </tr>
     <tr>
       <td>빌트인 캐시</td>
-      <td>X(운영체제 캐시)</td>
-      <td> </td>
-      <td> </td>
-      <td> </td>
+      <td>X(운영체제 캐시</td>
+      <td>O</td>
+      <td>O</td>
+      <td>O</td>
     </tr>
     <tr>
       <td>세컨트리 인덱스</td>
-      <td> </td>
-      <td> </td>
-      <td> </td>
-      <td> </td>
+      <td>O</td>
+      <td>O</td>
+      <td>O</td>
+      <td>O</td>
     </tr>
     <tr>
       <td>데이터 압축</td>
-      <td> </td>
-      <td> </td>
-      <td> </td>
-      <td> </td>
+      <td>X</td>
+      <td>O</td>
+      <td>O</td>
+      <td>O</td>
     </tr>
     <tr>
       <td>인덱스 압축</td>
-      <td> </td>
-      <td> </td>
-      <td> </td>
-      <td> </td>
+      <td>X</td>
+      <td>O</td>
+      <td>O</td>
+      <td>O</td>
     </tr>
     <tr>
       <td>암호화</td>
-      <td> </td>
-      <td> </td>
-      <td> </td>
-      <td> </td>
+      <td>X</td>
+      <td>O</td>
+      <td>X</td>
+      <td>X</td>
     </tr>
     <tr>
       <td>In-Memory 지원</td>
-      <td> </td>
-      <td> </td>
-      <td> </td>
-      <td> </td>
+      <td>X</td>
+      <td>O</td>
+      <td>X</td>
+      <td>X</td>
     </tr>
     <tr>
       <td>컬렉션 파티션</td>
-      <td> </td>
-      <td> </td>
-      <td> </td>
-      <td> </td>
+      <td>X</td>
+      <td>X</td>
+      <td>X</td>
+      <td>0</td>
     </tr>
   </tbody>
 </table>
 
-<h2 id="1-mmapv1-스토리지-엔진">1. MMAPv1 스토리지 엔진</h2>
+<p>그럼 각 스토리지엔진의 특성에 대해 살펴보겠습니다. 여기서는 최대한 간략하세 설명하고 자세한 내용은 <a href="[http://www.kyobobook.co.kr/product/detailViewKor.laf?mallGb=KOR&amp;ejkGb=KOR&amp;orderClick=LEB&amp;barcode=9791158390921](http://www.kyobobook.co.kr/product/detailViewKor.laf?mallGb=KOR&amp;ejkGb=KOR&amp;orderClick=LEB&amp;barcode=9791158390921)">책(Real MongoDB)</a> 을 읽어주세요.</p>
 
-<h2 id="2-wiredtiger-스토리지-엔진">2. WiredTiger 스토리지 엔진</h2>
+<h2 id="2-mmapv1-스토리지-엔진">2. MMAPv1 스토리지 엔진</h2>
 
-<h2 id="3-메모리-스토리지-엔진">3. 메모리 스토리지 엔진</h2>
+<h3 id="21-mmapv1-설정">2.1 MMAPv1 설정</h3>
+<p>몽고DB는 스토리지엔진과 별게로 공통 설정 항목과 각 스토리지엔진별 설정 항목이 존재합니다. 공통 설정항목은 다음으로 설명할 몽고DB의 디폴트 스토리지 엔진인 WiredTiger에서 설명하고 여기서는 MMAPv1의 설정 항목을 살펴보겠습니다.</p>
 
-<h2 id="4-기타-스토리지-엔진">4. 기타 스토리지 엔진</h2>
+<ul>
+  <li>preallocDataFiles :</li>
+  <li>nsSize :</li>
+  <li>quota :
+    <ul>
+      <li>enforced :</li>
+      <li>maxFilesPerDB :</li>
+    </ul>
+  </li>
+  <li>smallFiles :</li>
+</ul>
 
+<h3 id="22-데이터-파일-구조">2.2 데이터 파일 구조</h3>
+
+<h3 id="23-서버상태-확인">2.3 서버상태 확인</h3>
+<h3 id="24-운영체제-캐시">2.4 운영체제 캐시</h3>
+<h3 id="25-데이터-파일-프레크멘테이션">2.5 데이터 파일 프레크멘테이션</h3>
+
+<h2 id="3-wiredtiger-스토리지-엔진몽고db-디폴트">3. WiredTiger 스토리지 엔진(몽고DB 디폴트)</h2>
+<p>Berkeley DB 개발자들이 개발한 임베디드 DB엔진으로 몽고DB에 인수되었고 지금은 몽고DB의 디폴트 스토리지 엔진입니다. 위의 MMAPv1의 문제점을 해결하기 위해 몽고DB에 흡수되었고 디폴트로 사용되는 것이죠.</p>
+
+<h3 id="31-wiredtiger-설정">3.1 WiredTiger 설정</h3>
+<p>먼저 모든 스토리지 엔진에서 설정가능한 공통설정인 storage: 부분을 살펴보겠습니다.</p>
+<ul>
+  <li>dbPath</li>
+  <li>indexBuildRetry</li>
+  <li>repairPath</li>
+  <li>directoryPerDB</li>
+  <li>syncPeriodSecs</li>
+  <li>journal</li>
+  <li>engine - 사용할 스토리지 엔진을 명시(MMAPv1, WiredTiger, 등)</li>
+</ul>
+
+<p>다음은 WiredTiger의 설정항목입니다.</p>
+<ul>
+  <li>engineConfig.cacheSizeGB -</li>
+  <li>collectionConfig.blockCompressor -</li>
+  <li>indexConfig.prefixCompression -</li>
+</ul>
+
+<h3 id="32-저장방식">3.2 저장방식</h3>
+<p>WiredTiger은 3가지 타입의 저장소를 가지고 있습니다.</p>
+<h4 id="321-레코드row-record-스토어">3.2.1 레코드(Row, Record) 스토어</h4>
+<h4 id="322-컬럼-스토어">3.2.2 컬럼 스토어</h4>
+<h4 id="323-lsmlog-structured-merge-tree-스토어">3.2.3 LSM(Log Structured Merge Tree) 스토어</h4>
+
+<h3 id="33-데이터-파일-구조">3.3 데이터 파일 구조</h3>
+<p>WiredTiger는 MMAPv1과는 완전히 다른 파일구조를 사용합니다.</p>
+
+<h3 id="34-내부-동작-방식">3.4 내부 동작 방식</h3>
+<p>WiredTiger는 트랜젝션을 지원하는  대부분의 RDBMS와 흡사한 내부 구조를 가지고 있습니다(몽고DB서버는 트랙젝션을 지원하지 않음). 
+[그림]</p>
+
+<h3 id="35-공유캐시">3.5 공유캐시</h3>
+<h3 id="36-캐시-이빅션cache-eviction">3.6 캐시 이빅션(Cache Eviction)</h3>
+<h3 id="36-체크포인트">3.6 체크포인트</h3>
+<h3 id="37-mvcc">3.7 MVCC</h3>
+<h3 id="38-데이터-블록">3.8 데이터 블록</h3>
+<h3 id="39-운영체제-캐시">3.9 운영체제 캐시</h3>
+
+<h2 id="4-메모리-스토리지-엔진">4. 메모리 스토리지 엔진</h2>
+
+<h2 id="5-기타-스토리지-엔진">5. 기타 스토리지 엔진</h2>
+
+<h2 id="references">References</h2>
+<ul>
+  <li><a href="http://www.kyobobook.co.kr/product/detailViewKor.laf?mallGb=KOR&amp;ejkGb=KOR&amp;orderClick=LEB&amp;barcode=9791158390921">Real MongoDB 2장 스토리지 엔진</a></li>
+  <li></li>
+</ul>
 
 
   
@@ -211,7 +277,7 @@ s.setAttribute('data-timestamp', +new Date());
 
     <footer>
       <span>
-        &copy; <time datetime="2019-07-02 16:11:37 +0900">2019</time> Youngwon Seo. Made with Jekyll using the <a href="https://github.com/chesterhow/tale/">Tale</a> theme.
+        &copy; <time datetime="2019-07-03 10:11:24 +0900">2019</time> Youngwon Seo. Made with Jekyll using the <a href="https://github.com/chesterhow/tale/">Tale</a> theme.
       </span>
     </footer>
   </body>
