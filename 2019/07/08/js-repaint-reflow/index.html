@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>
+    
+      자바스크립트 = Repaint와 Reflow &middot; Youngwon Seo
+    
+  </title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/assets/main.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
+</head>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-118401942-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-118401942-1');
+</script>
+
+  <body>
+    <nav class="nav">
+      <div class="nav-container">
+        <a href="/">
+          <h2 class="nav-title">Youngwon Seo</h2>
+        </a>
+        <ul>
+          <li><a href="/about">About</a></li>
+          <li><a href="/">Posts</a></li>
+          <li><a href="/study"/>Study</a></li>
+          <li><a href="/ml"/>Machine Learning</a></li>
+          <li><a href="/people"/>People</a></li>
+          <!-- <li><a href="/spring"/>Spring</a></li>
+          <li><a href="/deeplearning"/>Deeplearning</a></li> -->
+        </ul>
+    </div>
+  </nav>
+
+    <main>
+      <div class="post">
+  <div class="post-info">
+    <span>Written by</span>
+    
+        Youngwon Seo
+    
+
+    
+      <br>
+      <span>on&nbsp;</span><time datetime="2019-07-08 00:00:00 +0900">July 08, 2019</time>
+    
+  </div>
+
+  <h1 class="post-title">자바스크립트 = Repaint와 Reflow</h1>
+  <div class="post-line"></div>
+
+  <p>자바스크립트의 중요한 특징 가운데 하나는 DOM과 상호작용한다는 것입니다. DOM은 Document Object Model의 약자로 플랫폼이나 언어에 독립적으로 문서를 구성하고 디자인을 적용시킬 수 있는 인터페이스 입니다. HTML과 함께 XML, SVG등이 DOM을 기반으로 구성됩니다.</p>
+
+<p>자바스크립트는 특히 HTML과 조합되어 사용자에게 적절한 데이터를 보여줍니다. 최근에는 비동기통신으로 자바스크립트에서 받은 데이터를 HTML의 DOM조작 통해서 동적으로 데이터를 출력하거나 DOM디자인을 조작하는작업이 많아 졌습니다.</p>
+
+<p>DOM을 동적으로 조작하는것은 생각보다 간단한 작업이 아닙니다. 이유는 <strong>TREE를 순회하는 조작이 같이 발생해 컴퓨팅 자원 소모가 심하다는 것</strong>입니다(DOM은 TREE구조를 가집니다). 본 글에서는 이렇게 자바스크립트를 이용하여 DOM을 동적으로 조작할 때 알아야하는 <strong>DOM repaint</strong>와 <strong>DOM reflow</strong>에 대해 알아보겠습니다.</p>
+
+<h2 id="dom-repaint">DOM repaint</h2>
+<p>먼저 DOM repaint는 특정 엘리먼트의 visibility를 수정하거나 글자색, 배경색 처럼 HTML의 엘리먼트들의 위치는 변경되지 않고, 색상등의 스타일만 변경될 때 발생합니다. DOM repaint의 경우 <strong>해당 DOM의 하위 트리 구조 전체를 탐색</strong>하므로 CPU자원이 소모됩니다.</p>
+
+<h2 id="dom-reflow">DOM reflow</h2>
+<p>DOM reflow는 repaint와 다르게 DOM의 구조나 크기, 클래스가 변경(클래스에 대한 새로운 CSS가 적용되므로)될때 발생합니다. 이는 DOM의 구조가 변경되 각 엘리먼트의 위치를 다시 계산되는 것을 의미합니다. repaint보다 reflow는 작업특성상 자원소모가 더 큽니다.</p>
+
+<h2 id="dom-reflow-최소화-하기">DOM reflow 최소화 하기</h2>
+<p>reflow를 최소화하는 것은 그만큼 CPU자원소모를 최소화하는 것입니다. reflow는 변경되는 엘리먼트의 하위 엘리먼트들의 위치를 계산하므로 CPU를 사용하는 것인데, 자주 변경되는 엘리먼트들의 position을 absolute나 fixed로 설정하면 좋습니다. 이는 웹 페이지 천제에는 영향을 미치기 않기 때문입니다. 아주 간단한 방법이지만 일반적 DOM 엘리먼트를 변경하는 것과 비교하면 월등하게 성능상 유리합니다.</p>
+
+<p>position을 absolute로 지정하고 left와 top을 지정하여 reflow에 영향을 미치지 않게 할 수도 있지만 position : relative를 이용하면 위치계산없이 페이지의 중간에 absolute를 사용할 수 있다.</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;html&gt;</span>
+<span class="nt">&lt;head&gt;</span>
+  <span class="nt">&lt;style&gt;</span>
+    <span class="nf">#bannerWrapper</span> <span class="p">{</span>
+      <span class="nl">overflow</span><span class="p">:</span> <span class="nb">hidden</span><span class="p">;</span>
+      <span class="nl">height</span><span class="p">:</span> <span class="m">400px</span><span class="p">;</span>
+      <span class="nl">width</span><span class="p">:</span> <span class="m">265px</span><span class="p">;</span>
+      <span class="nl">position</span><span class="p">:</span> <span class="nb">absolute</span><span class="p">;</span>
+    <span class="p">}</span>
+    
+    <span class="nf">#bannerImg</span> <span class="p">{</span>
+      <span class="nl">position</span><span class="p">:</span> <span class="nb">absolute</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="nf">#bannerImg</span><span class="nc">.mouseover</span> <span class="p">{</span>
+      <span class="nl">top</span><span class="p">:</span> <span class="m">-400px</span><span class="p">;</span>
+    <span class="p">}</span>
+  <span class="nt">&lt;/style&gt;</span>
+<span class="nt">&lt;/head&gt;</span>
+<span class="nt">&lt;body&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"bannerWrapper"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;img</span> <span class="na">id=</span><span class="s">"bannerImg"</span> <span class="na">src=</span><span class="s">"http://i.imgur.com/3DpJ0ou.png"</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;script&gt;</span>
+    <span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
+      <span class="kd">var</span> <span class="nx">imgBannerImg</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'bannerImg'</span><span class="p">);</span>
+      <span class="nx">imgBannerImg</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">'mouseover'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(){</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">classList</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="s1">'mouseover'</span><span class="p">);</span>
+      <span class="p">});</span>
+
+      <span class="nx">imgBannerImg</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">'mouseout'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(){</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">classList</span><span class="p">.</span><span class="nx">remove</span><span class="p">(</span><span class="s1">'mouseover'</span><span class="p">);</span>
+      <span class="p">});</span>
+    <span class="p">}());</span>
+  <span class="nt">&lt;/script&gt;</span>
+<span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</code></pre></div></div>
+<p>위 예제는 배너이미지에 마우스오버 이벤트를 등록한 예제입니다. bannerImg가 absolute로 적용되어 mouseover가 적용되어도 bannerImg또는 그 하위(위 소스에는 하위가 없음) 엘리먼트만 reflow가 발생하도록 적용되었습니다. 위 같은 상황은 메뉴의 드랍아웃등의 예제로 확장 될 수 있습니다.</p>
+
+
+
+  
+  <div class="post-disqus">
+      <section id="disqus_thread"></section>
+      <div id="disqus_thread"></div>
+<script>
+
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+/*
+var disqus_config = function () {
+this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://youngwonseo.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+                            
+  </div>
+  
+</div>
+
+<div class="pagination">
+  
+    <a href="/2019/07/08/js-search-dom/" class="left arrow">&#8592;</a>
+  
+  
+    <a href="/2019/07/07/mongodb-space-search/" class="right arrow">&#8594;</a>
+  
+
+  <a href="#" class="top">Top</a>
+</div>
+
+    </main>
+
+    <footer>
+      <span>
+        &copy; <time datetime="2019-07-08 23:13:57 +0900">2019</time> Youngwon Seo. Made with Jekyll using the <a href="https://github.com/chesterhow/tale/">Tale</a> theme.
+      </span>
+    </footer>
+  </body>
+</html>
