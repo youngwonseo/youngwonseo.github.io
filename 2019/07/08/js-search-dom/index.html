@@ -85,8 +85,52 @@
 
 <h2 id="메모이제이션-활용">메모이제이션 활용</h2>
 <p>DOM을 탐색하는 것은 클로저 내의 변수를 탐색하는 것보다 더 많은 자원을 소모합니다. 따라서 같은 행동(함수)에 대한 DOM 탐색을 메모이제이션패턴을 사용하여 한 번만 탐색하도록 수정할 수 있습니다.</p>
-<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;form</span> <span class="na">id=</span><span class="s">"myForm"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">name=</span><span class="s">"firstName"</span> <span class="na">id=</span><span class="s">"firstName"</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">name=</span><span class="s">"middleName"</span> <span class="na">id=</span><span class="s">"middleName"</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">name=</span><span class="s">"lastName"</span> <span class="na">id=</span><span class="s">"lastName"</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"submit"</span> <span class="na">value=</span><span class="s">"submit"</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/form&gt;</span>
+<span class="nt">&lt;script&gt;</span>
+<span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
+  <span class="kd">var</span> <span class="nx">memo</span> <span class="o">=</span> <span class="p">{};</span>
+  <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'myForm'</span><span class="p">).</span><span class="nx">onsubmit</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">inputFirstName</span> <span class="o">=</span> <span class="nx">getMemo</span><span class="p">(</span><span class="s1">'firstName'</span><span class="p">),</span>
+        <span class="nx">inputMiddleName</span> <span class="o">=</span> <span class="nx">getMemo</span><span class="p">(</span><span class="s1">'firstName'</span><span class="p">),</span>
+        <span class="nx">inputLastName</span> <span class="o">=</span> <span class="nx">getMemo</span><span class="p">(</span><span class="s1">'firstName'</span><span class="p">);</span>
+    <span class="k">if</span><span class="p">(</span><span class="nx">inputFirstName</span><span class="p">.</span><span class="nx">value</span> <span class="o">===</span> <span class="s2">""</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">alert</span><span class="p">(</span><span class="s1">'First name is manatory'</span><span class="p">);</span>
+      <span class="nx">inputFirstName</span><span class="p">.</span><span class="nx">focus</span><span class="p">();</span>
+      <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="nx">inputLastName</span> <span class="o">=</span> <span class="nx">getMemo</span><span class="p">(</span><span class="s1">'lastName'</span><span class="p">);</span>
+    <span class="k">if</span><span class="p">(</span><span class="nx">inputLastName</span><span class="p">.</span><span class="nx">value</span> <span class="o">===</span> <span class="s2">""</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">alert</span><span class="p">(</span><span class="s1">'Last name id mandatory'</span><span class="p">);</span>
+      <span class="nx">inputLastName</span><span class="p">.</span><span class="nx">focus</span><span class="p">();</span>
+      <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="nx">inputMiddelName</span> <span class="o">=</span> <span class="nx">getMemo</span><span class="p">(</span><span class="s1">'middleName'</span><span class="p">);</span>
+    <span class="nx">alert</span><span class="p">(</span><span class="s1">'Hello, '</span> <span class="o">+</span> <span class="nx">inputFirstName</span><span class="p">.</span><span class="nx">value</span> <span class="o">+</span> <span class="s2">" "</span> <span class="o">+</span> 
+                      <span class="nx">inputMiddleName</span><span class="p">.</span><span class="nx">value</span> <span class="o">+</span> <span class="s2">" "</span> <span class="o">+</span> 
+                      <span class="nx">inputLastName</span><span class="p">.</span><span class="nx">value</span><span class="p">);</span>
+
+  <span class="p">}</span>
+
+  <span class="kd">function</span> <span class="nx">getMemo</span><span class="p">(</span><span class="nx">id</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">memo</span><span class="p">[</span><span class="nx">id</span><span class="p">]</span> <span class="o">=</span> <span class="nx">memo</span><span class="p">[</span><span class="nx">id</span><span class="p">]</span> <span class="o">||</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="nx">id</span><span class="p">);</span>
+    <span class="k">return</span> <span class="nx">memo</span><span class="p">[</span><span class="nx">id</span><span class="p">];</span>
+  <span class="p">}</span>
+<span class="p">}());</span>
+<span class="nt">&lt;/script&gt;</span>
 </code></pre></div></div>
+<p>getMemo라는 함수를 정의하고 내부에서 memo객체를 사용하여 메모이제이션패턴을 구현한 예제입니다. getElementById를 id당 한번만 호출하여 DOM트리 탐색시간을 최적화 하였습니다.</p>
+
+<h1 id="references">References</h1>
+<ul>
+  <li><a href="http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&amp;mallGb=KOR&amp;barcode=9791186710098&amp;orderClick=LEA&amp;Kc=">속깊은 Javascript</a></li>
+</ul>
 
 
 
@@ -120,6 +164,8 @@ s.setAttribute('data-timestamp', +new Date());
 
 <div class="pagination">
   
+    <a href="/2019/07/09/recommender-system/" class="left arrow">&#8592;</a>
+  
   
     <a href="/2019/07/08/js-repaint-reflow/" class="right arrow">&#8594;</a>
   
@@ -131,7 +177,7 @@ s.setAttribute('data-timestamp', +new Date());
 
     <footer>
       <span>
-        &copy; <time datetime="2019-07-08 23:13:57 +0900">2019</time> Youngwon Seo. Made with Jekyll using the <a href="https://github.com/chesterhow/tale/">Tale</a> theme.
+        &copy; <time datetime="2019-07-16 20:41:29 +0900">2019</time> Youngwon Seo. Made with Jekyll using the <a href="https://github.com/chesterhow/tale/">Tale</a> theme.
       </span>
     </footer>
   </body>

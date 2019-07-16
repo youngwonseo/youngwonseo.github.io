@@ -2,6 +2,30 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     
     <url>
+        <loc>http://localhost:4000/2019/07/16/cho/</loc>
+    </url>
+    
+    <url>
+        <loc>http://localhost:4000/2019/07/15/time-series/</loc>
+    </url>
+    
+    <url>
+        <loc>http://localhost:4000/2019/07/13/java-ds-alg-start/</loc>
+    </url>
+    
+    <url>
+        <loc>http://localhost:4000/2019/07/11/java-collection/</loc>
+    </url>
+    
+    <url>
+        <loc>http://localhost:4000/2019/07/09/introduction/</loc>
+    </url>
+    
+    <url>
+        <loc>http://localhost:4000/2019/07/09/recommender-system/</loc>
+    </url>
+    
+    <url>
         <loc>http://localhost:4000/2019/07/08/js-search-dom/</loc>
     </url>
     
@@ -375,6 +399,14 @@
     
     <url>
         <loc>http://localhost:4000/page7/</loc>
+    </url>
+    
+    
+    
+    
+    
+    <url>
+        <loc>http://localhost:4000/page8/</loc>
     </url>
     
     
