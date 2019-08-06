@@ -2,6 +2,26 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     
     <url>
+        <loc>http://localhost:4000/2019/08/01/backpropagation/</loc>
+    </url>
+    
+    <url>
+        <loc>http://localhost:4000/2019/07/31/ml-references/</loc>
+    </url>
+    
+    <url>
+        <loc>http://localhost:4000/2019/07/30/jquery-promise/</loc>
+    </url>
+    
+    <url>
+        <loc>http://localhost:4000/2019/07/26/01-rx-java/</loc>
+    </url>
+    
+    <url>
+        <loc>http://localhost:4000/2019/07/21/kafka-desing-01/</loc>
+    </url>
+    
+    <url>
         <loc>http://localhost:4000/2019/07/17/01-scala-start/</loc>
     </url>
     
@@ -411,6 +431,14 @@
     
     <url>
         <loc>http://localhost:4000/page8/</loc>
+    </url>
+    
+    
+    
+    
+    
+    <url>
+        <loc>http://localhost:4000/page9/</loc>
     </url>
     
     
