@@ -73,33 +73,33 @@
   <li>이러한 툴을 사용하면 rolling updates, canaries, blue greens 업데이트를 쉽게할수 있음</li>
 </ul>
 
-<p><img src="/public/gcp/deployment1.png" alt="" /></p>
+<p><img src="/public/gcp/deployment1.PNG" alt="" /></p>
 <ul>
   <li>deployment는 POD를 관리하고 실행하기 위해 ReplicaSets에 의존적</li>
   <li>yaml파일에 작성한 동작 방식, 원하는 개수 등으로 POD의 수와 상태가 유지</li>
 </ul>
 
-<p><img src="/public/gcp/deployment2.png" alt="" /></p>
+<p><img src="/public/gcp/deployment2.PNG" alt="" /></p>
 <ul>
   <li>ReplicaSet을 4로 지정</li>
 </ul>
 
-<p><img src="/public/gcp/deployment3. png" alt="" /></p>
+<p><img src="/public/gcp/deployment3. PNG" alt="" /></p>
 <ul>
   <li>replicas가 3일때 1개가 실패(장애발생)하면 하나를 생성</li>
 </ul>
 
-<p><img src="/public/gcp/deployment4.png" alt="" /></p>
+<p><img src="/public/gcp/deployment4.PNG" alt="" /></p>
 <ul>
   <li>3개의 POD 또는 3개의 replica를 실행하는 것이 좋음</li>
 </ul>
 
-<p><img src="/public/gcp/deployment5.png" alt="" /></p>
+<p><img src="/public/gcp/deployment5.PNG" alt="" /></p>
 <ul>
   <li>Rolling updates를 사용하면 중단없이 이미지버전을 다른 버전으로 점진적으로 업데이트 가능</li>
 </ul>
 
-<p><img src="/public/gcp/deployment6.png" alt="" /></p>
+<p><img src="/public/gcp/deployment6.PNG" alt="" /></p>
 <ul>
   <li>roll out없이 roll over되며 업데이트 가능</li>
   <li>hello1 POD를 하나씩 종료하고 새로운 ReplicaSet에 hello2를 생성</li>
@@ -151,7 +151,7 @@ s.setAttribute('data-timestamp', +new Date());
 
     <footer>
       <span>
-        &copy; <time datetime="2019-08-17 11:25:46 +0900">2019</time> Youngwon Seo. Made with Jekyll using the <a href="https://github.com/chesterhow/tale/">Tale</a> theme.
+        &copy; <time datetime="2019-08-17 12:15:38 +0900">2019</time> Youngwon Seo. Made with Jekyll using the <a href="https://github.com/chesterhow/tale/">Tale</a> theme.
       </span>
     </footer>
   </body>

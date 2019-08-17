@@ -75,20 +75,20 @@
 
 <p>여기서는 Kubernetes의 사용 및 세팅, 컨테이너 셋을 관리하는 컨테이너 엔진(GCP), 어플리케이션 호스팅을 위한 서비스안의 그룹</p>
 
-<p><img src="/public/gcp/cluster1.png" alt="" /></p>
+<p><img src="/public/gcp/cluster1.PNG" alt="" /></p>
 <ul>
   <li>마스터 클러스터 서버 - 모든 작업 및 스케줄 제어, etcd, apiserver 제어</li>
   <li>쿠버네티스는 도커와 컨테이너 환경을 클러스터 환경에서 실행</li>
   <li>kubelet(Kubernetes agent)을 실행하는 Node들</li>
 </ul>
 
-<p><img src="/public/gcp/cluster2.png" alt="" /></p>
+<p><img src="/public/gcp/cluster2.PNG" alt="" /></p>
 <ul>
   <li>개발자는 오직 API에 접근에만 관심</li>
   <li>개발자들이 open API접근하여 프로그래밍 할수 있도록 제공</li>
 </ul>
 
-<p><img src="/public/gcp/cluster3.png" alt="" /></p>
+<p><img src="/public/gcp/cluster3.PNG" alt="" /></p>
 <ul>
   <li>클러스터안에 모든 노드들이 관리</li>
   <li>모든것들은 kubernetes가 관리</li>
@@ -96,34 +96,37 @@
   <li>kubernetes는 작업을 여러 노드에 위임</li>
 </ul>
 
-<p><img src="/public/gcp/cluster4.png" alt="" /></p>
+<p><img src="/public/gcp/cluster4.PNG" alt="" /></p>
 <ul>
   <li>실제 시스템에서 클러스터는 1000개의 노드와 여러개의 마스터를 가지고 있음</li>
   <li>해당 시스템의 장점은 작업이 많은 노드의 job을 작업이 없는 노드로 배치하는 것</li>
 </ul>
 
-<p><img src="/public/gcp/cluster5.png" alt="" /></p>
+<p><img src="/public/gcp/cluster5.PNG" alt="" /></p>
 <ul>
   <li>Pod는 VM과 유사</li>
   <li>하나의 컨테이너는 네트워크와 스토리지를 공유</li>
   <li></li>
 </ul>
 
-<p><img src="/public/gcp/cluster6.png" alt="" /></p>
+<p><img src="/public/gcp/cluster6.PNG" alt="" /></p>
 <ul>
   <li>POD를 정의하는 YAML 파일</li>
 </ul>
 
-<p><img src="/public/gcp/cluster7.png" alt="" /></p>
+<p><img src="/public/gcp/cluster7.PNG" alt="" /></p>
 <ul>
   <li>fail over시 대처(장애 대처)</li>
   <li>POD가 실패하면 다른 POD로 대처(YAML으로 정의)</li>
 </ul>
 
-<p><img src="/public/gcp/cluster8.png" alt="" /></p>
+<p><img src="/public/gcp/cluster8.PNG" alt="" /></p>
 
-<p><img src="/public/gcp/cluster9.png" alt="" /></p>
-
+<p><img src="/public/gcp/cluster9.PNG" alt="" /></p>
+<ul>
+  <li>마스터에 YAML파일을 배포하면 마스터가 스케줄링</li>
+  <li>스케줄은 workload, 다른 모든 작업, CPU utilization에 종속</li>
+</ul>
 
 
   
@@ -169,7 +172,7 @@ s.setAttribute('data-timestamp', +new Date());
 
     <footer>
       <span>
-        &copy; <time datetime="2019-08-17 11:25:46 +0900">2019</time> Youngwon Seo. Made with Jekyll using the <a href="https://github.com/chesterhow/tale/">Tale</a> theme.
+        &copy; <time datetime="2019-08-17 12:15:38 +0900">2019</time> Youngwon Seo. Made with Jekyll using the <a href="https://github.com/chesterhow/tale/">Tale</a> theme.
       </span>
     </footer>
   </body>
