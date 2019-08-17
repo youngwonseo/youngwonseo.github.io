@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>
+    
+      Deployments and Rolling Updates &middot; Youngwon Seo
+    
+  </title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/assets/main.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
+</head>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-118401942-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-118401942-1');
+</script>
+
+  <body>
+    <nav class="nav">
+      <div class="nav-container">
+        <a href="/">
+          <h2 class="nav-title">Youngwon Seo</h2>
+        </a>
+        <ul>
+          <li><a href="/about">About</a></li>
+          <li><a href="/">Posts</a></li>
+          <li><a href="/study"/>Study</a></li>
+          <li><a href="/ml"/>Machine Learning</a></li>
+          <li><a href="/gcp"/>GCP</a></li>
+          <!-- <li><a href="/spring"/>Spring</a></li>
+          <li><a href="/deeplearning"/>Deeplearning</a></li> -->
+        </ul>
+    </div>
+  </nav>
+
+    <main>
+      <div class="post">
+  <div class="post-info">
+    <span>Written by</span>
+    
+        Youngwon Seo
+    
+
+    
+      <br>
+      <span>on&nbsp;</span><time datetime="2019-08-16 00:00:00 +0900">August 16, 2019</time>
+    
+  </div>
+
+  <h1 class="post-title">Deployments and Rolling Updates</h1>
+  <div class="post-line"></div>
+
+  <ul>
+  <li>컨테이너 기반의 장점은 응용을 분리해서 서비스로 연결하는 것</li>
+  <li>또 다른 장점은 개발, 스테이징, 제품환경의 각 환경들을 비슷하게 유지하는것, 그래서 마이그레이션 쉬움</li>
+  <li>이를 위해 kubernetes는 deployments, replica sets이라는 도구를 제공해서 빌드 및 운영환경을 나누고 스케일하는것을 관리하게 함</li>
+  <li>이러한 툴을 사용하면 rolling updates, canaries, blue greens 업데이트를 쉽게할수 있음</li>
+</ul>
+
+<p><img src="/public/gcp/deployment1.png" alt="" /></p>
+<ul>
+  <li>deployment는 POD를 관리하고 실행하기 위해 ReplicaSets에 의존적</li>
+  <li>yaml파일에 작성한 동작 방식, 원하는 개수 등으로 POD의 수와 상태가 유지</li>
+</ul>
+
+<p><img src="/public/gcp/deployment2.png" alt="" /></p>
+<ul>
+  <li>ReplicaSet을 4로 지정</li>
+</ul>
+
+<p><img src="/public/gcp/deployment3. png" alt="" /></p>
+<ul>
+  <li>replicas가 3일때 1개가 실패(장애발생)하면 하나를 생성</li>
+</ul>
+
+<p><img src="/public/gcp/deployment4.png" alt="" /></p>
+<ul>
+  <li>3개의 POD 또는 3개의 replica를 실행하는 것이 좋음</li>
+</ul>
+
+<p><img src="/public/gcp/deployment5.png" alt="" /></p>
+<ul>
+  <li>Rolling updates를 사용하면 중단없이 이미지버전을 다른 버전으로 점진적으로 업데이트 가능</li>
+</ul>
+
+<p><img src="/public/gcp/deployment6.png" alt="" /></p>
+<ul>
+  <li>roll out없이 roll over되며 업데이트 가능</li>
+  <li>hello1 POD를 하나씩 종료하고 새로운 ReplicaSet에 hello2를 생성</li>
+  <li>프로덕션중에 수행</li>
+</ul>
+
+
+
+  
+  <div class="post-disqus">
+      <section id="disqus_thread"></section>
+      <div id="disqus_thread"></div>
+<script>
+
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+/*
+var disqus_config = function () {
+this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://youngwonseo.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+                            
+  </div>
+  
+</div>
+
+<div class="pagination">
+  
+    <a href="/2019/08/16/services-labels-selectors/" class="left arrow">&#8592;</a>
+  
+  
+    <a href="/2019/08/15/clusters-nodes-pods/" class="right arrow">&#8594;</a>
+  
+
+  <a href="#" class="top">Top</a>
+</div>
+
+    </main>
+
+    <footer>
+      <span>
+        &copy; <time datetime="2019-08-17 11:25:46 +0900">2019</time> Youngwon Seo. Made with Jekyll using the <a href="https://github.com/chesterhow/tale/">Tale</a> theme.
+      </span>
+    </footer>
+  </body>
+</html>

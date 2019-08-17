@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>
+    
+      Volumes &middot; Youngwon Seo
+    
+  </title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/assets/main.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
+</head>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-118401942-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-118401942-1');
+</script>
+
+  <body>
+    <nav class="nav">
+      <div class="nav-container">
+        <a href="/">
+          <h2 class="nav-title">Youngwon Seo</h2>
+        </a>
+        <ul>
+          <li><a href="/about">About</a></li>
+          <li><a href="/">Posts</a></li>
+          <li><a href="/study"/>Study</a></li>
+          <li><a href="/ml"/>Machine Learning</a></li>
+          <li><a href="/gcp"/>GCP</a></li>
+          <!-- <li><a href="/spring"/>Spring</a></li>
+          <li><a href="/deeplearning"/>Deeplearning</a></li> -->
+        </ul>
+    </div>
+  </nav>
+
+    <main>
+      <div class="post">
+  <div class="post-info">
+    <span>Written by</span>
+    
+        Youngwon Seo
+    
+
+    
+      <br>
+      <span>on&nbsp;</span><time datetime="2019-08-16 00:00:00 +0900">August 16, 2019</time>
+    
+  </div>
+
+  <h1 class="post-title">Volumes</h1>
+  <div class="post-line"></div>
+
+  <p><img src="/public/gcp/volume1.png" alt="" /></p>
+
+<ul>
+  <li>Docker는 컨테이너를 위한 스토리지를 제공</li>
+  <li>컨테이너, 라이프 사이클 사이의 공유를 제공하지는 않음</li>
+</ul>
+
+<p><img src="/public/gcp/volume2.png" alt="" /></p>
+<ul>
+  <li>kubernetes 볼륨을 사용하면 pod에 있는 컨테이너들이 데이터를 공유</li>
+</ul>
+
+<p><img src="/public/gcp/volume3.png" alt="" /></p>
+<ul>
+  <li>볼륨은 디렉토리일 뿐</li>
+  <li>kubectl을 통해 생성</li>
+  <li>pod 생성을 위한 yaml파일 통해 생성가능</li>
+</ul>
+
+<p><img src="/public/gcp/volume4.png" alt="" /></p>
+<ul>
+  <li>볼륨이 pod에 붙혀지고 컨테이너가 온라인 상태가 되기전 컨테이너에 할당</li>
+</ul>
+
+<p><img src="/public/gcp/volume5.png" alt="" /></p>
+
+<p><img src="/public/gcp/volume6.png" alt="" /></p>
+<ul>
+  <li>라이프 사이클 사이에 공유되는 볼륨도 존재</li>
+  <li>ConfigMap, Secret도 존재</li>
+</ul>
+
+<p><img src="/public/gcp/volume7.png" alt="" /></p>
+<ul>
+  <li>하나의 노드에 다른 어플리케이션이 존재</li>
+  <li></li>
+</ul>
+
+
+
+  
+  <div class="post-disqus">
+      <section id="disqus_thread"></section>
+      <div id="disqus_thread"></div>
+<script>
+
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+/*
+var disqus_config = function () {
+this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://youngwonseo.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+                            
+  </div>
+  
+</div>
+
+<div class="pagination">
+  
+  
+    <a href="/2019/08/16/services-labels-selectors/" class="right arrow">&#8594;</a>
+  
+
+  <a href="#" class="top">Top</a>
+</div>
+
+    </main>
+
+    <footer>
+      <span>
+        &copy; <time datetime="2019-08-17 11:25:46 +0900">2019</time> Youngwon Seo. Made with Jekyll using the <a href="https://github.com/chesterhow/tale/">Tale</a> theme.
+      </span>
+    </footer>
+  </body>
+</html>

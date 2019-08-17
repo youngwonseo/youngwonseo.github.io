@@ -42,7 +42,7 @@
           <li><a href="/">Posts</a></li>
           <li><a href="/study"/>Study</a></li>
           <li><a href="/ml"/>Machine Learning</a></li>
-          <li><a href="/people"/>People</a></li>
+          <li><a href="/gcp"/>GCP</a></li>
           <!-- <li><a href="/spring"/>Spring</a></li>
           <li><a href="/deeplearning"/>Deeplearning</a></li> -->
         </ul>
@@ -66,7 +66,36 @@
   <h1 class="post-title">자바 - String Class</h1>
   <div class="post-line"></div>
 
-  
+  <p>스트링객체는 자바에서 가장 많이 사용되는 객체입니다. 잘 사용하면 상관없지만 잘못 사용하면 메모리에 많은 영향을 줍니다.</p>
+
+<h1 id="스트링을-잘못-사용한-사례">스트링을 잘못 사용한 사례</h1>
+<p>자바의 스트링은 불변객체입니다. 즉 다음과 같은 연산을 진행할때 메모리상으로는 어떤동작이 발생하는지 생각해 봅시다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">String</span> <span class="n">str</span> <span class="o">=</span> <span class="s">""</span><span class="o">;</span>
+<span class="n">str</span> <span class="o">+=</span> <span class="s">"hi "</span><span class="o">;</span>
+<span class="n">str</span> <span class="o">+=</span> <span class="s">"My"</span><span class="o">;</span>
+<span class="n">str</span> <span class="o">+=</span> <span class="s">" "</span><span class="o">;</span>
+<span class="n">str</span> <span class="o">+=</span> <span class="s">"name"</span><span class="o">;</span>
+<span class="n">str</span> <span class="o">+=</span> <span class="s">" "</span><span class="o">;</span>
+<span class="n">str</span> <span class="o">+=</span> <span class="s">"is"</span><span class="o">;</span>
+<span class="n">str</span> <span class="o">+=</span> <span class="s">" "</span><span class="o">;</span>
+<span class="n">str</span> <span class="o">+=</span> <span class="s">"youngwon"</span><span class="o">;</span>
+</code></pre></div></div>
+
+<h1 id="stringbuilder와-stringbuffer">StringBuilder와 StringBuffer</h1>
+
+<p><strong>StringBuilder와 StringBuffer의 차이점을 아는것도 자바의 스트링을 이해하는데 있어서 중요한 요소</strong>입니다.</p>
+
+<p>StringBuffer는 쓰레드에 안전(ThreadSafe)합니다.</p>
+
+<p>#</p>
+<ul>
+  <li>String : 짧은 문자열을 더할 경우 사용</li>
+</ul>
+
+<h1 id="jdk-14와-15">JDK 1.4와 1.5</h1>
+<p>스트링 사용에 있어서 JDK 1.4와 1.5버전에 큰 차이가 생겼습니다.</p>
+
 
 
   
@@ -112,7 +141,7 @@ s.setAttribute('data-timestamp', +new Date());
 
     <footer>
       <span>
-        &copy; <time datetime="2019-08-06 18:04:09 +0900">2019</time> Youngwon Seo. Made with Jekyll using the <a href="https://github.com/chesterhow/tale/">Tale</a> theme.
+        &copy; <time datetime="2019-08-17 11:25:46 +0900">2019</time> Youngwon Seo. Made with Jekyll using the <a href="https://github.com/chesterhow/tale/">Tale</a> theme.
       </span>
     </footer>
   </body>

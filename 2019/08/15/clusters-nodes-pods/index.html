@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>
+    
+      Clusters, Nodes, and Pods &middot; Youngwon Seo
+    
+  </title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/assets/main.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
+</head>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-118401942-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-118401942-1');
+</script>
+
+  <body>
+    <nav class="nav">
+      <div class="nav-container">
+        <a href="/">
+          <h2 class="nav-title">Youngwon Seo</h2>
+        </a>
+        <ul>
+          <li><a href="/about">About</a></li>
+          <li><a href="/">Posts</a></li>
+          <li><a href="/study"/>Study</a></li>
+          <li><a href="/ml"/>Machine Learning</a></li>
+          <li><a href="/gcp"/>GCP</a></li>
+          <!-- <li><a href="/spring"/>Spring</a></li>
+          <li><a href="/deeplearning"/>Deeplearning</a></li> -->
+        </ul>
+    </div>
+  </nav>
+
+    <main>
+      <div class="post">
+  <div class="post-info">
+    <span>Written by</span>
+    
+        Youngwon Seo
+    
+
+    
+      <br>
+      <span>on&nbsp;</span><time datetime="2019-08-15 00:00:00 +0900">August 15, 2019</time>
+    
+  </div>
+
+  <h1 class="post-title">Clusters, Nodes, and Pods</h1>
+  <div class="post-line"></div>
+
+  <p>컨테이너를 사용하면 어플리케이션을 하드웨어, 소프트웨어, OS 요구사항에 맞게 모듈화 할 수 있습니다. 또한 같은 머신 또는 다른 머신에서 실행하고 빠르게 시작,정지할 수 있습니다.
+하지만 머신 또는 컨테이너의 수, 실패에 대한 예외처리, 다른 컨테이너 또는 다른 스토리지들과의 연결에 대한 관리를 지원하지 않는데 이를 위해 Kubernates같은 컨테이너 오케스트레이션 시스템을 사용합니다.</p>
+
+<p>Kubernetes는 실행할 머신의 수, 배포할 컨테이너의 수, 확장, 스토리지, 컨테이너 그룹에 대한 배포 등을 정의합니다.</p>
+
+<p>opensource orchestrator for a container environment</p>
+
+<p>여기서는 Kubernetes의 사용 및 세팅, 컨테이너 셋을 관리하는 컨테이너 엔진(GCP), 어플리케이션 호스팅을 위한 서비스안의 그룹</p>
+
+<p><img src="/public/gcp/cluster1.png" alt="" /></p>
+<ul>
+  <li>마스터 클러스터 서버 - 모든 작업 및 스케줄 제어, etcd, apiserver 제어</li>
+  <li>쿠버네티스는 도커와 컨테이너 환경을 클러스터 환경에서 실행</li>
+  <li>kubelet(Kubernetes agent)을 실행하는 Node들</li>
+</ul>
+
+<p><img src="/public/gcp/cluster2.png" alt="" /></p>
+<ul>
+  <li>개발자는 오직 API에 접근에만 관심</li>
+  <li>개발자들이 open API접근하여 프로그래밍 할수 있도록 제공</li>
+</ul>
+
+<p><img src="/public/gcp/cluster3.png" alt="" /></p>
+<ul>
+  <li>클러스터안에 모든 노드들이 관리</li>
+  <li>모든것들은 kubernetes가 관리</li>
+  <li>문제가 발생하면 kubernetes가 jobs을 관리</li>
+  <li>kubernetes는 작업을 여러 노드에 위임</li>
+</ul>
+
+<p><img src="/public/gcp/cluster4.png" alt="" /></p>
+<ul>
+  <li>실제 시스템에서 클러스터는 1000개의 노드와 여러개의 마스터를 가지고 있음</li>
+  <li>해당 시스템의 장점은 작업이 많은 노드의 job을 작업이 없는 노드로 배치하는 것</li>
+</ul>
+
+<p><img src="/public/gcp/cluster5.png" alt="" /></p>
+<ul>
+  <li>Pod는 VM과 유사</li>
+  <li>하나의 컨테이너는 네트워크와 스토리지를 공유</li>
+  <li></li>
+</ul>
+
+<p><img src="/public/gcp/cluster6.png" alt="" /></p>
+<ul>
+  <li>POD를 정의하는 YAML 파일</li>
+</ul>
+
+<p><img src="/public/gcp/cluster7.png" alt="" /></p>
+<ul>
+  <li>fail over시 대처(장애 대처)</li>
+  <li>POD가 실패하면 다른 POD로 대처(YAML으로 정의)</li>
+</ul>
+
+<p><img src="/public/gcp/cluster8.png" alt="" /></p>
+
+<p><img src="/public/gcp/cluster9.png" alt="" /></p>
+
+
+
+  
+  <div class="post-disqus">
+      <section id="disqus_thread"></section>
+      <div id="disqus_thread"></div>
+<script>
+
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+/*
+var disqus_config = function () {
+this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://youngwonseo.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+                            
+  </div>
+  
+</div>
+
+<div class="pagination">
+  
+    <a href="/2019/08/16/deployments-and-rolling-updates/" class="left arrow">&#8592;</a>
+  
+  
+    <a href="/2019/08/14/what-is-docker/" class="right arrow">&#8594;</a>
+  
+
+  <a href="#" class="top">Top</a>
+</div>
+
+    </main>
+
+    <footer>
+      <span>
+        &copy; <time datetime="2019-08-17 11:25:46 +0900">2019</time> Youngwon Seo. Made with Jekyll using the <a href="https://github.com/chesterhow/tale/">Tale</a> theme.
+      </span>
+    </footer>
+  </body>
+</html>

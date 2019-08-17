@@ -2,6 +2,34 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     
     <url>
+        <loc>http://localhost:4000/2019/08/16/volumes/</loc>
+    </url>
+    
+    <url>
+        <loc>http://localhost:4000/2019/08/16/services-labels-selectors/</loc>
+    </url>
+    
+    <url>
+        <loc>http://localhost:4000/2019/08/16/deployments-and-rolling-updates/</loc>
+    </url>
+    
+    <url>
+        <loc>http://localhost:4000/2019/08/15/clusters-nodes-pods/</loc>
+    </url>
+    
+    <url>
+        <loc>http://localhost:4000/2019/08/14/what-is-docker/</loc>
+    </url>
+    
+    <url>
+        <loc>http://localhost:4000/2019/08/13/what-are-container/</loc>
+    </url>
+    
+    <url>
+        <loc>http://localhost:4000/2019/08/08/data-tensor/</loc>
+    </url>
+    
+    <url>
         <loc>http://localhost:4000/2019/08/01/backpropagation/</loc>
     </url>
     
@@ -331,6 +359,14 @@
     
     <url>
         <loc>http://localhost:4000/about/</loc>
+    </url>
+    
+    
+    
+    
+    
+    <url>
+        <loc>http://localhost:4000/gcp/</loc>
     </url>
     
     
