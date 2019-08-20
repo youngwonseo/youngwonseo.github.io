@@ -2,6 +2,14 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     
     <url>
+        <loc>http://localhost:4000/2019/08/17/creating-cd-pipeline/</loc>
+    </url>
+    
+    <url>
+        <loc>http://localhost:4000/2019/08/17/canary-blue-green/</loc>
+    </url>
+    
+    <url>
         <loc>http://localhost:4000/2019/08/16/volumes/</loc>
     </url>
     

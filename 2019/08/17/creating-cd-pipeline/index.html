@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>
+    
+      Creating a Continuous Delivery Pipeline &middot; Youngwon Seo
+    
+  </title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/assets/main.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
+</head>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-118401942-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-118401942-1');
+</script>
+
+  <body>
+    <nav class="nav">
+      <div class="nav-container">
+        <a href="/">
+          <h2 class="nav-title">Youngwon Seo</h2>
+        </a>
+        <ul>
+          <li><a href="/about">About</a></li>
+          <li><a href="/">Posts</a></li>
+          <li><a href="/study"/>Study</a></li>
+          <li><a href="/ml"/>Machine Learning</a></li>
+          <li><a href="/gcp"/>GCP</a></li>
+          <!-- <li><a href="/spring"/>Spring</a></li>
+          <li><a href="/deeplearning"/>Deeplearning</a></li> -->
+        </ul>
+    </div>
+  </nav>
+
+    <main>
+      <div class="post">
+  <div class="post-info">
+    <span>Written by</span>
+    
+        Youngwon Seo
+    
+
+    
+      <br>
+      <span>on&nbsp;</span><time datetime="2019-08-17 00:00:00 +0900">August 17, 2019</time>
+    
+  </div>
+
+  <h1 class="post-title">Creating a Continuous Delivery Pipeline</h1>
+  <div class="post-line"></div>
+
+  <p>이번에는 Continous Deliivery Pipeline을 배포하는 방법을 살펴보겠습니다. 이것은 build, stage, test, deploy를 automated triggers나 manual approvals을 사용해서 가능하게 합니다. 이를 위해 Jenkins와 Spinnaker 사용많이 사용합니다.</p>
+<ul>
+  <li>Jenkins가 인기는 더 많음</li>
+  <li>Spinnaker는 Netflix에서 개발, Kubernetes engine, AWS 등에서 클라우드 서비스를 위해 사용</li>
+</ul>
+
+<p><img src="/public/gcp/pipeline1.PNG" alt="" /></p>
+<ul>
+  <li>Continuous Delivery를 사용하여 build, test, deploy할 응용의 환경입니다.</li>
+  <li>일반적인 frontend 와 backend가 존재</li>
+  <li>2개의 service가 존재, 각 서비스는 각각의 pod을 가짐</li>
+  <li>single cluster에서 운영됨</li>
+</ul>
+
+<p><img src="/public/gcp/pipeline2.PNG" alt="" /></p>
+<ul>
+  <li>응용 업데이트에 대한 continuously deliver을 제공하기 위해 reliablly build, test, update가 자동화되어야 함</li>
+  <li>code change는 artifact creation, unit testing, functional testing, production rollout이 포함된 pipeline에서 자동적으로 수행되어야 함</li>
+  <li>특정경우 업데이트 결과를 일부 사용자들에게만 제공하여 운영(실패시 roll back)</li>
+</ul>
+
+<h2 id="cloud-build-spinnaker를-사용한-continous-delivery">Cloud Build, Spinnaker를 사용한 Continous delivery</h2>
+<p><img src="/public/gcp/pipeline3.PNG" alt="" /></p>
+<ul>
+  <li>Git tag를 사용해서 app생성, 특정 Git tag를 가진 소스가 변경(push)되면 Cloud Build가 작동(trigger)하도록 설정(Git repository또는 Cloud source repository)</li>
+  <li>Cloud Build에서 produce artifacts(Docker images, unit test 실행, push image to Spinnaker for deployment) 설정</li>
+  <li>Cloud Build는 각 build 단계를 Docker container안에서 실행</li>
+  <li>Cloud Build 또는 custom build steps을 사용가능</li>
+  <li>Continous delibery pipeline의 마지막 단계는 Spinnaker를 사용해서 canary 버전에 배포하는것</li>
+  <li>이후 production 환경에 자동으로 배포</li>
+</ul>
+
+<h2 id="jenkins의-pipeline">Jenkins의 Pipeline</h2>
+<p><img src="/public/gcp/pipeline4.PNG" alt="" /></p>
+<ul>
+  <li>Jenkins을 사용한 pipeline 구축도 위 환경과 비슷</li>
+  <li>위 그림의 blue boxes가 Jenkins의 build, Gray boxes는 deploy</li>
+  <li>Dev environment에서 실제 운영환경과 비슷하게 테스트</li>
+  <li>Canary가 verify되면 production에 merge</li>
+</ul>
+
+<h2 id="jenkins-application-configuration-wizard">Jenkins application configuration wizard</h2>
+<p><img src="/public/gcp/pipeline5.PNG" alt="" /></p>
+
+<h2 id="example-of-a-jenkins-pipeline-file">Example of a Jenkins pipeline file</h2>
+<p><img src="/public/gcp/pipeline6.PNG" alt="" /></p>
+
+<h2 id="pipeline이-설정이-되어서-운영되는-예제">Pipeline이 설정이 되어서 운영되는 예제</h2>
+<p><img src="/public/gcp/pipeline7.PNG" alt="" /></p>
+
+<h2 id="각-항목의-설정파일">각 항목의 설정파일</h2>
+<p><img src="/public/gcp/pipeline8.PNG" alt="" /></p>
+<ul>
+  <li>left : server</li>
+  <li>middle : production deployment</li>
+  <li>right : canary deployment</li>
+</ul>
+
+
+
+  
+  <div class="post-disqus">
+      <section id="disqus_thread"></section>
+      <div id="disqus_thread"></div>
+<script>
+
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+/*
+var disqus_config = function () {
+this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://youngwonseo.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+                            
+  </div>
+  
+</div>
+
+<div class="pagination">
+  
+  
+    <a href="/2019/08/17/canary-blue-green/" class="right arrow">&#8594;</a>
+  
+
+  <a href="#" class="top">Top</a>
+</div>
+
+    </main>
+
+    <footer>
+      <span>
+        &copy; <time datetime="2019-08-20 15:58:37 +0900">2019</time> Youngwon Seo. Made with Jekyll using the <a href="https://github.com/chesterhow/tale/">Tale</a> theme.
+      </span>
+    </footer>
+  </body>
+</html>
