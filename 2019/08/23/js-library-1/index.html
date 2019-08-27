@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>
+    
+      자바스크립트 라이브러리 분석 #1 &middot; Youngwon Seo
+    
+  </title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/assets/main.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
+</head>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-118401942-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-118401942-1');
+</script>
+
+  <body>
+    <nav class="nav">
+      <div class="nav-container">
+        <a href="/">
+          <h2 class="nav-title">Youngwon Seo</h2>
+        </a>
+        <ul>
+          <li><a href="/about">About</a></li>
+          <li><a href="/">Posts</a></li>
+          <li><a href="/study"/>Study</a></li>
+          <li><a href="/ml"/>Machine Learning</a></li>
+          <li><a href="/gcp"/>GCP</a></li>
+          <!-- <li><a href="/spring"/>Spring</a></li>
+          <li><a href="/deeplearning"/>Deeplearning</a></li> -->
+        </ul>
+    </div>
+  </nav>
+
+    <main>
+      <div class="post">
+  <div class="post-info">
+    <span>Written by</span>
+    
+        Youngwon Seo
+    
+
+    
+      <br>
+      <span>on&nbsp;</span><time datetime="2019-08-23 00:00:00 +0900">August 23, 2019</time>
+    
+  </div>
+
+  <h1 class="post-title">자바스크립트 라이브러리 분석 #1</h1>
+  <div class="post-line"></div>
+
+  <p>자바스크립트(JS) 라이브러리를 개발하기에 앞서 여러가지 JS라이브러리를 분석해보겠습니다. 처음부터 무겁고 복잡한 라이브러리를 분석하기보다는 상대적으로 소스가 간결한 라이브러리를 분석함으로써 전체적인 구조 위주먼저 파악하고 점차 복잡한 라이브러리의 세부사항들을 알아보겠습니다.</p>
+
+<h3 id="여기서-분석하는-js라이브러리">여기서 분석하는 JS라이브러리</h3>
+<ul>
+  <li>CountUp.js (250 line)</li>
+  <li>Numeral.js (700 line)</li>
+</ul>
+
+<h2 id="countupjs">CountUp.js</h2>
+<ul>
+  <li>https://github.com/inorganik/countUp.js/blob/master/dist/countUp.js</li>
+</ul>
+
+<p>먼저 전역(global)에 CountUp 변수를 선언하고 즉시실행함수에서 반환하는 객체를 대입합니다. 즉시실행함수에는 CountUp의 생성자와 관련 변수, 함수(프로토타입)들이 정의되어 있습니다.</p>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">CountUp</span> <span class="o">=</span> <span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
+  <span class="kd">function</span> <span class="nx">CountUp</span><span class="p">(</span><span class="nx">target</span><span class="p">,</span> <span class="nx">endVal</span><span class="p">,</span> <span class="nx">options</span><span class="p">){</span>
+    <span class="p">...</span>
+  <span class="p">}</span>
+  <span class="nx">CountUp</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="o">***</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{};</span>
+  <span class="p">...</span>
+  <span class="k">return</span> <span class="nx">CountUp</span><span class="p">;</span>
+<span class="p">}());</span>
+</code></pre></div></div>
+
+<p>CountUp.js는 전체 코드 중 생성자가 반 이상입니다.</p>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">CountUp</span><span class="p">(</span><span class="nx">target</span><span class="p">,</span> <span class="nx">endVal</span><span class="p">,</span> <span class="nx">options</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">_this</span> <span class="o">=</span> <span class="k">this</span><span class="p">;</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">target</span> <span class="o">=</span> <span class="nx">target</span><span class="p">;</span>
+  <span class="p">..</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">defaults</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="na">startVal</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+<p>먼저 _this에 this를 담고 있습니다. 이것은 생성자내부에서 아래에 정의하는 함수(count)에서 CountUp을 접근하기 위해 정의하는 변수입니다. 자바스크립트는 this의 기준이 함수(function)이기 때문에 count에서의 this는 count이지 CountUp이 아니기 때문입니다.</p>
+
+<p>다음은 매개변수로 넘어로는 target, endVal등을 담고 필요한 변수를 초기화 합니다. 초기화 되는 변수중 object로 정의되는 defaults가 존재합니다. 이 defaults는 사실상 매개변수의 options에 지정되는 해당 라이브러리 사용에 대한 옵션값들인데 생성자의 아래부분에 다음과 같은 코드를 통해 options의 내용을 대체합니다.</p>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">this</span><span class="p">.</span><span class="nx">options</span> <span class="o">=</span> <span class="nx">__assign</span><span class="p">({},</span> <span class="k">this</span><span class="p">.</span><span class="nx">defaults</span><span class="p">,</span> <span class="nx">options</span><span class="p">);</span>
+</code></pre></div></div>
+<p>위 구문은 this.defaults과 options을 합친 객체를 빈객체인 {}에 담아 반환한다는 의미인데, 이때 기준이 defaults이며 options에 같은 이름의 맴버가 존재하면 options의 값을 사용한다는 의미입니다. __assing함수는 countUp.js파일의 가장 위에 선언되어 있습니다. 만약 Jquery를 사용한다면 extend를 사용하는 것과 같습니다. 이러한 방식은 js라이브러리에서 옵션값(사용자의 선택값)을 받을때 거의 필수적으로 사용되는 방식입니다.</p>
+
+<p>생성자에 count, formatNumber등의 함수가 존재하고 생성자 밖에 prototype으로 선언된 함수가 존재합니다. 함수정의를 둘로 구분하는것은 prototype로 정의된 함수는 CountJs객체를 여러번 생성했을때도 같은 함수(실제로는 메모리상에 로드된 함수)를 공유한다는 것입니다. 즉, 생성자내부의 prototype명시없이 생성된 함수는 한 페이지에서 CountJS를 여러번 생성하면 각 CountJS가 각각의 함수들을 가지지만 prototype으로 선언된 함수는 모든 CountJS가 공유를 합니다. 이것은 생성된 각각의 CountJS가 별도의 함수들을 가져야 할때, 즉 필요에 따라 실행될 함수의 내용이 각각필요한경우 prototype을 사용하지 않은 함수를 통해 실행루틴을 정하기 때문입니다. 여기서도 옵션에 따라 함수를 각각 지정하기 도합니다.</p>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">this</span><span class="p">.</span><span class="nx">formattingFn</span> <span class="o">=</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">options</span><span class="p">.</span><span class="nx">formattingFn</span><span class="p">)</span> <span class="p">?</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">options</span><span class="p">.</span><span class="nx">formattingFn</span> <span class="p">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">formatNumber</span><span class="p">;</span>
+</code></pre></div></div>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">CountUp</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">start</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">callback</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">callback</span> <span class="o">=</span> <span class="nx">callback</span><span class="p">;</span>
+  <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">duration</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">determineDirectionAndSmartEasing</span><span class="p">();</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">paused</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">rAF</span> <span class="o">=</span> <span class="nx">requestAnimationFrame</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">count</span><span class="p">);</span>
+  <span class="p">}</span>
+  <span class="k">else</span> <span class="p">{</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">printValue</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">endVal</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+<p>위 코드는 prototype으로 정의된 start함수입니다. 저기서의 this는 CountUp 객체를 의미하고 특정 상황에 따라 동작루틴이 분기되어 있습니다.</p>
+
+<p>세부적인 코드는 각자 분석해보기로하며 전체적인 틀이 어떻게 되어있는지 상기하며 다음 라이브러리를 분석해 봅시다.</p>
+
+<h2 id="numeraljs">Numeral.js</h2>
+<ul>
+  <li>https://github.com/adamwdraper/Numeral-js/blob/master/src/numeral.js</li>
+</ul>
+
+<p>Numeral.js는 CountUp.js비하면 상대적으로 코드가 길지만 위와 마찮가지로 전체적인 틀만 분석합니다.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nb">global</span><span class="p">,</span> <span class="nx">factory</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="k">typeof</span> <span class="nx">define</span> <span class="o">===</span> <span class="s1">'function'</span> <span class="o">&amp;&amp;</span> <span class="nx">define</span><span class="p">.</span><span class="nx">amd</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">define</span><span class="p">(</span><span class="nx">factory</span><span class="p">);</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="k">typeof</span> <span class="nx">module</span> <span class="o">===</span> <span class="s1">'object'</span> <span class="o">&amp;&amp;</span> <span class="nx">module</span><span class="p">.</span><span class="nx">exports</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="nx">factory</span><span class="p">();</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="nb">global</span><span class="p">.</span><span class="nx">numeral</span> <span class="o">=</span> <span class="nx">factory</span><span class="p">();</span>
+    <span class="p">}</span>
+<span class="p">}(</span><span class="k">this</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">numeral</span><span class="p">,</span>
+      <span class="p">...</span>
+  <span class="kd">function</span> <span class="nx">Numeral</span><span class="p">(</span><span class="nx">input</span><span class="p">,</span> <span class="nx">number</span><span class="p">)</span> <span class="p">{</span>
+    <span class="p">...</span>
+  <span class="p">};</span>
+  <span class="nx">numeral</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">input</span><span class="p">){</span>
+    <span class="p">..</span>
+    <span class="k">return</span> <span class="k">new</span> <span class="nx">Numeral</span><span class="p">(</span><span class="nx">input</span><span class="p">,</span> <span class="nx">value</span><span class="p">);</span>
+  <span class="p">}</span>
+  <span class="nx">numeral</span><span class="p">.</span><span class="nx">_</span> <span class="o">=</span> <span class="nx">_</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="p">...</span>
+  <span class="p">};</span>
+  <span class="p">...</span>
+
+  <span class="k">return</span> <span class="nx">numeral</span><span class="p">;</span>
+<span class="p">}));</span>
+</code></pre></div></div>
+<p>전체적인 구조가 CountUp과는 차이가 있습니다. 먼저 전역에 즉시실행함수로 해당 라이브러리에 대한 객체를 대입하는것이 아닌 (function(global, factory)){} 구문으로 몇 가지 분기를 결정합니다. 이것은 JS에 대한 여러가지 모듈 로딩방식에 따른 라이브러리 사용을 지원하기 위한 코드입니다. 전체 함수의 매개변수를 살펴보면 this와 function(){..} 인데 각각 global과 factory에 대입되어 global은 말그대로 전역, factory는 Numeral에 대한 객체가 됩니다. 즉 즉시실행함수를 통해 define, modeuls.exports, global.numeral중 정의하는 방식을 선택하는 것입니다.</p>
+
+<p>이번에는 factory에 해당하는 즉시실행함수를 살펴보겠습니다. 내부에 필요한 변수들을 선언하고 Numeral객체가 정의되어있습니다. numeral가 Numeral객체를 생성하고 반환하는 함수로 정의되어 있습니다.</p>
+
+<p>numeral 함수 내부에서 사용되는 helper함수들이 _(underbar)에 객체의 맴버들로 정의되어 있습니다. 또한 전체 코드중 helper함수가 상당 차지하고 있습니다.</p>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">nummeral</span><span class="p">.</span><span class="nx">_</span> <span class="o">=</span> <span class="nx">_</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">numberToFormat</span><span class="p">:</span> <span class="kd">function</span><span class="p">(...){...},</span>
+  <span class="na">stringToNumber</span><span class="p">:</span> <span class="kd">function</span><span class="p">(...){...}</span>
+  <span class="p">...</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>prototype은 다음과 같이 정의되어 있습니다.</p>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">numeral</span><span class="p">.</span><span class="nx">fn</span> <span class="o">=</span> <span class="nx">Numeral</span><span class="p">.</span><span class="nx">prototype</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">clone</span><span class="p">:</span> <span class="kd">function</span><span class="p">(){</span>
+    <span class="p">...</span>
+  <span class="p">},</span>
+  <span class="na">format</span> <span class="p">:</span> <span class="kd">function</span><span class="p">(...){</span>
+    <span class="p">...</span>
+  <span class="p">},</span>
+  <span class="p">...</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Numeral은 CountUp과 다르게 초기 option값이 지정되지는 않습니다. 필요시 함수에 대한 매개변수로 처리합니다.</p>
+
+
+
+  
+  <div class="post-disqus">
+      <section id="disqus_thread"></section>
+      <div id="disqus_thread"></div>
+<script>
+
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+/*
+var disqus_config = function () {
+this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://youngwonseo.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+                            
+  </div>
+  
+</div>
+
+<div class="pagination">
+  
+    <a href="/2019/08/23/03-convolutional-neural-network/" class="left arrow">&#8592;</a>
+  
+  
+    <a href="/2019/08/22/what-is-gcp/" class="right arrow">&#8594;</a>
+  
+
+  <a href="#" class="top">Top</a>
+</div>
+
+    </main>
+
+    <footer>
+      <span>
+        &copy; <time datetime="2019-08-26 15:08:27 +0900">2019</time> Youngwon Seo. Made with Jekyll using the <a href="https://github.com/chesterhow/tale/">Tale</a> theme.
+      </span>
+    </footer>
+  </body>
+</html>

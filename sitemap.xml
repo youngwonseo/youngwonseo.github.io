@@ -2,6 +2,38 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     
     <url>
+        <loc>http://localhost:4000/2019/08/24/04-deep-learning-with-flask/</loc>
+    </url>
+    
+    <url>
+        <loc>http://localhost:4000/2019/08/23/how-is-gcp-build/</loc>
+    </url>
+    
+    <url>
+        <loc>http://localhost:4000/2019/08/23/03-convolutional-neural-network/</loc>
+    </url>
+    
+    <url>
+        <loc>http://localhost:4000/2019/08/23/js-library-1/</loc>
+    </url>
+    
+    <url>
+        <loc>http://localhost:4000/2019/08/22/what-is-gcp/</loc>
+    </url>
+    
+    <url>
+        <loc>http://localhost:4000/2019/08/22/gcp-funcdamentals-core-intrastructure/</loc>
+    </url>
+    
+    <url>
+        <loc>http://localhost:4000/2019/08/22/02-neural-network/</loc>
+    </url>
+    
+    <url>
+        <loc>http://localhost:4000/2019/08/21/01-regression/</loc>
+    </url>
+    
+    <url>
         <loc>http://localhost:4000/2019/08/17/creating-cd-pipeline/</loc>
     </url>
     
@@ -483,6 +515,14 @@
     
     <url>
         <loc>http://localhost:4000/page9/</loc>
+    </url>
+    
+    
+    
+    
+    
+    <url>
+        <loc>http://localhost:4000/page10/</loc>
     </url>
     
     
