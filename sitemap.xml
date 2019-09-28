@@ -2,6 +2,26 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     
     <url>
+        <loc>http://localhost:4000/2019/09/28/bean-definition-inheritance/</loc>
+    </url>
+    
+    <url>
+        <loc>http://localhost:4000/2019/09/03/firebase-messaging/</loc>
+    </url>
+    
+    <url>
+        <loc>http://localhost:4000/2019/09/02/sw-push/</loc>
+    </url>
+    
+    <url>
+        <loc>http://localhost:4000/2019/08/31/dp-example/</loc>
+    </url>
+    
+    <url>
+        <loc>http://localhost:4000/2019/08/30/js-library-2/</loc>
+    </url>
+    
+    <url>
         <loc>http://localhost:4000/2019/08/24/04-deep-learning-with-flask/</loc>
     </url>
     
@@ -67,6 +87,10 @@
     
     <url>
         <loc>http://localhost:4000/2019/08/08/data-tensor/</loc>
+    </url>
+    
+    <url>
+        <loc>http://localhost:4000/2019/08/04/classification-multivariate-time-series/</loc>
     </url>
     
     <url>
@@ -523,6 +547,14 @@
     
     <url>
         <loc>http://localhost:4000/page10/</loc>
+    </url>
+    
+    
+    
+    
+    
+    <url>
+        <loc>http://localhost:4000/page11/</loc>
     </url>
     
     
