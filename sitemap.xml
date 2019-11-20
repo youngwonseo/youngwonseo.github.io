@@ -2,6 +2,82 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     
     <url>
+        <loc>http://localhost:4000/2019/11/16/07-02-keras/</loc>
+    </url>
+    
+    <url>
+        <loc>http://localhost:4000/2019/11/16/07-01-keras/</loc>
+    </url>
+    
+    <url>
+        <loc>http://localhost:4000/2019/11/15/06-03-keras/</loc>
+    </url>
+    
+    <url>
+        <loc>http://localhost:4000/2019/11/15/06-02-keras/</loc>
+    </url>
+    
+    <url>
+        <loc>http://localhost:4000/2019/11/15/06-01-keras/</loc>
+    </url>
+    
+    <url>
+        <loc>http://localhost:4000/2019/11/15/03-informed_search/</loc>
+    </url>
+    
+    <url>
+        <loc>http://localhost:4000/2019/11/15/02-alpha-beta-pruning/</loc>
+    </url>
+    
+    <url>
+        <loc>http://localhost:4000/2019/11/15/01-minmax-search/</loc>
+    </url>
+    
+    <url>
+        <loc>http://localhost:4000/2019/11/12/04-01-keras/</loc>
+    </url>
+    
+    <url>
+        <loc>http://localhost:4000/2019/11/11/03-04-keras/</loc>
+    </url>
+    
+    <url>
+        <loc>http://localhost:4000/2019/11/11/03-03-keras/</loc>
+    </url>
+    
+    <url>
+        <loc>http://localhost:4000/2019/11/10/03-02-keras/</loc>
+    </url>
+    
+    <url>
+        <loc>http://localhost:4000/2019/11/10/03-01-keras/</loc>
+    </url>
+    
+    <url>
+        <loc>http://localhost:4000/2019/10/05/spel/</loc>
+    </url>
+    
+    <url>
+        <loc>http://localhost:4000/2019/10/01/06-svm/</loc>
+    </url>
+    
+    <url>
+        <loc>http://localhost:4000/2019/10/01/03-classification/</loc>
+    </url>
+    
+    <url>
+        <loc>http://localhost:4000/2019/09/30/python-cheat-sheet/</loc>
+    </url>
+    
+    <url>
+        <loc>http://localhost:4000/2019/09/30/02-ml-project2/</loc>
+    </url>
+    
+    <url>
+        <loc>http://localhost:4000/2019/09/30/02-ml-project1/</loc>
+    </url>
+    
+    <url>
         <loc>http://localhost:4000/2019/09/28/bean-definition-inheritance/</loc>
     </url>
     
@@ -10,27 +86,7 @@
     </url>
     
     <url>
-        <loc>http://localhost:4000/2019/09/02/sw-push/</loc>
-    </url>
-    
-    <url>
-        <loc>http://localhost:4000/2019/08/31/dp-example/</loc>
-    </url>
-    
-    <url>
-        <loc>http://localhost:4000/2019/08/30/js-library-2/</loc>
-    </url>
-    
-    <url>
-        <loc>http://localhost:4000/2019/08/24/04-deep-learning-with-flask/</loc>
-    </url>
-    
-    <url>
         <loc>http://localhost:4000/2019/08/23/how-is-gcp-build/</loc>
-    </url>
-    
-    <url>
-        <loc>http://localhost:4000/2019/08/23/03-convolutional-neural-network/</loc>
     </url>
     
     <url>
@@ -43,14 +99,6 @@
     
     <url>
         <loc>http://localhost:4000/2019/08/22/gcp-funcdamentals-core-intrastructure/</loc>
-    </url>
-    
-    <url>
-        <loc>http://localhost:4000/2019/08/22/02-neural-network/</loc>
-    </url>
-    
-    <url>
-        <loc>http://localhost:4000/2019/08/21/01-regression/</loc>
     </url>
     
     <url>
@@ -86,19 +134,7 @@
     </url>
     
     <url>
-        <loc>http://localhost:4000/2019/08/08/data-tensor/</loc>
-    </url>
-    
-    <url>
-        <loc>http://localhost:4000/2019/08/04/classification-multivariate-time-series/</loc>
-    </url>
-    
-    <url>
         <loc>http://localhost:4000/2019/08/01/backpropagation/</loc>
-    </url>
-    
-    <url>
-        <loc>http://localhost:4000/2019/07/31/ml-references/</loc>
     </url>
     
     <url>
@@ -115,10 +151,6 @@
     
     <url>
         <loc>http://localhost:4000/2019/07/17/01-scala-start/</loc>
-    </url>
-    
-    <url>
-        <loc>http://localhost:4000/2019/07/16/cho/</loc>
     </url>
     
     <url>
@@ -430,7 +462,7 @@
     
     
     <url>
-        <loc>http://localhost:4000/gcp/</loc>
+        <loc>http://localhost:4000/cicd/</loc>
     </url>
     
     
@@ -555,6 +587,14 @@
     
     <url>
         <loc>http://localhost:4000/page11/</loc>
+    </url>
+    
+    
+    
+    
+    
+    <url>
+        <loc>http://localhost:4000/page12/</loc>
     </url>
     
     

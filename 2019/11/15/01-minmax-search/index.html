@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>
+    
+      Minmax Search &middot; Youngwon Seo
+    
+  </title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/assets/main.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
+</head>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-118401942-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-118401942-1');
+</script>
+
+  <body>
+    <nav class="nav">
+      <div class="nav-container">
+        <a href="/">
+          <h2 class="nav-title">Youngwon Seo</h2>
+        </a>
+        <ul>
+          <li><a href="/about">About</a></li>
+          <li><a href="/">Posts</a></li>
+          <li><a href="/study"/>Study</a></li>
+          <li><a href="/ml"/>Machine Learning</a></li>
+          <li><a href="/cicd"/>CI/CD</a></li>
+          <!-- <li><a href="/spring"/>Spring</a></li>
+          <li><a href="/deeplearning"/>Deeplearning</a></li> -->
+        </ul>
+    </div>
+  </nav>
+
+    <main>
+      <div class="post">
+  <div class="post-info">
+    <span>Written by</span>
+    
+        Youngwon Seo
+    
+
+    
+      <br>
+      <span>on&nbsp;</span><time datetime="2019-11-15 00:00:00 +0900">November 15, 2019</time>
+    
+  </div>
+
+  <h1 class="post-title">Minmax Search</h1>
+  <div class="post-line"></div>
+
+  <p>Minmax Search는 Adversarial Search 알고리즘으로써 두 에이전트(플레이어)가 게임을 시행할 때 앞의 몇수를 계산하는 알고리즘입니다. 여기서는 Minmax Search를 설명하기 위해 틱택톡 게임을 예로 설명하겠습니다(Tic-Tac-Toe : 3X3의 보드에 3개의 돌이 연속적으로 열,행 혹은 대각선이 되도록 먼저 두는자가 승리하는 게임이다. 한국의 오목과 유사하다).</p>
+
+<p><img src="/public/ai/01_minmax.png" alt="" /></p>
+
+<p>위의 트리는 Minmax Search의 결과 트리로써 Minmax Search Tree라 불린다. 원은 MAX(여기서는 나의 턴), 네모는 MIN(여기서는 적의턴)을 나타낸다. 각 노드의 숫자가 나타내는 값은 손실의 정도를 나타내는데 MAX는 자식 중 최대값을 선택하고 MIN은 자식 중 최소값을 선택한다. 각 숫자는 아래의 평가함수e에 의해 결정되는데 MAX는 숫자가 큰값을 선택해야 자신이 이길 경우의 수가 더 많은 방향으로 나아갈 수 있고 MIN은 숫자가 작은 값을 선택해야 자신이 이길 경우의 수가 더 많은 방향으로 나아갈 수 있기 때문이다. 트리를 깊게 구성할수록 더 많은 앞의 수를 계산하지만 한단계만 더 계산할려고 하더라고 트리가 깊어지면 복잡도(알고리즘의 시간적 복잡도)가 증가하여 필요에 따라 적당한 계산을 하여야 한다.(티택톡 같은 경우는 모든 경우가 계산가능하지만 체스같이 게임보드가 크면 굉장히 오랜시간이 걸린다)</p>
+
+<p>평가함수e :</p>
+
+<p>만일 p가 양쪽 모두에게 이기는 상태가 아니라면
+    e(p) = (MAX에게 가능한 행,열,대각선의 수) - (MIN에게 가능한 행,열,대각선의 수)</p>
+
+<p>만일 p가 MAX가 이기는 상태라면
+    e(p) = infinity</p>
+
+<p>만일 P가 MIN이 이기는 상태라면
+    e(p) = -infinity</p>
+
+<p><img src="/public/ai/01_minmax.git" alt="" /></p>
+
+<p>위의 그림은 게임이 시작할 때의 상태를 나타낸다. MAX는 처음 3개의 경우(9가지지만 3그룹으로 같은 진행성질을 보인다)의 수에 대해 진행 할 수 있는데 위의 그림에서 깊이가 1인 노드들에 해당한다. 그리고 한 수를 더보아서 MIN이 진행할 수 있는 경우를 살펴보면 MAX가 2X2위치에 돌을 놓았을 때 MIN이 2가지 경우로 방어를 한다. 6-4=2란 6가지의 MAX가 이길수 있는 경우의 수이고 4개의 MIN이 이길 경우의 수이다. MIN은 당연히 자신이 이길 경우의 수가 많은 쪽을 선택하므로 1을선택한다. 이런식으로 탐색이 진행되면 위와 같은 트리를 구성할 수 있다. 아래의 그림은 위의 결과에 대해 MAX가 첫번째 턴을 진행한 결과이다.</p>
+
+<p><img src="/public/ai/01_minmax.git" alt="" /></p>
+
+<p>매 턴에 Minmax Search Tree를 만들고 같은 연산이 이루어 진다. 아래는 마지막 턴에서 생성되는 Minmax Search Tree를 나타낸다.</p>
+
+<p><img src="/public/ai/01_minmax.git" alt="" /></p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">minimax</span><span class="p">(</span><span class="nx">node</span><span class="p">,</span> <span class="nx">depth</span><span class="p">,</span> <span class="nx">maximizingPlayer</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nx">depth</span> <span class="o">=</span> <span class="mi">0</span> <span class="nx">or</span> <span class="nx">node</span> <span class="nx">is</span> <span class="nx">a</span> <span class="nx">terminal</span> <span class="nx">node</span>
+        <span class="k">return</span> <span class="nx">the</span> <span class="nx">heuristic</span> <span class="nx">value</span> <span class="k">of</span> <span class="nx">node</span>
+    <span class="k">if</span> <span class="nx">maximizingPlayer</span>
+        <span class="nx">bestValue</span> <span class="p">:</span><span class="o">=</span> <span class="o">-</span><span class="err">∞</span>
+        <span class="k">for</span> <span class="nx">each</span> <span class="nx">child</span> <span class="k">of</span> <span class="nx">node</span>
+            <span class="nx">val</span> <span class="p">:</span><span class="o">=</span> <span class="nx">minimax</span><span class="p">(</span><span class="nx">child</span><span class="p">,</span> <span class="nx">depth</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="nx">FALSE</span><span class="p">)</span>
+            <span class="nx">bestValue</span> <span class="p">:</span><span class="o">=</span> <span class="nx">max</span><span class="p">(</span><span class="nx">bestValue</span><span class="p">,</span> <span class="nx">val</span><span class="p">)</span>
+        <span class="k">return</span> <span class="nx">bestValue</span>
+    <span class="k">else</span>
+        <span class="nx">bestValue</span> <span class="p">:</span><span class="o">=</span> <span class="o">+</span><span class="err">∞</span>
+        <span class="k">for</span> <span class="nx">each</span> <span class="nx">child</span> <span class="k">of</span> <span class="nx">node</span>
+            <span class="nx">val</span> <span class="p">:</span><span class="o">=</span> <span class="nx">minimax</span><span class="p">(</span><span class="nx">child</span><span class="p">,</span> <span class="nx">depth</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="nx">TRUE</span><span class="p">)</span>
+            <span class="nx">bestValue</span> <span class="p">:</span><span class="o">=</span> <span class="nx">min</span><span class="p">(</span><span class="nx">bestValue</span><span class="p">,</span> <span class="nx">val</span><span class="p">)</span>
+        <span class="k">return</span> <span class="nx">bestValue</span>
+ 
+<span class="p">(</span><span class="o">*</span> <span class="nx">Initial</span> <span class="nx">call</span> <span class="k">for</span> <span class="nx">maximizing</span> <span class="nx">player</span> <span class="o">*</span><span class="p">)</span>
+<span class="nx">minimax</span><span class="p">(</span><span class="nx">origin</span><span class="p">,</span> <span class="nx">depth</span><span class="p">,</span> <span class="nx">TRUE</span><span class="p">)</span>
+</code></pre></div></div>
+
+
+
+  
+  <div class="post-disqus">
+      <section id="disqus_thread"></section>
+      <div id="disqus_thread"></div>
+<script>
+
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+/*
+var disqus_config = function () {
+this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://youngwonseo.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+                            
+  </div>
+  
+</div>
+
+<div class="pagination">
+  
+    <a href="/2019/11/15/02-alpha-beta-pruning/" class="left arrow">&#8592;</a>
+  
+  
+    <a href="/2019/11/12/04-01-keras/" class="right arrow">&#8594;</a>
+  
+
+  <a href="#" class="top">Top</a>
+</div>
+
+    </main>
+
+    <footer>
+      <span>
+        &copy; <time datetime="2019-11-20 13:39:58 +0900">2019</time> Youngwon Seo. Made with Jekyll using the <a href="https://github.com/chesterhow/tale/">Tale</a> theme.
+      </span>
+    </footer>
+  </body>
+</html>

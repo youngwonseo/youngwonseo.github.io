@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>
+    
+      Support Vector Machine(SVM) &middot; Youngwon Seo
+    
+  </title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/assets/main.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
+</head>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-118401942-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-118401942-1');
+</script>
+
+  <body>
+    <nav class="nav">
+      <div class="nav-container">
+        <a href="/">
+          <h2 class="nav-title">Youngwon Seo</h2>
+        </a>
+        <ul>
+          <li><a href="/about">About</a></li>
+          <li><a href="/">Posts</a></li>
+          <li><a href="/study"/>Study</a></li>
+          <li><a href="/ml"/>Machine Learning</a></li>
+          <li><a href="/cicd"/>CI/CD</a></li>
+          <!-- <li><a href="/spring"/>Spring</a></li>
+          <li><a href="/deeplearning"/>Deeplearning</a></li> -->
+        </ul>
+    </div>
+  </nav>
+
+    <main>
+      <div class="post">
+  <div class="post-info">
+    <span>Written by</span>
+    
+        Youngwon Seo
+    
+
+    
+      <br>
+      <span>on&nbsp;</span><time datetime="2019-10-01 00:00:00 +0900">October 01, 2019</time>
+    
+  </div>
+
+  <h1 class="post-title">Support Vector Machine(SVM)</h1>
+  <div class="post-line"></div>
+
+  <p>이번 장에서 학습할 내용은 SVM이라는 매우 강력하고 선형, 비선형 분류, 회귀 등에서 사용할 수 있는 <strong>다목적 머신러닝 모델</strong>입니다. 딥러닝 이전의 머신러닝에서 가장 인기있는 모델이라고 지칭되며 복잡한 문제를 잘 푼다고 알려져 있습니다.</p>
+
+<h2 id="선형-분류">선형 분류</h2>
+<p>SVM은 그림을 통해 이해하는 것이 가장 좋은방법입니다. 다음 그림을 살펴보겠습니다.
+[그림]</p>
+
+<ul>
+  <li>large maring classification</li>
+  <li>support vector</li>
+</ul>
+
+<p>SVM은 특성 스케일에 민감합니다.</p>
+
+<h3 id="soft-margin-classfication-hard-margin-classfication">soft margin classfication, hard margin classfication</h3>
+
+<p>LinearSVC - 편향포함, 즉 데이터에 평균을 0이도록(데이터에 평균을 뺌, Scikit-Learn의 StandardScaler사용) Scaling 되어있어야함
+SVC - 
+SGDClassifier - 경사하강법을 사용</p>
+
+<h2 id="비선형-분류">비선형 분류</h2>
+<p>다항식 특성을 추가하여 잘 해결되지 않는 선형문제를 비선형 문제로 변경(비선형 데이터로 변경)하여 해결</p>
+
+<p>다항식 특성을 추가하는 것은 간단하고 모든 머신러닝 알고리즘에서 잘 작동, 하지만 낮은 차수의 다항식은 매우 복잡한 데이터를 잘 표현하지 못함, 높은 차수의 다항식은 많은 특성을 추가하므로 모델을 느리게 만듬</p>
+
+<p>SVM에서는 <strong>커널 트릭(kernel trick)</strong>이라는 거의 기적에 가까운 수학적 기교가 존재
+결론부터 말하면 특성을 추가하지 않으면서 추가한것과 같은 결과를 만들어냄</p>
+
+<h2 id="회귀">회귀</h2>
+<p>SVM은 선형, 비선형 회귀에도 사용가능</p>
+
+<h2 id="references">References</h2>
+<ul>
+  <li>https://en.wikipedia.org/wiki/K-nearest_neighbors_algorithm</li>
+</ul>
+
+
+
+  
+  <div class="post-disqus">
+      <section id="disqus_thread"></section>
+      <div id="disqus_thread"></div>
+<script>
+
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+/*
+var disqus_config = function () {
+this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://youngwonseo.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+                            
+  </div>
+  
+</div>
+
+<div class="pagination">
+  
+    <a href="/2019/10/05/spel/" class="left arrow">&#8592;</a>
+  
+  
+    <a href="/2019/10/01/03-classification/" class="right arrow">&#8594;</a>
+  
+
+  <a href="#" class="top">Top</a>
+</div>
+
+    </main>
+
+    <footer>
+      <span>
+        &copy; <time datetime="2019-11-20 13:39:58 +0900">2019</time> Youngwon Seo. Made with Jekyll using the <a href="https://github.com/chesterhow/tale/">Tale</a> theme.
+      </span>
+    </footer>
+  </body>
+</html>
