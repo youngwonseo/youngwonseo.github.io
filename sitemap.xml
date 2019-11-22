@@ -2,11 +2,23 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     
     <url>
+        <loc>http://localhost:4000/2019/11/20/09-01-keras/</loc>
+    </url>
+    
+    <url>
+        <loc>http://localhost:4000/2019/11/19/08-02-keras/</loc>
+    </url>
+    
+    <url>
         <loc>http://localhost:4000/2019/11/16/07-02-keras/</loc>
     </url>
     
     <url>
         <loc>http://localhost:4000/2019/11/16/07-01-keras/</loc>
+    </url>
+    
+    <url>
+        <loc>http://localhost:4000/2019/11/15/06-04-keras/</loc>
     </url>
     
     <url>
