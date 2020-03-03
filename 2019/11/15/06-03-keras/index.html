@@ -66,7 +66,7 @@
   <h1 class="post-title">순환 신경망의 고급 사용법</h1>
   <div class="post-line"></div>
 
-  <p>이번 포스트에서는 순환신경망의 성능과 일반화 능력을 향상시키기 위한 세 가지 고급 기술을 살펴보겠습니다. 이를 위해 건물 옥상에서 측정된 온도, 기압, 습도와 같은 데이터를 이용하여 24이후의 온도를 예측하는 문제를 풀어보겠습니다.</p>
+  <p>이번 포스트에서는 순환신경망의 성능과 일반화 능력을 향상시키기 위한 세 가지 고급 기술을 살펴보겠습니다. 이를 위해 건물 옥상에서 측정된 온도, 기압, 습도와 같은 데이터를 이용하여 24시간 이후의 온도를 예측하는 문제를 풀어보겠습니다.</p>
 
 <ul>
   <li>순환 드롭아웃(recurrent dropout):</li>
@@ -82,6 +82,43 @@ unzip jena_climate_2009_2016.csv.zip</p>
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code></code></pre></div></div>
 
 <h2 id="데이터-준비">데이터 준비</h2>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">generator</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">lookback</span><span class="p">,</span> <span class="n">delay</span><span class="p">,</span> <span class="n">min_index</span><span class="p">,</span> <span class="n">max_index</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">128</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">6</span><span class="p">):</span>
+  <span class="k">if</span> <span class="n">max_index</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+    <span class="n">max_index</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="o">-</span> <span class="n">delay</span> <span class="o">-</span> <span class="mi">1</span>
+  <span class="n">i</span> <span class="o">=</span> <span class="n">min_index</span> <span class="o">+</span> <span class="n">lookback</span> <span class="c">#아래에서 lookback을 뺀 값 부터 현재 값 까지 사용하기 때문에 </span>
+  <span class="k">while</span> <span class="mi">1</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">shuffle</span><span class="p">:</span>
+      <span class="c">#최소, 최대, 개수</span>
+      <span class="n">rows</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="n">min_index</span> <span class="o">+</span> <span class="n">lookback</span><span class="p">,</span> <span class="n">max_index</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">batch_size</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+      <span class="k">if</span> <span class="n">i</span> <span class="o">+</span> <span class="n">batch_size</span> <span class="o">&gt;=</span> <span class="n">max_index</span><span class="p">:</span> <span class="c">#선택범위가 max_index를 넘어서면</span>
+        <span class="n">i</span> <span class="o">=</span> <span class="n">min_index</span> <span class="o">+</span> <span class="n">lookback</span> <span class="c">#초기치로?</span>
+      <span class="n">rows</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="nb">min</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="n">batch_size</span><span class="p">,</span> <span class="n">max_index</span><span class="p">))</span> <span class="c">#선택범위 i ~ i+batch_size</span>
+      <span class="n">i</span> <span class="o">+=</span> <span class="nb">len</span><span class="p">(</span><span class="n">rows</span><span class="p">)</span> <span class="c">#batch size만큼 증가(다음 반복에서 사용)</span>
+
+    <span class="n">samples</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">rows</span><span class="p">),</span>
+                        <span class="n">lookback</span> <span class="o">//</span> <span class="n">step</span><span class="p">,</span> <span class="c">#샘플 하나당 포함된 데이터 포인트 수</span>
+                        <span class="n">data</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]))</span>
+    <span class="n">targets</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">rows</span><span class="p">),))</span>
+    <span class="k">for</span> <span class="n">j</span><span class="p">,</span> <span class="n">row</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">rows</span><span class="p">):</span>
+      <span class="n">indices</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="n">rows</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">-</span> <span class="n">lookback</span><span class="p">,</span> <span class="n">rows</span><span class="p">[</span><span class="n">j</span><span class="p">],</span> <span class="n">step</span><span class="p">)</span> <span class="c">#제너레이터</span>
+      <span class="n">samples</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">indices</span><span class="p">]</span>
+      <span class="n">targets</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">rows</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">+</span> <span class="n">delay</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="c">#delay후 2번째 특성</span>
+    <span class="k">yield</span> <span class="n">samples</span><span class="p">,</span> <span class="n">targets</span>
+</code></pre></div></div>
+
+<p>정규화를 진행한 온도데이터를 신경망의 입력으로 만들기 위해 위 함수를 사용합니다. 함수의 파라미터는 다음을 표현합니다.</p>
+<ul>
+  <li>data : 정규화된 데이터</li>
+  <li>lookback :</li>
+  <li>delay : 타깃으로 사용할</li>
+  <li>min_index, max_index : data(첫번째 파라미터)에서 신경망의 입력으로 사용할 데이터의 범위</li>
+  <li>shuffle : 샘플을 섞을지 시간순서대로 추출할지 여부</li>
+  <li>batch_size :</li>
+  <li>step :</li>
+</ul>
+
+<h2 id="상식수준의-기준점">상식수준의 기준점</h2>
 
 <h2 id="기본적인-머신러닝-방법">기본적인 머신러닝 방법</h2>
 
@@ -137,7 +174,7 @@ s.setAttribute('data-timestamp', +new Date());
 
     <footer>
       <span>
-        &copy; <time datetime="2019-11-22 17:44:23 +0900">2019</time> Youngwon Seo. Made with Jekyll using the <a href="https://github.com/chesterhow/tale/">Tale</a> theme.
+        &copy; <time datetime="2020-03-04 00:15:58 +0900">2020</time> Youngwon Seo. Made with Jekyll using the <a href="https://github.com/chesterhow/tale/">Tale</a> theme.
       </span>
     </footer>
   </body>

@@ -2,6 +2,30 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     
     <url>
+        <loc>http://localhost:4000/2020/02/29/03-spring-cms/</loc>
+    </url>
+    
+    <url>
+        <loc>http://localhost:4000/2020/02/29/02-spring-cms/</loc>
+    </url>
+    
+    <url>
+        <loc>http://localhost:4000/2020/02/29/01-spring-cms/</loc>
+    </url>
+    
+    <url>
+        <loc>http://localhost:4000/2020/02/28/spring-cheat-sheet/</loc>
+    </url>
+    
+    <url>
+        <loc>http://localhost:4000/2020/01/07/sw-engineering-ml/</loc>
+    </url>
+    
+    <url>
+        <loc>http://localhost:4000/2020/01/01/dp/</loc>
+    </url>
+    
+    <url>
         <loc>http://localhost:4000/2019/11/20/09-01-keras/</loc>
     </url>
     
@@ -46,6 +70,10 @@
     </url>
     
     <url>
+        <loc>http://localhost:4000/2019/11/13/sentence-classification-cnn/</loc>
+    </url>
+    
+    <url>
         <loc>http://localhost:4000/2019/11/12/04-01-keras/</loc>
     </url>
     
@@ -63,6 +91,10 @@
     
     <url>
         <loc>http://localhost:4000/2019/11/10/03-01-keras/</loc>
+    </url>
+    
+    <url>
+        <loc>http://localhost:4000/2019/10/21/01-machine-learning/</loc>
     </url>
     
     <url>
@@ -143,6 +175,10 @@
     
     <url>
         <loc>http://localhost:4000/2019/08/13/what-are-container/</loc>
+    </url>
+    
+    <url>
+        <loc>http://localhost:4000/2019/08/11/js-standard/</loc>
     </url>
     
     <url>
@@ -235,6 +271,10 @@
     
     <url>
         <loc>http://localhost:4000/2019/06/08/mongodb-instruction/</loc>
+    </url>
+    
+    <url>
+        <loc>http://localhost:4000/2019/06/01/java-for/</loc>
     </url>
     
     <url>
@@ -607,6 +647,14 @@
     
     <url>
         <loc>http://localhost:4000/page12/</loc>
+    </url>
+    
+    
+    
+    
+    
+    <url>
+        <loc>http://localhost:4000/page13/</loc>
     </url>
     
     

@@ -68,6 +68,97 @@
 
   <p>이번 글에는 순환 신경망(recurrent nerual network)에 대해 알아봅니다.</p>
 
+<p>이전까지의 네트워크 구조를 살펴보면 메모리를 포함하고 있지 않다는 것입니다. 입력은 개별적으로 처리되며 입력간의 유지되는 상태는 존재하지 않습니다. 이는 순차 데이터나 시계열 데이터를 처리하는데 있어서 시계열 데이터를 하나의 데이터 포인트(텐서)로 변환후 각각 처리해야합니다. 이전 입력은 현재 입력과 독립되어 있습니다.</p>
+
+<p>이와 다르게 입력에 대한 처리되는 순서를 기반으로 네트워크가 동작할려고 하려면 어떻게 처리해야할까요? 즉 이전 입력과 현재입력이 순서를 가지고(이전, 현재 처럼) 이전의 입력이 현재의 입력에 영향을 미치도록 동작하는 것을 의미합니다. 이것에 대한 해답으로 신경망에서는 순환신경망이라는 구조가 존재합니다.</p>
+
+<p>간단한 의사코드를 살펴보면 다음과 같습니다.</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">state_t</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">for</span> <span class="n">input_t</span> <span class="ow">in</span> <span class="n">input_sequence</span><span class="p">:</span>
+  <span class="n">output_t</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">input_t</span><span class="p">,</span> <span class="n">state_t</span><span class="p">)</span>
+  <span class="n">state_t</span> <span class="o">=</span> <span class="n">output_t</span>
+</code></pre></div></div>
+<p>state_t라는 상태값이 입력 input_t에 대해 매번 이전의 출력에 대해 영향을 받습니다.</p>
+
+<p>다음은 넘파이를 사용한 순환신경망의 간단한 예제입니다.</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
+
+<span class="n">timesteps</span> <span class="o">=</span> <span class="mi">100</span> 
+<span class="n">input_features</span> <span class="o">=</span> <span class="mi">32</span>
+<span class="n">output_features</span> <span class="o">=</span> <span class="mi">64</span>
+
+<span class="n">inputs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">((</span><span class="n">timesteps</span><span class="p">,</span> <span class="n">input_features</span><span class="p">))</span>
+
+<span class="n">state_t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">output_features</span><span class="p">,))</span>
+
+<span class="n">W</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">((</span><span class="n">output_features</span><span class="p">,</span> <span class="n">input_features</span><span class="p">))</span>
+<span class="n">U</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">((</span><span class="n">output_features</span><span class="p">,</span> <span class="n">output_features</span><span class="p">))</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">((</span><span class="n">output_features</span><span class="p">,))</span>
+
+<span class="n">successive_outputs</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">input_t</span> <span class="ow">in</span> <span class="n">inputs</span><span class="p">:</span>
+  <span class="n">output_t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">tanh</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">W</span><span class="p">,</span> <span class="n">input_t</span><span class="p">)</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">U</span><span class="p">,</span> <span class="n">state_t</span><span class="p">)</span> <span class="o">+</span> <span class="n">b</span><span class="p">)</span>
+
+  <span class="n">successive_outputs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">output_t</span><span class="p">)</span>
+
+  <span class="n">state_t</span> <span class="o">=</span> <span class="n">output_t</span>
+
+<span class="n">final_output_sequence</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">stack</span><span class="p">(</span><span class="n">successive_outputs</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h2 id="케라스의-순환층">케라스의 순환층</h2>
+
+<h2 id="순환신경망을-사용한-imdb-분류하기">순환신경망을 사용한 IMDB 분류하기</h2>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">keras.datasets</span> <span class="kn">import</span> <span class="n">imdb</span>
+<span class="kn">from</span> <span class="nn">keras.preprocessing</span> <span class="kn">import</span> <span class="n">sequence</span>
+
+<span class="n">max_features</span> <span class="o">=</span> <span class="mi">10000</span>
+<span class="n">maxlen</span> <span class="o">=</span> <span class="mi">500</span>
+<span class="n">batch_size</span> <span class="o">=</span> <span class="mi">32</span>
+
+<span class="p">(</span><span class="n">input_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">),</span> <span class="p">(</span><span class="n">input_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span> <span class="o">=</span> <span class="n">imdb</span><span class="o">.</span><span class="n">load_data</span><span class="p">(</span><span class="n">num_words</span><span class="o">=</span><span class="n">max_features</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">'shape of train'</span><span class="p">,</span> <span class="n">input_train</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">'shape of test'</span><span class="p">,</span> <span class="n">input_test</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+
+<span class="n">input_train</span> <span class="o">=</span> <span class="n">sequence</span><span class="o">.</span><span class="n">pad_sequences</span><span class="p">(</span><span class="n">input_train</span><span class="p">,</span> <span class="n">maxlen</span><span class="o">=</span><span class="n">maxlen</span><span class="p">)</span>
+<span class="n">input_test</span> <span class="o">=</span> <span class="n">sequence</span><span class="o">.</span><span class="n">pad_sequences</span><span class="p">(</span><span class="n">input_test</span><span class="p">,</span> <span class="n">maxlen</span><span class="o">=</span><span class="n">maxlen</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">'shape of train'</span><span class="p">,</span> <span class="n">input_train</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">'shape of test'</span><span class="p">,</span> <span class="n">input_test</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+
+<span class="kn">from</span> <span class="nn">keras.models</span> <span class="kn">import</span> <span class="n">Sequential</span>
+<span class="kn">from</span> <span class="nn">keras.layers</span> <span class="kn">import</span> <span class="n">Dense</span><span class="p">,</span> <span class="n">Embedding</span><span class="p">,</span> <span class="n">SimpleRNN</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">Sequential</span><span class="p">()</span>
+<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Embedding</span><span class="p">(</span><span class="n">max_features</span><span class="p">,</span> <span class="mi">32</span><span class="p">))</span>
+<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">SimpleRNN</span><span class="p">(</span><span class="mi">32</span><span class="p">))</span>
+<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Dense</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s">'sigmoid'</span><span class="p">))</span>
+
+<span class="n">model</span><span class="o">.</span><span class="nb">compile</span><span class="p">(</span><span class="n">optimizer</span><span class="o">=</span><span class="s">'rmsprop'</span><span class="p">,</span> <span class="n">loss</span><span class="o">=</span><span class="s">'binary_crossentropy'</span><span class="p">,</span> <span class="n">metrics</span><span class="o">=</span><span class="p">[</span><span class="s">'acc'</span><span class="p">])</span>
+<span class="n">history</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">input_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span>
+                    <span class="n">epochs</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+                    <span class="n">batch_size</span><span class="o">=</span><span class="mi">128</span><span class="p">,</span>
+                    <span class="n">validation_split</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
+
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="n">acc</span> <span class="o">=</span> <span class="n">history</span><span class="o">.</span><span class="n">history</span><span class="p">[</span><span class="s">'acc'</span><span class="p">]</span>
+<span class="n">val_acc</span> <span class="o">=</span> <span class="n">history</span><span class="o">.</span><span class="n">history</span><span class="p">[</span><span class="s">'val_acc'</span><span class="p">]</span>
+<span class="n">loss</span> <span class="o">=</span> <span class="n">history</span><span class="o">.</span><span class="n">history</span><span class="p">[</span><span class="s">'loss'</span><span class="p">]</span>
+<span class="n">val_loss</span> <span class="o">=</span> <span class="n">history</span><span class="o">.</span><span class="n">history</span><span class="p">[</span><span class="s">'val_loss'</span><span class="p">]</span>
+
+<span class="n">epochs</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">acc</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">epochs</span><span class="p">,</span> <span class="n">acc</span><span class="p">,</span> <span class="s">'bo'</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s">'Training acc'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">epochs</span><span class="p">,</span> <span class="n">val_acc</span><span class="p">,</span> <span class="s">'b'</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s">'Validation acc'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s">'Training and validation accuracy'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">epochs</span><span class="p">,</span> <span class="n">loss</span><span class="p">,</span> <span class="s">'bo'</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s">'Training loss'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">epochs</span><span class="p">,</span> <span class="n">val_loss</span><span class="p">,</span> <span class="s">'b'</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s">'Validation loss'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s">'Training and validation loss'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div></div>
+
 
   
   <div class="post-disqus">
@@ -112,7 +203,7 @@ s.setAttribute('data-timestamp', +new Date());
 
     <footer>
       <span>
-        &copy; <time datetime="2019-11-22 17:44:23 +0900">2019</time> Youngwon Seo. Made with Jekyll using the <a href="https://github.com/chesterhow/tale/">Tale</a> theme.
+        &copy; <time datetime="2020-03-04 00:15:58 +0900">2020</time> Youngwon Seo. Made with Jekyll using the <a href="https://github.com/chesterhow/tale/">Tale</a> theme.
       </span>
     </footer>
   </body>
