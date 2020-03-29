@@ -1,72 +1,249 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
   <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!-- Meta -->
+	<meta charset="UTF-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+	<meta name="generator" content="Jekyll">
 
-  <title>
-    
-      이펙티브 자바스크립트 #3 &middot; Youngwon Seo
-    
-  </title>
+	<title>이펙티브 자바스크립트 #3</title>
+  <meta name="description" content="">
 
-  <!-- CSS -->
-  <link rel="stylesheet" href="/assets/main.css">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700">
+	<!-- CSS & fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,500" rel="stylesheet">
+  <link rel="stylesheet" href="/css/main.css">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="이펙티브 자바스크립트 #3">
+  <meta property="og:type" content: "website">
+  <meta property="og:url" content= "https://thereviewindex.com/blog/2018/05/13/effective-javascript-3/">
+  <meta property="og:description" content="">
+  <meta property="og:locale" content= "en_US">
+  <meta property="og:site_name" content="The Review Index">
+  <meta property="og:image" content="https://thereviewindex.com/blog/">
+  <meta property="og:image:url" content="https://thereviewindex.com/blog/">
+  <meta property="og:image:secure_url" content="https://thereviewindex.com/blog/">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="1200">
+  
+  <!-- twitter card -->
+  <meta property="twitter:card" content="summary">
+  <meta property="twitter:title" content="이펙티브 자바스크립트 #3">
+  <meta property="twitter:description" content="">
+  <meta property="twitter:url" content= "https://thereviewindex.com/blog/2018/05/13/effective-javascript-3/">
+  <meta property="twitter:image" content="https://thereviewindex.com/blog/">
+
+
+	<!-- RSS -->
+	<link href="/atom.xml" type="application/atom+xml" rel="alternate" title="ATOM Feed" />
 
   <!-- Favicon -->
-  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png">
-  <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
+  <link rel="shortcut icon" type="image/png" href="img/favicon.png">
+
+  
+  <!-- Google Analytics -->
+  <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  
+  ga('create', 'UA-78263144-1', 'auto');
+  ga('send', 'pageview');
+  </script>
+  <!-- End Google Analytics -->
+
 </head>
 
-  <!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-118401942-1"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'UA-118401942-1');
-</script>
-
   <body>
-    <nav class="nav">
-      <div class="nav-container">
-        <a href="/">
-          <h2 class="nav-title">Youngwon Seo</h2>
-        </a>
-        <ul>
-          <li><a href="/about">About</a></li>
-          <li><a href="/">Posts</a></li>
-          <li><a href="/study"/>Study</a></li>
-          <li><a href="/ml"/>Machine Learning</a></li>
-          <li><a href="/cicd"/>CI/CD</a></li>
-          <!-- <li><a href="/spring"/>Spring</a></li>
-          <li><a href="/deeplearning"/>Deeplearning</a></li> -->
-        </ul>
-    </div>
-  </nav>
+    
+    <!-- Facebook Comments Script -->
+    <div id="fb-root"></div>
+      <script>(function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = 'https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v2.11&appId=288262758360783';
+        fjs.parentNode.insertBefore(js, fjs);
+      }(document, 'script', 'facebook-jssdk'));</script>
+  
+    <div id="wrap">
+  	  	
+  	  	<!-- Navigation -->
+  	  	<nav id="nav">
+	<div id="nav-list">
+		<a href="/">Home</a>
 
-    <main>
-      <div class="post">
-  <div class="post-info">
-    <span>Written by</span>
+		<!-- Nav pages -->
+	  
+	    
+	  
+	    
+	  
+	    
+	      <a href="/about/" title="About">About</a>
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	      <a href="/ml/" title="Machine Learning">Machine Learning</a>
+	    
+	  
+	    
+	      <a href="/study/" title="Study">Study</a>
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
     
-        Youngwon Seo
-    
+    <!-- Nav links -->
+	  <!-- <a href="/">Blog</a> -->
 
-    
-      <br>
-      <span>on&nbsp;</span><time datetime="2018-05-13 00:00:00 +0900">May 13, 2018</time>
-    
+
+	</div>
+  
+  <!-- Nav footer -->
+	
+	  <footer>
+	
+	<!-- Your custom nav footer here -->
+	
+</footer>
+	
+
+</nav>
+
+      
+      <!-- Icon menu -->
+  	  <a id="nav-menu">
+  	  	<div id="menu"></div>
+  	  </a>
+  
+        <!-- Header -->
+        
+          <header id="header">
+
+	<!-- Your custom header here -->
+	<span class="f-left">  
+		<a href="http://localhost:4000">
+			<h1>
+				<span>Youngwon Seo</span>
+			</h1>
+		</a>
+	</span>
+
+	<span id="nav-links" class="absolute right bottom">
+		<!-- Nav pages -->
+		
+			
+		
+			
+		
+			
+				<a href="/about/" title="About">About</a>
+			
+		
+			
+		
+			
+		
+			
+		
+			
+				<a href="/ml/" title="Machine Learning">Machine Learning</a>
+			
+		
+			
+				<a href="/study/" title="Study">Study</a>
+			
+		
+			
+		
+			
+		
+			
+		
+			
+		
+			
+		
+			
+		
+			
+		
+		
+		<!-- Nav links -->
+		<!-- <a href="/">Blog</a> -->
+
+	</span>
+	
+	<!-- Google Analytics -->
+  <script>
+		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+		
+		ga('create', 'UA-78263144-1', 'auto');
+		ga('send', 'pageview');
+		</script>
+		<!-- End Google Analytics -->
+</header>
+
+
+        
+  
+      <!-- Main content -->
+  	  <div id="container">
+  		  
+  		<main>
+  
+  			<article id="post-page">
+  <div class="parent f-right">
+    <!-- Twitter -->
+    <a href="https://twitter.com/share?url=https://thereviewindex.com/blog/2018/05/13/effective-javascript-3/&amp;text=이펙티브 자바스크립트 #3&amp;hashtags=thereviewindex" target="_blank">
+      <span class="social-icon">  
+        <svg class="svgIcon-use" width="29" height="29" viewBox="0 0 29 29"><path d="M21.967 11.8c.018 5.93-4.607 11.18-11.177 11.18-2.172 0-4.25-.62-6.047-1.76l-.268.422-.038.5.186.013.168.012c.3.02.44.032.6.046 2.06-.026 3.95-.686 5.49-1.86l1.12-.85-1.4-.048c-1.57-.055-2.92-1.08-3.36-2.51l-.48.146-.05.5c.22.03.48.05.75.08.48-.02.87-.07 1.25-.15l2.33-.49-2.32-.49c-1.68-.35-2.91-1.83-2.91-3.55 0-.05 0-.01-.01.03l-.49-.1-.25.44c.63.36 1.35.57 2.07.58l1.7.04L7.4 13c-.978-.662-1.59-1.79-1.618-3.047a4.08 4.08 0 0 1 .524-1.8l-.825.07a12.188 12.188 0 0 0 8.81 4.515l.59.033-.06-.59v-.02c-.05-.43-.06-.63-.06-.87a3.617 3.617 0 0 1 6.27-2.45l.2.21.28-.06c1.01-.22 1.94-.59 2.73-1.09l-.75-.56c-.1.36-.04.89.12 1.36.23.68.58 1.13 1.17.85l-.21-.45-.42-.27c-.52.8-1.17 1.48-1.92 2L22 11l.016.28c.013.2.014.35 0 .52v.04zm.998.038c.018-.22.017-.417 0-.66l-.498.034.284.41a8.183 8.183 0 0 0 2.2-2.267l.97-1.48-1.6.755c.17-.08.3-.02.34.03a.914.914 0 0 1-.13-.292c-.1-.297-.13-.64-.1-.766l.36-1.254-1.1.695c-.69.438-1.51.764-2.41.963l.48.15a4.574 4.574 0 0 0-3.38-1.484 4.616 4.616 0 0 0-4.61 4.613c0 .29.02.51.08.984l.01.02.5-.06.03-.5c-3.17-.18-6.1-1.7-8.08-4.15l-.48-.56-.36.64c-.39.69-.62 1.48-.65 2.28.04 1.61.81 3.04 2.06 3.88l.3-.92c-.55-.02-1.11-.17-1.6-.45l-.59-.34-.14.67c-.02.08-.02.16 0 .24-.01 2.12 1.55 4.01 3.69 4.46l.1-.49-.1-.49c-.33.07-.67.12-1.03.14-.18-.02-.43-.05-.64-.07l-.76-.09.23.73c.57 1.84 2.29 3.14 4.28 3.21l-.28-.89a8.252 8.252 0 0 1-4.85 1.66c-.12-.01-.26-.02-.56-.05l-.17-.01-.18-.01L2.53 21l1.694 1.07a12.233 12.233 0 0 0 6.58 1.917c7.156 0 12.2-5.73 12.18-12.18l-.002.04z"></path></svg>
+      </span>
+    </a>
+
+    &nbsp;&nbsp;&nbsp;
+    <!-- Facebook -->
+    <a href="http://www.facebook.com/sharer.php?u=https://thereviewindex.com/blog/2018/05/13/effective-javascript-3/" target="_blank">
+      <span class="social-icon">
+        <svg class="svgIcon-use" width="29" height="29" viewBox="0 0 29 29"><path d="M16.39 23.61v-5.808h1.846a.55.55 0 0 0 .546-.48l.36-2.797a.551.551 0 0 0-.547-.62H16.39V12.67c0-.67.12-.813.828-.813h1.474a.55.55 0 0 0 .55-.55V8.803a.55.55 0 0 0-.477-.545c-.436-.06-1.36-.116-2.22-.116-2.5 0-4.13 1.62-4.13 4.248v1.513H10.56a.551.551 0 0 0-.55.55v2.797c0 .304.248.55.55.55h1.855v5.76c-4.172-.96-7.215-4.7-7.215-9.1 0-5.17 4.17-9.36 9.31-9.36 5.14 0 9.31 4.19 9.31 9.36 0 4.48-3.155 8.27-7.43 9.15M14.51 4C8.76 4 4.1 8.684 4.1 14.46c0 5.162 3.75 9.523 8.778 10.32a.55.55 0 0 0 .637-.543v-6.985a.551.551 0 0 0-.55-.55H11.11v-1.697h1.855a.55.55 0 0 0 .55-.55v-2.063c0-2.02 1.136-3.148 3.03-3.148.567 0 1.156.027 1.597.06v1.453h-.924c-1.363 0-1.93.675-1.93 1.912v1.78c0 .3.247.55.55.55h2.132l-.218 1.69H15.84c-.305 0-.55.24-.55.55v7.02c0 .33.293.59.623.54 5.135-.7 9.007-5.11 9.007-10.36C24.92 8.68 20.26 4 14.51 4"></path></svg>
+      </span> 
+    </a>
   </div>
+  
+  <h2>이펙티브 자바스크립트 #3</h2>		
+	<div class="by-line parent">
+    <time datetime="2018-05-13T00:00:00+09:00"> <i>13 May 2018</i> </time>
+    &nbsp;&nbsp; &middot; &nbsp;&nbsp;
+    <span><i></i> </span>
+  </div>
+	<div class="content">
 
-  <h1 class="post-title">이펙티브 자바스크립트 #3</h1>
-  <div class="post-line"></div>
-
-  <h1 id="3장-함수-사용하기">3장 함수 사용하기</h1>
+		<h1 id="3장-함수-사용하기">3장 함수 사용하기</h1>
 
 <h2 id="item18-함수-메서드-생성자-호출의-차이를-이해하라">Item18. 함수, 메서드, 생성자 호출의 차이를 이해하라</h2>
 
@@ -75,20 +252,20 @@
 <p><strong>첫 번째</strong>, 가장 간단한 함수에 대한 사용이다.</p>
 
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">hello</span><span class="p">(</span><span class="nx">username</span><span class="p">){</span>
-  <span class="k">return</span> <span class="s2">"hello, "</span> <span class="o">+</span> <span class="nx">username</span><span class="p">;</span>
+  <span class="k">return</span> <span class="dl">"</span><span class="s2">hello, </span><span class="dl">"</span> <span class="o">+</span> <span class="nx">username</span><span class="p">;</span>
 <span class="p">}</span>
-<span class="nx">hello</span><span class="p">(</span><span class="s2">"youngwon"</span><span class="p">);</span> <span class="c1">// "hello, youngwon"</span>
+<span class="nx">hello</span><span class="p">(</span><span class="dl">"</span><span class="s2">youngwon</span><span class="dl">"</span><span class="p">);</span> <span class="c1">// "hello, youngwon"</span>
 </code></pre></div></div>
 
 <p><strong>두 번째</strong>, 메서드에 대한 사용이다. 여기서 메서드는 전역 혹인 지역 함수가 아닌 클래스에 속한 맴버 함수를 의미한다.</p>
 
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">obj</span> <span class="o">=</span> <span class="p">{</span>
   <span class="na">hello</span><span class="p">:</span> <span class="kd">function</span><span class="p">(){</span>
-    <span class="k">return</span> <span class="s2">"hello, "</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">username</span><span class="p">;</span>
+    <span class="k">return</span> <span class="dl">"</span><span class="s2">hello, </span><span class="dl">"</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">username</span><span class="p">;</span>
   <span class="p">},</span>
-  <span class="na">username</span><span class="p">:</span> <span class="s2">"youngwon"</span>
+  <span class="na">username</span><span class="p">:</span> <span class="dl">"</span><span class="s2">youngwon</span><span class="dl">"</span>
 <span class="p">}</span>
-<span class="nx">obj</span><span class="p">.</span><span class="nx">hello</span><span class="p">(</span><span class="s2">"youngwon"</span><span class="p">);</span> <span class="c1">// "hello, youngwon"</span>
+<span class="nx">obj</span><span class="p">.</span><span class="nx">hello</span><span class="p">(</span><span class="dl">"</span><span class="s2">youngwon</span><span class="dl">"</span><span class="p">);</span> <span class="c1">// "hello, youngwon"</span>
 </code></pre></div></div>
 
 <p>메서드에서는 this가 해당 인스턴스로 바인딩이 되어있다.</p>
@@ -100,7 +277,7 @@
   <span class="k">this</span><span class="p">.</span><span class="nx">passwordHash</span> <span class="o">=</span> <span class="nx">passwordHash</span><span class="p">;</span>
 <span class="p">}</span>
 
-<span class="kd">var</span> <span class="nx">u</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">User</span><span class="p">(</span><span class="s2">"youngwon"</span><span class="p">,</span><span class="s2">"sjkadfhksdhfksd"</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">u</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">User</span><span class="p">(</span><span class="dl">"</span><span class="s2">youngwon</span><span class="dl">"</span><span class="p">,</span><span class="dl">"</span><span class="s2">sjkadfhksdhfksd</span><span class="dl">"</span><span class="p">);</span>
 <span class="nx">u</span><span class="p">.</span><span class="nx">name</span> <span class="c1">// "youngwon"</span>
 </code></pre></div></div>
 
@@ -110,15 +287,15 @@
 
 <p>고차함수(Higher-Order)는 함수의 인자로 함수를 받거나, 함수의 결과(return)로 함수를 반환하는 것을 말한다. 보통 인자로 함수를 받는것은 콜백함수로써 사용하기위한것이고, 이는 자바스크립트에서 자주 사용되는 패턴이다. 다음은 고차함수를 설명하기 위한 (다소 억지스러운)예시이다.</p>
 
-<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">aIndex</span> <span class="o">=</span> <span class="s2">"a"</span><span class="p">.</span><span class="nx">charCodeAt</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span> <span class="c1">//97</span>
-<span class="kd">var</span> <span class="nx">alphabet</span> <span class="o">=</span> <span class="s2">""</span><span class="p">;</span>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">aIndex</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">a</span><span class="dl">"</span><span class="p">.</span><span class="nx">charCodeAt</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span> <span class="c1">//97</span>
+<span class="kd">var</span> <span class="nx">alphabet</span> <span class="o">=</span> <span class="dl">""</span><span class="p">;</span>
 <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="mi">26</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
   <span class="nx">alphabet</span> <span class="o">+=</span> <span class="nb">String</span><span class="p">.</span><span class="nx">fromCharCode</span><span class="p">(</span><span class="nx">aIndex</span><span class="o">+</span><span class="nx">i</span><span class="p">);</span>
 <span class="p">}</span>
 <span class="nx">alphabet</span><span class="p">;</span> <span class="c1">//"abcdefghijklmnopqrstuvwxyz"</span>
 
 
-<span class="kd">var</span> <span class="nx">digits</span> <span class="o">=</span> <span class="s2">""</span><span class="p">;</span>
+<span class="kd">var</span> <span class="nx">digits</span> <span class="o">=</span> <span class="dl">""</span><span class="p">;</span>
 <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="nx">i</span><span class="o">&lt;</span><span class="mi">10</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">){</span>
   <span class="nx">digits</span> <span class="o">+=</span> <span class="nx">i</span><span class="p">;</span>
 <span class="p">}</span>
@@ -128,7 +305,7 @@
 <p>코드 작성 시, 비슷하거나 중복된 코드가 보인다면 고차함수(콜백함수)를 적용하는 것이 좋다. 위 예제는 다소 억지스러운 면이 있지만, 특정한 반복을 통해 문자열을 만드는 로직이 두번 나타난다. 이는 다음과 같은 함수(buildString)를 정의한뒤, 각각의 콜백함수를 따로 정의하여 코드 중복을 피하고 보다 재사용가능한 코드로 변경할 수 있다.</p>
 
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">buildString</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">callback</span><span class="p">)</span> <span class="p">{</span>
-  <span class="kd">var</span> <span class="nx">result</span> <span class="o">=</span> <span class="s2">""</span><span class="p">;</span>
+  <span class="kd">var</span> <span class="nx">result</span> <span class="o">=</span> <span class="dl">""</span><span class="p">;</span>
   <span class="k">for</span><span class="p">(</span><span class="kd">var</span> <span class="nx">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">n</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
     <span class="nx">result</span> <span class="o">+=</span> <span class="nx">callback</span><span class="p">(</span><span class="nx">i</span><span class="p">);</span>
   <span class="p">}</span>
@@ -188,8 +365,8 @@
 <p>Item21에서 가변인자를 갖는 함수(average)를 보았다. 그러면 이 함수는 어떻게 생겼길래 인자의 수가 가변적일가? 그것은 <strong>arguments</strong>라는 객체가 존재하기 때문이다.</p>
 
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">average</span><span class="p">()</span> <span class="p">{</span>
-  <span class="k">for</span><span class="p">(</span><span class="kd">var</span> <span class="nx">i</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="nx">sum</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="nx">n</span><span class="o">=</span><span class="kr">arguments</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">&lt;</span><span class="nx">n</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">){</span>
-    <span class="nx">sum</span> <span class="o">+=</span> <span class="kr">arguments</span><span class="p">[</span><span class="nx">i</span><span class="p">];</span>
+  <span class="k">for</span><span class="p">(</span><span class="kd">var</span> <span class="nx">i</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="nx">sum</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="nx">n</span><span class="o">=</span><span class="nx">arguments</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">&lt;</span><span class="nx">n</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">){</span>
+    <span class="nx">sum</span> <span class="o">+=</span> <span class="nx">arguments</span><span class="p">[</span><span class="nx">i</span><span class="p">];</span>
   <span class="p">}</span>
   <span class="k">return</span> <span class="nx">sum</span> <span class="o">/</span> <span class="nx">n</span><span class="p">;</span>
 <span class="p">}</span>
@@ -215,11 +392,11 @@
     <span class="k">this</span><span class="p">.</span><span class="nx">entries</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">s</span><span class="p">);</span>
   <span class="p">}</span>
   <span class="nl">concat</span><span class="p">:</span> <span class="kd">function</span><span class="p">(){</span>
-  	<span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">entries</span><span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="s2">""</span><span class="p">);</span>
+  	<span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">entries</span><span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="dl">""</span><span class="p">);</span>
   <span class="p">}</span>
 <span class="p">}</span>
 
-<span class="kd">var</span> <span class="nx">source</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"867"</span><span class="p">,</span><span class="s2">"-"</span><span class="p">,</span><span class="s2">"5309"</span><span class="p">];</span>
+<span class="kd">var</span> <span class="nx">source</span> <span class="o">=</span> <span class="p">[</span><span class="dl">"</span><span class="s2">867</span><span class="dl">"</span><span class="p">,</span><span class="dl">"</span><span class="s2">-</span><span class="dl">"</span><span class="p">,</span><span class="dl">"</span><span class="s2">5309</span><span class="dl">"</span><span class="p">];</span>
 <span class="nx">source</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">buffer</span><span class="p">.</span><span class="nx">add</span><span class="p">);</span> <span class="c1">//error, entries is undefined</span>
 </code></pre></div></div>
 
@@ -228,19 +405,19 @@
 <p>다음은 위 상황의 세 가지 해결법이다. <strong>첫 번째</strong>방법으로 해결이 가능한 이유는 <strong>forEach가 두 번째 인자로 바인딩할 객체</strong>를 받기 때문이다. <strong>두 번째</strong>방법은 익명함수를 통해 래퍼함수로 이용함으로써 바인딩 되는 영역과 분리되게 buffer.add를 사용한 것이다. <strong>세 번째</strong>방법은 bind메서드를 사용해서 해당 메서드가 호출될 때 바인딩 되는 객체를 직접적으로 지정한 것이다.</p>
 
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">//첫 번째</span>
-<span class="kd">var</span> <span class="nx">source</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"867"</span><span class="p">,</span><span class="s2">"-"</span><span class="p">,</span><span class="s2">"5309"</span><span class="p">];</span>
+<span class="kd">var</span> <span class="nx">source</span> <span class="o">=</span> <span class="p">[</span><span class="dl">"</span><span class="s2">867</span><span class="dl">"</span><span class="p">,</span><span class="dl">"</span><span class="s2">-</span><span class="dl">"</span><span class="p">,</span><span class="dl">"</span><span class="s2">5309</span><span class="dl">"</span><span class="p">];</span>
 <span class="nx">source</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">buffer</span><span class="p">.</span><span class="nx">add</span><span class="p">,</span> <span class="nx">buffer</span><span class="p">);</span> <span class="c1">//forEach의 두 번째인자로 바인딩할 객체를 넘김</span>
 <span class="nx">buffer</span><span class="p">.</span><span class="nx">join</span><span class="p">();</span> <span class="c1">//"867-5309"</span>
 
 <span class="c1">//두 번째</span>
-<span class="kd">var</span> <span class="nx">source</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"867"</span><span class="p">,</span><span class="s2">"-"</span><span class="p">,</span><span class="s2">"5309"</span><span class="p">];</span>
+<span class="kd">var</span> <span class="nx">source</span> <span class="o">=</span> <span class="p">[</span><span class="dl">"</span><span class="s2">867</span><span class="dl">"</span><span class="p">,</span><span class="dl">"</span><span class="s2">-</span><span class="dl">"</span><span class="p">,</span><span class="dl">"</span><span class="s2">5309</span><span class="dl">"</span><span class="p">];</span>
 <span class="nx">source</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">s</span><span class="p">){</span>
   <span class="nx">buffer</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="nx">s</span><span class="p">)</span> <span class="c1">//buffer.add는 완전히 분리된 메서드, 즉 buffer.add안에서는 원래 buffer가 바인딩됨</span>
 <span class="p">});</span>
 <span class="nx">buffer</span><span class="p">.</span><span class="nx">join</span><span class="p">();</span> <span class="c1">//"867-5309"</span>
 
 <span class="c1">//세 번째</span>
-<span class="kd">var</span> <span class="nx">source</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"867"</span><span class="p">,</span><span class="s2">"-"</span><span class="p">,</span><span class="s2">"5309"</span><span class="p">];</span>
+<span class="kd">var</span> <span class="nx">source</span> <span class="o">=</span> <span class="p">[</span><span class="dl">"</span><span class="s2">867</span><span class="dl">"</span><span class="p">,</span><span class="dl">"</span><span class="s2">-</span><span class="dl">"</span><span class="p">,</span><span class="dl">"</span><span class="s2">5309</span><span class="dl">"</span><span class="p">];</span>
 <span class="nx">source</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">buffer</span><span class="p">.</span><span class="nx">add</span><span class="p">.</span><span class="nx">bind</span><span class="p">(</span><span class="nx">buffer</span><span class="p">));</span> <span class="c1">//buffer.add를 호출할때 buffer로 바인딩</span>
 <span class="nx">buffer</span><span class="p">.</span><span class="nx">join</span><span class="p">();</span> <span class="c1">//"867-5309"</span>
 </code></pre></div></div>
@@ -255,19 +432,19 @@
 <p>Item25에서 살펴본 함수의 bind메서드는 수신자 객체를 바인딩하는 것 이상으로 유용하다. 다음의 예를 살펴보자.</p>
 
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">simpleURL</span><span class="p">(</span><span class="nx">protocol</span><span class="p">,</span> <span class="nx">domain</span><span class="p">,</span> <span class="nx">path</span><span class="p">)</span> <span class="p">{</span>
-  <span class="k">return</span> <span class="nx">protocol</span> <span class="o">+</span> <span class="s2">"://"</span> <span class="o">+</span> <span class="nx">domain</span> <span class="o">+</span> <span class="s2">"/"</span> <span class="o">+</span> <span class="nx">path</span><span class="p">;</span>
+  <span class="k">return</span> <span class="nx">protocol</span> <span class="o">+</span> <span class="dl">"</span><span class="s2">://</span><span class="dl">"</span> <span class="o">+</span> <span class="nx">domain</span> <span class="o">+</span> <span class="dl">"</span><span class="s2">/</span><span class="dl">"</span> <span class="o">+</span> <span class="nx">path</span><span class="p">;</span>
 <span class="p">}</span>
 
-<span class="kd">var</span> <span class="nx">siteDomain</span> <span class="o">=</span> <span class="s1">'...'</span><span class="p">;</span>
+<span class="kd">var</span> <span class="nx">siteDomain</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">...</span><span class="dl">'</span><span class="p">;</span>
 <span class="kd">var</span> <span class="nx">paths</span> <span class="o">=</span> <span class="p">[...];</span>
 <span class="kd">var</span> <span class="nx">urls</span> <span class="o">=</span> <span class="nx">paths</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">path</span><span class="p">){</span>
-  <span class="k">return</span> <span class="nx">simpleURL</span><span class="p">(</span><span class="s2">"http"</span><span class="p">,</span> <span class="nx">siteDomain</span><span class="p">,</span> <span class="nx">path</span><span class="p">);</span>
+  <span class="k">return</span> <span class="nx">simpleURL</span><span class="p">(</span><span class="dl">"</span><span class="s2">http</span><span class="dl">"</span><span class="p">,</span> <span class="nx">siteDomain</span><span class="p">,</span> <span class="nx">path</span><span class="p">);</span>
 <span class="p">});</span>
 </code></pre></div></div>
 
 <p>url의 각요소를 인자로 받아 full path로 만들어주는 simpleURL함수가 존재한다. 위 예에서는 특정 도메인 안의 존재하는 경로들을 가지고 있는 배열에 ES5의 map함수를 적용하여 URL들을 생성하는데, 실제 변경되는 값은 path뿐이다(3번째 인자만 필요). bind함수를 사용하면 이러한 함수를 자동으로 생성할 수 있다.</p>
 
-<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">urls</span> <span class="o">=</span> <span class="nx">paths</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="nx">simpleURL</span><span class="p">.</span><span class="nx">bind</span><span class="p">(</span><span class="kc">null</span><span class="p">,</span> <span class="s2">"http"</span><span class="p">,</span> <span class="nx">siteDomain</span><span class="p">));</span>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">urls</span> <span class="o">=</span> <span class="nx">paths</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="nx">simpleURL</span><span class="p">.</span><span class="nx">bind</span><span class="p">(</span><span class="kc">null</span><span class="p">,</span> <span class="dl">"</span><span class="s2">http</span><span class="dl">"</span><span class="p">,</span> <span class="nx">siteDomain</span><span class="p">));</span>
 </code></pre></div></div>
 
 <p>simpleURL이 this를 사용하지 않기 때문에 첫 번째 인자(바인딩할 객체)가 null이다. 그외 “http”와 siteDomain은 simpleURL이 호출될 때 넘겨지는 인자로 지정되고 map을 통해 입력되는 배열의 요소가 나머지 인자로 붙어져 실제 호출할려고 하는 simpleURL(“http”, siteDomain, paths[i]) 가 완성되는 것이다.</p>
@@ -297,7 +474,7 @@
 <p>다음은 callee의 예제로써 익명함수가 자신을 다시 호출하기 위해 callee를 호출한다.</p>
 
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">factorial</span> <span class="o">=</span> <span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">n</span><span class="p">)</span> <span class="p">{</span>
-  <span class="k">return</span> <span class="p">(</span><span class="nx">n</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">)</span> <span class="p">?</span> <span class="mi">1</span> <span class="p">:</span> <span class="p">(</span><span class="nx">n</span> <span class="o">*</span> <span class="kr">arguments</span><span class="p">.</span><span class="nx">callee</span><span class="p">(</span><span class="nx">n</span><span class="o">-</span><span class="mi">1</span><span class="p">));</span>
+  <span class="k">return</span> <span class="p">(</span><span class="nx">n</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">)</span> <span class="p">?</span> <span class="mi">1</span> <span class="p">:</span> <span class="p">(</span><span class="nx">n</span> <span class="o">*</span> <span class="nx">arguments</span><span class="p">.</span><span class="nx">callee</span><span class="p">(</span><span class="nx">n</span><span class="o">-</span><span class="mi">1</span><span class="p">));</span>
 <span class="p">});</span>
 </code></pre></div></div>
 
@@ -339,52 +516,52 @@
   <li><a href="http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&amp;mallGb=KOR&amp;barcode=9788966260850&amp;orderClick=LAG&amp;Kc=">이펙티브 자바스트립트 - 데이티브 허먼지음, 김준기 옮김(인사이트)</a></li>
 </ul>
 
-
-  
-  <div class="post-disqus">
-      <section id="disqus_thread"></section>
-      <div id="disqus_thread"></div>
-<script>
-
-/**
-*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
-*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
-/*
-var disqus_config = function () {
-this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
-this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
-};
-*/
-(function() { // DON'T EDIT BELOW THIS LINE
-var d = document, s = d.createElement('script');
-s.src = 'https://youngwonseo.disqus.com/embed.js';
-s.setAttribute('data-timestamp', +new Date());
-(d.head || d.body).appendChild(s);
-})();
-</script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-                            
+		
   </div>
-  
-</div>
 
-<div class="pagination">
-  
-    <a href="/2018/05/16/centos-setting/" class="left arrow">&#8592;</a>
-  
-  
-    <a href="/2018/05/12/MDP2/" class="right arrow">&#8594;</a>
-  
-
-  <a href="#" class="top">Top</a>
-</div>
-
-    </main>
-
-    <footer>
-      <span>
-        &copy; <time datetime="2020-03-04 00:15:58 +0900">2020</time> Youngwon Seo. Made with Jekyll using the <a href="https://github.com/chesterhow/tale/">Tale</a> theme.
+  <div class="parent f-right">
+    <!-- Twitter -->
+    <a href="https://twitter.com/share?url=https://thereviewindex.com/blog/2018/05/13/effective-javascript-3/&amp;text=이펙티브 자바스크립트 #3&amp;hashtags=thereviewindex" target="_blank">
+      <span class="social-icon">  
+        <svg class="svgIcon-use" width="29" height="29" viewBox="0 0 29 29"><path d="M21.967 11.8c.018 5.93-4.607 11.18-11.177 11.18-2.172 0-4.25-.62-6.047-1.76l-.268.422-.038.5.186.013.168.012c.3.02.44.032.6.046 2.06-.026 3.95-.686 5.49-1.86l1.12-.85-1.4-.048c-1.57-.055-2.92-1.08-3.36-2.51l-.48.146-.05.5c.22.03.48.05.75.08.48-.02.87-.07 1.25-.15l2.33-.49-2.32-.49c-1.68-.35-2.91-1.83-2.91-3.55 0-.05 0-.01-.01.03l-.49-.1-.25.44c.63.36 1.35.57 2.07.58l1.7.04L7.4 13c-.978-.662-1.59-1.79-1.618-3.047a4.08 4.08 0 0 1 .524-1.8l-.825.07a12.188 12.188 0 0 0 8.81 4.515l.59.033-.06-.59v-.02c-.05-.43-.06-.63-.06-.87a3.617 3.617 0 0 1 6.27-2.45l.2.21.28-.06c1.01-.22 1.94-.59 2.73-1.09l-.75-.56c-.1.36-.04.89.12 1.36.23.68.58 1.13 1.17.85l-.21-.45-.42-.27c-.52.8-1.17 1.48-1.92 2L22 11l.016.28c.013.2.014.35 0 .52v.04zm.998.038c.018-.22.017-.417 0-.66l-.498.034.284.41a8.183 8.183 0 0 0 2.2-2.267l.97-1.48-1.6.755c.17-.08.3-.02.34.03a.914.914 0 0 1-.13-.292c-.1-.297-.13-.64-.1-.766l.36-1.254-1.1.695c-.69.438-1.51.764-2.41.963l.48.15a4.574 4.574 0 0 0-3.38-1.484 4.616 4.616 0 0 0-4.61 4.613c0 .29.02.51.08.984l.01.02.5-.06.03-.5c-3.17-.18-6.1-1.7-8.08-4.15l-.48-.56-.36.64c-.39.69-.62 1.48-.65 2.28.04 1.61.81 3.04 2.06 3.88l.3-.92c-.55-.02-1.11-.17-1.6-.45l-.59-.34-.14.67c-.02.08-.02.16 0 .24-.01 2.12 1.55 4.01 3.69 4.46l.1-.49-.1-.49c-.33.07-.67.12-1.03.14-.18-.02-.43-.05-.64-.07l-.76-.09.23.73c.57 1.84 2.29 3.14 4.28 3.21l-.28-.89a8.252 8.252 0 0 1-4.85 1.66c-.12-.01-.26-.02-.56-.05l-.17-.01-.18-.01L2.53 21l1.694 1.07a12.233 12.233 0 0 0 6.58 1.917c7.156 0 12.2-5.73 12.18-12.18l-.002.04z"></path></svg>
       </span>
-    </footer>
+    </a>
+
+    &nbsp;&nbsp;&nbsp;
+    <!-- Facebook -->
+    <a href="http://www.facebook.com/sharer.php?u=https://thereviewindex.com/blog/2018/05/13/effective-javascript-3/" target="_blank">
+      <span class="social-icon">
+        <svg class="svgIcon-use" width="29" height="29" viewBox="0 0 29 29"><path d="M16.39 23.61v-5.808h1.846a.55.55 0 0 0 .546-.48l.36-2.797a.551.551 0 0 0-.547-.62H16.39V12.67c0-.67.12-.813.828-.813h1.474a.55.55 0 0 0 .55-.55V8.803a.55.55 0 0 0-.477-.545c-.436-.06-1.36-.116-2.22-.116-2.5 0-4.13 1.62-4.13 4.248v1.513H10.56a.551.551 0 0 0-.55.55v2.797c0 .304.248.55.55.55h1.855v5.76c-4.172-.96-7.215-4.7-7.215-9.1 0-5.17 4.17-9.36 9.31-9.36 5.14 0 9.31 4.19 9.31 9.36 0 4.48-3.155 8.27-7.43 9.15M14.51 4C8.76 4 4.1 8.684 4.1 14.46c0 5.162 3.75 9.523 8.778 10.32a.55.55 0 0 0 .637-.543v-6.985a.551.551 0 0 0-.55-.55H11.11v-1.697h1.855a.55.55 0 0 0 .55-.55v-2.063c0-2.02 1.136-3.148 3.03-3.148.567 0 1.156.027 1.597.06v1.453h-.924c-1.363 0-1.93.675-1.93 1.912v1.78c0 .3.247.55.55.55h2.132l-.218 1.69H15.84c-.305 0-.55.24-.55.55v7.02c0 .33.293.59.623.54 5.135-.7 9.007-5.11 9.007-10.36C24.92 8.68 20.26 4 14.51 4"></path></svg>
+      </span> 
+    </a>
+  </div>
+
+  <!-- Facebook Comments HTML -->
+  <div class="m-t-6e">
+    <div class="fb-comments" data-href="http://localhost:4000/2018/05/13/effective-javascript-3/" data-width="800" data-numposts="5"></div>
+  </div>
+
+</article>
+
+
+  
+  	  </main>
+  		
+  		  <!-- Pagination links -->
+        
+  
+  	  </div>
+  	    
+  	    <!-- Footer -->
+        <div class="m-t-6e">
+          <footer><span>&#169;2017 - TheReviewIndex</span></footer>
+
+        </div>
+  
+  	    <!-- Script -->
+        <script src="/js/main.js"></script>	
+
+  
+  	</div>
   </body>
 </html>

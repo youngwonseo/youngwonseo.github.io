@@ -1,228 +1,558 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
   <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!-- Meta -->
+	<meta charset="UTF-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+	<meta name="generator" content="Jekyll">
 
-  <title>
-    
-      Youngwon Seo
-    
-  </title>
+	<title>Youngwon Seo</title>
+  <meta name="description" content="">
 
-  <!-- CSS -->
-  <link rel="stylesheet" href="/assets/main.css">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700">
+	<!-- CSS & fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,500" rel="stylesheet">
+  <link rel="stylesheet" href="/css/main.css">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Youngwon Seo">
+  <meta property="og:type" content: "website">
+  <meta property="og:url" content= "https://thereviewindex.com/blog/page2/">
+  <meta property="og:description" content="">
+  <meta property="og:locale" content= "en_US">
+  <meta property="og:site_name" content="The Review Index">
+  <meta property="og:image" content="https://thereviewindex.com/blog/">
+  <meta property="og:image:url" content="https://thereviewindex.com/blog/">
+  <meta property="og:image:secure_url" content="https://thereviewindex.com/blog/">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="1200">
+  
+  <!-- twitter card -->
+  <meta property="twitter:card" content="summary">
+  <meta property="twitter:title" content="Youngwon Seo">
+  <meta property="twitter:description" content="">
+  <meta property="twitter:url" content= "https://thereviewindex.com/blog/page2/">
+  <meta property="twitter:image" content="https://thereviewindex.com/blog/">
+
+
+	<!-- RSS -->
+	<link href="/atom.xml" type="application/atom+xml" rel="alternate" title="ATOM Feed" />
 
   <!-- Favicon -->
-  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png">
-  <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
+  <link rel="shortcut icon" type="image/png" href="img/favicon.png">
+
+  
+  <!-- Google Analytics -->
+  <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  
+  ga('create', 'UA-78263144-1', 'auto');
+  ga('send', 'pageview');
+  </script>
+  <!-- End Google Analytics -->
+
 </head>
 
-  <!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-118401942-1"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'UA-118401942-1');
-</script>
-
   <body>
-    <nav class="nav">
-      <div class="nav-container">
-        <a href="/">
-          <h2 class="nav-title">Youngwon Seo</h2>
-        </a>
-        <ul>
-          <li><a href="/about">About</a></li>
-          <li><a href="/">Posts</a></li>
-          <li><a href="/study"/>Study</a></li>
-          <li><a href="/ml"/>Machine Learning</a></li>
-          <li><a href="/cicd"/>CI/CD</a></li>
-          <!-- <li><a href="/spring"/>Spring</a></li>
-          <li><a href="/deeplearning"/>Deeplearning</a></li> -->
-        </ul>
-    </div>
-  </nav>
-
-    <main>
-      <div class="catalogue">
+    
+    <!-- Facebook Comments Script -->
+    <div id="fb-root"></div>
+      <script>(function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = 'https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v2.11&appId=288262758360783';
+        fjs.parentNode.insertBefore(js, fjs);
+      }(document, 'script', 'facebook-jssdk'));</script>
   
+    <div id="wrap">
+  	  	
+  	  	<!-- Navigation -->
+  	  	<nav id="nav">
+	<div id="nav-list">
+		<a href="/">Home</a>
+
+		<!-- Nav pages -->
+	  
+	    
+	  
+	    
+	  
+	    
+	      <a href="/about/" title="About">About</a>
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	      <a href="/ml/" title="Machine Learning">Machine Learning</a>
+	    
+	  
+	    
+	      <a href="/study/" title="Study">Study</a>
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+    
+    <!-- Nav links -->
+	  <!-- <a href="/">Blog</a> -->
+
+
+	</div>
   
-    <a href="/2019/11/15/06-04-keras/" class="catalogue-item">
-      <div>
-        <time datetime="2019-11-15 00:00:00 +0900" class="catalogue-time">November 15, 2019</time>
-        <h1 class="catalogue-title">컨브넷을 사용한 시퀀스 처리</h1>
-        <div class="catalogue-line"></div>
+  <!-- Nav footer -->
+	
+	  <footer>
+	
+	<!-- Your custom nav footer here -->
+	
+</footer>
+	
 
-        <p>
-          
+</nav>
 
-        </p>
+      
+      <!-- Icon menu -->
+  	  <a id="nav-menu">
+  	  	<div id="menu"></div>
+  	  </a>
+  
+        <!-- Header -->
+        
+          <header id="header">
 
+	<!-- Your custom header here -->
+	<span class="f-left">  
+		<a href="http://localhost:4000">
+			<h1>
+				<span>Youngwon Seo</span>
+			</h1>
+		</a>
+	</span>
+
+	<span id="nav-links" class="absolute right bottom">
+		<!-- Nav pages -->
+		
+			
+		
+			
+		
+			
+				<a href="/about/" title="About">About</a>
+			
+		
+			
+		
+			
+		
+			
+		
+			
+				<a href="/ml/" title="Machine Learning">Machine Learning</a>
+			
+		
+			
+				<a href="/study/" title="Study">Study</a>
+			
+		
+			
+		
+			
+		
+			
+		
+			
+		
+			
+		
+			
+		
+			
+		
+			
+		
+		
+		<!-- Nav links -->
+		<!-- <a href="/">Blog</a> -->
+
+	</span>
+	
+	<!-- Google Analytics -->
+  <script>
+		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+		
+		ga('create', 'UA-78263144-1', 'auto');
+		ga('send', 'pageview');
+		</script>
+		<!-- End Google Analytics -->
+</header>
+
+
+        
+  
+      <!-- Main content -->
+  	  <div id="container">
+  		  
+  		<main>
+  
+  			<!-- Posts -->
+<div id="posts">
+
+	
+
+	  <div class="post">
+	  	<h2><a href="/2019/11/11/03-04-keras/">신경망 시작하기#4 - 주택가격예측(회귀)</a></h2>
+      <div class="by-line parent">
+        <time datetime="2019-11-11T00:00:00+09:00"> <i>11 Nov 2019</i> </time>
+        &nbsp;&nbsp; &middot; &nbsp;&nbsp;
+        <span><i></i> </span>
       </div>
-    </a>
-  
-  
-  
-    <a href="/2019/11/15/06-03-keras/" class="catalogue-item">
-      <div>
-        <time datetime="2019-11-15 00:00:00 +0900" class="catalogue-time">November 15, 2019</time>
-        <h1 class="catalogue-title">순환 신경망의 고급 사용법</h1>
-        <div class="catalogue-line"></div>
+      <p>[케라스창시자에게 배우는 딥러닝]의 3장 내용을 정리한 것입니다. 주택 가격 예측 - 회귀 (보스턴 주택 가격 데이터셋) from keras.datasets import boston_housing (train_data, train_targets), (test_data, test_targets) = boston_housing.load_data() mean = train_data.mean(axis=0) train_data -= mean std = train_data.std(axis=0) train_data /= std test_data -= mean test_data /= std from keras import models from keras...</p>
+	  </div>
 
-        <p>
-          이번 포스트에서는 순환신경망의 성능과 일반화 능력을 향상시키기 위한 세 가지 고급 기술을 살펴보겠습니다. 이를 위해 건물 옥상에서 측정된 온도, 기압, 습도와 같은 데이터를 이용하여 24시간 이후의 온도를 예측하는 문제를 풀어보겠습니다....
-        </p>
+    
 
+	  <div class="post">
+	  	<h2><a href="/2019/11/11/03-03-keras/">신경망 시작하기#3 - 뉴스기사분류(다중분류)</a></h2>
+      <div class="by-line parent">
+        <time datetime="2019-11-11T00:00:00+09:00"> <i>11 Nov 2019</i> </time>
+        &nbsp;&nbsp; &middot; &nbsp;&nbsp;
+        <span><i></i> </span>
       </div>
-    </a>
-  
-  
-  
-    <a href="/2019/11/15/06-02-keras/" class="catalogue-item">
-      <div>
-        <time datetime="2019-11-15 00:00:00 +0900" class="catalogue-time">November 15, 2019</time>
-        <h1 class="catalogue-title">순환 신경망 이해하기</h1>
-        <div class="catalogue-line"></div>
+      <p>[케라스창시자에게 배우는 딥러닝]의 3장 내용을 정리한 것입니다. 뉴스 기사 분류 - 다중분류 (로이터 데이터셋) from keras.datasets import reuters (train_data, train_labels), (test_data, test_labels) = reuters.load_data(num_words=10000) import numpy as np def vectorize_sequences(sequences, dimension=10000): results = np.zeros((len(sequences), dimension)) for i, sequence in enumerate(sequences): results[i, sequence] = 1. return results x_train = vectorize_sequences(train_data) x_test...</p>
+	  </div>
 
-        <p>
-          이번 글에는 순환 신경망(recurrent nerual network)에 대해 알아봅니다. 이전까지의 네트워크 구조를 살펴보면 메모리를 포함하고 있지 않다는 것입니다. 입력은 개별적으로 처리되며 입력간의 유지되는 상태는 존재하지 않습니다. 이는 순차 데이터나 시계열 데이터를...
-        </p>
+    
 
+	  <div class="post">
+	  	<h2><a href="/2019/11/10/03-02-keras/">신경망 시작하기#2 - 영화리뷰분류(이중분류)</a></h2>
+      <div class="by-line parent">
+        <time datetime="2019-11-10T00:00:00+09:00"> <i>10 Nov 2019</i> </time>
+        &nbsp;&nbsp; &middot; &nbsp;&nbsp;
+        <span><i></i> </span>
       </div>
-    </a>
-  
-  
-  
-    <a href="/2019/11/15/06-01-keras/" class="catalogue-item">
-      <div>
-        <time datetime="2019-11-15 00:00:00 +0900" class="catalogue-time">November 15, 2019</time>
-        <h1 class="catalogue-title">텍스트 데이터 처리하기 - 순환 신경망</h1>
-        <div class="catalogue-line"></div>
+      <p>[케라스창시자에게 배우는 딥러닝]의 3장 내용을 정리한 것입니다. 이전장에 이번에는 케라스를 사용하여 3가지 종류의 문제를 풀어봅니다. 영화 리뷰 분류 - 이진 분류 문제 뉴스 기사 분류 - 다중 분류 문제 주택 가격 예측 - 회귀 문제 영화 리뷰 분류 - 이진분류 (IMDB 데이터셋) IMDB는 5만개의 영화리뷰로 이루어진 데이터셋입니다. 현재 keras.datasets에 내장되어...</p>
+	  </div>
 
-        <p>
-          이번장에서는 텍스트(단어의 시퀀스 또는 문자의 시퀀스), 시계열 또는 시퀀스 데이터를 처리하는 딥러닝 모델을 살펴봅니다. 기본적으로 시퀀스 데이터 처리를 위한 딥러닝 모델은 순환 신경망(recurrent neural network)과 1D 컨브넷(1D convnet)입니다. 먼저 가장...
-        </p>
+    
 
+	  <div class="post">
+	  	<h2><a href="/2019/11/10/03-01-keras/">신경망 시작하기#1</a></h2>
+      <div class="by-line parent">
+        <time datetime="2019-11-10T00:00:00+09:00"> <i>10 Nov 2019</i> </time>
+        &nbsp;&nbsp; &middot; &nbsp;&nbsp;
+        <span><i></i> </span>
       </div>
-    </a>
-  
-  
-  
-    <a href="/2019/11/15/03-informed_search/" class="catalogue-item">
-      <div>
-        <time datetime="2019-11-15 00:00:00 +0900" class="catalogue-time">November 15, 2019</time>
-        <h1 class="catalogue-title">Informed Search(Heuristic Search)</h1>
-        <div class="catalogue-line"></div>
+      <p>[케라스창시자에게 배우는 딥러닝]의 3장 내용을 정리한 것입니다. 1. 신경망의 구조 신경망은 다음과 같은 요소로 구성되어 있습니다. 1.1 네트워크(모델)을 구성하는 층(layer) 층은 하나 이상의 텐서를 입력으로 받고 하나 이상의 텐서를 출력합니다. 또한 입/출력과 더불어 가중치(weight)를 상태를 가지는데 입/출력에 대해 가중치를 학습합니다(경사하강법을 통해 학습). 풀고자 하는 문제(데이터에 따라)에 따라 신경망은 적절한 층을...</p>
+	  </div>
 
-        <p>
-          어떤 문제에서 goal까지의 경로를 찾을 때, 모든 경로를 검사하게 되면 상당히 비 효율적이다. 대표적인 예로 깊이우선탐색(BFS : Breadth First Search)나 깊이우선 탐색(Depth First Search)으로 문제에 대한 해는 주어지지만 결국 가능한...
-        </p>
+    
 
+	  <div class="post">
+	  	<h2><a href="/2019/10/05/spel/">Spring Expressino Language(SpEL)</a></h2>
+      <div class="by-line parent">
+        <time datetime="2019-10-05T00:00:00+09:00"> <i>05 Oct 2019</i> </time>
+        &nbsp;&nbsp; &middot; &nbsp;&nbsp;
+        <span><i></i> </span>
       </div>
-    </a>
-  
-  
-  
-    <a href="/2019/11/15/02-alpha-beta-pruning/" class="catalogue-item">
-      <div>
-        <time datetime="2019-11-15 00:00:00 +0900" class="catalogue-time">November 15, 2019</time>
-        <h1 class="catalogue-title">Alpha-beta Pruning</h1>
-        <div class="catalogue-line"></div>
+      <p>SpEL(Spring Expression Language)는 run time환경에서 Object graph에 대해 질의하고 관리하는 강력한 표현 언어 Unified EL과 syntax가 유사, 그러나 더 많은 특성을 제공(메소드 호출), 기본 문자열 템플릿) 자바에는 여러가지 표혀언어가 가능 OGNL, MVEL, JBossEL 등 지원 기능 Literal expressions Boolean and relational operators Regular expression Class expressions Accessing properties, arrays, lists,...</p>
+	  </div>
 
-        <p>
-          *Minmax Search를 먼저 이해하여야 한다. Alpha Beta Pruning 이란 Minmax Search에서 발생하는 연산을 최소한으로 감소시킬수 있는 알고리즘이다. 기존의 MinmaxSearch는 트리를 생성한 후 상태를 평가한다. 즉 생성과 판단이 분리되어 있고 각각...
-        </p>
+    
 
+	  <div class="post">
+	  	<h2><a href="/2019/10/01/06-svm/">Support Vector Machine(SVM)</a></h2>
+      <div class="by-line parent">
+        <time datetime="2019-10-01T00:00:00+09:00"> <i>01 Oct 2019</i> </time>
+        &nbsp;&nbsp; &middot; &nbsp;&nbsp;
+        <span><i></i> </span>
       </div>
-    </a>
-  
-  
-  
-    <a href="/2019/11/15/01-minmax-search/" class="catalogue-item">
-      <div>
-        <time datetime="2019-11-15 00:00:00 +0900" class="catalogue-time">November 15, 2019</time>
-        <h1 class="catalogue-title">Minmax Search</h1>
-        <div class="catalogue-line"></div>
+      <p>이번 장에서 학습할 내용은 SVM이라는 매우 강력하고 선형, 비선형 분류, 회귀 등에서 사용할 수 있는 다목적 머신러닝 모델입니다. 딥러닝 이전의 머신러닝에서 가장 인기있는 모델이라고 지칭되며 복잡한 문제를 잘 푼다고 알려져 있습니다. 선형 분류 SVM은 그림을 통해 이해하는 것이 가장 좋은방법입니다. 다음 그림을 살펴보겠습니다. [그림] large maring classification support vector SVM은...</p>
+	  </div>
 
-        <p>
-          Minmax Search는 Adversarial Search 알고리즘으로써 두 에이전트(플레이어)가 게임을 시행할 때 앞의 몇수를 계산하는 알고리즘입니다. 여기서는 Minmax Search를 설명하기 위해 틱택톡 게임을 예로 설명하겠습니다(Tic-Tac-Toe : 3X3의 보드에 3개의 돌이 연속적으로 열,행...
-        </p>
+    
 
+	  <div class="post">
+	  	<h2><a href="/2019/10/01/03-classification/">분류</a></h2>
+      <div class="by-line parent">
+        <time datetime="2019-10-01T00:00:00+09:00"> <i>01 Oct 2019</i> </time>
+        &nbsp;&nbsp; &middot; &nbsp;&nbsp;
+        <span><i></i> </span>
       </div>
-    </a>
-  
-  
-  
-    <a href="/2019/11/13/sentence-classification-cnn/" class="catalogue-item">
-      <div>
-        <time datetime="2019-11-13 00:00:00 +0900" class="catalogue-time">November 13, 2019</time>
-        <h1 class="catalogue-title">Sentence Classification Cnn</h1>
-        <div class="catalogue-line"></div>
+      <p>이번 장에서는 분류를 알아보겠습니다. 분류를 위해 먼저 숫자 손글씨 데이터를 사용하겠습니다. 숫자 손글씨로는 MNIST는 유명한 데이터셋이 있고 Scikit-Learn에 내장되어 있습니다. 다음과 같이 데이터를 받을 수 있습니다. from sklearn.datasets import fetch_openml mnist = fetch_openml('mnist_784', version=1) mnist에는 손글씨에 대한 data와 손글씨에 대한 숫자가 target으로 매칭되어 있습니다. 즉 data를 보고 target이 먼지 분류하는것이...</p>
+	  </div>
 
-        <p>
-          
+    
 
-        </p>
-
+	  <div class="post">
+	  	<h2><a href="/2019/09/30/python-cheat-sheet/">Python Cheat Sheet</a></h2>
+      <div class="by-line parent">
+        <time datetime="2019-09-30T00:00:00+09:00"> <i>30 Sep 2019</i> </time>
+        &nbsp;&nbsp; &middot; &nbsp;&nbsp;
+        <span><i></i> </span>
       </div>
-    </a>
-  
-  
-  
-    <a href="/2019/11/12/04-01-keras/" class="catalogue-item">
-      <div>
-        <time datetime="2019-11-12 00:00:00 +0900" class="catalogue-time">November 12, 2019</time>
-        <h1 class="catalogue-title">머신러닝의 기본요소#1</h1>
-        <div class="catalogue-line"></div>
+      <p>
+</p>
+	  </div>
 
-        <p>
-          [케라스창시자에게 배우는 딥러닝]의 4장 내용을 정리한 것입니다. 앞까지의 내용을 통해 신경망을 사용하여 분류와 회귀에 대한 문제를 어떻게 해결하는지 경험하였습니다. 또한 머신러닝에서 아주 중요한 문제인 과대적합에 대해서도 경험하였습니다. 이번장부터는 앞까지의 내용을...
-        </p>
+    
 
+	  <div class="post">
+	  	<h2><a href="/2019/09/30/02-ml-project2/">머신러닝 프로젝트 처음부터 끝까지#2</a></h2>
+      <div class="by-line parent">
+        <time datetime="2019-09-30T00:00:00+09:00"> <i>30 Sep 2019</i> </time>
+        &nbsp;&nbsp; &middot; &nbsp;&nbsp;
+        <span><i></i> </span>
       </div>
-    </a>
-  
-  
-  
-    <a href="/2019/11/11/03-04-keras/" class="catalogue-item">
-      <div>
-        <time datetime="2019-11-11 00:00:00 +0900" class="catalogue-time">November 11, 2019</time>
-        <h1 class="catalogue-title">신경망 시작하기#4 - 주택가격예측(회귀)</h1>
-        <div class="catalogue-line"></div>
+      <p>4. 머신러닝을 위한 데이터 준비
+머신러닝 모델을 돌리기전 모델의 입력에 적합하게 데이터 전처리를 진행하는데 이작업은 함수로 자동화해야합니다.
 
-        <p>
-          [케라스창시자에게 배우는 딥러닝]의 3장 내용을 정리한 것입니다. 주택 가격 예측 - 회귀 (보스턴 주택 가격 데이터셋) from keras.datasets import boston_housing (train_data, train_targets), (test_data, test_targets) = boston_housing.load_data() mean = train_data.mean(axis=0) train_data...
-        </p>
+5. 모델 선택과 훈련
 
+6. 모델 튜닝
+
+7. 런칭, 모니터링, 유지보수
+</p>
+	  </div>
+
+    
+
+	  <div class="post">
+	  	<h2><a href="/2019/09/30/02-ml-project1/">머신러닝 프로젝트 처음부터 끝까지#1</a></h2>
+      <div class="by-line parent">
+        <time datetime="2019-09-30T00:00:00+09:00"> <i>30 Sep 2019</i> </time>
+        &nbsp;&nbsp; &middot; &nbsp;&nbsp;
+        <span><i></i> </span>
       </div>
-    </a>
-  
-  
+      <p>이번 장에서는 머신러닝의 프로세스를 처음부터 끝까지 경험해보며 각 과정에서 나타나는 이슈나 고려할 점등을 경험하는 장입니다. 개인적으로 이러한 전체 플로우를 미리보고 각 과정의 디테일한 요소를 공부하는 방식이 머신러닝을 공부하기 가장 좋은 방법이라고 생각합니다. 다음은 이번장에서 경험할, 그리고 머신러닝 프로젝트에서 진행되는 주요 과정들입니다. 큰 그림을 봅니다. 데이터를 구합니다. 데이터로 부터 통찰을 얻기...</p>
+	  </div>
+
+    
+
+	  <div class="post">
+	  	<h2><a href="/2019/09/28/bean-definition-inheritance/">Bean Definiton Inheritance</a></h2>
+      <div class="by-line parent">
+        <time datetime="2019-09-28T00:00:00+09:00"> <i>28 Sep 2019</i> </time>
+        &nbsp;&nbsp; &middot; &nbsp;&nbsp;
+        <span><i></i> </span>
+      </div>
+      <p>1.7. Bean Definition Inheritance Bean 정의시 많은 설정정보가 포함될 수 있음 constructor arguments property values container specific information initialization method static factory method name 하위Bean은 상위Bean을 상속 하위Bean은 필요에 따라 상위속성에 대한 override 가능 상위Bean과 하위Bean을 통해 많인 typing으로 정의가능 이것은 효과적으로 템플릿한 것 AplicationContext 인터페이스를 programmatically하게 사용할 경우, 하위...</p>
+	  </div>
+
+    
+
+	  <div class="post">
+	  	<h2><a href="/2019/09/03/firebase-messaging/">FCM을 사용한 푸시처리 (SpringMVC)</a></h2>
+      <div class="by-line parent">
+        <time datetime="2019-09-03T00:00:00+09:00"> <i>03 Sep 2019</i> </time>
+        &nbsp;&nbsp; &middot; &nbsp;&nbsp;
+        <span><i></i> </span>
+      </div>
+      <p>본 포스트에서는 SpringMVC기반의 template환경에서 파이어베이스 클라우드 메세지를 사용하는 방법을 알아보겠습니다.
+
+파이어베이스 프로젝트 생성
+
+firebase-messaging.js
+
+firebase-messaging-sw.js
+
+</p>
+	  </div>
+
+    
+
+	  <div class="post">
+	  	<h2><a href="/2019/08/23/how-is-gcp-build/">How Is Gcp Build</a></h2>
+      <div class="by-line parent">
+        <time datetime="2019-08-23T00:00:00+09:00"> <i>23 Aug 2019</i> </time>
+        &nbsp;&nbsp; &middot; &nbsp;&nbsp;
+        <span><i></i> </span>
+      </div>
+      <p>
+</p>
+	  </div>
+
+    
+
+	  <div class="post">
+	  	<h2><a href="/2019/08/23/js-library-1/">자바스크립트 라이브러리 분석 #1</a></h2>
+      <div class="by-line parent">
+        <time datetime="2019-08-23T00:00:00+09:00"> <i>23 Aug 2019</i> </time>
+        &nbsp;&nbsp; &middot; &nbsp;&nbsp;
+        <span><i></i> </span>
+      </div>
+      <p>자바스크립트(JS) 라이브러리를 개발하기에 앞서 여러가지 JS라이브러리를 분석해보겠습니다. 처음부터 무겁고 복잡한 라이브러리를 분석하기보다는 상대적으로 소스가 간결한 라이브러리를 분석함으로써 전체적인 구조 위주먼저 파악하고 점차 복잡한 라이브러리의 세부사항들을 알아보겠습니다. 여기서 분석하는 JS라이브러리 CountUp.js (250 line) Numeral.js (700 line) CountUp.js https://github.com/inorganik/countUp.js/blob/master/dist/countUp.js 먼저 전역(global)에 CountUp 변수를 선언하고 즉시실행함수에서 반환하는 객체를 대입합니다. 즉시실행함수에는 CountUp의 생성자와 관련...</p>
+	  </div>
+
+    
+
+	  <div class="post">
+	  	<h2><a href="/2019/08/22/what-is-gcp/">What is Google Cloud Platform</a></h2>
+      <div class="by-line parent">
+        <time datetime="2019-08-22T00:00:00+09:00"> <i>22 Aug 2019</i> </time>
+        &nbsp;&nbsp; &middot; &nbsp;&nbsp;
+        <span><i></i> </span>
+      </div>
+      <p>본 과정에서는 GCP에서 제공하는 많은 흥미로운 서비스들에 대해 다룹니다.
+
+  GCP는 VM과 network을 위한 infrastructure services 구축을 위한 서비스를 제공
+  해당 서비스를 이용하변 쉽게 application을 배포
+  또한 다양한 데이터 서비스를 이용하면 보안과 함께 비용 효율적인 데이터 저장
+  이것은 빅데이터 서비스로 실시간 분석을 수행합니다.
+  application에 머신러닝기능을 쉽게 통합가능
+
+
+</p>
+	  </div>
+
+    
+
+	  <div class="post">
+	  	<h2><a href="/2019/08/22/gcp-funcdamentals-core-intrastructure/">Google Cloud Platform Fundamentals v2.0</a></h2>
+      <div class="by-line parent">
+        <time datetime="2019-08-22T00:00:00+09:00"> <i>22 Aug 2019</i> </time>
+        &nbsp;&nbsp; &middot; &nbsp;&nbsp;
+        <span><i></i> </span>
+      </div>
+      <p>Google Cloud Platform for Systems Operations Professionals v1.2 Overview Google Cloud Platform Funcdamentals Computing, Storage, and Security with Google Cloud Platform Introducing Configuration Management on Google Cloud Platform Designing Highly Available and Scalable Services on Google Cloud Platform Google Cloud Platform Funcdamentals Module 1 : Introducing Google Cloud Platform Module...</p>
+	  </div>
+
+    
+
+	  <div class="post">
+	  	<h2><a href="/2019/08/17/creating-cd-pipeline/">Creating a Continuous Delivery Pipeline</a></h2>
+      <div class="by-line parent">
+        <time datetime="2019-08-17T00:00:00+09:00"> <i>17 Aug 2019</i> </time>
+        &nbsp;&nbsp; &middot; &nbsp;&nbsp;
+        <span><i></i> </span>
+      </div>
+      <p>이번에는 Continous Deliivery Pipeline을 배포하는 방법을 살펴보겠습니다. 이것은 build, stage, test, deploy를 automated triggers나 manual approvals을 사용해서 가능하게 합니다. 이를 위해 Jenkins와 Spinnaker 사용많이 사용합니다. Jenkins가 인기는 더 많음 Spinnaker는 Netflix에서 개발, Kubernetes engine, AWS 등에서 클라우드 서비스를 위해 사용 Continuous Delivery를 사용하여 build, test, deploy할 응용의 환경입니다. 일반적인 frontend...</p>
+	  </div>
+
+    
+
+	  <div class="post">
+	  	<h2><a href="/2019/08/17/canary-blue-green/">Canary and Blue-Green Deployments</a></h2>
+      <div class="by-line parent">
+        <time datetime="2019-08-17T00:00:00+09:00"> <i>17 Aug 2019</i> </time>
+        &nbsp;&nbsp; &middot; &nbsp;&nbsp;
+        <span><i></i> </span>
+      </div>
+      <p>먼저 이번장에 등장하는 2가지 배포전략인 Canary와 Blue-Green을 살펴봅시다. Blue-Green Deployment : downtime 없이 새로운 버전을 제품을 배포하기 위해 이전버전을 Blue 새로운 버전을 Green으로 칭하고 Green을 프로덕션환경에 운영시키고 Blue를 점진적으로 제거하는 것 Canary Deployment : 새로운 버전을 배포할 때 프로덕션 환경에서 새버전을 올려 일부 트레픽을 처리하도록 했을때 어떻게 동작하는지 모니터링 및...</p>
+	  </div>
+
+    
+
+	  <div class="post">
+	  	<h2><a href="/2019/08/16/volumes/">Volumes</a></h2>
+      <div class="by-line parent">
+        <time datetime="2019-08-16T00:00:00+09:00"> <i>16 Aug 2019</i> </time>
+        &nbsp;&nbsp; &middot; &nbsp;&nbsp;
+        <span><i></i> </span>
+      </div>
+      <p>Docker는 컨테이너를 위한 스토리지를 제공 컨테이너, 라이프 사이클 사이의 공유를 제공하지는 않음 kubernetes 볼륨을 사용하면 pod에 있는 컨테이너들이 데이터를 공유 볼륨은 디렉토리일 뿐 kubectl을 통해 생성 pod 생성을 위한 yaml파일 통해 생성가능 볼륨이 pod에 붙혀지고 컨테이너가 온라인 상태가 되기전 컨테이너에 할당 라이프 사이클 사이에 공유되는 볼륨도 존재 ConfigMap, Secret도 존재...</p>
+	  </div>
+
+    
+
+	  <div class="post">
+	  	<h2><a href="/2019/08/16/services-labels-selectors/">Services, Labels, and Selectors</a></h2>
+      <div class="by-line parent">
+        <time datetime="2019-08-16T00:00:00+09:00"> <i>16 Aug 2019</i> </time>
+        &nbsp;&nbsp; &middot; &nbsp;&nbsp;
+        <span><i></i> </span>
+      </div>
+      <p>service는 POD에 고정 IP를 할당, POD간 통신 가능 cluster에는 외부 IP와 내부 IP가 존재하며, 포트 노드는 IP에 대한 접근을 인식 IP 접근시 로드 벨런스 사용 다른 설정의 여러개의 서비스운영 위 그림에서 프론트 및 백엔드 존재 구글 클라우드 로드벨런서 작동 Service를 정의하는 yaml type이 LoadBalancer Labels은 API object에 할당하여 identity를 표시하는...</p>
+	  </div>
+
+    
+
 </div>
 
-<div class="pagination">
   
-    <a href="/" class="left arrow">&#8592;</a>
+  	  </main>
+  		
+  		  <!-- Pagination links -->
+        
+          <div class="pagination">
+            
+              <a href="/" class="page-item">&laquo;</a>
+            
+          
+            
+              
+                <a href="/" class="page-item">1</a>
+              
+            
+              
+                <span class="page-item">2</span>
+              
+            
+              
+                <a href="/page3/" class="page-item">3</a>
+              
+            
+              
+                <a href="/page4/" class="page-item">4</a>
+              
+            
+              
+                <a href="/page5/" class="page-item">5</a>
+              
+            
+              
+                <a href="/page6/" class="page-item">6</a>
+              
+            
+              
+                <a href="/page7/" class="page-item">7</a>
+              
+            
+          
+            
+              <a href="/page3/" class="page-item">&raquo;</a>
+            
+          </div>
+          
   
-  
-    <a href="/page3" class="right arrow">&#8594;</a>
-  
+  	  </div>
+  	    
+  	    <!-- Footer -->
+        <div class="m-t-6e">
+          <footer><span>&#169;2017 - TheReviewIndex</span></footer>
 
-  <span>2</span>
-</div>
+        </div>
+  
+  	    <!-- Script -->
+        <script src="/js/main.js"></script>	
 
-    </main>
-
-    <footer>
-      <span>
-        &copy; <time datetime="2020-03-04 00:15:58 +0900">2020</time> Youngwon Seo. Made with Jekyll using the <a href="https://github.com/chesterhow/tale/">Tale</a> theme.
-      </span>
-    </footer>
+  
+  	</div>
   </body>
 </html>

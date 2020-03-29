@@ -1,72 +1,249 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
   <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!-- Meta -->
+	<meta charset="UTF-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+	<meta name="generator" content="Jekyll">
 
-  <title>
-    
-      이펙티브 자바스크립트 #5 &middot; Youngwon Seo
-    
-  </title>
+	<title>이펙티브 자바스크립트 #5</title>
+  <meta name="description" content="">
 
-  <!-- CSS -->
-  <link rel="stylesheet" href="/assets/main.css">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700">
+	<!-- CSS & fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,500" rel="stylesheet">
+  <link rel="stylesheet" href="/css/main.css">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="이펙티브 자바스크립트 #5">
+  <meta property="og:type" content: "website">
+  <meta property="og:url" content= "https://thereviewindex.com/blog/2018/05/23/effective-javascript-5/">
+  <meta property="og:description" content="">
+  <meta property="og:locale" content= "en_US">
+  <meta property="og:site_name" content="The Review Index">
+  <meta property="og:image" content="https://thereviewindex.com/blog/">
+  <meta property="og:image:url" content="https://thereviewindex.com/blog/">
+  <meta property="og:image:secure_url" content="https://thereviewindex.com/blog/">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="1200">
+  
+  <!-- twitter card -->
+  <meta property="twitter:card" content="summary">
+  <meta property="twitter:title" content="이펙티브 자바스크립트 #5">
+  <meta property="twitter:description" content="">
+  <meta property="twitter:url" content= "https://thereviewindex.com/blog/2018/05/23/effective-javascript-5/">
+  <meta property="twitter:image" content="https://thereviewindex.com/blog/">
+
+
+	<!-- RSS -->
+	<link href="/atom.xml" type="application/atom+xml" rel="alternate" title="ATOM Feed" />
 
   <!-- Favicon -->
-  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png">
-  <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
+  <link rel="shortcut icon" type="image/png" href="img/favicon.png">
+
+  
+  <!-- Google Analytics -->
+  <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  
+  ga('create', 'UA-78263144-1', 'auto');
+  ga('send', 'pageview');
+  </script>
+  <!-- End Google Analytics -->
+
 </head>
 
-  <!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-118401942-1"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'UA-118401942-1');
-</script>
-
   <body>
-    <nav class="nav">
-      <div class="nav-container">
-        <a href="/">
-          <h2 class="nav-title">Youngwon Seo</h2>
-        </a>
-        <ul>
-          <li><a href="/about">About</a></li>
-          <li><a href="/">Posts</a></li>
-          <li><a href="/study"/>Study</a></li>
-          <li><a href="/ml"/>Machine Learning</a></li>
-          <li><a href="/cicd"/>CI/CD</a></li>
-          <!-- <li><a href="/spring"/>Spring</a></li>
-          <li><a href="/deeplearning"/>Deeplearning</a></li> -->
-        </ul>
-    </div>
-  </nav>
+    
+    <!-- Facebook Comments Script -->
+    <div id="fb-root"></div>
+      <script>(function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = 'https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v2.11&appId=288262758360783';
+        fjs.parentNode.insertBefore(js, fjs);
+      }(document, 'script', 'facebook-jssdk'));</script>
+  
+    <div id="wrap">
+  	  	
+  	  	<!-- Navigation -->
+  	  	<nav id="nav">
+	<div id="nav-list">
+		<a href="/">Home</a>
 
-    <main>
-      <div class="post">
-  <div class="post-info">
-    <span>Written by</span>
+		<!-- Nav pages -->
+	  
+	    
+	  
+	    
+	  
+	    
+	      <a href="/about/" title="About">About</a>
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	      <a href="/ml/" title="Machine Learning">Machine Learning</a>
+	    
+	  
+	    
+	      <a href="/study/" title="Study">Study</a>
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
     
-        Youngwon Seo
-    
+    <!-- Nav links -->
+	  <!-- <a href="/">Blog</a> -->
 
-    
-      <br>
-      <span>on&nbsp;</span><time datetime="2018-05-23 00:00:00 +0900">May 23, 2018</time>
-    
+
+	</div>
+  
+  <!-- Nav footer -->
+	
+	  <footer>
+	
+	<!-- Your custom nav footer here -->
+	
+</footer>
+	
+
+</nav>
+
+      
+      <!-- Icon menu -->
+  	  <a id="nav-menu">
+  	  	<div id="menu"></div>
+  	  </a>
+  
+        <!-- Header -->
+        
+          <header id="header">
+
+	<!-- Your custom header here -->
+	<span class="f-left">  
+		<a href="http://localhost:4000">
+			<h1>
+				<span>Youngwon Seo</span>
+			</h1>
+		</a>
+	</span>
+
+	<span id="nav-links" class="absolute right bottom">
+		<!-- Nav pages -->
+		
+			
+		
+			
+		
+			
+				<a href="/about/" title="About">About</a>
+			
+		
+			
+		
+			
+		
+			
+		
+			
+				<a href="/ml/" title="Machine Learning">Machine Learning</a>
+			
+		
+			
+				<a href="/study/" title="Study">Study</a>
+			
+		
+			
+		
+			
+		
+			
+		
+			
+		
+			
+		
+			
+		
+			
+		
+		
+		<!-- Nav links -->
+		<!-- <a href="/">Blog</a> -->
+
+	</span>
+	
+	<!-- Google Analytics -->
+  <script>
+		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+		
+		ga('create', 'UA-78263144-1', 'auto');
+		ga('send', 'pageview');
+		</script>
+		<!-- End Google Analytics -->
+</header>
+
+
+        
+  
+      <!-- Main content -->
+  	  <div id="container">
+  		  
+  		<main>
+  
+  			<article id="post-page">
+  <div class="parent f-right">
+    <!-- Twitter -->
+    <a href="https://twitter.com/share?url=https://thereviewindex.com/blog/2018/05/23/effective-javascript-5/&amp;text=이펙티브 자바스크립트 #5&amp;hashtags=thereviewindex" target="_blank">
+      <span class="social-icon">  
+        <svg class="svgIcon-use" width="29" height="29" viewBox="0 0 29 29"><path d="M21.967 11.8c.018 5.93-4.607 11.18-11.177 11.18-2.172 0-4.25-.62-6.047-1.76l-.268.422-.038.5.186.013.168.012c.3.02.44.032.6.046 2.06-.026 3.95-.686 5.49-1.86l1.12-.85-1.4-.048c-1.57-.055-2.92-1.08-3.36-2.51l-.48.146-.05.5c.22.03.48.05.75.08.48-.02.87-.07 1.25-.15l2.33-.49-2.32-.49c-1.68-.35-2.91-1.83-2.91-3.55 0-.05 0-.01-.01.03l-.49-.1-.25.44c.63.36 1.35.57 2.07.58l1.7.04L7.4 13c-.978-.662-1.59-1.79-1.618-3.047a4.08 4.08 0 0 1 .524-1.8l-.825.07a12.188 12.188 0 0 0 8.81 4.515l.59.033-.06-.59v-.02c-.05-.43-.06-.63-.06-.87a3.617 3.617 0 0 1 6.27-2.45l.2.21.28-.06c1.01-.22 1.94-.59 2.73-1.09l-.75-.56c-.1.36-.04.89.12 1.36.23.68.58 1.13 1.17.85l-.21-.45-.42-.27c-.52.8-1.17 1.48-1.92 2L22 11l.016.28c.013.2.014.35 0 .52v.04zm.998.038c.018-.22.017-.417 0-.66l-.498.034.284.41a8.183 8.183 0 0 0 2.2-2.267l.97-1.48-1.6.755c.17-.08.3-.02.34.03a.914.914 0 0 1-.13-.292c-.1-.297-.13-.64-.1-.766l.36-1.254-1.1.695c-.69.438-1.51.764-2.41.963l.48.15a4.574 4.574 0 0 0-3.38-1.484 4.616 4.616 0 0 0-4.61 4.613c0 .29.02.51.08.984l.01.02.5-.06.03-.5c-3.17-.18-6.1-1.7-8.08-4.15l-.48-.56-.36.64c-.39.69-.62 1.48-.65 2.28.04 1.61.81 3.04 2.06 3.88l.3-.92c-.55-.02-1.11-.17-1.6-.45l-.59-.34-.14.67c-.02.08-.02.16 0 .24-.01 2.12 1.55 4.01 3.69 4.46l.1-.49-.1-.49c-.33.07-.67.12-1.03.14-.18-.02-.43-.05-.64-.07l-.76-.09.23.73c.57 1.84 2.29 3.14 4.28 3.21l-.28-.89a8.252 8.252 0 0 1-4.85 1.66c-.12-.01-.26-.02-.56-.05l-.17-.01-.18-.01L2.53 21l1.694 1.07a12.233 12.233 0 0 0 6.58 1.917c7.156 0 12.2-5.73 12.18-12.18l-.002.04z"></path></svg>
+      </span>
+    </a>
+
+    &nbsp;&nbsp;&nbsp;
+    <!-- Facebook -->
+    <a href="http://www.facebook.com/sharer.php?u=https://thereviewindex.com/blog/2018/05/23/effective-javascript-5/" target="_blank">
+      <span class="social-icon">
+        <svg class="svgIcon-use" width="29" height="29" viewBox="0 0 29 29"><path d="M16.39 23.61v-5.808h1.846a.55.55 0 0 0 .546-.48l.36-2.797a.551.551 0 0 0-.547-.62H16.39V12.67c0-.67.12-.813.828-.813h1.474a.55.55 0 0 0 .55-.55V8.803a.55.55 0 0 0-.477-.545c-.436-.06-1.36-.116-2.22-.116-2.5 0-4.13 1.62-4.13 4.248v1.513H10.56a.551.551 0 0 0-.55.55v2.797c0 .304.248.55.55.55h1.855v5.76c-4.172-.96-7.215-4.7-7.215-9.1 0-5.17 4.17-9.36 9.31-9.36 5.14 0 9.31 4.19 9.31 9.36 0 4.48-3.155 8.27-7.43 9.15M14.51 4C8.76 4 4.1 8.684 4.1 14.46c0 5.162 3.75 9.523 8.778 10.32a.55.55 0 0 0 .637-.543v-6.985a.551.551 0 0 0-.55-.55H11.11v-1.697h1.855a.55.55 0 0 0 .55-.55v-2.063c0-2.02 1.136-3.148 3.03-3.148.567 0 1.156.027 1.597.06v1.453h-.924c-1.363 0-1.93.675-1.93 1.912v1.78c0 .3.247.55.55.55h2.132l-.218 1.69H15.84c-.305 0-.55.24-.55.55v7.02c0 .33.293.59.623.54 5.135-.7 9.007-5.11 9.007-10.36C24.92 8.68 20.26 4 14.51 4"></path></svg>
+      </span> 
+    </a>
   </div>
+  
+  <h2>이펙티브 자바스크립트 #5</h2>		
+	<div class="by-line parent">
+    <time datetime="2018-05-23T00:00:00+09:00"> <i>23 May 2018</i> </time>
+    &nbsp;&nbsp; &middot; &nbsp;&nbsp;
+    <span><i></i> </span>
+  </div>
+	<div class="content">
 
-  <h1 class="post-title">이펙티브 자바스크립트 #5</h1>
-  <div class="post-line"></div>
-
-  <h1 id="5장-배열과-딕셔너리">5장 배열과 딕셔너리</h1>
+		<h1 id="5장-배열과-딕셔너리">5장 배열과 딕셔너리</h1>
 
 <h2 id="item43-직접적인-객체의-인스턴스로-가벼운-딕셔너리를-만들어라">Item43. 직접적인 객체의 인스턴스로 가벼운 딕셔너리를 만들어라</h2>
 
@@ -75,7 +252,7 @@
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">dict</span> <span class="o">=</span> <span class="p">{</span> <span class="na">alice</span> <span class="p">:</span> <span class="mi">34</span><span class="p">,</span> <span class="na">bob</span><span class="p">:</span> <span class="mi">24</span><span class="p">,</span> <span class="na">chris</span><span class="p">:</span> <span class="mi">62</span> <span class="p">};</span>
 <span class="kd">var</span> <span class="nx">people</span> <span class="o">=</span> <span class="p">[];</span>
 <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">name</span> <span class="k">in</span> <span class="nx">dict</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">people</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">name</span> <span class="o">+</span> <span class="s2">": "</span> <span class="o">+</span> <span class="nx">dict</span><span class="p">[</span><span class="nx">name</span><span class="p">]);</span>
+    <span class="nx">people</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">name</span> <span class="o">+</span> <span class="dl">"</span><span class="s2">: </span><span class="dl">"</span> <span class="o">+</span> <span class="nx">dict</span><span class="p">[</span><span class="nx">name</span><span class="p">]);</span>
 <span class="p">}</span>
 <span class="nx">people</span><span class="p">;</span> <span class="c1">//["alice: 34", "bob: 24", "chris: 62"]</span>
 </code></pre></div></div>
@@ -127,18 +304,18 @@
 <p>자바스크립트 객체의 처리는 항상 상속으로 이루어진다. 빈 객체 리터럴 조차 Object.prototype의  수많은 프로퍼티를 상속한다.</p>
 
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">dict</span> <span class="o">=</span> <span class="p">{};</span>
-<span class="s2">"alice"</span> <span class="k">in</span> <span class="nx">dict</span><span class="p">;</span> <span class="c1">//false</span>
-<span class="s2">"bob"</span> <span class="k">in</span> <span class="nx">dict</span><span class="p">;</span> <span class="c1">//false</span>
-<span class="s2">"chris"</span> <span class="k">in</span> <span class="nx">dict</span><span class="p">;</span> <span class="c1">//false</span>
-<span class="s2">"toString"</span> <span class="k">in</span> <span class="nx">dict</span><span class="p">;</span> <span class="c1">//true</span>
-<span class="s2">"valueOf"</span> <span class="k">in</span> <span class="nx">dict</span><span class="p">;</span> <span class="c1">//true</span>
+<span class="dl">"</span><span class="s2">alice</span><span class="dl">"</span> <span class="k">in</span> <span class="nx">dict</span><span class="p">;</span> <span class="c1">//false</span>
+<span class="dl">"</span><span class="s2">bob</span><span class="dl">"</span> <span class="k">in</span> <span class="nx">dict</span><span class="p">;</span> <span class="c1">//false</span>
+<span class="dl">"</span><span class="s2">chris</span><span class="dl">"</span> <span class="k">in</span> <span class="nx">dict</span><span class="p">;</span> <span class="c1">//false</span>
+<span class="dl">"</span><span class="s2">toString</span><span class="dl">"</span> <span class="k">in</span> <span class="nx">dict</span><span class="p">;</span> <span class="c1">//true</span>
+<span class="dl">"</span><span class="s2">valueOf</span><span class="dl">"</span> <span class="k">in</span> <span class="nx">dict</span><span class="p">;</span> <span class="c1">//true</span>
 </code></pre></div></div>
 
 <p>in은 프로퍼티를 포함하고 있는지 검사를 하는 문법인데 위의 경우 우리가 원하지 않게 동작한다.  운 좋게도 Object.property에는 프로퍼티 탐색 방안으로 hasOwnProperty라는 메서드를 제공한다.</p>
 
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">dict</span> <span class="o">=</span> <span class="p">{};</span>
-<span class="nx">dict</span><span class="p">.</span><span class="nx">hasOwnProperty</span><span class="p">(</span><span class="s2">"alice"</span><span class="p">);</span> <span class="c1">//false</span>
-<span class="nx">dict</span><span class="p">.</span><span class="nx">hasOwnProperty</span><span class="p">(</span><span class="s2">"toString"</span><span class="p">);</span> <span class="c1">//false</span>
+<span class="nx">dict</span><span class="p">.</span><span class="nx">hasOwnProperty</span><span class="p">(</span><span class="dl">"</span><span class="s2">alice</span><span class="dl">"</span><span class="p">);</span> <span class="c1">//false</span>
+<span class="nx">dict</span><span class="p">.</span><span class="nx">hasOwnProperty</span><span class="p">(</span><span class="dl">"</span><span class="s2">toString</span><span class="dl">"</span><span class="p">);</span> <span class="c1">//false</span>
 </code></pre></div></div>
 
 <p>프로퍼티 탐색 방안으로 hasOwnProperty가 존재하지만 이것도 완전히 안전한 방법은 아니다. 이유는 dict에 hasOwnProperty라는 프로퍼티를 추가할시, 위와 같은 동작을 기대할 수 없다. 사실 hasOwnProperty라는 프로퍼티에 대한 추가가 일어나지 않을꺼라는 확신을 가지고 있을 수도 있지만 이것은 third party libary나 여러분이 제어하지 못하는 어디선가 일어날 수 있는 일이다!</p>
@@ -148,7 +325,7 @@
 <p>다음은 프로퍼티 탐색을 위한 더 안전한 방법이다.</p>
 
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">hasOwn</span> <span class="o">=</span> <span class="p">{}.</span><span class="nx">hasOwnProperty</span><span class="p">;</span>
-<span class="nx">hasOwn</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="nx">dict</span><span class="p">,</span><span class="s2">"alice"</span><span class="p">);</span>
+<span class="nx">hasOwn</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="nx">dict</span><span class="p">,</span><span class="dl">"</span><span class="s2">alice</span><span class="dl">"</span><span class="p">);</span>
 </code></pre></div></div>
 
 <p>다음은 책에 소개된 prototype오염을 막은 Dict객체이다. 설명의 대부분을 주석으로 대신하겠다.</p>
@@ -161,7 +338,7 @@
 
 <span class="c1">//입력된 key값이 프로퍼티로 존재하는지 검사한다. __proto__가 존재하는지 체크하는데 false로 초기화된 hasSpecialProto가 이용되었다.</span>
 <span class="nx">Dict</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">has</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">key</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nx">key</span> <span class="o">===</span> <span class="s2">"__proto__"</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">key</span> <span class="o">===</span> <span class="dl">"</span><span class="s2">__proto__</span><span class="dl">"</span><span class="p">)</span> <span class="p">{</span>
         <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">hasSpecialProto</span><span class="p">;</span>
     <span class="p">}</span>    
     <span class="k">return</span> <span class="p">{}.</span><span class="nx">hasOwnProperty</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">elements</span><span class="p">,</span> <span class="nx">key</span><span class="p">);</span>
@@ -169,7 +346,7 @@
 
 <span class="c1">//실제 __proto__가 키로 프로퍼티가 입력되었을 경우 값을 specialProto가 가지고 있다.</span>
 <span class="nx">Dict</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="kd">get</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">key</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">if</span><span class="p">(</span><span class="nx">key</span> <span class="o">===</span> <span class="s2">"__proto__"</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span><span class="p">(</span><span class="nx">key</span> <span class="o">===</span> <span class="dl">"</span><span class="s2">__proto__</span><span class="dl">"</span><span class="p">)</span> <span class="p">{</span>
         <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">specialProto</span><span class="p">;</span>
     <span class="p">}</span>
     <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">has</span><span class="p">(</span><span class="nx">key</span><span class="p">)</span>
@@ -177,7 +354,7 @@
      		<span class="p">:</span> <span class="kc">undefined</span><span class="p">;</span>
 <span class="p">}</span>
 <span class="nx">Dict</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="kd">set</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">key</span><span class="p">,</span> <span class="nx">val</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">if</span><span class="p">(</span><span class="nx">key</span> <span class="o">===</span> <span class="s2">"__proto__"</span><span class="p">){</span>
+    <span class="k">if</span><span class="p">(</span><span class="nx">key</span> <span class="o">===</span> <span class="dl">"</span><span class="s2">__proto__</span><span class="dl">"</span><span class="p">){</span>
     	<span class="k">this</span><span class="p">.</span><span class="nx">hasSpecialProto</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
     	<span class="k">this</span><span class="p">.</span><span class="nx">specialProto</span> <span class="o">=</span> <span class="nx">val</span><span class="p">;</span>
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
@@ -185,7 +362,7 @@
     <span class="p">}</span>
 <span class="p">}</span>
 <span class="nx">Dict</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">remove</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">key</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">if</span><span class="p">(</span><span class="nx">key</span> <span class="o">===</span> <span class="s2">"__proto__"</span><span class="p">){</span>
+    <span class="k">if</span><span class="p">(</span><span class="nx">key</span> <span class="o">===</span> <span class="dl">"</span><span class="s2">__proto__</span><span class="dl">"</span><span class="p">){</span>
         <span class="k">this</span><span class="p">.</span><span class="nx">hasSpecialProto</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
         <span class="k">this</span><span class="p">.</span><span class="nx">specialProto</span> <span class="o">=</span> <span class="kc">undefined</span><span class="p">;</span>
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
@@ -248,13 +425,13 @@
 
 <p>다음과 같은 간단한 객체 리터럴 또는 문자열(인덱스로 접근가능하며 length를 가지는 유사 배열 객체)도 유사 배열 객체처럼 동작한다.</p>
 
-<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">arrayLike</span> <span class="o">=</span> <span class="p">{</span> <span class="mi">0</span><span class="p">:</span> <span class="s2">"a"</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span> <span class="s2">"b"</span><span class="p">,</span> <span class="mi">2</span><span class="p">:</span> <span class="s2">"c"</span><span class="p">,</span> <span class="na">length</span><span class="p">:</span> <span class="mi">3</span> <span class="p">};</span>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">arrayLike</span> <span class="o">=</span> <span class="p">{</span> <span class="mi">0</span><span class="p">:</span> <span class="dl">"</span><span class="s2">a</span><span class="dl">"</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span> <span class="dl">"</span><span class="s2">b</span><span class="dl">"</span><span class="p">,</span> <span class="mi">2</span><span class="p">:</span> <span class="dl">"</span><span class="s2">c</span><span class="dl">"</span><span class="p">,</span> <span class="na">length</span><span class="p">:</span> <span class="mi">3</span> <span class="p">};</span>
 <span class="kd">var</span> <span class="nx">result</span> <span class="o">=</span> <span class="nb">Array</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">map</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="nx">arrayLike</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">s</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">return</span> <span class="nx">s</span><span class="p">.</span><span class="nx">toUpperCase</span><span class="p">();</span>
 <span class="p">});</span> <span class="c1">//["A", "B", "C"]</span>
 
 
-<span class="kd">var</span> <span class="nx">result</span> <span class="o">=</span> <span class="nb">Array</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">map</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="s2">"abc"</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">s</span><span class="p">)</span> <span class="p">{</span>
+<span class="kd">var</span> <span class="nx">result</span> <span class="o">=</span> <span class="nb">Array</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">map</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="dl">"</span><span class="s2">abc</span><span class="dl">"</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">s</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">return</span> <span class="nx">s</span><span class="p">.</span><span class="nx">toUpperCase</span><span class="p">();</span>
 <span class="p">});</span> <span class="c1">//["A", "B", "C"]</span>
 </code></pre></div></div>
@@ -296,52 +473,52 @@
 <p>이러한 이유로 배열을 생성할 때는 생성자가 아닌 리터럴 문법사용이 권장된다.</p>
 
 
-
-  
-  <div class="post-disqus">
-      <section id="disqus_thread"></section>
-      <div id="disqus_thread"></div>
-<script>
-
-/**
-*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
-*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
-/*
-var disqus_config = function () {
-this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
-this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
-};
-*/
-(function() { // DON'T EDIT BELOW THIS LINE
-var d = document, s = d.createElement('script');
-s.src = 'https://youngwonseo.disqus.com/embed.js';
-s.setAttribute('data-timestamp', +new Date());
-(d.head || d.body).appendChild(s);
-})();
-</script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-                            
+		
   </div>
-  
-</div>
 
-<div class="pagination">
-  
-    <a href="/2018/05/30/monitoring-system-using-vue/" class="left arrow">&#8592;</a>
-  
-  
-    <a href="/2018/05/23/effective-javascript-4/" class="right arrow">&#8594;</a>
-  
-
-  <a href="#" class="top">Top</a>
-</div>
-
-    </main>
-
-    <footer>
-      <span>
-        &copy; <time datetime="2020-03-04 00:15:58 +0900">2020</time> Youngwon Seo. Made with Jekyll using the <a href="https://github.com/chesterhow/tale/">Tale</a> theme.
+  <div class="parent f-right">
+    <!-- Twitter -->
+    <a href="https://twitter.com/share?url=https://thereviewindex.com/blog/2018/05/23/effective-javascript-5/&amp;text=이펙티브 자바스크립트 #5&amp;hashtags=thereviewindex" target="_blank">
+      <span class="social-icon">  
+        <svg class="svgIcon-use" width="29" height="29" viewBox="0 0 29 29"><path d="M21.967 11.8c.018 5.93-4.607 11.18-11.177 11.18-2.172 0-4.25-.62-6.047-1.76l-.268.422-.038.5.186.013.168.012c.3.02.44.032.6.046 2.06-.026 3.95-.686 5.49-1.86l1.12-.85-1.4-.048c-1.57-.055-2.92-1.08-3.36-2.51l-.48.146-.05.5c.22.03.48.05.75.08.48-.02.87-.07 1.25-.15l2.33-.49-2.32-.49c-1.68-.35-2.91-1.83-2.91-3.55 0-.05 0-.01-.01.03l-.49-.1-.25.44c.63.36 1.35.57 2.07.58l1.7.04L7.4 13c-.978-.662-1.59-1.79-1.618-3.047a4.08 4.08 0 0 1 .524-1.8l-.825.07a12.188 12.188 0 0 0 8.81 4.515l.59.033-.06-.59v-.02c-.05-.43-.06-.63-.06-.87a3.617 3.617 0 0 1 6.27-2.45l.2.21.28-.06c1.01-.22 1.94-.59 2.73-1.09l-.75-.56c-.1.36-.04.89.12 1.36.23.68.58 1.13 1.17.85l-.21-.45-.42-.27c-.52.8-1.17 1.48-1.92 2L22 11l.016.28c.013.2.014.35 0 .52v.04zm.998.038c.018-.22.017-.417 0-.66l-.498.034.284.41a8.183 8.183 0 0 0 2.2-2.267l.97-1.48-1.6.755c.17-.08.3-.02.34.03a.914.914 0 0 1-.13-.292c-.1-.297-.13-.64-.1-.766l.36-1.254-1.1.695c-.69.438-1.51.764-2.41.963l.48.15a4.574 4.574 0 0 0-3.38-1.484 4.616 4.616 0 0 0-4.61 4.613c0 .29.02.51.08.984l.01.02.5-.06.03-.5c-3.17-.18-6.1-1.7-8.08-4.15l-.48-.56-.36.64c-.39.69-.62 1.48-.65 2.28.04 1.61.81 3.04 2.06 3.88l.3-.92c-.55-.02-1.11-.17-1.6-.45l-.59-.34-.14.67c-.02.08-.02.16 0 .24-.01 2.12 1.55 4.01 3.69 4.46l.1-.49-.1-.49c-.33.07-.67.12-1.03.14-.18-.02-.43-.05-.64-.07l-.76-.09.23.73c.57 1.84 2.29 3.14 4.28 3.21l-.28-.89a8.252 8.252 0 0 1-4.85 1.66c-.12-.01-.26-.02-.56-.05l-.17-.01-.18-.01L2.53 21l1.694 1.07a12.233 12.233 0 0 0 6.58 1.917c7.156 0 12.2-5.73 12.18-12.18l-.002.04z"></path></svg>
       </span>
-    </footer>
+    </a>
+
+    &nbsp;&nbsp;&nbsp;
+    <!-- Facebook -->
+    <a href="http://www.facebook.com/sharer.php?u=https://thereviewindex.com/blog/2018/05/23/effective-javascript-5/" target="_blank">
+      <span class="social-icon">
+        <svg class="svgIcon-use" width="29" height="29" viewBox="0 0 29 29"><path d="M16.39 23.61v-5.808h1.846a.55.55 0 0 0 .546-.48l.36-2.797a.551.551 0 0 0-.547-.62H16.39V12.67c0-.67.12-.813.828-.813h1.474a.55.55 0 0 0 .55-.55V8.803a.55.55 0 0 0-.477-.545c-.436-.06-1.36-.116-2.22-.116-2.5 0-4.13 1.62-4.13 4.248v1.513H10.56a.551.551 0 0 0-.55.55v2.797c0 .304.248.55.55.55h1.855v5.76c-4.172-.96-7.215-4.7-7.215-9.1 0-5.17 4.17-9.36 9.31-9.36 5.14 0 9.31 4.19 9.31 9.36 0 4.48-3.155 8.27-7.43 9.15M14.51 4C8.76 4 4.1 8.684 4.1 14.46c0 5.162 3.75 9.523 8.778 10.32a.55.55 0 0 0 .637-.543v-6.985a.551.551 0 0 0-.55-.55H11.11v-1.697h1.855a.55.55 0 0 0 .55-.55v-2.063c0-2.02 1.136-3.148 3.03-3.148.567 0 1.156.027 1.597.06v1.453h-.924c-1.363 0-1.93.675-1.93 1.912v1.78c0 .3.247.55.55.55h2.132l-.218 1.69H15.84c-.305 0-.55.24-.55.55v7.02c0 .33.293.59.623.54 5.135-.7 9.007-5.11 9.007-10.36C24.92 8.68 20.26 4 14.51 4"></path></svg>
+      </span> 
+    </a>
+  </div>
+
+  <!-- Facebook Comments HTML -->
+  <div class="m-t-6e">
+    <div class="fb-comments" data-href="http://localhost:4000/2018/05/23/effective-javascript-5/" data-width="800" data-numposts="5"></div>
+  </div>
+
+</article>
+
+
+  
+  	  </main>
+  		
+  		  <!-- Pagination links -->
+        
+  
+  	  </div>
+  	    
+  	    <!-- Footer -->
+        <div class="m-t-6e">
+          <footer><span>&#169;2017 - TheReviewIndex</span></footer>
+
+        </div>
+  
+  	    <!-- Script -->
+        <script src="/js/main.js"></script>	
+
+  
+  	</div>
   </body>
 </html>

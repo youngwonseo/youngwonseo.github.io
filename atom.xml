@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+ <title>Youngwon Seo</title>
+ <link href="http://localhost:4000/atom.xml" rel="self"/>
+ <id>http://localhost:4000</id>
+ <updated>2020-03-29T20:03:49+09:00</updated>
+ <author>
+   <name>Youngwon Seo</name>
+   <uri>youngwon.io</uri>
+   <email>jazz9008@gmail.com</email>
+ </author>
+
+ 
+
+ <entry>
+   <title>자바스크립트 - 기존 function과 화살표 함수에서의 This</title>
+   <link href="http://localhost:4000/2020/03/17/this/"/>
+   <id>http://localhost:4000/2020/03/17/this</id>
+   <updated>2020-03-17T00:00:00+09:00</updated>
+   <content type="html">&lt;p&gt;ES6에서 존재하는 화살표함수와 기존의 function은 바인딩되는 this의 차이가 존재합니다.&lt;/p&gt; &lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;BlackDog&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;name&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;흰둥이&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;검둥이&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;bark&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span...</content>
+ </entry>
+
+ 
+
+ <entry>
+   <title>02 Spring Boot Jpa</title>
+   <link href="http://localhost:4000/2020/03/06/02-spring-boot-jpa/"/>
+   <id>http://localhost:4000/2020/03/06/02-spring-boot-jpa</id>
+   <updated>2020-03-06T00:00:00+09:00</updated>
+   <content type="html">
+</content>
+ </entry>
+
+ 
+
+ <entry>
+   <title>메이븐 멀티모듈 SNS 개발 #2 - domain과 service</title>
+   <link href="http://localhost:4000/2020/02/29/02-maven-multi-module/"/>
+   <id>http://localhost:4000/2020/02/29/02-maven-multi-module</id>
+   <updated>2020-02-29T00:00:00+09:00</updated>
+   <content type="html">&lt;h2 id=&quot;web-프로젝트&quot;&gt;Web 프로젝트&lt;/h2&gt; &lt;p&gt;먼저 사용자의 뷰를 담당하는 Web 프로젝트를 구성해 보겠습니다. Web프로젝트는 웹 브라우저를 통해 접근하는 사용자에 대한 entry point입니다. 즉 Front-end에 대한 구현체이며 기본적인 사항은 다음과 같습니다.&lt;/p&gt; &lt;ul&gt; &lt;li&gt;Spring MVC 5&lt;/li&gt; &lt;li&gt;Thymeleaf&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;위 두가지를 사용하기 위해 pom.xml에 두가지에 대한 메이븐 의존성을 추가합니다.&lt;/p&gt; &lt;div class=&quot;language-xml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;project&lt;/span&gt;...</content>
+ </entry>
+
+ 
+
+ <entry>
+   <title>메이븐 멀티모듈 SNS 개발 #1 - 프로젝트 구성</title>
+   <link href="http://localhost:4000/2020/02/29/01-maven-multi-module/"/>
+   <id>http://localhost:4000/2020/02/29/01-maven-multi-module</id>
+   <updated>2020-02-29T00:00:00+09:00</updated>
+   <content type="html">&lt;p&gt;본 포스트는 메이븐 멀티 모듈을 기반으로 스프링 프로젝트들을 구성하고 SNS 서비스를 개발을 합니다.&lt;/p&gt; &lt;h2 id=&quot;메이븐-멀티-모듈&quot;&gt;메이븐 멀티 모듈&lt;/h2&gt; &lt;p&gt;프로젝트를 진행하다 보면 단일 프로젝트가 아닌 여러개의 프로젝트로 구성해야할 경우가 많습니다. 특히 마이크로서비스(Microservice)등의 기술로 인해 기존의 front-end와 back-end뿐만 아니라 기능별로 프로젝트를 분리하고 각 모듈별로 배포 및 운영가능하게 만드는 것이 당연시 되고 있습니다.&lt;/p&gt; &lt;p&gt;스프링...</content>
+ </entry>
+
+ 
+
+ <entry>
+   <title>Spring Expressino Language(SpEL)</title>
+   <link href="http://localhost:4000/2020/02/28/spring-cheat-sheet/"/>
+   <id>http://localhost:4000/2020/02/28/spring-cheat-sheet</id>
+   <updated>2020-02-28T00:00:00+09:00</updated>
+   <content type="html">&lt;h2 id=&quot;controller&quot;&gt;Controller&lt;/h2&gt;
+
+&lt;h2 id=&quot;jpa&quot;&gt;JPA&lt;/h2&gt;
+</content>
+ </entry>
+
+ 
+
+ <entry>
+   <title>Sw Engineering Ml</title>
+   <link href="http://localhost:4000/2020/01/07/sw-engineering-ml/"/>
+   <id>http://localhost:4000/2020/01/07/sw-engineering-ml</id>
+   <updated>2020-01-07T00:00:00+09:00</updated>
+   <content type="html">
+</content>
+ </entry>
+
+ 
+
+ <entry>
+   <title>Dp</title>
+   <link href="http://localhost:4000/2020/01/01/dp/"/>
+   <id>http://localhost:4000/2020/01/01/dp</id>
+   <updated>2020-01-01T00:00:00+09:00</updated>
+   <content type="html">
+</content>
+ </entry>
+
+ 
+
+ <entry>
+   <title>결론 #1</title>
+   <link href="http://localhost:4000/2019/11/20/09-01-keras/"/>
+   <id>http://localhost:4000/2019/11/20/09-01-keras</id>
+   <updated>2019-11-20T00:00:00+09:00</updated>
+   <content type="html">&lt;p&gt;책의 마지막장인 결론의 내용입니다.&lt;/p&gt; &lt;h2 id=&quot;핵심-개념-리뷰&quot;&gt;핵심 개념 리뷰&lt;/h2&gt; &lt;p&gt;먼저 AI와 딥러닝의 관계를 다음과 같이 표현할 수 있습니다.&lt;/p&gt; &lt;h3 id=&quot;ai--머신러닝--딥러닝&quot;&gt;AI &amp;gt; 머신러닝 &amp;gt; 딥러닝&lt;/h3&gt; &lt;p&gt;&lt;strong&gt;AI(인공지능)&lt;/strong&gt;는 인지 과정을 자동화하기 위한 모든 방법입니다. &lt;strong&gt;머신러닝&lt;/strong&gt;은 훈련데이터를 사용해서 인지 과정을 자동화하는 AI의 하위 개념입니다. 여기서 훈련데이터를 사용한다는 것은 훈련데이터를 학습한다는 의미 입니다. &lt;strong&gt;딥러닝&lt;/strong&gt;은 머신러닝의 일부로써...</content>
+ </entry>
+
+ 
+
+ <entry>
+   <title>08 02 Keras</title>
+   <link href="http://localhost:4000/2019/11/19/08-02-keras/"/>
+   <id>http://localhost:4000/2019/11/19/08-02-keras</id>
+   <updated>2019-11-19T00:00:00+09:00</updated>
+   <content type="html">
+</content>
+ </entry>
+
+ 
+
+ <entry>
+   <title>딥러닝을 위한 고급도구#2 - 콜백와 모델성능올리기</title>
+   <link href="http://localhost:4000/2019/11/16/07-02-keras/"/>
+   <id>http://localhost:4000/2019/11/16/07-02-keras</id>
+   <updated>2019-11-16T00:00:00+09:00</updated>
+   <content type="html">&lt;p&gt;함수형 API&lt;/p&gt;
+
+&lt;p&gt;케라스 콜백과 텐서보드
+모델 성능 끌어올리기&lt;/p&gt;
+</content>
+ </entry>
+
+ 
+
+</feed>

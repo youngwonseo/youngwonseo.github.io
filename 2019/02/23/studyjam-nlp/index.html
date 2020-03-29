@@ -1,72 +1,249 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
   <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!-- Meta -->
+	<meta charset="UTF-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+	<meta name="generator" content="Jekyll">
 
-  <title>
-    
-      구글 NLP 스터디잼 - API소개 &middot; Youngwon Seo
-    
-  </title>
+	<title>구글 NLP 스터디잼 - API소개</title>
+  <meta name="description" content="">
 
-  <!-- CSS -->
-  <link rel="stylesheet" href="/assets/main.css">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700">
+	<!-- CSS & fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,500" rel="stylesheet">
+  <link rel="stylesheet" href="/css/main.css">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="구글 NLP 스터디잼 - API소개">
+  <meta property="og:type" content: "website">
+  <meta property="og:url" content= "https://thereviewindex.com/blog/2019/02/23/studyjam-nlp/">
+  <meta property="og:description" content="">
+  <meta property="og:locale" content= "en_US">
+  <meta property="og:site_name" content="The Review Index">
+  <meta property="og:image" content="https://thereviewindex.com/blog/">
+  <meta property="og:image:url" content="https://thereviewindex.com/blog/">
+  <meta property="og:image:secure_url" content="https://thereviewindex.com/blog/">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="1200">
+  
+  <!-- twitter card -->
+  <meta property="twitter:card" content="summary">
+  <meta property="twitter:title" content="구글 NLP 스터디잼 - API소개">
+  <meta property="twitter:description" content="">
+  <meta property="twitter:url" content= "https://thereviewindex.com/blog/2019/02/23/studyjam-nlp/">
+  <meta property="twitter:image" content="https://thereviewindex.com/blog/">
+
+
+	<!-- RSS -->
+	<link href="/atom.xml" type="application/atom+xml" rel="alternate" title="ATOM Feed" />
 
   <!-- Favicon -->
-  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png">
-  <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
+  <link rel="shortcut icon" type="image/png" href="img/favicon.png">
+
+  
+  <!-- Google Analytics -->
+  <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  
+  ga('create', 'UA-78263144-1', 'auto');
+  ga('send', 'pageview');
+  </script>
+  <!-- End Google Analytics -->
+
 </head>
 
-  <!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-118401942-1"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'UA-118401942-1');
-</script>
-
   <body>
-    <nav class="nav">
-      <div class="nav-container">
-        <a href="/">
-          <h2 class="nav-title">Youngwon Seo</h2>
-        </a>
-        <ul>
-          <li><a href="/about">About</a></li>
-          <li><a href="/">Posts</a></li>
-          <li><a href="/study"/>Study</a></li>
-          <li><a href="/ml"/>Machine Learning</a></li>
-          <li><a href="/cicd"/>CI/CD</a></li>
-          <!-- <li><a href="/spring"/>Spring</a></li>
-          <li><a href="/deeplearning"/>Deeplearning</a></li> -->
-        </ul>
-    </div>
-  </nav>
+    
+    <!-- Facebook Comments Script -->
+    <div id="fb-root"></div>
+      <script>(function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = 'https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v2.11&appId=288262758360783';
+        fjs.parentNode.insertBefore(js, fjs);
+      }(document, 'script', 'facebook-jssdk'));</script>
+  
+    <div id="wrap">
+  	  	
+  	  	<!-- Navigation -->
+  	  	<nav id="nav">
+	<div id="nav-list">
+		<a href="/">Home</a>
 
-    <main>
-      <div class="post">
-  <div class="post-info">
-    <span>Written by</span>
+		<!-- Nav pages -->
+	  
+	    
+	  
+	    
+	  
+	    
+	      <a href="/about/" title="About">About</a>
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	      <a href="/ml/" title="Machine Learning">Machine Learning</a>
+	    
+	  
+	    
+	      <a href="/study/" title="Study">Study</a>
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
     
-        Youngwon Seo
-    
+    <!-- Nav links -->
+	  <!-- <a href="/">Blog</a> -->
 
-    
-      <br>
-      <span>on&nbsp;</span><time datetime="2019-02-23 00:00:00 +0900">February 23, 2019</time>
-    
+
+	</div>
+  
+  <!-- Nav footer -->
+	
+	  <footer>
+	
+	<!-- Your custom nav footer here -->
+	
+</footer>
+	
+
+</nav>
+
+      
+      <!-- Icon menu -->
+  	  <a id="nav-menu">
+  	  	<div id="menu"></div>
+  	  </a>
+  
+        <!-- Header -->
+        
+          <header id="header">
+
+	<!-- Your custom header here -->
+	<span class="f-left">  
+		<a href="http://localhost:4000">
+			<h1>
+				<span>Youngwon Seo</span>
+			</h1>
+		</a>
+	</span>
+
+	<span id="nav-links" class="absolute right bottom">
+		<!-- Nav pages -->
+		
+			
+		
+			
+		
+			
+				<a href="/about/" title="About">About</a>
+			
+		
+			
+		
+			
+		
+			
+		
+			
+				<a href="/ml/" title="Machine Learning">Machine Learning</a>
+			
+		
+			
+				<a href="/study/" title="Study">Study</a>
+			
+		
+			
+		
+			
+		
+			
+		
+			
+		
+			
+		
+			
+		
+			
+		
+		
+		<!-- Nav links -->
+		<!-- <a href="/">Blog</a> -->
+
+	</span>
+	
+	<!-- Google Analytics -->
+  <script>
+		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+		
+		ga('create', 'UA-78263144-1', 'auto');
+		ga('send', 'pageview');
+		</script>
+		<!-- End Google Analytics -->
+</header>
+
+
+        
+  
+      <!-- Main content -->
+  	  <div id="container">
+  		  
+  		<main>
+  
+  			<article id="post-page">
+  <div class="parent f-right">
+    <!-- Twitter -->
+    <a href="https://twitter.com/share?url=https://thereviewindex.com/blog/2019/02/23/studyjam-nlp/&amp;text=구글 NLP 스터디잼 - API소개&amp;hashtags=thereviewindex" target="_blank">
+      <span class="social-icon">  
+        <svg class="svgIcon-use" width="29" height="29" viewBox="0 0 29 29"><path d="M21.967 11.8c.018 5.93-4.607 11.18-11.177 11.18-2.172 0-4.25-.62-6.047-1.76l-.268.422-.038.5.186.013.168.012c.3.02.44.032.6.046 2.06-.026 3.95-.686 5.49-1.86l1.12-.85-1.4-.048c-1.57-.055-2.92-1.08-3.36-2.51l-.48.146-.05.5c.22.03.48.05.75.08.48-.02.87-.07 1.25-.15l2.33-.49-2.32-.49c-1.68-.35-2.91-1.83-2.91-3.55 0-.05 0-.01-.01.03l-.49-.1-.25.44c.63.36 1.35.57 2.07.58l1.7.04L7.4 13c-.978-.662-1.59-1.79-1.618-3.047a4.08 4.08 0 0 1 .524-1.8l-.825.07a12.188 12.188 0 0 0 8.81 4.515l.59.033-.06-.59v-.02c-.05-.43-.06-.63-.06-.87a3.617 3.617 0 0 1 6.27-2.45l.2.21.28-.06c1.01-.22 1.94-.59 2.73-1.09l-.75-.56c-.1.36-.04.89.12 1.36.23.68.58 1.13 1.17.85l-.21-.45-.42-.27c-.52.8-1.17 1.48-1.92 2L22 11l.016.28c.013.2.014.35 0 .52v.04zm.998.038c.018-.22.017-.417 0-.66l-.498.034.284.41a8.183 8.183 0 0 0 2.2-2.267l.97-1.48-1.6.755c.17-.08.3-.02.34.03a.914.914 0 0 1-.13-.292c-.1-.297-.13-.64-.1-.766l.36-1.254-1.1.695c-.69.438-1.51.764-2.41.963l.48.15a4.574 4.574 0 0 0-3.38-1.484 4.616 4.616 0 0 0-4.61 4.613c0 .29.02.51.08.984l.01.02.5-.06.03-.5c-3.17-.18-6.1-1.7-8.08-4.15l-.48-.56-.36.64c-.39.69-.62 1.48-.65 2.28.04 1.61.81 3.04 2.06 3.88l.3-.92c-.55-.02-1.11-.17-1.6-.45l-.59-.34-.14.67c-.02.08-.02.16 0 .24-.01 2.12 1.55 4.01 3.69 4.46l.1-.49-.1-.49c-.33.07-.67.12-1.03.14-.18-.02-.43-.05-.64-.07l-.76-.09.23.73c.57 1.84 2.29 3.14 4.28 3.21l-.28-.89a8.252 8.252 0 0 1-4.85 1.66c-.12-.01-.26-.02-.56-.05l-.17-.01-.18-.01L2.53 21l1.694 1.07a12.233 12.233 0 0 0 6.58 1.917c7.156 0 12.2-5.73 12.18-12.18l-.002.04z"></path></svg>
+      </span>
+    </a>
+
+    &nbsp;&nbsp;&nbsp;
+    <!-- Facebook -->
+    <a href="http://www.facebook.com/sharer.php?u=https://thereviewindex.com/blog/2019/02/23/studyjam-nlp/" target="_blank">
+      <span class="social-icon">
+        <svg class="svgIcon-use" width="29" height="29" viewBox="0 0 29 29"><path d="M16.39 23.61v-5.808h1.846a.55.55 0 0 0 .546-.48l.36-2.797a.551.551 0 0 0-.547-.62H16.39V12.67c0-.67.12-.813.828-.813h1.474a.55.55 0 0 0 .55-.55V8.803a.55.55 0 0 0-.477-.545c-.436-.06-1.36-.116-2.22-.116-2.5 0-4.13 1.62-4.13 4.248v1.513H10.56a.551.551 0 0 0-.55.55v2.797c0 .304.248.55.55.55h1.855v5.76c-4.172-.96-7.215-4.7-7.215-9.1 0-5.17 4.17-9.36 9.31-9.36 5.14 0 9.31 4.19 9.31 9.36 0 4.48-3.155 8.27-7.43 9.15M14.51 4C8.76 4 4.1 8.684 4.1 14.46c0 5.162 3.75 9.523 8.778 10.32a.55.55 0 0 0 .637-.543v-6.985a.551.551 0 0 0-.55-.55H11.11v-1.697h1.855a.55.55 0 0 0 .55-.55v-2.063c0-2.02 1.136-3.148 3.03-3.148.567 0 1.156.027 1.597.06v1.453h-.924c-1.363 0-1.93.675-1.93 1.912v1.78c0 .3.247.55.55.55h2.132l-.218 1.69H15.84c-.305 0-.55.24-.55.55v7.02c0 .33.293.59.623.54 5.135-.7 9.007-5.11 9.007-10.36C24.92 8.68 20.26 4 14.51 4"></path></svg>
+      </span> 
+    </a>
   </div>
+  
+  <h2>구글 NLP 스터디잼 - API소개</h2>		
+	<div class="by-line parent">
+    <time datetime="2019-02-23T00:00:00+09:00"> <i>23 Feb 2019</i> </time>
+    &nbsp;&nbsp; &middot; &nbsp;&nbsp;
+    <span><i></i> </span>
+  </div>
+	<div class="content">
 
-  <h1 class="post-title">구글 NLP 스터디잼 - API소개</h1>
-  <div class="post-line"></div>
-
-  <p>이번에 구글에서 진행하는 스터디잼 진행에 대한 정리글 입니다. 다음과 같은 4가지 과정을 quicklab을 통해 수행하였습니다.</p>
+		<p>이번에 구글에서 진행하는 스터디잼 진행에 대한 정리글 입니다. 다음과 같은 4가지 과정을 quicklab을 통해 수행하였습니다.</p>
 <ul>
   <li><a href="https://www.qwiklabs.com/focuses/588?catalog_rank=%7B%22rank%22%3A7%2C%22num_filters%22%3A3%2C%22has_search%22%3Atrue%7D&amp;parent=catalog&amp;search_id=1896374">Google Cloud Speech API: Qwik Start</a></li>
   <li><a href="https://www.qwiklabs.com/focuses/582?catalog_rank=%7B%22rank%22%3A8%2C%22num_filters%22%3A3%2C%22has_search%22%3Atrue%7D&amp;parent=catalog&amp;search_id=1896374">Cloud Natural Language API: Qwik Start</a></li>
@@ -91,13 +268,13 @@ API를 사용하기 위해 GCP 콘솔에서 API키를 생성합니다.
 <p>다음은 요청한 config입니다.</p>
 <h3 id="requestjson">request.json</h3>
 <div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
-	</span><span class="s2">"config"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> 
-		</span><span class="s2">"encoding"</span><span class="p">:</span><span class="s2">"FLAC"</span><span class="p">,</span><span class="w"> 
-		</span><span class="s2">"sample_rate"</span><span class="p">:</span><span class="w"> </span><span class="mi">16000</span><span class="p">,</span><span class="w"> 
-		</span><span class="s2">"language_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"en-US"</span><span class="w"> 
+	</span><span class="nl">"config"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> 
+		</span><span class="nl">"encoding"</span><span class="p">:</span><span class="s2">"FLAC"</span><span class="p">,</span><span class="w"> 
+		</span><span class="nl">"sample_rate"</span><span class="p">:</span><span class="w"> </span><span class="mi">16000</span><span class="p">,</span><span class="w"> 
+		</span><span class="nl">"language_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"en-US"</span><span class="w"> 
 	</span><span class="p">},</span><span class="w">
-	</span><span class="s2">"audio"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-		</span><span class="s2">"uri"</span><span class="p">:</span><span class="s2">"gs://cloud-samples-tests/speech/brooklyn.flac"</span><span class="w"> 
+	</span><span class="nl">"audio"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+		</span><span class="nl">"uri"</span><span class="p">:</span><span class="s2">"gs://cloud-samples-tests/speech/brooklyn.flac"</span><span class="w"> 
 	</span><span class="p">}</span><span class="w"> 
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div></div>
@@ -118,12 +295,12 @@ API를 사용하기 위해 GCP 콘솔에서 API키를 생성합니다.
 
 <p>응답결과는 다음과 같습니다.</p>
 <div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">  
-	</span><span class="s2">"results"</span><span class="p">:</span><span class="w">  </span><span class="p">[</span><span class="w">  
+	</span><span class="nl">"results"</span><span class="p">:</span><span class="w">  </span><span class="p">[</span><span class="w">  
 		</span><span class="p">{</span><span class="w">  
-			</span><span class="s2">"alternatives"</span><span class="p">:</span><span class="w">  </span><span class="p">[</span><span class="w">  
+			</span><span class="nl">"alternatives"</span><span class="p">:</span><span class="w">  </span><span class="p">[</span><span class="w">  
 				</span><span class="p">{</span><span class="w">  
-					</span><span class="s2">"transcript"</span><span class="p">:</span><span class="w">  </span><span class="s2">"how old is the Brooklyn Bridge"</span><span class="p">,</span><span class="w">  
-					</span><span class="s2">"confidence"</span><span class="p">:</span><span class="w">  </span><span class="mf">0.98267895</span><span class="w">  
+					</span><span class="nl">"transcript"</span><span class="p">:</span><span class="w">  </span><span class="s2">"how old is the Brooklyn Bridge"</span><span class="p">,</span><span class="w">  
+					</span><span class="nl">"confidence"</span><span class="p">:</span><span class="w">  </span><span class="mf">0.98267895</span><span class="w">  
 				</span><span class="p">}</span><span class="w">  
 			</span><span class="p">]</span><span class="w">  
 		</span><span class="p">}</span><span class="w">  
@@ -164,59 +341,59 @@ API를 사용하기 위해 GCP 콘솔에서 API키를 생성합니다.
 
 <p>다음은 응답으로 출력되는 분석결과입니다.</p>
 <div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
-	</span><span class="s2">"entities"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
-		</span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Michelangelo Caravaggio"</span><span class="p">,</span><span class="w">
-		</span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PERSON"</span><span class="p">,</span><span class="w">
-		</span><span class="s2">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-			</span><span class="s2">"wikipedia_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://en.wikipedia.org/wiki/Caravaggio"</span><span class="p">,</span><span class="w">
-			</span><span class="s2">"mid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/m/020bg"</span><span class="w">
+	</span><span class="nl">"entities"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+		</span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Michelangelo Caravaggio"</span><span class="p">,</span><span class="w">
+		</span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PERSON"</span><span class="p">,</span><span class="w">
+		</span><span class="nl">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+			</span><span class="nl">"wikipedia_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://en.wikipedia.org/wiki/Caravaggio"</span><span class="p">,</span><span class="w">
+			</span><span class="nl">"mid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/m/020bg"</span><span class="w">
 		</span><span class="p">},</span><span class="w">
-		</span><span class="s2">"salience"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.83047235</span><span class="p">,</span><span class="w">
-		</span><span class="s2">"mentions"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
-			</span><span class="s2">"text"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-				</span><span class="s2">"content"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Michelangelo Caravaggio"</span><span class="p">,</span><span class="w">
-				</span><span class="s2">"beginOffset"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+		</span><span class="nl">"salience"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.83047235</span><span class="p">,</span><span class="w">
+		</span><span class="nl">"mentions"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+			</span><span class="nl">"text"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+				</span><span class="nl">"content"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Michelangelo Caravaggio"</span><span class="p">,</span><span class="w">
+				</span><span class="nl">"beginOffset"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
 			</span><span class="p">},</span><span class="w">
-			</span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PROPER"</span><span class="w">
+			</span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PROPER"</span><span class="w">
 		</span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
-			</span><span class="s2">"text"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-				</span><span class="s2">"content"</span><span class="p">:</span><span class="w"> </span><span class="s2">"painter"</span><span class="p">,</span><span class="w">
-				</span><span class="s2">"beginOffset"</span><span class="p">:</span><span class="w"> </span><span class="mi">33</span><span class="w">
+			</span><span class="nl">"text"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+				</span><span class="nl">"content"</span><span class="p">:</span><span class="w"> </span><span class="s2">"painter"</span><span class="p">,</span><span class="w">
+				</span><span class="nl">"beginOffset"</span><span class="p">:</span><span class="w"> </span><span class="mi">33</span><span class="w">
 			</span><span class="p">},</span><span class="w">
-			</span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"COMMON"</span><span class="w">
+			</span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"COMMON"</span><span class="w">
 		</span><span class="p">}]</span><span class="w">
 	</span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
-		</span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Italian"</span><span class="p">,</span><span class="w">
-		</span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LOCATION"</span><span class="p">,</span><span class="w">
-		</span><span class="s2">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-			</span><span class="s2">"mid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/m/03rjj"</span><span class="p">,</span><span class="w">
-			</span><span class="s2">"wikipedia_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://en.wikipedia.org/wiki/Italy"</span><span class="w">
+		</span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Italian"</span><span class="p">,</span><span class="w">
+		</span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LOCATION"</span><span class="p">,</span><span class="w">
+		</span><span class="nl">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+			</span><span class="nl">"mid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/m/03rjj"</span><span class="p">,</span><span class="w">
+			</span><span class="nl">"wikipedia_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://en.wikipedia.org/wiki/Italy"</span><span class="w">
 		</span><span class="p">},</span><span class="w">
-		</span><span class="s2">"salience"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.13870546</span><span class="p">,</span><span class="w">
-		</span><span class="s2">"mentions"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
-			</span><span class="s2">"text"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-				</span><span class="s2">"content"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Italian"</span><span class="p">,</span><span class="w">
-				</span><span class="s2">"beginOffset"</span><span class="p">:</span><span class="w"> </span><span class="mi">25</span><span class="w">
+		</span><span class="nl">"salience"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.13870546</span><span class="p">,</span><span class="w">
+		</span><span class="nl">"mentions"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+			</span><span class="nl">"text"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+				</span><span class="nl">"content"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Italian"</span><span class="p">,</span><span class="w">
+				</span><span class="nl">"beginOffset"</span><span class="p">:</span><span class="w"> </span><span class="mi">25</span><span class="w">
 			</span><span class="p">},</span><span class="w">
-			</span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PROPER"</span><span class="w">
+			</span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PROPER"</span><span class="w">
 		</span><span class="p">}]</span><span class="w">
 	</span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
-		</span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The Calling of Saint Matthew"</span><span class="p">,</span><span class="w">
-		</span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EVENT"</span><span class="p">,</span><span class="w">
-		</span><span class="s2">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-			</span><span class="s2">"mid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/m/085_p7"</span><span class="p">,</span><span class="w">
-			</span><span class="s2">"wikipedia_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://en.wikipedia.org/wiki/The_Calling_of_St_Matthew_(Caravaggio)"</span><span class="w">
+		</span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The Calling of Saint Matthew"</span><span class="p">,</span><span class="w">
+		</span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EVENT"</span><span class="p">,</span><span class="w">
+		</span><span class="nl">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+			</span><span class="nl">"mid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/m/085_p7"</span><span class="p">,</span><span class="w">
+			</span><span class="nl">"wikipedia_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://en.wikipedia.org/wiki/The_Calling_of_St_Matthew_(Caravaggio)"</span><span class="w">
 		</span><span class="p">},</span><span class="w">
-		</span><span class="s2">"salience"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.030822212</span><span class="p">,</span><span class="w">
-		</span><span class="s2">"mentions"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
-			</span><span class="s2">"text"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-				</span><span class="s2">"content"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The Calling of Saint Matthew"</span><span class="p">,</span><span class="w">
-				</span><span class="s2">"beginOffset"</span><span class="p">:</span><span class="w"> </span><span class="mi">69</span><span class="w">
+		</span><span class="nl">"salience"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.030822212</span><span class="p">,</span><span class="w">
+		</span><span class="nl">"mentions"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+			</span><span class="nl">"text"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+				</span><span class="nl">"content"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The Calling of Saint Matthew"</span><span class="p">,</span><span class="w">
+				</span><span class="nl">"beginOffset"</span><span class="p">:</span><span class="w"> </span><span class="mi">69</span><span class="w">
 			</span><span class="p">},</span><span class="w">
-			</span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PROPER"</span><span class="w">
+			</span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PROPER"</span><span class="w">
 		</span><span class="p">}]</span><span class="w">
 	</span><span class="p">}],</span><span class="w">
-	</span><span class="s2">"language"</span><span class="p">:</span><span class="w"> </span><span class="s2">"en"</span><span class="w">
+	</span><span class="nl">"language"</span><span class="p">:</span><span class="w"> </span><span class="s2">"en"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div></div>
 <ul>
@@ -240,12 +417,12 @@ API를 사용하기 위해 GCP 콘솔에서 API키를 생성합니다.
 
 <h3 id="requestjson-1">request.json</h3>
 <div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
-	</span><span class="s2">"config"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-		</span><span class="s2">"encoding"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FLAC"</span><span class="p">,</span><span class="w">
-		</span><span class="s2">"languageCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"en-US"</span><span class="w">
+	</span><span class="nl">"config"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+		</span><span class="nl">"encoding"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FLAC"</span><span class="p">,</span><span class="w">
+		</span><span class="nl">"languageCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"en-US"</span><span class="w">
 	</span><span class="p">},</span><span class="w">
-	</span><span class="s2">"audio"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-		</span><span class="s2">"uri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"gs://cloud-samples-tests/speech/brooklyn.flac"</span><span class="w">
+	</span><span class="nl">"audio"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+		</span><span class="nl">"uri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"gs://cloud-samples-tests/speech/brooklyn.flac"</span><span class="w">
 	</span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div></div>
@@ -262,10 +439,10 @@ API를 사용하기 위해 GCP 콘솔에서 API키를 생성합니다.
 </blockquote>
 
 <div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
-	</span><span class="s2">"results"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
-		</span><span class="s2">"alternatives"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
-			</span><span class="s2">"transcript"</span><span class="p">:</span><span class="w"> </span><span class="s2">"how old is the Brooklyn Bridge"</span><span class="p">,</span><span class="w">
-			</span><span class="s2">"confidence"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.98267895</span><span class="w">
+	</span><span class="nl">"results"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+		</span><span class="nl">"alternatives"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+			</span><span class="nl">"transcript"</span><span class="p">:</span><span class="w"> </span><span class="s2">"how old is the Brooklyn Bridge"</span><span class="p">,</span><span class="w">
+			</span><span class="nl">"confidence"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.98267895</span><span class="w">
 		</span><span class="p">}]</span><span class="w">
 	</span><span class="p">}]</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -273,21 +450,21 @@ API를 사용하기 위해 GCP 콘솔에서 API키를 생성합니다.
 
 <p>다음은 불어에 대한 요청과 응답입니다. 오디오파일은 <a href="https://storage.googleapis.com/speech-language-samples/fr-sample.flac">여기서</a> 들을 수 있습니다.</p>
 <div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
-	</span><span class="s2">"config"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-		</span><span class="s2">"encoding"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FLAC"</span><span class="p">,</span><span class="w">
-		</span><span class="s2">"languageCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fr"</span><span class="w">
+	</span><span class="nl">"config"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+		</span><span class="nl">"encoding"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FLAC"</span><span class="p">,</span><span class="w">
+		</span><span class="nl">"languageCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fr"</span><span class="w">
 	</span><span class="p">},</span><span class="w">
-	</span><span class="s2">"audio"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-		</span><span class="s2">"uri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"gs://speech-language-samples/fr-sample.flac"</span><span class="w">
+	</span><span class="nl">"audio"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+		</span><span class="nl">"uri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"gs://speech-language-samples/fr-sample.flac"</span><span class="w">
 	</span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div></div>
 
 <div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
-	</span><span class="s2">"results"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
-		</span><span class="s2">"alternatives"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
-			</span><span class="s2">"transcript"</span><span class="p">:</span><span class="w"> </span><span class="s2">"maître corbeau sur un arbre perché tenait en son bec un fromage"</span><span class="p">,</span><span class="w">
-			</span><span class="s2">"confidence"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.9710122</span><span class="w">
+	</span><span class="nl">"results"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+		</span><span class="nl">"alternatives"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+			</span><span class="nl">"transcript"</span><span class="p">:</span><span class="w"> </span><span class="s2">"maître corbeau sur un arbre perché tenait en son bec un fromage"</span><span class="p">,</span><span class="w">
+			</span><span class="nl">"confidence"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.9710122</span><span class="w">
 		</span><span class="p">}]</span><span class="w">
 	</span><span class="p">}]</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -304,11 +481,11 @@ API를 사용하기 위해 GCP 콘솔에서 API키를 생성합니다.
 <p>먼저 NL API를 사용해서 분석할 파일을 생성합니다. json으로 구성되어 있으며 분석할 text가 포함되어있습니다.</p>
 <h4 id="requestjson-2">request.json</h4>
 <div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
-	</span><span class="s2">"document"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-		</span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PLAIN_TEXT"</span><span class="p">,</span><span class="w">
-		</span><span class="s2">"content"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Joanne Rowling, who writes under the pen names J. K. Rowling and Robert Galbraith, is a British novelist and screenwriter who wrote the Harry Potter fantasy series."</span><span class="w">
+	</span><span class="nl">"document"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+		</span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PLAIN_TEXT"</span><span class="p">,</span><span class="w">
+		</span><span class="nl">"content"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Joanne Rowling, who writes under the pen names J. K. Rowling and Robert Galbraith, is a British novelist and screenwriter who wrote the Harry Potter fantasy series."</span><span class="w">
 	</span><span class="p">},</span><span class="w">
-	</span><span class="s2">"encodingType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"UTF8"</span><span class="w">
+	</span><span class="nl">"encodingType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"UTF8"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div></div>
 <ul>
@@ -324,38 +501,38 @@ API를 사용하기 위해 GCP 콘솔에서 API키를 생성합니다.
 
 <p>위 request.json에 대한 분석 결과는 다음과 같습니다.</p>
 <div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
-	</span><span class="s2">"entities"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
-		</span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Robert Galbraith"</span><span class="p">,</span><span class="w">
-		</span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PERSON"</span><span class="p">,</span><span class="w">
-		</span><span class="s2">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-			</span><span class="s2">"mid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/m/042xh"</span><span class="p">,</span><span class="w">
-			</span><span class="s2">"wikipedia_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://en.wikipedia.org/wiki/J._K._Rowling"</span><span class="w">
+	</span><span class="nl">"entities"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+		</span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Robert Galbraith"</span><span class="p">,</span><span class="w">
+		</span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PERSON"</span><span class="p">,</span><span class="w">
+		</span><span class="nl">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+			</span><span class="nl">"mid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/m/042xh"</span><span class="p">,</span><span class="w">
+			</span><span class="nl">"wikipedia_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://en.wikipedia.org/wiki/J._K._Rowling"</span><span class="w">
 		</span><span class="p">},</span><span class="w">
-		</span><span class="s2">"salience"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.7980405</span><span class="p">,</span><span class="w">
-		</span><span class="s2">"mentions"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
-			</span><span class="s2">"text"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-				</span><span class="s2">"content"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Joanne Rowling"</span><span class="p">,</span><span class="w">
-				</span><span class="s2">"beginOffset"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+		</span><span class="nl">"salience"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.7980405</span><span class="p">,</span><span class="w">
+		</span><span class="nl">"mentions"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+			</span><span class="nl">"text"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+				</span><span class="nl">"content"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Joanne Rowling"</span><span class="p">,</span><span class="w">
+				</span><span class="nl">"beginOffset"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
 			</span><span class="p">},</span><span class="w">
-			</span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PROPER"</span><span class="w">
+			</span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PROPER"</span><span class="w">
 		</span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
-			</span><span class="s2">"text"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-				</span><span class="s2">"content"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Rowling"</span><span class="p">,</span><span class="w">
-				</span><span class="s2">"beginOffset"</span><span class="p">:</span><span class="w"> </span><span class="mi">53</span><span class="w">
+			</span><span class="nl">"text"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+				</span><span class="nl">"content"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Rowling"</span><span class="p">,</span><span class="w">
+				</span><span class="nl">"beginOffset"</span><span class="p">:</span><span class="w"> </span><span class="mi">53</span><span class="w">
 			</span><span class="p">},</span><span class="w">
-			</span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PROPER"</span><span class="w">
+			</span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PROPER"</span><span class="w">
 		</span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
-			</span><span class="s2">"text"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-				</span><span class="s2">"content"</span><span class="p">:</span><span class="w"> </span><span class="s2">"novelist"</span><span class="p">,</span><span class="w">
-				</span><span class="s2">"beginOffset"</span><span class="p">:</span><span class="w"> </span><span class="mi">96</span><span class="w">
+			</span><span class="nl">"text"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+				</span><span class="nl">"content"</span><span class="p">:</span><span class="w"> </span><span class="s2">"novelist"</span><span class="p">,</span><span class="w">
+				</span><span class="nl">"beginOffset"</span><span class="p">:</span><span class="w"> </span><span class="mi">96</span><span class="w">
 			</span><span class="p">},</span><span class="w">
-			</span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"COMMON"</span><span class="w">
+			</span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"COMMON"</span><span class="w">
 		</span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
-			</span><span class="s2">"text"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-				</span><span class="s2">"content"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Robert Galbraith"</span><span class="p">,</span><span class="w">
-				</span><span class="s2">"beginOffset"</span><span class="p">:</span><span class="w"> </span><span class="mi">65</span><span class="w">
+			</span><span class="nl">"text"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+				</span><span class="nl">"content"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Robert Galbraith"</span><span class="p">,</span><span class="w">
+				</span><span class="nl">"beginOffset"</span><span class="p">:</span><span class="w"> </span><span class="mi">65</span><span class="w">
 			</span><span class="p">},</span><span class="w">
-			</span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PROPER"</span><span class="w">
+			</span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PROPER"</span><span class="w">
 		</span><span class="p">}]</span><span class="w">
 	</span><span class="p">},</span><span class="w"> 
 	</span><span class="err">...</span><span class="w">
@@ -370,11 +547,11 @@ API를 사용하기 위해 GCP 콘솔에서 API키를 생성합니다.
 </ul>
 
 <div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
-	</span><span class="s2">"document"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-		</span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PLAIN_TEXT"</span><span class="p">,</span><span class="w">
-		</span><span class="s2">"content"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Harry Potter is the best book. I think everyone should read it."</span><span class="w">
+	</span><span class="nl">"document"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+		</span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PLAIN_TEXT"</span><span class="p">,</span><span class="w">
+		</span><span class="nl">"content"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Harry Potter is the best book. I think everyone should read it."</span><span class="w">
 	</span><span class="p">},</span><span class="w">
-	</span><span class="s2">"encodingType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"UTF8"</span><span class="w">
+	</span><span class="nl">"encodingType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"UTF8"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div></div>
 
@@ -383,11 +560,11 @@ API를 사용하기 위해 GCP 콘솔에서 API키를 생성합니다.
 먼저 다음과 같이 요청파일을 생성합니다.</p>
 <h3 id="requestjson-3">request.json</h3>
 <div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="w"> </span><span class="p">{</span><span class="w">
- 	</span><span class="s2">"document"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
- 		</span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PLAIN_TEXT"</span><span class="p">,</span><span class="w">
- 		</span><span class="s2">"content"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Harry Potter is the best book. I think everyone should read it."</span><span class="w">
+ 	</span><span class="nl">"document"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+ 		</span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PLAIN_TEXT"</span><span class="p">,</span><span class="w">
+ 		</span><span class="nl">"content"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Harry Potter is the best book. I think everyone should read it."</span><span class="w">
  	</span><span class="p">},</span><span class="w">
- 	</span><span class="s2">"encodingType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"UTF8"</span><span class="w">
+ 	</span><span class="nl">"encodingType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"UTF8"</span><span class="w">
  </span><span class="p">}</span><span class="w">
 </span></code></pre></div></div>
 <p>curl을 사용하여 api를 호출합니다. 앤드포인트가 analyzeSentiment입니다.</p>
@@ -397,28 +574,28 @@ API를 사용하기 위해 GCP 콘솔에서 API키를 생성합니다.
 
 <p>응답 json입니다.</p>
 <div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
-	</span><span class="s2">"documentSentiment"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-		</span><span class="s2">"magnitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.8</span><span class="p">,</span><span class="w">
-		</span><span class="s2">"score"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.4</span><span class="w">
+	</span><span class="nl">"documentSentiment"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+		</span><span class="nl">"magnitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.8</span><span class="p">,</span><span class="w">
+		</span><span class="nl">"score"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.4</span><span class="w">
 	</span><span class="p">},</span><span class="w">
-	</span><span class="s2">"language"</span><span class="p">:</span><span class="w"> </span><span class="s2">"en"</span><span class="p">,</span><span class="w">
-	</span><span class="s2">"sentences"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
-		</span><span class="s2">"text"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-			</span><span class="s2">"content"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Harry Potter is the best book."</span><span class="p">,</span><span class="w">
-			</span><span class="s2">"beginOffset"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+	</span><span class="nl">"language"</span><span class="p">:</span><span class="w"> </span><span class="s2">"en"</span><span class="p">,</span><span class="w">
+	</span><span class="nl">"sentences"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+		</span><span class="nl">"text"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+			</span><span class="nl">"content"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Harry Potter is the best book."</span><span class="p">,</span><span class="w">
+			</span><span class="nl">"beginOffset"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
 		</span><span class="p">},</span><span class="w">
-		</span><span class="s2">"sentiment"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-			</span><span class="s2">"magnitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.7</span><span class="p">,</span><span class="w">
-			</span><span class="s2">"score"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.7</span><span class="w">
+		</span><span class="nl">"sentiment"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+			</span><span class="nl">"magnitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.7</span><span class="p">,</span><span class="w">
+			</span><span class="nl">"score"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.7</span><span class="w">
 		</span><span class="p">}</span><span class="w">
 	</span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
-		</span><span class="s2">"text"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-			</span><span class="s2">"content"</span><span class="p">:</span><span class="w"> </span><span class="s2">"I think everyone should read it."</span><span class="p">,</span><span class="w">
-			</span><span class="s2">"beginOffset"</span><span class="p">:</span><span class="w"> </span><span class="mi">31</span><span class="w">
+		</span><span class="nl">"text"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+			</span><span class="nl">"content"</span><span class="p">:</span><span class="w"> </span><span class="s2">"I think everyone should read it."</span><span class="p">,</span><span class="w">
+			</span><span class="nl">"beginOffset"</span><span class="p">:</span><span class="w"> </span><span class="mi">31</span><span class="w">
 		</span><span class="p">},</span><span class="w">
-		</span><span class="s2">"sentiment"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-			</span><span class="s2">"magnitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.1</span><span class="p">,</span><span class="w">
-			</span><span class="s2">"score"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.1</span><span class="w">
+		</span><span class="nl">"sentiment"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+			</span><span class="nl">"magnitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.1</span><span class="p">,</span><span class="w">
+			</span><span class="nl">"score"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.1</span><span class="w">
 		</span><span class="p">}</span><span class="w">
 	</span><span class="p">}]</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -433,11 +610,11 @@ API를 사용하기 위해 GCP 콘솔에서 API키를 생성합니다.
 
 <h3 id="requestjson-4">request.json</h3>
 <div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
-	</span><span class="s2">"document"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-		</span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PLAIN_TEXT"</span><span class="p">,</span><span class="w">
-		</span><span class="s2">"content"</span><span class="p">:</span><span class="w"> </span><span class="s2">"I liked the sushi but the service was terrible."</span><span class="w">
+	</span><span class="nl">"document"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+		</span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PLAIN_TEXT"</span><span class="p">,</span><span class="w">
+		</span><span class="nl">"content"</span><span class="p">:</span><span class="w"> </span><span class="s2">"I liked the sushi but the service was terrible."</span><span class="w">
 	</span><span class="p">},</span><span class="w">
-	</span><span class="s2">"encodingType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"UTF8"</span><span class="w">
+	</span><span class="nl">"encodingType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"UTF8"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div></div>
 
@@ -447,48 +624,48 @@ API를 사용하기 위해 GCP 콘솔에서 API키를 생성합니다.
 </blockquote>
 
 <div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
-	</span><span class="s2">"entities"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
-		</span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sushi"</span><span class="p">,</span><span class="w">
-		</span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CONSUMER_GOOD"</span><span class="p">,</span><span class="w">
-		</span><span class="s2">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
-		</span><span class="s2">"salience"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.52716845</span><span class="p">,</span><span class="w">
-		</span><span class="s2">"mentions"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
-			</span><span class="s2">"text"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-				</span><span class="s2">"content"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sushi"</span><span class="p">,</span><span class="w">
-				</span><span class="s2">"beginOffset"</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="w">
+	</span><span class="nl">"entities"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+		</span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sushi"</span><span class="p">,</span><span class="w">
+		</span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CONSUMER_GOOD"</span><span class="p">,</span><span class="w">
+		</span><span class="nl">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+		</span><span class="nl">"salience"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.52716845</span><span class="p">,</span><span class="w">
+		</span><span class="nl">"mentions"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+			</span><span class="nl">"text"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+				</span><span class="nl">"content"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sushi"</span><span class="p">,</span><span class="w">
+				</span><span class="nl">"beginOffset"</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="w">
 			</span><span class="p">},</span><span class="w">
-			</span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"COMMON"</span><span class="p">,</span><span class="w">
-			</span><span class="s2">"sentiment"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-				</span><span class="s2">"magnitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.9</span><span class="p">,</span><span class="w">
-				</span><span class="s2">"score"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.9</span><span class="w">
+			</span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"COMMON"</span><span class="p">,</span><span class="w">
+			</span><span class="nl">"sentiment"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+				</span><span class="nl">"magnitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.9</span><span class="p">,</span><span class="w">
+				</span><span class="nl">"score"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.9</span><span class="w">
 			</span><span class="p">}</span><span class="w">
 		</span><span class="p">}],</span><span class="w">
-		</span><span class="s2">"sentiment"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-			</span><span class="s2">"magnitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.9</span><span class="p">,</span><span class="w">
-			</span><span class="s2">"score"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.9</span><span class="w">
+		</span><span class="nl">"sentiment"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+			</span><span class="nl">"magnitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.9</span><span class="p">,</span><span class="w">
+			</span><span class="nl">"score"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.9</span><span class="w">
 		</span><span class="p">}</span><span class="w">
 	</span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
-		</span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"service"</span><span class="p">,</span><span class="w">
-		</span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OTHER"</span><span class="p">,</span><span class="w">
-		</span><span class="s2">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
-		</span><span class="s2">"salience"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.47283158</span><span class="p">,</span><span class="w">
-		</span><span class="s2">"mentions"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
-			</span><span class="s2">"text"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-				</span><span class="s2">"content"</span><span class="p">:</span><span class="w"> </span><span class="s2">"service"</span><span class="p">,</span><span class="w">
-				</span><span class="s2">"beginOffset"</span><span class="p">:</span><span class="w"> </span><span class="mi">26</span><span class="w">
+		</span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"service"</span><span class="p">,</span><span class="w">
+		</span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OTHER"</span><span class="p">,</span><span class="w">
+		</span><span class="nl">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+		</span><span class="nl">"salience"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.47283158</span><span class="p">,</span><span class="w">
+		</span><span class="nl">"mentions"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+			</span><span class="nl">"text"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+				</span><span class="nl">"content"</span><span class="p">:</span><span class="w"> </span><span class="s2">"service"</span><span class="p">,</span><span class="w">
+				</span><span class="nl">"beginOffset"</span><span class="p">:</span><span class="w"> </span><span class="mi">26</span><span class="w">
 			</span><span class="p">},</span><span class="w">
-			</span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"COMMON"</span><span class="p">,</span><span class="w">
-			</span><span class="s2">"sentiment"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-				</span><span class="s2">"magnitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.9</span><span class="p">,</span><span class="w">
-				</span><span class="s2">"score"</span><span class="p">:</span><span class="w"> </span><span class="mf">-0.9</span><span class="w">
+			</span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"COMMON"</span><span class="p">,</span><span class="w">
+			</span><span class="nl">"sentiment"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+				</span><span class="nl">"magnitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.9</span><span class="p">,</span><span class="w">
+				</span><span class="nl">"score"</span><span class="p">:</span><span class="w"> </span><span class="mf">-0.9</span><span class="w">
 			</span><span class="p">}</span><span class="w">
 		</span><span class="p">}],</span><span class="w">
-		</span><span class="s2">"sentiment"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-			</span><span class="s2">"magnitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.9</span><span class="p">,</span><span class="w">
-			</span><span class="s2">"score"</span><span class="p">:</span><span class="w"> </span><span class="mf">-0.9</span><span class="w">
+		</span><span class="nl">"sentiment"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+			</span><span class="nl">"magnitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.9</span><span class="p">,</span><span class="w">
+			</span><span class="nl">"score"</span><span class="p">:</span><span class="w"> </span><span class="mf">-0.9</span><span class="w">
 		</span><span class="p">}</span><span class="w">
 	</span><span class="p">}],</span><span class="w">
-	</span><span class="s2">"language"</span><span class="p">:</span><span class="w"> </span><span class="s2">"en"</span><span class="w">
+	</span><span class="nl">"language"</span><span class="p">:</span><span class="w"> </span><span class="s2">"en"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div></div>
 <p>결과에 대한 파라미터 설명은 다른 api들과 같습니다.</p>
@@ -497,11 +674,11 @@ API를 사용하기 위해 GCP 콘솔에서 API키를 생성합니다.
 요청파일입니다.</p>
 <h4 id="reqeuestjson">reqeuest.json</h4>
 <div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
-	</span><span class="s2">"document"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-		</span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PLAIN_TEXT"</span><span class="p">,</span><span class="w">
-		</span><span class="s2">"content"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Joanne Rowling is a British novelist, screenwriter and film producer."</span><span class="w">
+	</span><span class="nl">"document"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+		</span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PLAIN_TEXT"</span><span class="p">,</span><span class="w">
+		</span><span class="nl">"content"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Joanne Rowling is a British novelist, screenwriter and film producer."</span><span class="w">
 	</span><span class="p">},</span><span class="w">
-	</span><span class="s2">"encodingType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"UTF8"</span><span class="w">
+	</span><span class="nl">"encodingType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"UTF8"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div></div>
 <p>api호출입니다.</p>
@@ -511,29 +688,29 @@ API를 사용하기 위해 GCP 콘솔에서 API키를 생성합니다.
 
 <p>결과입니다.</p>
 <div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
-	</span><span class="s2">"text"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-		</span><span class="s2">"content"</span><span class="p">:</span><span class="w"> </span><span class="s2">"is"</span><span class="p">,</span><span class="w">
-		</span><span class="s2">"beginOffset"</span><span class="p">:</span><span class="w"> </span><span class="mi">15</span><span class="w">
+	</span><span class="nl">"text"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+		</span><span class="nl">"content"</span><span class="p">:</span><span class="w"> </span><span class="s2">"is"</span><span class="p">,</span><span class="w">
+		</span><span class="nl">"beginOffset"</span><span class="p">:</span><span class="w"> </span><span class="mi">15</span><span class="w">
 	</span><span class="p">},</span><span class="w">
-	</span><span class="s2">"partOfSpeech"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-		</span><span class="s2">"tag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"VERB"</span><span class="p">,</span><span class="w">
-		</span><span class="s2">"aspect"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ASPECT_UNKNOWN"</span><span class="p">,</span><span class="w">
-		</span><span class="s2">"case"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CASE_UNKNOWN"</span><span class="p">,</span><span class="w">
-		</span><span class="s2">"form"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FORM_UNKNOWN"</span><span class="p">,</span><span class="w">
-		</span><span class="s2">"gender"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GENDER_UNKNOWN"</span><span class="p">,</span><span class="w">
-		</span><span class="s2">"mood"</span><span class="p">:</span><span class="w"> </span><span class="s2">"INDICATIVE"</span><span class="p">,</span><span class="w">
-		</span><span class="s2">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SINGULAR"</span><span class="p">,</span><span class="w">
-		</span><span class="s2">"person"</span><span class="p">:</span><span class="w"> </span><span class="s2">"THIRD"</span><span class="p">,</span><span class="w">
-		</span><span class="s2">"proper"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PROPER_UNKNOWN"</span><span class="p">,</span><span class="w">
-		</span><span class="s2">"reciprocity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RECIPROCITY_UNKNOWN"</span><span class="p">,</span><span class="w">
-		</span><span class="s2">"tense"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PRESENT"</span><span class="p">,</span><span class="w">
-		</span><span class="s2">"voice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"VOICE_UNKNOWN"</span><span class="w">
+	</span><span class="nl">"partOfSpeech"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+		</span><span class="nl">"tag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"VERB"</span><span class="p">,</span><span class="w">
+		</span><span class="nl">"aspect"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ASPECT_UNKNOWN"</span><span class="p">,</span><span class="w">
+		</span><span class="nl">"case"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CASE_UNKNOWN"</span><span class="p">,</span><span class="w">
+		</span><span class="nl">"form"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FORM_UNKNOWN"</span><span class="p">,</span><span class="w">
+		</span><span class="nl">"gender"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GENDER_UNKNOWN"</span><span class="p">,</span><span class="w">
+		</span><span class="nl">"mood"</span><span class="p">:</span><span class="w"> </span><span class="s2">"INDICATIVE"</span><span class="p">,</span><span class="w">
+		</span><span class="nl">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SINGULAR"</span><span class="p">,</span><span class="w">
+		</span><span class="nl">"person"</span><span class="p">:</span><span class="w"> </span><span class="s2">"THIRD"</span><span class="p">,</span><span class="w">
+		</span><span class="nl">"proper"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PROPER_UNKNOWN"</span><span class="p">,</span><span class="w">
+		</span><span class="nl">"reciprocity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RECIPROCITY_UNKNOWN"</span><span class="p">,</span><span class="w">
+		</span><span class="nl">"tense"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PRESENT"</span><span class="p">,</span><span class="w">
+		</span><span class="nl">"voice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"VOICE_UNKNOWN"</span><span class="w">
 	</span><span class="p">},</span><span class="w">
-	</span><span class="s2">"dependencyEdge"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-		</span><span class="s2">"headTokenIndex"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-		</span><span class="s2">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ROOT"</span><span class="w">
+	</span><span class="nl">"dependencyEdge"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+		</span><span class="nl">"headTokenIndex"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+		</span><span class="nl">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ROOT"</span><span class="w">
 	</span><span class="p">},</span><span class="w">
-	</span><span class="s2">"lemma"</span><span class="p">:</span><span class="w"> </span><span class="s2">"be"</span><span class="w">
+	</span><span class="nl">"lemma"</span><span class="p">:</span><span class="w"> </span><span class="s2">"be"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div></div>
 <ul>
@@ -550,9 +727,9 @@ API를 사용하기 위해 GCP 콘솔에서 API키를 생성합니다.
 
 <h4 id="reqeustjson">reqeust.json</h4>
 <div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
-	</span><span class="s2">"document"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-		</span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PLAIN_TEXT"</span><span class="p">,</span><span class="w">
-		</span><span class="s2">"content"</span><span class="p">:</span><span class="w"> </span><span class="s2">"日本のグーグルのオフィスは、東京の六本木ヒルズにあります"</span><span class="w">
+	</span><span class="nl">"document"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+		</span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PLAIN_TEXT"</span><span class="p">,</span><span class="w">
+		</span><span class="nl">"content"</span><span class="p">:</span><span class="w"> </span><span class="s2">"日本のグーグルのオフィスは、東京の六本木ヒルズにあります"</span><span class="w">
 	</span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div></div>
@@ -561,90 +738,90 @@ API를 사용하기 위해 GCP 콘솔에서 API키를 생성합니다.
 </blockquote>
 
 <div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
-	</span><span class="s2">"entities"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
-		</span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"日本"</span><span class="p">,</span><span class="w">
-		</span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LOCATION"</span><span class="p">,</span><span class="w">
-		</span><span class="s2">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-			</span><span class="s2">"mid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/m/03_3d"</span><span class="p">,</span><span class="w">
-			</span><span class="s2">"wikipedia_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://en.wikipedia.org/wiki/Japan"</span><span class="w">
+	</span><span class="nl">"entities"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+		</span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"日本"</span><span class="p">,</span><span class="w">
+		</span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LOCATION"</span><span class="p">,</span><span class="w">
+		</span><span class="nl">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+			</span><span class="nl">"mid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/m/03_3d"</span><span class="p">,</span><span class="w">
+			</span><span class="nl">"wikipedia_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://en.wikipedia.org/wiki/Japan"</span><span class="w">
 		</span><span class="p">},</span><span class="w">
-		</span><span class="s2">"salience"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.23854347</span><span class="p">,</span><span class="w">
-		</span><span class="s2">"mentions"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
-			</span><span class="s2">"text"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-				</span><span class="s2">"content"</span><span class="p">:</span><span class="w"> </span><span class="s2">"日本"</span><span class="p">,</span><span class="w">
-				</span><span class="s2">"beginOffset"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+		</span><span class="nl">"salience"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.23854347</span><span class="p">,</span><span class="w">
+		</span><span class="nl">"mentions"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+			</span><span class="nl">"text"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+				</span><span class="nl">"content"</span><span class="p">:</span><span class="w"> </span><span class="s2">"日本"</span><span class="p">,</span><span class="w">
+				</span><span class="nl">"beginOffset"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
 			</span><span class="p">},</span><span class="w">
-			</span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PROPER"</span><span class="w">
+			</span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PROPER"</span><span class="w">
 		</span><span class="p">}]</span><span class="w">
 	</span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
-		</span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"グーグル"</span><span class="p">,</span><span class="w">
-		</span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ORGANIZATION"</span><span class="p">,</span><span class="w">
-		</span><span class="s2">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-			</span><span class="s2">"mid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/m/045c7b"</span><span class="p">,</span><span class="w">
-			</span><span class="s2">"wikipedia_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://en.wikipedia.org/wiki/Google"</span><span class="w">
+		</span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"グーグル"</span><span class="p">,</span><span class="w">
+		</span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ORGANIZATION"</span><span class="p">,</span><span class="w">
+		</span><span class="nl">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+			</span><span class="nl">"mid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/m/045c7b"</span><span class="p">,</span><span class="w">
+			</span><span class="nl">"wikipedia_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://en.wikipedia.org/wiki/Google"</span><span class="w">
 		</span><span class="p">},</span><span class="w">
-		</span><span class="s2">"salience"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.21155767</span><span class="p">,</span><span class="w">
-		</span><span class="s2">"mentions"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
-			</span><span class="s2">"text"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-				</span><span class="s2">"content"</span><span class="p">:</span><span class="w"> </span><span class="s2">"グーグル"</span><span class="p">,</span><span class="w">
-				</span><span class="s2">"beginOffset"</span><span class="p">:</span><span class="w"> </span><span class="mi">9</span><span class="w">
+		</span><span class="nl">"salience"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.21155767</span><span class="p">,</span><span class="w">
+		</span><span class="nl">"mentions"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+			</span><span class="nl">"text"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+				</span><span class="nl">"content"</span><span class="p">:</span><span class="w"> </span><span class="s2">"グーグル"</span><span class="p">,</span><span class="w">
+				</span><span class="nl">"beginOffset"</span><span class="p">:</span><span class="w"> </span><span class="mi">9</span><span class="w">
 			</span><span class="p">},</span><span class="w">
-			</span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PROPER"</span><span class="w">
+			</span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PROPER"</span><span class="w">
 		</span><span class="p">}]</span><span class="w">
 	</span><span class="p">},</span><span class="w"> </span><span class="err">...</span><span class="p">]</span><span class="w">
-	</span><span class="s2">"language"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ja"</span><span class="w">
+	</span><span class="nl">"language"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ja"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div></div>
 
 <h2 id="overview">Overview</h2>
 <p>개인적인 생각엔, 그리고 이전 쿠버네티스 스터디잼에 참가한 경험으로 인하면 이번 스터디는 너무 api호출이 전부였던것같습니다. api를 소개하는 느낌의 실습들이 었습니다. 다음번에 NLP중급 스터디를 진행한다고 하니 기대하면서 계속 공부하고 있어야 겠습니다.</p>
 
-
-  
-  <div class="post-disqus">
-      <section id="disqus_thread"></section>
-      <div id="disqus_thread"></div>
-<script>
-
-/**
-*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
-*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
-/*
-var disqus_config = function () {
-this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
-this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
-};
-*/
-(function() { // DON'T EDIT BELOW THIS LINE
-var d = document, s = d.createElement('script');
-s.src = 'https://youngwonseo.disqus.com/embed.js';
-s.setAttribute('data-timestamp', +new Date());
-(d.head || d.body).appendChild(s);
-})();
-</script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-                            
+		
   </div>
-  
-</div>
 
-<div class="pagination">
-  
-    <a href="/2019/04/01/fisher-yates-shuffle/" class="left arrow">&#8592;</a>
-  
-  
-    <a href="/2019/02/17/redis-quick-start/" class="right arrow">&#8594;</a>
-  
-
-  <a href="#" class="top">Top</a>
-</div>
-
-    </main>
-
-    <footer>
-      <span>
-        &copy; <time datetime="2020-03-04 00:15:58 +0900">2020</time> Youngwon Seo. Made with Jekyll using the <a href="https://github.com/chesterhow/tale/">Tale</a> theme.
+  <div class="parent f-right">
+    <!-- Twitter -->
+    <a href="https://twitter.com/share?url=https://thereviewindex.com/blog/2019/02/23/studyjam-nlp/&amp;text=구글 NLP 스터디잼 - API소개&amp;hashtags=thereviewindex" target="_blank">
+      <span class="social-icon">  
+        <svg class="svgIcon-use" width="29" height="29" viewBox="0 0 29 29"><path d="M21.967 11.8c.018 5.93-4.607 11.18-11.177 11.18-2.172 0-4.25-.62-6.047-1.76l-.268.422-.038.5.186.013.168.012c.3.02.44.032.6.046 2.06-.026 3.95-.686 5.49-1.86l1.12-.85-1.4-.048c-1.57-.055-2.92-1.08-3.36-2.51l-.48.146-.05.5c.22.03.48.05.75.08.48-.02.87-.07 1.25-.15l2.33-.49-2.32-.49c-1.68-.35-2.91-1.83-2.91-3.55 0-.05 0-.01-.01.03l-.49-.1-.25.44c.63.36 1.35.57 2.07.58l1.7.04L7.4 13c-.978-.662-1.59-1.79-1.618-3.047a4.08 4.08 0 0 1 .524-1.8l-.825.07a12.188 12.188 0 0 0 8.81 4.515l.59.033-.06-.59v-.02c-.05-.43-.06-.63-.06-.87a3.617 3.617 0 0 1 6.27-2.45l.2.21.28-.06c1.01-.22 1.94-.59 2.73-1.09l-.75-.56c-.1.36-.04.89.12 1.36.23.68.58 1.13 1.17.85l-.21-.45-.42-.27c-.52.8-1.17 1.48-1.92 2L22 11l.016.28c.013.2.014.35 0 .52v.04zm.998.038c.018-.22.017-.417 0-.66l-.498.034.284.41a8.183 8.183 0 0 0 2.2-2.267l.97-1.48-1.6.755c.17-.08.3-.02.34.03a.914.914 0 0 1-.13-.292c-.1-.297-.13-.64-.1-.766l.36-1.254-1.1.695c-.69.438-1.51.764-2.41.963l.48.15a4.574 4.574 0 0 0-3.38-1.484 4.616 4.616 0 0 0-4.61 4.613c0 .29.02.51.08.984l.01.02.5-.06.03-.5c-3.17-.18-6.1-1.7-8.08-4.15l-.48-.56-.36.64c-.39.69-.62 1.48-.65 2.28.04 1.61.81 3.04 2.06 3.88l.3-.92c-.55-.02-1.11-.17-1.6-.45l-.59-.34-.14.67c-.02.08-.02.16 0 .24-.01 2.12 1.55 4.01 3.69 4.46l.1-.49-.1-.49c-.33.07-.67.12-1.03.14-.18-.02-.43-.05-.64-.07l-.76-.09.23.73c.57 1.84 2.29 3.14 4.28 3.21l-.28-.89a8.252 8.252 0 0 1-4.85 1.66c-.12-.01-.26-.02-.56-.05l-.17-.01-.18-.01L2.53 21l1.694 1.07a12.233 12.233 0 0 0 6.58 1.917c7.156 0 12.2-5.73 12.18-12.18l-.002.04z"></path></svg>
       </span>
-    </footer>
+    </a>
+
+    &nbsp;&nbsp;&nbsp;
+    <!-- Facebook -->
+    <a href="http://www.facebook.com/sharer.php?u=https://thereviewindex.com/blog/2019/02/23/studyjam-nlp/" target="_blank">
+      <span class="social-icon">
+        <svg class="svgIcon-use" width="29" height="29" viewBox="0 0 29 29"><path d="M16.39 23.61v-5.808h1.846a.55.55 0 0 0 .546-.48l.36-2.797a.551.551 0 0 0-.547-.62H16.39V12.67c0-.67.12-.813.828-.813h1.474a.55.55 0 0 0 .55-.55V8.803a.55.55 0 0 0-.477-.545c-.436-.06-1.36-.116-2.22-.116-2.5 0-4.13 1.62-4.13 4.248v1.513H10.56a.551.551 0 0 0-.55.55v2.797c0 .304.248.55.55.55h1.855v5.76c-4.172-.96-7.215-4.7-7.215-9.1 0-5.17 4.17-9.36 9.31-9.36 5.14 0 9.31 4.19 9.31 9.36 0 4.48-3.155 8.27-7.43 9.15M14.51 4C8.76 4 4.1 8.684 4.1 14.46c0 5.162 3.75 9.523 8.778 10.32a.55.55 0 0 0 .637-.543v-6.985a.551.551 0 0 0-.55-.55H11.11v-1.697h1.855a.55.55 0 0 0 .55-.55v-2.063c0-2.02 1.136-3.148 3.03-3.148.567 0 1.156.027 1.597.06v1.453h-.924c-1.363 0-1.93.675-1.93 1.912v1.78c0 .3.247.55.55.55h2.132l-.218 1.69H15.84c-.305 0-.55.24-.55.55v7.02c0 .33.293.59.623.54 5.135-.7 9.007-5.11 9.007-10.36C24.92 8.68 20.26 4 14.51 4"></path></svg>
+      </span> 
+    </a>
+  </div>
+
+  <!-- Facebook Comments HTML -->
+  <div class="m-t-6e">
+    <div class="fb-comments" data-href="http://localhost:4000/2019/02/23/studyjam-nlp/" data-width="800" data-numposts="5"></div>
+  </div>
+
+</article>
+
+
+  
+  	  </main>
+  		
+  		  <!-- Pagination links -->
+        
+  
+  	  </div>
+  	    
+  	    <!-- Footer -->
+        <div class="m-t-6e">
+          <footer><span>&#169;2017 - TheReviewIndex</span></footer>
+
+        </div>
+  
+  	    <!-- Script -->
+        <script src="/js/main.js"></script>	
+
+  
+  	</div>
   </body>
 </html>
