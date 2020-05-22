@@ -42,7 +42,7 @@
   <!-- Favicon -->
   <link rel="shortcut icon" type="image/png" href="img/favicon.png">
 
-  
+
   <!-- Google Analytics -->
   <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -223,6 +223,67 @@
 	
 
 	  <div class="post">
+	  	<h2><a href="/2020/04/26/02-week1/">Minmax Search</a></h2>
+      <div class="by-line parent">
+        <time datetime="2020-04-26T00:00:00+09:00"> <i>26 Apr 2020</i> </time>
+        &nbsp;&nbsp; &middot; &nbsp;&nbsp;
+        <span><i></i> </span>
+      </div>
+      <p>
+</p>
+	  </div>
+
+    
+
+	  <div class="post">
+	  	<h2><a href="/2020/04/26/01-week3/">AI for Medical Diagnosis - Week3</a></h2>
+      <div class="by-line parent">
+        <time datetime="2020-04-26T00:00:00+09:00"> <i>26 Apr 2020</i> </time>
+        &nbsp;&nbsp; &middot; &nbsp;&nbsp;
+        <span><i></i> </span>
+      </div>
+      <p>Image segmentation on MRI images Key Concepts Perform image segmentation on 3D MRI data. Take random sub-samples from a 3D image. Standardize an input image. Apply a pre-trained U-Net model. Implement a proper loss function for model training (soft dice loss). Evaluate model performance by calculating sensitivity and specificity. Medical...</p>
+	  </div>
+
+    
+
+	  <div class="post">
+	  	<h2><a href="/2020/04/25/01-week2/">AI for Medical Diagnosis - Week2</a></h2>
+      <div class="by-line parent">
+        <time datetime="2020-04-25T00:00:00+09:00"> <i>25 Apr 2020</i> </time>
+        &nbsp;&nbsp; &middot; &nbsp;&nbsp;
+        <span><i></i> </span>
+      </div>
+      <p>Evaluating models 2주차 Key Concepts Calculate true positives, true negatives, false positives, false negatives. Calculate sensitivity and specificity Calculate Positive Predictive Value (PPV) and Negative Predictive Value (NPV). Understand confidence intervals, ROC curve, and F1 score. 의료 분야에서 진단에 대한 결정은 높은 영향력을 가집니다. 그래서 진단에 대한 딥러닝 모델을 개발시...</p>
+	  </div>
+
+    
+
+	  <div class="post">
+	  	<h2><a href="/2020/04/20/01-week1/">AI for Medical Diagnosis - Week1</a></h2>
+      <div class="by-line parent">
+        <time datetime="2020-04-20T00:00:00+09:00"> <i>20 Apr 2020</i> </time>
+        &nbsp;&nbsp; &middot; &nbsp;&nbsp;
+        <span><i></i> </span>
+      </div>
+      <p>Disease detection with computer vision Key Concepts Data pre-processing: checking for data leakage Preprocess images properly for the train, validation and test sets Implement a weighted loss function to address class imbalance. Set up a pre-trained neural network to make disease predictions on chest x-rays. https://www.kaggle.com/c/rsna-pneumonia-detection-challenge https://www.kaggle.com/c/siim-acr-pneumothorax-segmentation https://www.kaggle.com/c/rsna-intracranial-hemorrhage-detection 준비 딥러닝에...</p>
+	  </div>
+
+    
+
+	  <div class="post">
+	  	<h2><a href="/2020/04/15/structured-data/">텐서플로우 - 구조화된 데이터</a></h2>
+      <div class="by-line parent">
+        <time datetime="2020-04-15T00:00:00+09:00"> <i>15 Apr 2020</i> </time>
+        &nbsp;&nbsp; &middot; &nbsp;&nbsp;
+        <span><i></i> </span>
+      </div>
+      <p>본 글은 텐서플로우 공식 사이트의 구조화된 데이터를 정리한 글입니다. 특성 열(feature_columns) 텐서플로우에서 제공하는 특성 열 feature_columns의 종류 numeric column bucketized column categorical column embedding column categorical_column_with_hash_bucket feature cross 수치형일 경우 실제 데이터와는 독립적으로 feature의 이름(column의 이름)으로만으로 구성할 수 있습니다. 이후 DenseFeatures를 통하여 모델에 주입 model = tf.keras.Sequential([ feature_layer, layers.Dense(128, activation='relu'),...</p>
+	  </div>
+
+    
+
+	  <div class="post">
 	  	<h2><a href="/2020/03/17/this/">자바스크립트 - 기존 function과 화살표 함수에서의 This</a></h2>
       <div class="by-line parent">
         <time datetime="2020-03-17T00:00:00+09:00"> <i>17 Mar 2020</i> </time>
@@ -230,6 +291,18 @@
         <span><i></i> </span>
       </div>
       <p>ES6에서 존재하는 화살표함수와 기존의 function은 바인딩되는 this의 차이가 존재합니다. function BlackDog() { this.name = '흰둥이'; return { name: '검둥이', bark: function() { console.log(this.name + ': 멍멍!'); } } } function WhiteDog() { this.name = '흰둥이'; return { name: '검둥이', bark: () =&gt; { console.log(this.name + ': 멍멍!'); } } }...</p>
+	  </div>
+
+    
+
+	  <div class="post">
+	  	<h2><a href="/2020/03/09/docker-start-project/">도커를 사용하여 컨테이너 기반으로 노드 실행</a></h2>
+      <div class="by-line parent">
+        <time datetime="2020-03-09T00:00:00+09:00"> <i>09 Mar 2020</i> </time>
+        &nbsp;&nbsp; &middot; &nbsp;&nbsp;
+        <span><i></i> </span>
+      </div>
+      <p>목표 도커를 사용하여 컨테이너 기반으로 노드 실행 및 접근 단계 노드js 앱 생성 Dockerfile 생성 Dockerfile 빌드 컨테이너 이미지 실행 웹 브라우저에서 노드js 앱 접근 1. 노드 앱 작성 컨테이너 테스트용으로 express기반의 간단한 노드 앱을 작성합니다. package.json { "dependencies": { "express": "*" }, "scripts": { "start": "node index.js" } }...</p>
 	  </div>
 
     
@@ -313,6 +386,30 @@ JPA
     
 
 	  <div class="post">
+	  	<h2><a href="/2019/12/12/05-power-of-transfer-learning/">전이학습 #5 - 전이학습의 위력 발휘하기</a></h2>
+      <div class="by-line parent">
+        <time datetime="2019-12-12T00:00:00+09:00"> <i>12 Dec 2019</i> </time>
+        &nbsp;&nbsp; &middot; &nbsp;&nbsp;
+        <span><i></i> </span>
+      </div>
+      <p>전이학습의 필요성 4장에서 알아본 전이학습의 이점은 다음과 같습니다. 기본 성능 향상 전반적인 모델 개발 및 훈련 시간 단축 처음부터 학습하는 것보다 전반적으로 우수한 모델 성능 도출 이를 위해서는 사전 학습된 모델을 사용합니다. 딥러닝 모델을 학습하기 위한 핵심 중 한 가지는 많은 데이터와 샘플이 필요하다는 것입니다. 이미지 분류 문제를 생각해보면 스케일링(scaling),...</p>
+	  </div>
+
+    
+
+	  <div class="post">
+	  	<h2><a href="/2019/12/10/04-intro-transfer-learning/">전이학습 #4 - 전이학습의 기초</a></h2>
+      <div class="by-line parent">
+        <time datetime="2019-12-10T00:00:00+09:00"> <i>10 Dec 2019</i> </time>
+        &nbsp;&nbsp; &middot; &nbsp;&nbsp;
+        <span><i></i> </span>
+      </div>
+      <p>머신러닝이나 딥러닝은 전통적으로 데이터나 문제에 따라 별개로 작동하도록 설계되었습니다. 즉 학습할 데이터의 특성 공간의 분포가 바뀌면 다시 학습을 진행해야 했습니다. 이러한 비효율성을 해결하기 위한것이 전이학습입니다. 전이학습의 기본적인 아이디어는 기존학습된 모델을 활용해 새로운 문제나 데이터에 대한 모델을 만드는것 입니다. http://plato.acadiau.ca/courses/comp/dsilver/NIPS95_LTL/transfer.workshop.1995.html 전이학습은 단순히 모델 재사용을 넘어 다음과 같은 3가지 이점이 있습니다. 향상된...</p>
+	  </div>
+
+    
+
+	  <div class="post">
 	  	<h2><a href="/2019/11/20/09-01-keras/">결론 #1</a></h2>
       <div class="by-line parent">
         <time datetime="2019-11-20T00:00:00+09:00"> <i>20 Nov 2019</i> </time>
@@ -378,103 +475,6 @@ JPA
 
     
 
-	  <div class="post">
-	  	<h2><a href="/2019/11/15/06-03-keras/">순환 신경망의 고급 사용법</a></h2>
-      <div class="by-line parent">
-        <time datetime="2019-11-15T00:00:00+09:00"> <i>15 Nov 2019</i> </time>
-        &nbsp;&nbsp; &middot; &nbsp;&nbsp;
-        <span><i></i> </span>
-      </div>
-      <p>이번 포스트에서는 순환신경망의 성능과 일반화 능력을 향상시키기 위한 세 가지 고급 기술을 살펴보겠습니다. 이를 위해 건물 옥상에서 측정된 온도, 기압, 습도와 같은 데이터를 이용하여 24시간 이후의 온도를 예측하는 문제를 풀어보겠습니다. 순환 드롭아웃(recurrent dropout): 스태킹 순환 층(stacking recurrent layer): 양뱡항 순환 층(bidirectional recurrent layer): 기온 예측 문제 wget https://s3.amazonaws.com/keras-datasets/jena_climate_2009_2016.csv.zip unzip jena_climate_2009_2016.csv.zip...</p>
-	  </div>
-
-    
-
-	  <div class="post">
-	  	<h2><a href="/2019/11/15/06-02-keras/">순환 신경망 이해하기</a></h2>
-      <div class="by-line parent">
-        <time datetime="2019-11-15T00:00:00+09:00"> <i>15 Nov 2019</i> </time>
-        &nbsp;&nbsp; &middot; &nbsp;&nbsp;
-        <span><i></i> </span>
-      </div>
-      <p>이번 글에는 순환 신경망(recurrent nerual network)에 대해 알아봅니다. 이전까지의 네트워크 구조를 살펴보면 메모리를 포함하고 있지 않다는 것입니다. 입력은 개별적으로 처리되며 입력간의 유지되는 상태는 존재하지 않습니다. 이는 순차 데이터나 시계열 데이터를 처리하는데 있어서 시계열 데이터를 하나의 데이터 포인트(텐서)로 변환후 각각 처리해야합니다. 이전 입력은 현재 입력과 독립되어 있습니다. 이와 다르게 입력에 대한...</p>
-	  </div>
-
-    
-
-	  <div class="post">
-	  	<h2><a href="/2019/11/15/06-01-keras/">텍스트 데이터 처리하기 - 순환 신경망</a></h2>
-      <div class="by-line parent">
-        <time datetime="2019-11-15T00:00:00+09:00"> <i>15 Nov 2019</i> </time>
-        &nbsp;&nbsp; &middot; &nbsp;&nbsp;
-        <span><i></i> </span>
-      </div>
-      <p>이번장에서는 텍스트(단어의 시퀀스 또는 문자의 시퀀스), 시계열 또는 시퀀스 데이터를 처리하는 딥러닝 모델을 살펴봅니다. 기본적으로 시퀀스 데이터 처리를 위한 딥러닝 모델은 순환 신경망(recurrent neural network)과 1D 컨브넷(1D convnet)입니다. 먼저 가장 대표적인 시퀀스 데이터인 텍스트(문장 및 단어)를 다뤄보겠습니다. 1. 텍스트 데이터 다루기 텍스트 패턴인식 다음은 텍스트를 단어로 나누고 각 단어를 하나의...</p>
-	  </div>
-
-    
-
-	  <div class="post">
-	  	<h2><a href="/2019/11/15/03-informed_search/">Informed Search(Heuristic Search)</a></h2>
-      <div class="by-line parent">
-        <time datetime="2019-11-15T00:00:00+09:00"> <i>15 Nov 2019</i> </time>
-        &nbsp;&nbsp; &middot; &nbsp;&nbsp;
-        <span><i></i> </span>
-      </div>
-      <p>어떤 문제에서 goal까지의 경로를 찾을 때, 모든 경로를 검사하게 되면 상당히 비 효율적이다. 대표적인 예로 깊이우선탐색(BFS : Breadth First Search)나 깊이우선 탐색(Depth First Search)으로 문제에 대한 해는 주어지지만 결국 가능한 모든 경로를 검사하며 Search를 수행한다. 이러한 방법을 Uninformd Search 또는 Blind Search라 한다. Informed Search란 위 처럼 모든 경로를 탐색하기...</p>
-	  </div>
-
-    
-
-	  <div class="post">
-	  	<h2><a href="/2019/11/15/02-alpha-beta-pruning/">Alpha-beta Pruning</a></h2>
-      <div class="by-line parent">
-        <time datetime="2019-11-15T00:00:00+09:00"> <i>15 Nov 2019</i> </time>
-        &nbsp;&nbsp; &middot; &nbsp;&nbsp;
-        <span><i></i> </span>
-      </div>
-      <p>*Minmax Search를 먼저 이해하여야 한다. Alpha Beta Pruning 이란 Minmax Search에서 발생하는 연산을 최소한으로 감소시킬수 있는 알고리즘이다. 기존의 MinmaxSearch는 트리를 생성한 후 상태를 평가한다. 즉 생성과 판단이 분리되어 있고 각각 이루어 져야하지만 Alpha Beta Pruning은 이러한 Minmax의 문제점을 보완하고자 생성과 판단을 동시에 진행한다. 이는 트리를 깊이 생성할수록 생성되기전 Pruning으로 인하여...</p>
-	  </div>
-
-    
-
-	  <div class="post">
-	  	<h2><a href="/2019/11/15/01-minmax-search/">Minmax Search</a></h2>
-      <div class="by-line parent">
-        <time datetime="2019-11-15T00:00:00+09:00"> <i>15 Nov 2019</i> </time>
-        &nbsp;&nbsp; &middot; &nbsp;&nbsp;
-        <span><i></i> </span>
-      </div>
-      <p>Minmax Search는 Adversarial Search 알고리즘으로써 두 에이전트(플레이어)가 게임을 시행할 때 앞의 몇수를 계산하는 알고리즘입니다. 여기서는 Minmax Search를 설명하기 위해 틱택톡 게임을 예로 설명하겠습니다(Tic-Tac-Toe : 3X3의 보드에 3개의 돌이 연속적으로 열,행 혹은 대각선이 되도록 먼저 두는자가 승리하는 게임이다. 한국의 오목과 유사하다). 위의 트리는 Minmax Search의 결과 트리로써 Minmax Search Tree라 불린다....</p>
-	  </div>
-
-    
-
-	  <div class="post">
-	  	<h2><a href="/2019/11/13/sentence-classification-cnn/">Sentence Classification Cnn</a></h2>
-      <div class="by-line parent">
-        <time datetime="2019-11-13T00:00:00+09:00"> <i>13 Nov 2019</i> </time>
-        &nbsp;&nbsp; &middot; &nbsp;&nbsp;
-        <span><i></i> </span>
-      </div>
-      <p>
-</p>
-	  </div>
-
-    
-
-	  <div class="post">
-	  	<h2><a href="/2019/11/12/04-01-keras/">머신러닝의 기본요소#1</a></h2>
-      <div class="by-line parent">
-        <time datetime="2019-11-12T00:00:00+09:00"> <i>12 Nov 2019</i> </time>
-        &nbsp;&nbsp; &middot; &nbsp;&nbsp;
-        <span><i></i> </span>
-      </div>
-      <p>[케라스창시자에게 배우는 딥러닝]의 4장 내용을 정리한 것입니다. 앞까지의 내용을 통해 신경망을 사용하여 분류와 회귀에 대한 문제를 어떻게 해결하는지 경험하였습니다. 또한 머신러닝에서 아주 중요한 문제인 과대적합에 대해서도 경험하였습니다. 이번장부터는 앞까지의 내용을 좀더 확고한 개념으로 정립하고 모델 평가, 데이터 전처리, 특성공학, 과대적합 같은 개념을 포함한 머신러닝 문제를 해결하기 위한 7단계의 작업 흐름을...</p>
-	  </div>
-
-    
-
 </div>
 
   
@@ -535,6 +535,16 @@ JPA
         <script src="/js/main.js"></script>	
 
   
-  	</div>
+    </div>
+    
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-118401942-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-118401942-1');
+</script>
   </body>
 </html>
