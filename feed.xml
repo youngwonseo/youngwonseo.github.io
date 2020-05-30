@@ -1,4 +1,121 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-05-22T23:40:00+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Youngwon Seo</title><author><name>Youngwon Seo</name><email>jazz9008@gmail.com</email></author><entry><title type="html">AI for Medical Diagnosis - Week3</title><link href="http://localhost:4000/2020/04/26/01-week3/" rel="alternate" type="text/html" title="AI for Medical Diagnosis - Week3" /><published>2020-04-26T00:00:00+09:00</published><updated>2020-04-26T00:00:00+09:00</updated><id>http://localhost:4000/2020/04/26/01-week3</id><content type="html" xml:base="http://localhost:4000/2020/04/26/01-week3/">&lt;p&gt;Image segmentation on MRI images&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-05-30T19:03:45+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Youngwon Seo</title><author><name>Youngwon Seo</name><email>jazz9008@gmail.com</email></author><entry><title type="html">금융데이터 활용하기</title><link href="http://localhost:4000/2020/05/30/memo/" rel="alternate" type="text/html" title="금융데이터 활용하기" /><published>2020-05-30T00:00:00+09:00</published><updated>2020-05-30T00:00:00+09:00</updated><id>http://localhost:4000/2020/05/30/memo</id><content type="html" xml:base="http://localhost:4000/2020/05/30/memo/">&lt;h2 id=&quot;1-데이터-수집&quot;&gt;1. 데이터 수집&lt;/h2&gt;
+
+&lt;h3 id=&quot;해외-pandas-datareader&quot;&gt;해외 (pandas-datareader)&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;해외주가 - tiingo&lt;/li&gt;
+  &lt;li&gt;주가 지수(코스피, 나스닥 등) - Stooq&lt;/li&gt;
+  &lt;li&gt;환율 - Alpha Vanatage&lt;/li&gt;
+  &lt;li&gt;원자재 가격 - FRED&lt;/li&gt;
+  &lt;li&gt;그 외 경제지표
+    &lt;ul&gt;
+      &lt;li&gt;90개 이상 공식적 통계 기관 경제 데이터 - Econdb&lt;/li&gt;
+      &lt;li&gt;세인트루이스 연방준비은행에서 제공하는 주요 경제 지표 - Fred&lt;/li&gt;
+      &lt;li&gt;세계 은행에서 제공하는 경제 지표 - World Bank&lt;/li&gt;
+      &lt;li&gt;OECD 국가 통계 자료 - OECD&lt;/li&gt;
+      &lt;li&gt;Enigma&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;국내-finance-datareader&quot;&gt;국내 (finance-datareader)&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;pip install finance-datareader&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;open-api&quot;&gt;OPEN API&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;국가 재정&lt;/li&gt;
+  &lt;li&gt;인구/가구&lt;/li&gt;
+  &lt;li&gt;경기/기업 경영&lt;/li&gt;
+  &lt;li&gt;국토 관리&lt;/li&gt;
+  &lt;li&gt;물가/가계&lt;/li&gt;
+  &lt;li&gt;금리/환율&lt;/li&gt;
+  &lt;li&gt;주식/채권&lt;/li&gt;
+  &lt;li&gt;무역/국제 수지&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;크롤링&quot;&gt;크롤링&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;urlopen, BeautifulSoup&lt;/li&gt;
+  &lt;li&gt;requests&lt;/li&gt;
+  &lt;li&gt;기업재무정보 - http://comp.fnguide.com/&lt;/li&gt;
+  &lt;li&gt;pip install selenium&lt;/li&gt;
+  &lt;li&gt;증권 정보 포털 - SEIBro
+    &lt;ul&gt;
+      &lt;li&gt;법인만 API제공&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;실제-데이터-수집&quot;&gt;실제 데이터 수집&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;scrapy 프로젝트를 생성하여 수집&lt;/li&gt;
+  &lt;li&gt;주요 경제 지표 수집하기
+    &lt;ul&gt;
+      &lt;li&gt;한국은행 OpenAPI - https://ecos.or.kr&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;주가 정보 수집하기
+    &lt;ul&gt;
+      &lt;li&gt;FinanceDataReader 사용&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;재무재표 데이터 수집하기
+    &lt;ul&gt;
+      &lt;li&gt;OPEN DART - opendart.fss.or.kr&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;2-금융-데이터-분석하기&quot;&gt;2. 금융 데이터 분석하기&lt;/h2&gt;
+&lt;h3 id=&quot;데이터-정리하기&quot;&gt;데이터 정리하기&lt;/h3&gt;
+&lt;h3 id=&quot;데이터-시각화-및-분석하기&quot;&gt;데이터 시각화 및 분석하기&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;matplotlib&lt;/li&gt;
+  &lt;li&gt;seaborn&lt;/li&gt;
+  &lt;li&gt;tip, interactc
+    &lt;ul&gt;
+      &lt;li&gt;jupyter notebook interaction
+        &lt;h3 id=&quot;데이터-프레젠테이션하기&quot;&gt;데이터 프레젠테이션하기&lt;/h3&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;flask, dash를 사용한 대시보드 만들기
+    &lt;ul&gt;
+      &lt;li&gt;https://dash.plotly.com&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;3-금융-데이터-활용하기&quot;&gt;3. 금융 데이터 활용하기&lt;/h2&gt;
+&lt;h3 id=&quot;인구-통계&quot;&gt;인구 통계&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;국가통계포털 : http://kosis.kr
+    &lt;h3 id=&quot;유동성과-주가-부동산-가격-비교하기&quot;&gt;유동성과 주가, 부동산 가격 비교하기&lt;/h3&gt;
+    &lt;h3 id=&quot;주요-각국의-기준-금리-비교하기&quot;&gt;주요 각국의 기준 금리 비교하기&lt;/h3&gt;
+  &lt;/li&gt;
+  &lt;li&gt;https://global-rates.com
+    &lt;h3 id=&quot;금융-대시보드-만들기&quot;&gt;금융 대시보드 만들기&lt;/h3&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;매매가-대비-전세가-높은-아파트-찾아보기&quot;&gt;매매가 대비 전세가 높은 아파트 찾아보기&lt;/h3&gt;
+&lt;h3 id=&quot;강남역에서-가까운-아파트-찾아보기&quot;&gt;강남역에서 가까운 아파트 찾아보기&lt;/h3&gt;
+&lt;h3 id=&quot;배당-수익률이-높은-주식-찾아보기&quot;&gt;배당 수익률이 높은 주식 찾아보기&lt;/h3&gt;
+&lt;h3 id=&quot;퀀트-투자-따라-하기&quot;&gt;퀀트 투자 따라 하기&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;zipline
+    &lt;ul&gt;
+      &lt;li&gt;quandl.com&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;미국 주식 투자 백 테스트&lt;/li&gt;
+  &lt;li&gt;한국 주식 투자 백 테스트&lt;/li&gt;
+  &lt;li&gt;볼린저 밴드를 이용한 투자 방법 평가하기&lt;/li&gt;
+  &lt;li&gt;pyfolio로 투자 방법 비교하기&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;refereces&quot;&gt;Refereces&lt;/h1&gt;</content><author><name>Youngwon Seo</name></author><summary type="html">1. 데이터 수집</summary></entry><entry><title type="html">AI for Medical Diagnosis - Week3</title><link href="http://localhost:4000/2020/04/26/01-week3/" rel="alternate" type="text/html" title="AI for Medical Diagnosis - Week3" /><published>2020-04-26T00:00:00+09:00</published><updated>2020-04-26T00:00:00+09:00</updated><id>http://localhost:4000/2020/04/26/01-week3</id><content type="html" xml:base="http://localhost:4000/2020/04/26/01-week3/">&lt;p&gt;Image segmentation on MRI images&lt;/p&gt;
 
 &lt;h2 id=&quot;key-concepts&quot;&gt;Key Concepts&lt;/h2&gt;
 &lt;ul&gt;
@@ -62,7 +179,7 @@ distribution이 다른 데이터들에 대한 테스트&lt;/p&gt;
 
 &lt;p&gt;Course3
 환자에 도움이 되는가
-설명가능한 모델&lt;/p&gt;</content><author><name>Youngwon Seo</name></author><summary type="html">Image segmentation on MRI images</summary></entry><entry><title type="html">Minmax Search</title><link href="http://localhost:4000/2020/04/26/02-week1/" rel="alternate" type="text/html" title="Minmax Search" /><published>2020-04-26T00:00:00+09:00</published><updated>2020-04-26T00:00:00+09:00</updated><id>http://localhost:4000/2020/04/26/02-week1</id><content type="html" xml:base="http://localhost:4000/2020/04/26/02-week1/"></content><author><name>Youngwon Seo</name></author><summary type="html"></summary></entry><entry><title type="html">AI for Medical Diagnosis - Week2</title><link href="http://localhost:4000/2020/04/25/01-week2/" rel="alternate" type="text/html" title="AI for Medical Diagnosis - Week2" /><published>2020-04-25T00:00:00+09:00</published><updated>2020-04-25T00:00:00+09:00</updated><id>http://localhost:4000/2020/04/25/01-week2</id><content type="html" xml:base="http://localhost:4000/2020/04/25/01-week2/">&lt;p&gt;Evaluating models&lt;/p&gt;
+설명가능한 모델&lt;/p&gt;</content><author><name>Youngwon Seo</name></author><summary type="html">Image segmentation on MRI images</summary></entry><entry><title type="html">AI for Medical Diagnosis - Week2</title><link href="http://localhost:4000/2020/04/25/01-week2/" rel="alternate" type="text/html" title="AI for Medical Diagnosis - Week2" /><published>2020-04-25T00:00:00+09:00</published><updated>2020-04-25T00:00:00+09:00</updated><id>http://localhost:4000/2020/04/25/01-week2</id><content type="html" xml:base="http://localhost:4000/2020/04/25/01-week2/">&lt;p&gt;Evaluating models&lt;/p&gt;
 
 &lt;h2 id=&quot;2주차-key-concepts&quot;&gt;2주차 Key Concepts&lt;/h2&gt;
 &lt;ul&gt;

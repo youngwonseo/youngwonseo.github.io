@@ -4,7 +4,7 @@
  <title>Youngwon Seo</title>
  <link href="http://localhost:4000/atom.xml" rel="self"/>
  <id>http://localhost:4000</id>
- <updated>2020-05-22T23:40:00+09:00</updated>
+ <updated>2020-05-30T19:03:45+09:00</updated>
  <author>
    <name>Youngwon Seo</name>
    <uri>youngwon.io</uri>
@@ -14,12 +14,11 @@
  
 
  <entry>
-   <title>Minmax Search</title>
-   <link href="http://localhost:4000/2020/04/26/02-week1/"/>
-   <id>http://localhost:4000/2020/04/26/02-week1</id>
-   <updated>2020-04-26T00:00:00+09:00</updated>
-   <content type="html">
-</content>
+   <title>금융데이터 활용하기</title>
+   <link href="http://localhost:4000/2020/05/30/memo/"/>
+   <id>http://localhost:4000/2020/05/30/memo</id>
+   <updated>2020-05-30T00:00:00+09:00</updated>
+   <content type="html">&lt;h2 id=&quot;1-데이터-수집&quot;&gt;1. 데이터 수집&lt;/h2&gt; &lt;h3 id=&quot;해외-pandas-datareader&quot;&gt;해외 (pandas-datareader)&lt;/h3&gt; &lt;ul&gt; &lt;li&gt;해외주가 - tiingo&lt;/li&gt; &lt;li&gt;주가 지수(코스피, 나스닥 등) - Stooq&lt;/li&gt; &lt;li&gt;환율 - Alpha Vanatage&lt;/li&gt; &lt;li&gt;원자재 가격 - FRED&lt;/li&gt; &lt;li&gt;그 외 경제지표 &lt;ul&gt; &lt;li&gt;90개 이상 공식적 통계 기관 경제 데이터 - Econdb&lt;/li&gt; &lt;li&gt;세인트루이스 연방준비은행에서 제공하는 주요 경제 지표 - Fred&lt;/li&gt; &lt;li&gt;세계 은행에서 제공하는 경제...</content>
  </entry>
 
  
