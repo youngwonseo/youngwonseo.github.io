@@ -7,7 +7,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
 	<meta name="generator" content="Jekyll">
 
-	<title>FCM을 사용한 푸시처리 (SpringMVC)</title>
+	<title>구글맵에 레이어 표기하기</title>
   <meta name="description" content="">
 
 	<!-- CSS & fonts -->
@@ -15,9 +15,9 @@
   <link rel="stylesheet" href="/css/main.css">
 
   <!-- Open Graph -->
-  <meta property="og:title" content="FCM을 사용한 푸시처리 (SpringMVC)">
+  <meta property="og:title" content="구글맵에 레이어 표기하기">
   <meta property="og:type" content: "website">
-  <meta property="og:url" content= "https://thereviewindex.com/blog/2019/09/03/firebase-messaging/">
+  <meta property="og:url" content= "https://thereviewindex.com/blog/2018/03/02/layer-on-google-map/">
   <meta property="og:description" content="">
   <meta property="og:locale" content= "en_US">
   <meta property="og:site_name" content="The Review Index">
@@ -30,9 +30,9 @@
   
   <!-- twitter card -->
   <meta property="twitter:card" content="summary">
-  <meta property="twitter:title" content="FCM을 사용한 푸시처리 (SpringMVC)">
+  <meta property="twitter:title" content="구글맵에 레이어 표기하기">
   <meta property="twitter:description" content="">
-  <meta property="twitter:url" content= "https://thereviewindex.com/blog/2019/09/03/firebase-messaging/">
+  <meta property="twitter:url" content= "https://thereviewindex.com/blog/2018/03/02/layer-on-google-map/">
   <meta property="twitter:image" content="https://thereviewindex.com/blog/">
 
 
@@ -98,6 +98,10 @@
 	  
 	    
 	      <a href="/ml/" title="Machine Learning">Machine Learning</a>
+	    
+	  
+	    
+	      <a href="/paper_review/" title="Paper Review">Paper Review</a>
 	    
 	  
 	    
@@ -191,6 +195,10 @@
 			
 		
 			
+				<a href="/paper_review/" title="Paper Review">Paper Review</a>
+			
+		
+			
 				<a href="/projects/" title="Projects">Projects</a>
 			
 		
@@ -248,7 +256,7 @@
   			<article id="post-page">
   <div class="parent f-right">
     <!-- Twitter -->
-    <a href="https://twitter.com/share?url=https://thereviewindex.com/blog/2019/09/03/firebase-messaging/&amp;text=FCM을 사용한 푸시처리 (SpringMVC)&amp;hashtags=thereviewindex" target="_blank">
+    <a href="https://twitter.com/share?url=https://thereviewindex.com/blog/2018/03/02/layer-on-google-map/&amp;text=구글맵에 레이어 표기하기&amp;hashtags=thereviewindex" target="_blank">
       <span class="social-icon">  
         <svg class="svgIcon-use" width="29" height="29" viewBox="0 0 29 29"><path d="M21.967 11.8c.018 5.93-4.607 11.18-11.177 11.18-2.172 0-4.25-.62-6.047-1.76l-.268.422-.038.5.186.013.168.012c.3.02.44.032.6.046 2.06-.026 3.95-.686 5.49-1.86l1.12-.85-1.4-.048c-1.57-.055-2.92-1.08-3.36-2.51l-.48.146-.05.5c.22.03.48.05.75.08.48-.02.87-.07 1.25-.15l2.33-.49-2.32-.49c-1.68-.35-2.91-1.83-2.91-3.55 0-.05 0-.01-.01.03l-.49-.1-.25.44c.63.36 1.35.57 2.07.58l1.7.04L7.4 13c-.978-.662-1.59-1.79-1.618-3.047a4.08 4.08 0 0 1 .524-1.8l-.825.07a12.188 12.188 0 0 0 8.81 4.515l.59.033-.06-.59v-.02c-.05-.43-.06-.63-.06-.87a3.617 3.617 0 0 1 6.27-2.45l.2.21.28-.06c1.01-.22 1.94-.59 2.73-1.09l-.75-.56c-.1.36-.04.89.12 1.36.23.68.58 1.13 1.17.85l-.21-.45-.42-.27c-.52.8-1.17 1.48-1.92 2L22 11l.016.28c.013.2.014.35 0 .52v.04zm.998.038c.018-.22.017-.417 0-.66l-.498.034.284.41a8.183 8.183 0 0 0 2.2-2.267l.97-1.48-1.6.755c.17-.08.3-.02.34.03a.914.914 0 0 1-.13-.292c-.1-.297-.13-.64-.1-.766l.36-1.254-1.1.695c-.69.438-1.51.764-2.41.963l.48.15a4.574 4.574 0 0 0-3.38-1.484 4.616 4.616 0 0 0-4.61 4.613c0 .29.02.51.08.984l.01.02.5-.06.03-.5c-3.17-.18-6.1-1.7-8.08-4.15l-.48-.56-.36.64c-.39.69-.62 1.48-.65 2.28.04 1.61.81 3.04 2.06 3.88l.3-.92c-.55-.02-1.11-.17-1.6-.45l-.59-.34-.14.67c-.02.08-.02.16 0 .24-.01 2.12 1.55 4.01 3.69 4.46l.1-.49-.1-.49c-.33.07-.67.12-1.03.14-.18-.02-.43-.05-.64-.07l-.76-.09.23.73c.57 1.84 2.29 3.14 4.28 3.21l-.28-.89a8.252 8.252 0 0 1-4.85 1.66c-.12-.01-.26-.02-.56-.05l-.17-.01-.18-.01L2.53 21l1.694 1.07a12.233 12.233 0 0 0 6.58 1.917c7.156 0 12.2-5.73 12.18-12.18l-.002.04z"></path></svg>
       </span>
@@ -256,36 +264,102 @@
 
     &nbsp;&nbsp;&nbsp;
     <!-- Facebook -->
-    <a href="http://www.facebook.com/sharer.php?u=https://thereviewindex.com/blog/2019/09/03/firebase-messaging/" target="_blank">
+    <a href="http://www.facebook.com/sharer.php?u=https://thereviewindex.com/blog/2018/03/02/layer-on-google-map/" target="_blank">
       <span class="social-icon">
         <svg class="svgIcon-use" width="29" height="29" viewBox="0 0 29 29"><path d="M16.39 23.61v-5.808h1.846a.55.55 0 0 0 .546-.48l.36-2.797a.551.551 0 0 0-.547-.62H16.39V12.67c0-.67.12-.813.828-.813h1.474a.55.55 0 0 0 .55-.55V8.803a.55.55 0 0 0-.477-.545c-.436-.06-1.36-.116-2.22-.116-2.5 0-4.13 1.62-4.13 4.248v1.513H10.56a.551.551 0 0 0-.55.55v2.797c0 .304.248.55.55.55h1.855v5.76c-4.172-.96-7.215-4.7-7.215-9.1 0-5.17 4.17-9.36 9.31-9.36 5.14 0 9.31 4.19 9.31 9.36 0 4.48-3.155 8.27-7.43 9.15M14.51 4C8.76 4 4.1 8.684 4.1 14.46c0 5.162 3.75 9.523 8.778 10.32a.55.55 0 0 0 .637-.543v-6.985a.551.551 0 0 0-.55-.55H11.11v-1.697h1.855a.55.55 0 0 0 .55-.55v-2.063c0-2.02 1.136-3.148 3.03-3.148.567 0 1.156.027 1.597.06v1.453h-.924c-1.363 0-1.93.675-1.93 1.912v1.78c0 .3.247.55.55.55h2.132l-.218 1.69H15.84c-.305 0-.55.24-.55.55v7.02c0 .33.293.59.623.54 5.135-.7 9.007-5.11 9.007-10.36C24.92 8.68 20.26 4 14.51 4"></path></svg>
       </span> 
     </a>
   </div>
   
-  <h2>FCM을 사용한 푸시처리 (SpringMVC)</h2>		
+  <h2>구글맵에 레이어 표기하기</h2>		
 	<div class="by-line parent">
-    <time datetime="2019-09-03T00:00:00+09:00"> <i>03 Sep 2019</i> </time>
+    <time datetime="2018-03-02T00:00:00+09:00"> <i>02 Mar 2018</i> </time>
     &nbsp;&nbsp; &middot; &nbsp;&nbsp;
     <span><i></i> </span>
   </div>
 	<div class="content">
 
-		<p>본 포스트에서는 SpringMVC기반의 template환경에서 파이어베이스 클라우드 메세지를 사용하는 방법을 알아보겠습니다.</p>
+		<h3 id="1-background">1. background</h3>
+<ul>
+  <li>웹 기반 지도에 시도/구/동 단위의 정보를 시각화할 필요가 생겼다.</li>
+  <li>솔루션 구매할 비용은 없다. 그러므로 일단 만들어야된다.</li>
+  <li>지도 본연의 interactive한 요소들이 필요하여 D3나 Echart등의 시각화에 도구대신 구글맵을 사용한다(시각화도구를 사용하면 레이어를 보다 쉽게 그릴수 있다).</li>
+  <li>초기 TopoJSON으로 개발한 모듈이 존재했지만 TopoJson이 아닌 순수 구글맵라이브러리가 필요했다. 이유는 같이 일하던 친구가 TopoJSON이 마음에 안들다는 식으로 말을했다.</li>
+  <li>구글에서는 GeoJSON이 적용된다고 하니, 한국지리정보를 포함하고 있는 GeoJSON를 구하거나 만들면된다.</li>
+  <li>구글의 GeoJSON을 사용하기 위해서는 GeoJSON의 Type이 Topology가 아닌 FeatureCollection가 되어야 한다는 것을 명심하자(왜 그런것인지는 모르겠다).</li>
+</ul>
 
-<h2 id="파이어베이스-프로젝트-생성">파이어베이스 프로젝트 생성</h2>
+<h3 id="2-목표">2. 목표</h3>
+<ul>
+  <li>구글맵에 레이어를 출력하고 레이어별 이벤트 등록 및 정보를 출력하자.</li>
+  <li><strong>라이브러리로 확장하여 재사용가능한 컴포넌트를 개발하자.</strong></li>
+  <li>좀더 advanced한 요소 몇개를 포함시켜</li>
+</ul>
 
-<h2 id="firebase-messagingjs">firebase-messaging.js</h2>
+<h3 id="3-references">3. References</h3>
+<ul>
+  <li>먼저 참고했던 대표적 자료를 명시한다.</li>
+  <li>http://blog.hkwon.me/draw-korean-map-chart-with-geojson/</li>
+</ul>
 
-<h2 id="firebase-messaging-swjs">firebase-messaging-sw.js</h2>
+<h3 id="4-geojson-생성">4. GeoJSON 생성</h3>
+<ul>
+  <li>GeoJSON을 생성하기 위해 여러가지 변환작업이 필요하다.</li>
+</ul>
 
+<h4 id="41-shp다운로드">4.1 SHP다운로드</h4>
+<ul>
+  <li>GeoJSON파일을 생성하기 위해서 한국의 구역정보와 좌표정보가 포함된 SHP파일이 필요하다(SHP파일의 정확한 정의 및 포맷을 알고싶으면 구글링을 하자).</li>
+  <li>해당 SHP파일은 공간정보시스템 기반 기술 연구소[http://www.gisdeveloper.co.kr/?p=2332] 에서 다운받자.</li>
+  <li>시도/시군구/읍면동/리 단위로 제공되는 파일중 필요한것을 다운받자. 여기서는 읍면동을 선택하였다.</li>
+  <li>참고로 해당 데이터는 법정동 코드르를 기준으로 데이터가 구성되어 있다.</li>
+</ul>
+
+<h4 id="42-좌표변환">4.2 좌표변환</h4>
+<ul>
+  <li>다운 받은 SHP파일의 내용이 보이지는 않지만 포함된 좌표값이 구글맵에서 지원하는 위도경도기반이 아니다.</li>
+  <li>여기서는 국가에서 제공하는 수치지도활용소프트웨어[http://www.nsdi.go.kr/index.html?menuno=2772&amp;cateIndex=712&amp;bbsno=233&amp;boardno=552&amp;ztag=rO0ABXQAMDxjYWxsIHR5cGU9ImJvYXJkIiBza2luPSJmcmVlIiBubz0iNTUyIiA%2BPC9jYWxsPg%3D%3D&amp;siteno=18&amp;act=view] 를 포함하여 좌표체게를 변환한다.</li>
+  <li>먼저 해당 프로그램에서 다운받은 shp파일(공간정보시스템 연구소에서 제공하는 파일을 다운받고 압축을 풀면 dbs와 shx파일이 포함되어있지만 shp만 사용한다)을 불러온다.</li>
+  <li>메뉴중 좌표변환메뉴를 선택한다.</li>
+  <li>입력사항은 UTM-K이고 출력사항은 경위도로 선택한다(그냥 처음 선택하면 다 설정이 되어있다).</li>
+  <li>편환하여 저장하면 새로운 shp파일이 생성된다.</li>
+</ul>
+
+<h4 id="43-geojson변환">4.3 GeoJSON변환</h4>
+<ul>
+  <li>여기서는 GeoJSON파일로 변환하기 위해 <strong>ogr2ogr(GDAL)</strong>을 사용한다.</li>
+  <li>구글링을 통해 사용하는 플랫폼에 해당하는 버전을 다운받고 설치 후, 패스를 설정한다.</li>
+  <li>윈도우에서는 다움과 같은 명령어를 cmd에서 입력했다(dong.json은 출력파일이름이고 TL_SCCO_EMD_CONV.shp는 입력파일이름이다).
+    <blockquote>
+      <p>ogr2ogr -f GeoJSON dong.json TL_SCCO_EMD_CONV.shp</p>
+    </blockquote>
+  </li>
+</ul>
+
+<h4 id="44-경량화">4.4 경량화</h4>
+<ul>
+  <li>현재까지의 작업내용을 통해서도 구글에 레이어를 출력할 수 있다.</li>
+  <li>하지만 웹 환경에서는 반응속도가 중요하기 때문에 레이어를 경량화하여 용량을 줄여 사용한다.</li>
+  <li>구글맵에 올릴것이기 때문에 레이어가 보간되어도 사용자 입장에서 큰 차이점을 못느끼고 사용한다.</li>
+  <li>해당작업을 위해 mapshaper[http://mapshaper.org] 에 GeoJSON파일을 입력하고 Simplify를 진행한다.</li>
+  <li>여기서는 10%까지 simplify한 결과 대략 70MB에서 4MB까지 줄였다.</li>
+</ul>
+
+<h3 id="5-구글지도">5. 구글지도</h3>
+<ul>
+  <li>지도는 설명대신 코드를 첨부한다.</li>
+  <li>npm install후 node app.js을 통해 확인 할 수 있다.</li>
+  <li>index.html에 [SERVICE_KEY]부분에 구글 키를 입력한다.</li>
+</ul>
+
+<p><img src="./1차결과.PNG" alt="./1차결과.PNG" /></p>
 
 		
   </div>
 
   <div class="parent f-right">
     <!-- Twitter -->
-    <a href="https://twitter.com/share?url=https://thereviewindex.com/blog/2019/09/03/firebase-messaging/&amp;text=FCM을 사용한 푸시처리 (SpringMVC)&amp;hashtags=thereviewindex" target="_blank">
+    <a href="https://twitter.com/share?url=https://thereviewindex.com/blog/2018/03/02/layer-on-google-map/&amp;text=구글맵에 레이어 표기하기&amp;hashtags=thereviewindex" target="_blank">
       <span class="social-icon">  
         <svg class="svgIcon-use" width="29" height="29" viewBox="0 0 29 29"><path d="M21.967 11.8c.018 5.93-4.607 11.18-11.177 11.18-2.172 0-4.25-.62-6.047-1.76l-.268.422-.038.5.186.013.168.012c.3.02.44.032.6.046 2.06-.026 3.95-.686 5.49-1.86l1.12-.85-1.4-.048c-1.57-.055-2.92-1.08-3.36-2.51l-.48.146-.05.5c.22.03.48.05.75.08.48-.02.87-.07 1.25-.15l2.33-.49-2.32-.49c-1.68-.35-2.91-1.83-2.91-3.55 0-.05 0-.01-.01.03l-.49-.1-.25.44c.63.36 1.35.57 2.07.58l1.7.04L7.4 13c-.978-.662-1.59-1.79-1.618-3.047a4.08 4.08 0 0 1 .524-1.8l-.825.07a12.188 12.188 0 0 0 8.81 4.515l.59.033-.06-.59v-.02c-.05-.43-.06-.63-.06-.87a3.617 3.617 0 0 1 6.27-2.45l.2.21.28-.06c1.01-.22 1.94-.59 2.73-1.09l-.75-.56c-.1.36-.04.89.12 1.36.23.68.58 1.13 1.17.85l-.21-.45-.42-.27c-.52.8-1.17 1.48-1.92 2L22 11l.016.28c.013.2.014.35 0 .52v.04zm.998.038c.018-.22.017-.417 0-.66l-.498.034.284.41a8.183 8.183 0 0 0 2.2-2.267l.97-1.48-1.6.755c.17-.08.3-.02.34.03a.914.914 0 0 1-.13-.292c-.1-.297-.13-.64-.1-.766l.36-1.254-1.1.695c-.69.438-1.51.764-2.41.963l.48.15a4.574 4.574 0 0 0-3.38-1.484 4.616 4.616 0 0 0-4.61 4.613c0 .29.02.51.08.984l.01.02.5-.06.03-.5c-3.17-.18-6.1-1.7-8.08-4.15l-.48-.56-.36.64c-.39.69-.62 1.48-.65 2.28.04 1.61.81 3.04 2.06 3.88l.3-.92c-.55-.02-1.11-.17-1.6-.45l-.59-.34-.14.67c-.02.08-.02.16 0 .24-.01 2.12 1.55 4.01 3.69 4.46l.1-.49-.1-.49c-.33.07-.67.12-1.03.14-.18-.02-.43-.05-.64-.07l-.76-.09.23.73c.57 1.84 2.29 3.14 4.28 3.21l-.28-.89a8.252 8.252 0 0 1-4.85 1.66c-.12-.01-.26-.02-.56-.05l-.17-.01-.18-.01L2.53 21l1.694 1.07a12.233 12.233 0 0 0 6.58 1.917c7.156 0 12.2-5.73 12.18-12.18l-.002.04z"></path></svg>
       </span>
@@ -293,7 +367,7 @@
 
     &nbsp;&nbsp;&nbsp;
     <!-- Facebook -->
-    <a href="http://www.facebook.com/sharer.php?u=https://thereviewindex.com/blog/2019/09/03/firebase-messaging/" target="_blank">
+    <a href="http://www.facebook.com/sharer.php?u=https://thereviewindex.com/blog/2018/03/02/layer-on-google-map/" target="_blank">
       <span class="social-icon">
         <svg class="svgIcon-use" width="29" height="29" viewBox="0 0 29 29"><path d="M16.39 23.61v-5.808h1.846a.55.55 0 0 0 .546-.48l.36-2.797a.551.551 0 0 0-.547-.62H16.39V12.67c0-.67.12-.813.828-.813h1.474a.55.55 0 0 0 .55-.55V8.803a.55.55 0 0 0-.477-.545c-.436-.06-1.36-.116-2.22-.116-2.5 0-4.13 1.62-4.13 4.248v1.513H10.56a.551.551 0 0 0-.55.55v2.797c0 .304.248.55.55.55h1.855v5.76c-4.172-.96-7.215-4.7-7.215-9.1 0-5.17 4.17-9.36 9.31-9.36 5.14 0 9.31 4.19 9.31 9.36 0 4.48-3.155 8.27-7.43 9.15M14.51 4C8.76 4 4.1 8.684 4.1 14.46c0 5.162 3.75 9.523 8.778 10.32a.55.55 0 0 0 .637-.543v-6.985a.551.551 0 0 0-.55-.55H11.11v-1.697h1.855a.55.55 0 0 0 .55-.55v-2.063c0-2.02 1.136-3.148 3.03-3.148.567 0 1.156.027 1.597.06v1.453h-.924c-1.363 0-1.93.675-1.93 1.912v1.78c0 .3.247.55.55.55h2.132l-.218 1.69H15.84c-.305 0-.55.24-.55.55v7.02c0 .33.293.59.623.54 5.135-.7 9.007-5.11 9.007-10.36C24.92 8.68 20.26 4 14.51 4"></path></svg>
       </span> 
@@ -302,7 +376,7 @@
 
   <!-- Facebook Comments HTML -->
   <div class="m-t-6e">
-    <div class="fb-comments" data-href="http://localhost:4000/2019/09/03/firebase-messaging/" data-width="800" data-numposts="5"></div>
+    <div class="fb-comments" data-href="http://localhost:4000/2018/03/02/layer-on-google-map/" data-width="800" data-numposts="5"></div>
   </div>
 
 </article>
