@@ -1,4 +1,22 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-06-20T23:07:57+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Youngwon Seo</title><author><name>Youngwon Seo</name><email>jazz9008@gmail.com</email></author><entry><title type="html">금융데이터 활용하기</title><link href="http://localhost:4000/2020/05/30/memo/" rel="alternate" type="text/html" title="금융데이터 활용하기" /><published>2020-05-30T00:00:00+09:00</published><updated>2020-05-30T00:00:00+09:00</updated><id>http://localhost:4000/2020/05/30/memo</id><content type="html" xml:base="http://localhost:4000/2020/05/30/memo/">&lt;h2 id=&quot;1-데이터-수집&quot;&gt;1. 데이터 수집&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-07-07T23:48:30+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Youngwon Seo</title><author><name>Youngwon Seo</name><email>jazz9008@gmail.com</email></author><entry><title type="html">[길벗] 신경망 교과서 리뷰</title><link href="http://localhost:4000/2020/07/07/nerual-network-projects/" rel="alternate" type="text/html" title="[길벗] 신경망 교과서 리뷰" /><published>2020-07-07T00:00:00+09:00</published><updated>2020-07-07T00:00:00+09:00</updated><id>http://localhost:4000/2020/07/07/nerual-network-projects</id><content type="html" xml:base="http://localhost:4000/2020/07/07/nerual-network-projects/">&lt;p&gt;본 글은 이번에 길벗에서 출간(번역)한 &lt;a href=&quot;http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&amp;amp;mallGb=KOR&amp;amp;barcode=9791165211639&amp;amp;orderClick=LAG&amp;amp;Kc=&quot;&gt;신경망 교과서&lt;/a&gt;에 대한 리뷰글입니다.&lt;/p&gt;
+
+&lt;h2 id=&quot;머신러닝과-신경망&quot;&gt;머신러닝과 신경망&lt;/h2&gt;
+&lt;p&gt;본 도서는 제목에 걸맞게 신경망을 중점적으로 다루고 있습니다. 1장에는 아주 기본적인 머신러닝 이론들을 살짝 맛보지만 2장이후 데이터 전처리, 학습/검증/테스트 데이터 나누기, 기본적인 신경망 아키텍처 구성, Confusion matrix, ROC Curve등 개념을 익혀 추후 실전 프로젝트에서 사용가능한 머신러닝의 기본적인 배경지식을 익힐 수 있습니다. 기존에 이론적 서적들이 읽기 힘겨웠던 분들은 본 책을 통해 예제기반으로 이해하시면 좋을 것 같습니다. 하지만 조금은 깊게 공부하시고 싶으신분들은 이책과 함께 추가적으로 머신러닝책을 참조하시면 정말 좋을것 같습니다.&lt;/p&gt;
+
+&lt;h2 id=&quot;케라스&quot;&gt;케라스&lt;/h2&gt;
+&lt;p&gt;본 도서의 예제는 케라스로 구성되어 있습니다. 케라스는 오픈되어있는 딥러닝 프레임워크중 가장 직관적이라고 할 수 있으며 딥러닝 입문자들에게도 매우 적합한 도구입니다. 여기서 직관적이다라는 말은 딥러닝을 코드로 표현하는데 있어서 입니다. 이것이 무조건 장점으로 작용하는건 아니지만 입문자들에게는 최고의 환경입니다! 본 도서로 케라스를 익히면 온라인상에 공유된 케라스 코드를 공유하는데 문제가 없습니다. 다만 최근 텐서플로우2와 케라스가 통합이되면서 같이 사용되는경우가 존재하지만 배우는데 있어서는 문제가 없습니다. 케라스와 함께 데이터전처리나 시각화를 위해 판다스, 사이킷런등의 라이브러리 또한 익힐수 있습니다.&lt;/p&gt;
+
+&lt;h2 id=&quot;mlp-convolutional-neural-network-recurrent-nerual-network&quot;&gt;MLP, Convolutional Neural Network, Recurrent Nerual Network&lt;/h2&gt;
+&lt;p&gt;신경망의 핵심이라고 할 수 있는 여러가지 딥러닝 아키텍처를 기반으로한 예제들을 살펴볼 수 있습니다. 신경망의 가장 기본적 아키텍처라 할수 있는 MLP(다중 레이어 퍼셉트론)부터 합성곱 신경망, 순환신경망(책에서는 LSTM)을 익히며 어떤 경우에, 어떤 상황에 어떤 아키텍터를 사용하는지 예제를 통해 살펴봅니다. 입문자들은 이러한 예제들을 2~3번 이상 살펴보는것은 권합니다. 그럼 이책을 읽고 다른책을 읽을때 보다 쉽게 이해할 수 있을것입니다.&lt;/p&gt;
+
+&lt;h2 id=&quot;autoencoder-siamese-neural-network&quot;&gt;Autoencoder, Siamese Neural Network&lt;/h2&gt;
+&lt;p&gt;생성모델이나, 얼굴인식같은 예제를 위해 오토인코더나 샴 네트워크를 살펴봅니다. 신경망에서 굉장히 중요한 역활을 하고 있고 현업에서도 아주 많이 사용될 수 있는 신경망 아키텍처입니다. 다른 아키텍처와 같이 모두 케라스로 구현하며 학습하고 실제 실행결과를 확인할 수 있습니다.&lt;/p&gt;
+
+&lt;h2 id=&quot;word-embedding-one-shot-learning&quot;&gt;Word-Embedding, One-shot Learning&lt;/h2&gt;
+&lt;p&gt;신경망을 공부하기 위해 신경망에 데이터를 어떻게 주입할지, 상황에 따라 한두장의 데이터를 학습하여 모델을 어떻게 실행하는지에 대한 예제를 살펴볼수 있습니다. 굉장히 중요한 기법들이며 이렇게 얇은 책으로 이러한 내용을 공부할 수 있어서 입문자들에게 정말 좋을 것 같습니다!&lt;/p&gt;
+
+&lt;h2 id=&quot;마무리&quot;&gt;마무리&lt;/h2&gt;
+&lt;p&gt;신경망은 딥러닝의 기초가 되는 알고리즘이라고 할 수 있습니다. 이책도 제목은 신경망교과서이지만 사실 딥러닝이 대부분이라고 할 수 있습니다. 이번에 좋은 기회를 통해 신경망 교과서를 리뷰하면서 몇 년전만해도 신경망을 익힐려면 정말 어려운 책들을 통해 시작할 수 밖에 없었는데 이제는 입문자들이 본 책을 통해 보다 쉽게 입문할 수 있을거라는 생각이 들었습니다. 여러번 봐도 시간이 아깝지 않을 책이고 케라스를 사용해 딥러닝을 구현하는데 있어 기본기를 익힐수 있는 좋은 도서라고 생각합니다.&lt;/p&gt;</content><author><name>Youngwon Seo</name></author><summary type="html">본 글은 이번에 길벗에서 출간(번역)한 신경망 교과서에 대한 리뷰글입니다.</summary></entry><entry><title type="html">금융데이터 활용하기</title><link href="http://localhost:4000/2020/05/30/memo/" rel="alternate" type="text/html" title="금융데이터 활용하기" /><published>2020-05-30T00:00:00+09:00</published><updated>2020-05-30T00:00:00+09:00</updated><id>http://localhost:4000/2020/05/30/memo</id><content type="html" xml:base="http://localhost:4000/2020/05/30/memo/">&lt;h2 id=&quot;1-데이터-수집&quot;&gt;1. 데이터 수집&lt;/h2&gt;
 
 &lt;h3 id=&quot;해외-pandas-datareader&quot;&gt;해외 (pandas-datareader)&lt;/h3&gt;
 &lt;ul&gt;
@@ -744,170 +762,4 @@ feature cross&lt;/p&gt;
   &lt;li&gt;https://www.baeldung.com/spring-boot-multiple-modules&lt;/li&gt;
   &lt;li&gt;https://woowabros.github.io/study/2019/07/01/multi-module.html&lt;/li&gt;
   &lt;li&gt;https://jojoldu.tistory.com/123&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>Youngwon Seo</name></author><summary type="html">본 포스트는 메이븐 멀티 모듈을 기반으로 스프링 프로젝트들을 구성하고 SNS 서비스를 개발을 합니다.</summary></entry><entry><title type="html">메이븐 멀티모듈 SNS 개발 #2 - domain과 service</title><link href="http://localhost:4000/2020/02/29/02-maven-multi-module/" rel="alternate" type="text/html" title="메이븐 멀티모듈 SNS 개발 #2 - domain과 service" /><published>2020-02-29T00:00:00+09:00</published><updated>2020-02-29T00:00:00+09:00</updated><id>http://localhost:4000/2020/02/29/02-maven-multi-module</id><content type="html" xml:base="http://localhost:4000/2020/02/29/02-maven-multi-module/">&lt;h2 id=&quot;web-프로젝트&quot;&gt;Web 프로젝트&lt;/h2&gt;
-&lt;p&gt;먼저 사용자의 뷰를 담당하는 Web 프로젝트를 구성해 보겠습니다. Web프로젝트는 웹 브라우저를 통해 접근하는 사용자에 대한 entry point입니다. 즉 Front-end에 대한 구현체이며 기본적인 사항은 다음과 같습니다.&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;Spring MVC 5&lt;/li&gt;
-  &lt;li&gt;Thymeleaf&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;위 두가지를 사용하기 위해 pom.xml에 두가지에 대한 메이븐 의존성을 추가합니다.&lt;/p&gt;
-&lt;div class=&quot;language-xml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;project&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;xmlns=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;http://maven.apache.org/POM/4.0.0&quot;&lt;/span&gt;
-	&lt;span class=&quot;na&quot;&gt;xmlns:xsi=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;http://www.w3.org/2001/XMLSchema-instance&quot;&lt;/span&gt;
-	&lt;span class=&quot;na&quot;&gt;xsi:schemaLocation=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
-	&lt;span class=&quot;nt&quot;&gt;&amp;lt;modelVersion&amp;gt;&lt;/span&gt;4.0.0&lt;span class=&quot;nt&quot;&gt;&amp;lt;/modelVersion&amp;gt;&lt;/span&gt;
-	&lt;span class=&quot;nt&quot;&gt;&amp;lt;parent&amp;gt;&lt;/span&gt;
-		&lt;span class=&quot;nt&quot;&gt;&amp;lt;groupId&amp;gt;&lt;/span&gt;io.youngwon&lt;span class=&quot;nt&quot;&gt;&amp;lt;/groupId&amp;gt;&lt;/span&gt;
-		&lt;span class=&quot;nt&quot;&gt;&amp;lt;artifactId&amp;gt;&lt;/span&gt;cms&lt;span class=&quot;nt&quot;&gt;&amp;lt;/artifactId&amp;gt;&lt;/span&gt;
-		&lt;span class=&quot;nt&quot;&gt;&amp;lt;version&amp;gt;&lt;/span&gt;0.0.1-SNAPSHOT&lt;span class=&quot;nt&quot;&gt;&amp;lt;/version&amp;gt;&lt;/span&gt;
-	&lt;span class=&quot;nt&quot;&gt;&amp;lt;/parent&amp;gt;&lt;/span&gt;
-	&lt;span class=&quot;nt&quot;&gt;&amp;lt;artifactId&amp;gt;&lt;/span&gt;web&lt;span class=&quot;nt&quot;&gt;&amp;lt;/artifactId&amp;gt;&lt;/span&gt;
-
-	&lt;span class=&quot;nt&quot;&gt;&amp;lt;dependencies&amp;gt;&lt;/span&gt;
-		&lt;span class=&quot;nt&quot;&gt;&amp;lt;dependency&amp;gt;&lt;/span&gt;
-			&lt;span class=&quot;nt&quot;&gt;&amp;lt;groupId&amp;gt;&lt;/span&gt;org.springframework&lt;span class=&quot;nt&quot;&gt;&amp;lt;/groupId&amp;gt;&lt;/span&gt;
-			&lt;span class=&quot;nt&quot;&gt;&amp;lt;artifactId&amp;gt;&lt;/span&gt;spring-webmvc&lt;span class=&quot;nt&quot;&gt;&amp;lt;/artifactId&amp;gt;&lt;/span&gt;
-			&lt;span class=&quot;nt&quot;&gt;&amp;lt;version&amp;gt;&lt;/span&gt;5.1.5.RELEASE&lt;span class=&quot;nt&quot;&gt;&amp;lt;/version&amp;gt;&lt;/span&gt;
-		&lt;span class=&quot;nt&quot;&gt;&amp;lt;/dependency&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;nt&quot;&gt;&amp;lt;dependency&amp;gt;&lt;/span&gt;
-			&lt;span class=&quot;nt&quot;&gt;&amp;lt;groupId&amp;gt;&lt;/span&gt;org.thymeleaf&lt;span class=&quot;nt&quot;&gt;&amp;lt;/groupId&amp;gt;&lt;/span&gt;
-			&lt;span class=&quot;nt&quot;&gt;&amp;lt;artifactId&amp;gt;&lt;/span&gt;thymeleaf-spring5&lt;span class=&quot;nt&quot;&gt;&amp;lt;/artifactId&amp;gt;&lt;/span&gt;
-			&lt;span class=&quot;nt&quot;&gt;&amp;lt;version&amp;gt;&lt;/span&gt;3.0.11.RELEASE&lt;span class=&quot;nt&quot;&gt;&amp;lt;/version&amp;gt;&lt;/span&gt;
-		&lt;span class=&quot;nt&quot;&gt;&amp;lt;/dependency&amp;gt;&lt;/span&gt;
-	&lt;span class=&quot;nt&quot;&gt;&amp;lt;/dependencies&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;/project&amp;gt;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h3 id=&quot;dynamic-webproject-설정&quot;&gt;Dynamic webproject 설정&lt;/h3&gt;
-&lt;p&gt;위에서 CMS의 하위 모듈로 생성한 web프로젝트를 tomcat으로 기동할 수 있도록 설정해 보겠습니다.&lt;/p&gt;
-&lt;ol&gt;
-  &lt;li&gt;web프로젝트 우클릭 -&amp;gt; properties 접근&lt;/li&gt;
-  &lt;li&gt;Project Facets 접근&lt;/li&gt;
-  &lt;li&gt;Convert to faceted from.. 클릭&lt;/li&gt;
-  &lt;li&gt;Dynamic Web Module 체크&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;Dynamic webproject가 설정이 완료되면 프로젝트의 루트 경로에 WebContent폴더가 추가된 것을 확인할 수 있습니다. WebContent는 web.xml, servlet-context.xml등의 설정 파일과 함께 view에 대한 html파일, javascript 파일들을 담게 됩니다.&lt;/p&gt;
-
-&lt;p&gt;추가적으로 WebContent가 추가되면 properties의 Deployment Assembly에 Source가 /WebContent, Delpoy Path가 / 인 배포경로가 생성됩니다.&lt;/p&gt;
-
-&lt;h3 id=&quot;maven-dependencies&quot;&gt;Maven Dependencies&lt;/h3&gt;
-&lt;p&gt;properties의 Deployment Assembly에 Add를 클릭해 Java Build Path Entries -&amp;gt; Maven Dependencies를 추가합니다. 추가를 하지 않으면 ClassNotFountException이 발생하게 됩니다.&lt;/p&gt;
-
-&lt;h3 id=&quot;webxml&quot;&gt;web.xml&lt;/h3&gt;
-&lt;p&gt;톰캣과 같은 WAS가 프로젝트를 웹어플리케이션으로 실행하기 위해서는 배포 및 서블릿 스팩 등이 기술된 web.xml 파일이 필수로 필요합니다. 톰캣이 실행할때 web.xml파일을 기반으로 dispatcher 및 기타 속성들에 접근을 시도합니다. web.xml은 WebContent/WEB-INF 의 경로에 생성합니다.&lt;/p&gt;
-
-&lt;div class=&quot;language-xml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;cp&quot;&gt;&amp;lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;web-app&lt;/span&gt; 
-	&lt;span class=&quot;na&quot;&gt;xmlns=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;http://xmlns.jcp.org/xml/ns/javaee&quot;&lt;/span&gt;
-	&lt;span class=&quot;na&quot;&gt;xmlns:xsi=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;http://www.w3.org/2001/XMLSchema-instance&quot;&lt;/span&gt;
-	&lt;span class=&quot;na&quot;&gt;xsi:schemaLocation=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd&quot;&lt;/span&gt;
-	&lt;span class=&quot;na&quot;&gt;version=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;3.1&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
-
-	&lt;span class=&quot;nt&quot;&gt;&amp;lt;servlet&amp;gt;&lt;/span&gt;
-		&lt;span class=&quot;nt&quot;&gt;&amp;lt;servlet-name&amp;gt;&lt;/span&gt;appServlet&lt;span class=&quot;nt&quot;&gt;&amp;lt;/servlet-name&amp;gt;&lt;/span&gt;
-		&lt;span class=&quot;nt&quot;&gt;&amp;lt;servlet-class&amp;gt;&lt;/span&gt;org.springframework.web.servlet.DispatcherServlet&lt;span class=&quot;nt&quot;&gt;&amp;lt;/servlet-class&amp;gt;&lt;/span&gt;
-		&lt;span class=&quot;nt&quot;&gt;&amp;lt;init-param&amp;gt;&lt;/span&gt;
-			&lt;span class=&quot;nt&quot;&gt;&amp;lt;param-name&amp;gt;&lt;/span&gt;contextConfigLocation&lt;span class=&quot;nt&quot;&gt;&amp;lt;/param-name&amp;gt;&lt;/span&gt;
-			&lt;span class=&quot;nt&quot;&gt;&amp;lt;param-value&amp;gt;&lt;/span&gt;/WEB-INF/spring/servlet-context.xml&lt;span class=&quot;nt&quot;&gt;&amp;lt;/param-value&amp;gt;&lt;/span&gt;
-		&lt;span class=&quot;nt&quot;&gt;&amp;lt;/init-param&amp;gt;&lt;/span&gt;
-		&lt;span class=&quot;nt&quot;&gt;&amp;lt;load-on-startup&amp;gt;&lt;/span&gt;1&lt;span class=&quot;nt&quot;&gt;&amp;lt;/load-on-startup&amp;gt;&lt;/span&gt;
-	&lt;span class=&quot;nt&quot;&gt;&amp;lt;/servlet&amp;gt;&lt;/span&gt;
-	&lt;span class=&quot;nt&quot;&gt;&amp;lt;servlet-mapping&amp;gt;&lt;/span&gt;
-		&lt;span class=&quot;nt&quot;&gt;&amp;lt;servlet-name&amp;gt;&lt;/span&gt;appServlet&lt;span class=&quot;nt&quot;&gt;&amp;lt;/servlet-name&amp;gt;&lt;/span&gt;
-		&lt;span class=&quot;nt&quot;&gt;&amp;lt;url-pattern&amp;gt;&lt;/span&gt;/&lt;span class=&quot;nt&quot;&gt;&amp;lt;/url-pattern&amp;gt;&lt;/span&gt;
-	&lt;span class=&quot;nt&quot;&gt;&amp;lt;/servlet-mapping&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;/web-app&amp;gt;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;web.xml을 살펴보면 DispatcherSevlet이 명시되어 있고 contextConfigLocation이 servlet-context.xml로 설정된것을 확인할 수 있습니다.&lt;/p&gt;
-
-&lt;h3 id=&quot;servlet-contextxml&quot;&gt;servlet-context.xml&lt;/h3&gt;
-&lt;p&gt;web.xml을 통해 servlet의 기본설정이 이루어지는 servlet-context의 경로를 명시했습니다.&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;여기서 사용하는 스프링 구성요소의 위치(context-component-scan)&lt;/li&gt;
-  &lt;li&gt;템플릿으로 thymeleaf를 설정&lt;/li&gt;
-  &lt;li&gt;컨트롤러에서 템플릿을 반환하기 위해 resolver 설정&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;div class=&quot;language-xml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;cp&quot;&gt;&amp;lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;beans&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;xmlns=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;http://www.springframework.org/schema/beans&quot;&lt;/span&gt;
-	&lt;span class=&quot;na&quot;&gt;xmlns:mvc=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;http://www.springframework.org/schema/mvc&quot;&lt;/span&gt;
-	&lt;span class=&quot;na&quot;&gt;xmlns:tx=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;http://www.springframework.org/schema/tx&quot;&lt;/span&gt;
-	&lt;span class=&quot;na&quot;&gt;xmlns:context=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;http://www.springframework.org/schema/context&quot;&lt;/span&gt;
-	&lt;span class=&quot;na&quot;&gt;xmlns:aop=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;http://www.springframework.org/schema/aop&quot;&lt;/span&gt;
-	&lt;span class=&quot;na&quot;&gt;xmlns:xsi=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;http://www.w3.org/2001/XMLSchema-instance&quot;&lt;/span&gt;
-	&lt;span class=&quot;na&quot;&gt;xsi:schemaLocation=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;http://www.springframework.org/schema/beans
-		http://www.springframework.org/schema/beans/spring-beans.xsd
-		http://www.springframework.org/schema/context
-		http://www.springframework.org/schema/context/spring-context.xsd
-		http://www.springframework.org/schema/tx
-		http://www.springframework.org/schema/tx/spring-tx.xsd
-		http://www.springframework.org/schema/mvc
-		http://www.springframework.org/schema/mvc/spring-mvc.xsd&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
-
-	&lt;span class=&quot;nt&quot;&gt;&amp;lt;context:component-scan&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;base-package=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;io.youngwon.web&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
-
-	
-	&lt;span class=&quot;nt&quot;&gt;&amp;lt;bean&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;org.thymeleaf.spring5.view.ThymeleafViewResolver&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
-		&lt;span class=&quot;nt&quot;&gt;&amp;lt;property&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;characterEncoding&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;value=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;UTF-8&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
-		&lt;span class=&quot;nt&quot;&gt;&amp;lt;property&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;templateEngine&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;ref=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;templateEngine&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
-		&lt;span class=&quot;nt&quot;&gt;&amp;lt;property&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;order&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;value=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;1&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
-	&lt;span class=&quot;nt&quot;&gt;&amp;lt;/bean&amp;gt;&lt;/span&gt;
-	
-	&lt;span class=&quot;nt&quot;&gt;&amp;lt;bean&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;templateEngine&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;org.thymeleaf.spring5.SpringTemplateEngine&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
-		&lt;span class=&quot;nt&quot;&gt;&amp;lt;property&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;templateResolver&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;ref=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;templateResolver&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
-	&lt;span class=&quot;nt&quot;&gt;&amp;lt;/bean&amp;gt;&lt;/span&gt;
-	
-	&lt;span class=&quot;nt&quot;&gt;&amp;lt;bean&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;templateResolver&quot;&lt;/span&gt; 
-		&lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;org.thymeleaf.spring5.templateresolver.SpringResourceTemplateResolver&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
-		&lt;span class=&quot;nt&quot;&gt;&amp;lt;property&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;prefix&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;value=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;/WEB-INF/views/&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
-		&lt;span class=&quot;nt&quot;&gt;&amp;lt;property&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;suffix&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;value=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;.html&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
-		&lt;span class=&quot;nt&quot;&gt;&amp;lt;property&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;templateMode&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;value=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;HTML5&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
-		&lt;span class=&quot;nt&quot;&gt;&amp;lt;property&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;characterEncoding&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;value=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;UTF-8&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
-	&lt;span class=&quot;nt&quot;&gt;&amp;lt;/bean&amp;gt;&lt;/span&gt;
-	
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;/beans&amp;gt;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h3 id=&quot;homecontroller&quot;&gt;HomeController&lt;/h3&gt;
-&lt;p&gt;servlet-context.xml에서 프로젝트 스캔에 대한 베이스 패키지로 io.youngwon.web으로 지정하였습니다. 해당 경로에 HomeController를 생성합니다.&lt;/p&gt;
-&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;package&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;io.youngwon.web&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
-
-&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;org.springframework.stereotype.Controller&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;org.springframework.web.bind.annotation.RequestMapping&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
-
-&lt;span class=&quot;nd&quot;&gt;@Controller&lt;/span&gt;
-&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;HomeController&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-	
-	&lt;span class=&quot;nd&quot;&gt;@RequestMapping&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;/&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
-	&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;home&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-		&lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;home&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
-	&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h3 id=&quot;html&quot;&gt;HTML&lt;/h3&gt;
-&lt;p&gt;servlet의 resolver를 보면 prefix로 /WEB-INF/views/가 지정된것을 확인할 수 있습니다. 해당 경로에 컨트롤러(HomeController)에서 반환된 home에 대한 html파일을 추가합니다.&lt;/p&gt;
-&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;cp&quot;&gt;&amp;lt;!DOCTYPE html&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;html&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;xmlns:th=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;http://www.thymeleaf.org&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;head&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;meta&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;charset=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;utf-8&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;title&amp;gt;&lt;/span&gt;Welcome!&lt;span class=&quot;nt&quot;&gt;&amp;lt;/title&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;/head&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;body&amp;gt;&lt;/span&gt;
-	안녕하세요
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;/body&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;/html&amp;gt;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;실행을 하고 해당 프로젝트의 / 경로에 접근해 보면 안녕하세요 라는 텍스트가 출력되는 것을 확인할 수 있습니다.&lt;/p&gt;
-
-&lt;h3 id=&quot;프로젝트-구조&quot;&gt;프로젝트 구조&lt;/h3&gt;
-&lt;p&gt;&lt;img src=&quot;/public/spring/08-web-project-structure.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;h1 id=&quot;references&quot;&gt;References&lt;/h1&gt;
-&lt;ul&gt;
-  &lt;li&gt;https://spring.io/guides/gs/multi-module/&lt;/li&gt;
-  &lt;li&gt;https://cloud.google.com/appengine/docs/standard/java/config/webxml?hl=ko&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>Youngwon Seo</name></author><summary type="html">Web 프로젝트 먼저 사용자의 뷰를 담당하는 Web 프로젝트를 구성해 보겠습니다. Web프로젝트는 웹 브라우저를 통해 접근하는 사용자에 대한 entry point입니다. 즉 Front-end에 대한 구현체이며 기본적인 사항은 다음과 같습니다. Spring MVC 5 Thymeleaf</summary></entry></feed>
+&lt;/ul&gt;</content><author><name>Youngwon Seo</name></author><summary type="html">본 포스트는 메이븐 멀티 모듈을 기반으로 스프링 프로젝트들을 구성하고 SNS 서비스를 개발을 합니다.</summary></entry></feed>
