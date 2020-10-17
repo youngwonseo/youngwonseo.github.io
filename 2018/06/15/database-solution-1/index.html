@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+	<!-- Meta -->
+	<meta charset="UTF-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+	<meta name="generator" content="Jekyll">
+
+	<title>대용량 데이터베이스 솔루션#1</title>
+  <meta name="description" content="">
+
+	<!-- CSS & fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,500" rel="stylesheet">
+  <link rel="stylesheet" href="/css/main.css">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="대용량 데이터베이스 솔루션#1">
+  <meta property="og:type" content: "website">
+  <meta property="og:url" content= "https://thereviewindex.com/blog/2018/06/15/database-solution-1/">
+  <meta property="og:description" content="">
+  <meta property="og:locale" content= "en_US">
+  <meta property="og:site_name" content="The Review Index">
+  <meta property="og:image" content="https://thereviewindex.com/blog/">
+  <meta property="og:image:url" content="https://thereviewindex.com/blog/">
+  <meta property="og:image:secure_url" content="https://thereviewindex.com/blog/">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="1200">
+  
+  <!-- twitter card -->
+  <meta property="twitter:card" content="summary">
+  <meta property="twitter:title" content="대용량 데이터베이스 솔루션#1">
+  <meta property="twitter:description" content="">
+  <meta property="twitter:url" content= "https://thereviewindex.com/blog/2018/06/15/database-solution-1/">
+  <meta property="twitter:image" content="https://thereviewindex.com/blog/">
+
+
+	<!-- RSS -->
+	<link href="/atom.xml" type="application/atom+xml" rel="alternate" title="ATOM Feed" />
+
+  <!-- Favicon -->
+  <link rel="shortcut icon" type="image/png" href="img/favicon.png">
+
+
+  <!-- Google Analytics -->
+  <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  
+  ga('create', 'UA-78263144-1', 'auto');
+  ga('send', 'pageview');
+  </script>
+  <!-- End Google Analytics -->
+
+</head>
+
+  <body>
+    
+    <!-- Facebook Comments Script -->
+    <div id="fb-root"></div>
+      <script>(function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = 'https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v2.11&appId=288262758360783';
+        fjs.parentNode.insertBefore(js, fjs);
+      }(document, 'script', 'facebook-jssdk'));</script>
+  
+    <div id="wrap">
+  	  	
+  	  	<!-- Navigation -->
+  	  	<nav id="nav">
+	<div id="nav-list">
+		<a href="/">Home</a>
+
+		<!-- Nav pages -->
+	  
+	    
+	  
+	    
+	  
+	    
+	      <a href="/about/" title="About">About</a>
+	    
+	  
+	    
+	      <a href="/archive/" title="Archive">Archive</a>
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	      <a href="/ml/" title="Machine Learning">Machine Learning</a>
+	    
+	  
+	    
+	      <a href="/paper_review/" title="Paper Review">Paper Review</a>
+	    
+	  
+	    
+	      <a href="/projects/" title="Projects">Projects</a>
+	    
+	  
+	    
+	  
+	    
+	      <a href="/study/" title="Study">Study</a>
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+    
+    <!-- Nav links -->
+	  <!-- <a href="/">Blog</a> -->
+
+
+	</div>
+  
+  <!-- Nav footer -->
+	
+	  <footer>
+	
+	<!-- Your custom nav footer here -->
+	
+</footer>
+	
+
+</nav>
+
+      
+      <!-- Icon menu -->
+  	  <a id="nav-menu">
+  	  	<div id="menu"></div>
+  	  </a>
+  
+        <!-- Header -->
+        
+          <header id="header">
+
+	<!-- Your custom header here -->
+	<span class="f-left">  
+		<a href="/">
+			<h1>
+				<span>Youngwon Seo</span>
+			</h1>
+		</a>
+	</span>
+
+	<span id="nav-links" class="absolute right bottom">
+		<!-- Nav pages -->
+		
+			
+		
+			
+		
+			
+				<a href="/about/" title="About">About</a>
+			
+		
+			
+				<a href="/archive/" title="Archive">Archive</a>
+			
+		
+			
+		
+			
+		
+			
+		
+			
+				<a href="/ml/" title="Machine Learning">Machine Learning</a>
+			
+		
+			
+				<a href="/paper_review/" title="Paper Review">Paper Review</a>
+			
+		
+			
+				<a href="/projects/" title="Projects">Projects</a>
+			
+		
+			
+		
+			
+				<a href="/study/" title="Study">Study</a>
+			
+		
+			
+		
+			
+		
+			
+		
+			
+		
+			
+		
+			
+		
+			
+		
+			
+		
+			
+		
+		
+		<!-- Nav links -->
+		<!-- <a href="/">Blog</a> -->
+
+	</span>
+	
+	<!-- Google Analytics -->
+  <script>
+		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+		
+		ga('create', 'UA-78263144-1', 'auto');
+		ga('send', 'pageview');
+		</script>
+		<!-- End Google Analytics -->
+</header>
+
+
+        
+  
+      <!-- Main content -->
+  	  <div id="container">
+  		  
+  		<main>
+  
+  			<article id="post-page">
+  <div class="parent f-right">
+    <!-- Twitter -->
+    <a href="https://twitter.com/share?url=https://thereviewindex.com/blog/2018/06/15/database-solution-1/&amp;text=대용량 데이터베이스 솔루션#1&amp;hashtags=thereviewindex" target="_blank">
+      <span class="social-icon">  
+        <svg class="svgIcon-use" width="29" height="29" viewBox="0 0 29 29"><path d="M21.967 11.8c.018 5.93-4.607 11.18-11.177 11.18-2.172 0-4.25-.62-6.047-1.76l-.268.422-.038.5.186.013.168.012c.3.02.44.032.6.046 2.06-.026 3.95-.686 5.49-1.86l1.12-.85-1.4-.048c-1.57-.055-2.92-1.08-3.36-2.51l-.48.146-.05.5c.22.03.48.05.75.08.48-.02.87-.07 1.25-.15l2.33-.49-2.32-.49c-1.68-.35-2.91-1.83-2.91-3.55 0-.05 0-.01-.01.03l-.49-.1-.25.44c.63.36 1.35.57 2.07.58l1.7.04L7.4 13c-.978-.662-1.59-1.79-1.618-3.047a4.08 4.08 0 0 1 .524-1.8l-.825.07a12.188 12.188 0 0 0 8.81 4.515l.59.033-.06-.59v-.02c-.05-.43-.06-.63-.06-.87a3.617 3.617 0 0 1 6.27-2.45l.2.21.28-.06c1.01-.22 1.94-.59 2.73-1.09l-.75-.56c-.1.36-.04.89.12 1.36.23.68.58 1.13 1.17.85l-.21-.45-.42-.27c-.52.8-1.17 1.48-1.92 2L22 11l.016.28c.013.2.014.35 0 .52v.04zm.998.038c.018-.22.017-.417 0-.66l-.498.034.284.41a8.183 8.183 0 0 0 2.2-2.267l.97-1.48-1.6.755c.17-.08.3-.02.34.03a.914.914 0 0 1-.13-.292c-.1-.297-.13-.64-.1-.766l.36-1.254-1.1.695c-.69.438-1.51.764-2.41.963l.48.15a4.574 4.574 0 0 0-3.38-1.484 4.616 4.616 0 0 0-4.61 4.613c0 .29.02.51.08.984l.01.02.5-.06.03-.5c-3.17-.18-6.1-1.7-8.08-4.15l-.48-.56-.36.64c-.39.69-.62 1.48-.65 2.28.04 1.61.81 3.04 2.06 3.88l.3-.92c-.55-.02-1.11-.17-1.6-.45l-.59-.34-.14.67c-.02.08-.02.16 0 .24-.01 2.12 1.55 4.01 3.69 4.46l.1-.49-.1-.49c-.33.07-.67.12-1.03.14-.18-.02-.43-.05-.64-.07l-.76-.09.23.73c.57 1.84 2.29 3.14 4.28 3.21l-.28-.89a8.252 8.252 0 0 1-4.85 1.66c-.12-.01-.26-.02-.56-.05l-.17-.01-.18-.01L2.53 21l1.694 1.07a12.233 12.233 0 0 0 6.58 1.917c7.156 0 12.2-5.73 12.18-12.18l-.002.04z"></path></svg>
+      </span>
+    </a>
+
+    &nbsp;&nbsp;&nbsp;
+    <!-- Facebook -->
+    <a href="http://www.facebook.com/sharer.php?u=https://thereviewindex.com/blog/2018/06/15/database-solution-1/" target="_blank">
+      <span class="social-icon">
+        <svg class="svgIcon-use" width="29" height="29" viewBox="0 0 29 29"><path d="M16.39 23.61v-5.808h1.846a.55.55 0 0 0 .546-.48l.36-2.797a.551.551 0 0 0-.547-.62H16.39V12.67c0-.67.12-.813.828-.813h1.474a.55.55 0 0 0 .55-.55V8.803a.55.55 0 0 0-.477-.545c-.436-.06-1.36-.116-2.22-.116-2.5 0-4.13 1.62-4.13 4.248v1.513H10.56a.551.551 0 0 0-.55.55v2.797c0 .304.248.55.55.55h1.855v5.76c-4.172-.96-7.215-4.7-7.215-9.1 0-5.17 4.17-9.36 9.31-9.36 5.14 0 9.31 4.19 9.31 9.36 0 4.48-3.155 8.27-7.43 9.15M14.51 4C8.76 4 4.1 8.684 4.1 14.46c0 5.162 3.75 9.523 8.778 10.32a.55.55 0 0 0 .637-.543v-6.985a.551.551 0 0 0-.55-.55H11.11v-1.697h1.855a.55.55 0 0 0 .55-.55v-2.063c0-2.02 1.136-3.148 3.03-3.148.567 0 1.156.027 1.597.06v1.453h-.924c-1.363 0-1.93.675-1.93 1.912v1.78c0 .3.247.55.55.55h2.132l-.218 1.69H15.84c-.305 0-.55.24-.55.55v7.02c0 .33.293.59.623.54 5.135-.7 9.007-5.11 9.007-10.36C24.92 8.68 20.26 4 14.51 4"></path></svg>
+      </span> 
+    </a>
+  </div>
+  
+  <h2>대용량 데이터베이스 솔루션#1</h2>		
+	<div class="by-line parent">
+    <time datetime="2018-06-15T00:00:00+09:00"> <i>15 Jun 2018</i> </time>
+    &nbsp;&nbsp; &middot; &nbsp;&nbsp;
+    <span><i></i> </span>
+  </div>
+	<div class="content">
+
+		<h1 id="1장-데이터-저장구조와-특징-1">1장 데이터 저장구조와 특징 #1</h1>
+
+<ul>
+  <li>2018년 5월 24일 목요일</li>
+</ul>
+
+<p><strong>데이터를 저장하는 방식은 데이터의 저장이나 수정, 검색에 직접적인 영향</strong>을 미친다. 즉 데이터 저장 구조에 따라 데이터 조작에 대한 성능이 결정되는데, 개발자는 비즈니스에 대한 요구사항을 정확히 이해하고 최적의 저장구조를 선택할 필요가 있다.</p>
+
+<h2 id="11-테이블과-인덱스의-분리형">1.1 테이블과 인덱스의 분리형</h2>
+
+<ul>
+  <li>데이터와 인덱스를 따로 저장하는 방식, 여기서 인덱스란 데이터를 검색할 때 사용하는 Key</li>
+  <li>즉 인덱스에 실제 데이터가 저장된 주소를 참조</li>
+  <li>가장 큰 장점은 실제 인덱스가 데이터의 영향을 받지 않으므로 데이터를 무조건적으로 저장가능
+    <ul>
+      <li>저장속도가 빠름</li>
+    </ul>
+  </li>
+  <li>관계형 데이터베이스의 가장 일반적인 데이터 저장형식</li>
+</ul>
+
+<h3 id="111-분리형-테이블-구조">1.1.1 분리형 테이블 구조</h3>
+
+<ul>
+  <li>실제 데이터는 데이터의 논리적 의미와 전혀 무관한 형식으로 블록(Block)에 저장되어 있음
+    <ul>
+      <li>하나의 데이터(row)가 끊어저 저장되어 있을 수도 있고, 심지어 하나의 데이터가 여러 블록에 분포되어 있을 수 있음</li>
+    </ul>
+  </li>
+  <li>하나의 데이터를 한 조각으로 끊어지지 않게 저장할 수 없을 때, 재배치(Condensing)를 통해 공간을 만듬
+    <ul>
+      <li>테이블 정의시 로우의 길이변화를 수용하기 위한 공간크기(FREE SPACE) 지정가능, 파라미터 “PCTFREE”</li>
+    </ul>
+  </li>
+  <li>용어정의(추후 그림추가)
+    <ul>
+      <li>테이블스페이스(Tablespace)
+        <ul>
+          <li>논리적인 저장공간</li>
+          <li>데이터파일로 구성</li>
+        </ul>
+      </li>
+      <li>데이터파일(Datafile)
+        <ul>
+          <li>물리적인 저장공간</li>
+          <li>테이블스페이스의 구성단위</li>
+          <li>즉 여러개의 데이터파일이 테이블스페이스를 구성</li>
+        </ul>
+      </li>
+      <li>세그먼트(Segment)
+        <ul>
+          <li>테이블스페이스를 용도별로 나눈것</li>
+          <li>즉 논리적인 단위</li>
+        </ul>
+      </li>
+      <li>오브젝트(Object)
+        <ul>
+          <li>세그먼트의 구성단위</li>
+        </ul>
+      </li>
+      <li>파티션(Partition)
+        <ul>
+          <li>테이블이나 인덱스는 각각의 파티션이 단위 오브젝트가 됨</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>데이터파일의 식별자를 테이블스페이스단위로 구성가능
+    <ul>
+      <li>다른 테이블스페이스라면 같은 데이터파일 식별자가 존재가능</li>
+      <li>이것은 <strong>로우식별자(Rowid)를 보다 짧게 구성하도록 할 수 있는 매우 중요한 의미를 가짐</strong></li>
+      <li>6페이지 하단 그림에서 Datafile식별자가 상대적인 식별자</li>
+    </ul>
+  </li>
+  <li>실제 ROWID에서 오브젝트 번호와 데이터파일 번호를 통해 물리적인 저장위치를 찾고, 거기에 있는 블록번호를 찾아가면 슬롯이 나온다.  슬롯에는 슬롯번호가 존재하고 그 속에는 로우의 위치정보가 존재한다.</li>
+  <li>즉 ROWID는 로우의 실제 위치가 아닌 위치가 들어있는 슬롯의 번호에 해당한다.</li>
+  <li>이러한 이유로 ROWID의 변경없이 로우의 위치이동이 자유롭다(슬롯안에 로우의 위치정보만 바꾸면 되기 때문에).</li>
+  <li>하지만 계속되서 로우의 이동이 발생하면 블록내부의 수많은 조각(Fragmentation)이 발생
+    <ul>
+      <li>비슷한 예로 운영체제의 단편화</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="112-클러스터링-팩터clustering-factor">1.1.2 클러스터링 팩터(Clustering Factor)</h3>
+
+<ul>
+  <li>인덱스와 인덱스에 해당하는 로우의 순서가 얼마나 비슷한 순서로 저장되어있느냐에 대한 정도를 “클러스터링 팩터”라고 함</li>
+</ul>
+
+<h3 id="113-분리형-테이블의-액세스-영향요소">1.1.3 분리형 테이블의 액세스 영향요소</h3>
+<ul>
+  <li>분리형 테이블은 필연적으로 액세스의 효율에 커다란 영향을 미친다.
+    <h4 id="가-넓은-범위의-액세스-처리에-대한-대처방안">가) 넓은 범위의 액세스 처리에 대한 대처방안</h4>
+  </li>
+  <li>분리형은 데이터가 들어오는 대로 아무곳에 저장하는 형태</li>
+  <li>즉 넓은 범위에 흩어져 저장되면 그만큼 많은 블럭에 대한 IO가 발생</li>
+  <li>이러한 분리형 구조에 대량의 처리를 위한 방법들이 존재
+    <ul>
+      <li>병렬처리, 파티션, 각종 인덱스 기법</li>
+    </ul>
+  </li>
+  <li>대량의 액세스가 발생하는 상황에서도 분리형 테이블을 적용해야하는 이뉴는 물론 입력(Insert)시 부하가 부담되기 때문에</li>
+  <li>넓은 범위로 흩어져 저장되는것 때문에 항상 임의의 영역(버퍼)에 저장을 해두었다가 시간이 나면 실제 저장을 실행하는 방법도 쉽게 선택할 수 있는 방법은 아님
+    <ul>
+      <li>실제 RDBMS는 메모리에 임시저장 해두고 리소스에 여유가 생기면 실제 디스크에 저장하는 지연기록(Differed write) 방식을 취함</li>
+    </ul>
+  </li>
+  <li>앞으로 이를 위한 해결방안들을 제시</li>
+  <li>다음은 테이블 크기에 따라 테이블 구조의 결정에 어떤 고려요소가 존재하는지 나타냄
+    <h5 id="소형테이블">소형테이블</h5>
+  </li>
+  <li>보유 데이터가 작다는 말이기 때문에 등록에 부담이 적음(입력이 많이 발생하지 않음)</li>
+  <li>또한 흩어져 있더라고 그 반경이 별로 멀지 않음
+    <ul>
+      <li>즉 최소한의 블럭 I/O로 접근가능</li>
+      <li>cache friendly 한 속성을 가짐
+        <h5 id="중형테이블">중형테이블</h5>
+      </li>
+    </ul>
+  </li>
+  <li>중형역시 대형에 비해 작은크기이므로 비용이 적게 들지만 활용도에 따라 액세스가 빈번하게 발생할 가능성이 존재함</li>
+  <li>그러므로 등록 시 부담이 되더라도 좋은 액세스를 위해서는 좋은 액세스를 위해서는 찾기좋은 형태로 저장필요</li>
+  <li>실제 사용시 다양한 형태(여러가지 컬럼에 대한)로 접근이 발생하기 때문에 특정한 모양으로 저장한다는 것이 무조건 좋은 해결책은 될 수 없음</li>
+  <li>그러나 특정한 액세스가 매우 중요하면 거기에 대한 대비가 필요
+    <h5 id="대형테이블">대형테이블</h5>
+  </li>
+  <li>대형테이블의 경우 유형별로 세가지 형태로 구분가능함</li>
+  <li>첫 번째, 단순 저장형 개념
+    <ul>
+      <li>자주 사용되지도, 다양한 액세스 형태를 가질필요도 없음</li>
+      <li>엑세스보다는 입력이 자주 발생하므로 신속한 저장이 필요</li>
+      <li>분리형이 가장 적절</li>
+      <li>필요에 따라 파티션 같은 조치가 필요</li>
+    </ul>
+  </li>
+  <li>두 번째, 랜덤 액세스 위주의 테이블지만 다양한 형태의 액세스를 갖지 않는 구조
+    <ul>
+      <li>당연히 분리형 구조가 적합</li>
+      <li>클러스터링이나 파티션을 하더라도 큰 혜택이 없음</li>
+    </ul>
+  </li>
+  <li>세 번째, 대량의 데이터가 지속적으로 증가하며, 매우 다양한 액세스를 가지는 경우
+    <ul>
+      <li>지속적으로 증가하는 데이터에 대한 관리적인 측면의 부담이 크다면 더 이상 망설이지 말고 파티션을 적용해야함</li>
+      <li>자주 대량의 범위 스캔을 수행하므로 불필요한 데이터를 많이 처리한다면 심각한 상황이 발생할 가능성이 높음</li>
+      <li>이러한 구조에서 가장 중요한것은 인<strong>덱스를 전략적으로 구성</strong>하고 <strong>SQL의 실행계획을 최적화</strong> 시키는 방법이 중요
+        <h4 id="나클러스터링-팩터-향상-전략">나)클러스터링 팩터 향상 전략</h4>
+      </li>
+    </ul>
+  </li>
+  <li>분리형 구조라는 것은 정해지지 않는 순서로 데이터가 저장된다는 것</li>
+  <li>이것은 아무렇게 저장해도 된다는 것이지만, 의도적으로 우리에게 유리한 형태로 저장하다는 것이 가능다하는 의미</li>
+  <li>즉, 우리가 얼마나 전략적으로 접근하느냐에 따라 의외의 효율을 얻을 수 있음</li>
+  <li>가장 보편적인 방법은 주기적인 테이블 재생성</li>
+  <li>즉 흩어져 저장된 데이터를 새로 저장해 Chain의 깊이를 줄여 응집(cohesion)도를 높임</li>
+  <li>이는 또한 인덱스의 깊이(B Tree의 depth)를 정리하는 효과가 있음</li>
+  <li>또 다른 방법은 자주 사용되는 컬럼들 순으로 정렬하여 저장</li>
+  <li>테이블 재생성시에는 인덱스에 대한 모든 기능을 비활성화 시키고 저장 후 다시 활성화</li>
+</ul>
+
+<h2 id="12--인덱스-일체형-테이블">1.2  인덱스 일체형 테이블</h2>
+<h3 id="121-분리형과-일체형의-비교">1.2.1 분리형과 일체형의 비교</h3>
+<h3 id="122-일체형-테이블의-구조-및-특징">1.2.2 일체형 테이블의 구조 및 특징</h3>
+<h3 id="123-논리적-rowid와-물리적-주소physical-guess">1.2.3 논리적 ROWID와 물리적 주소(Physical Guess)</h3>
+<h3 id="124-오버플로우-영역overflow-area">1.2.4 오버플로우 영역(Overflow Area)</h3>
+<h3 id="125-일체형-테이블의-생성">1.2.5 일체형 테이블의 생성</h3>
+
+		
+  </div>
+
+  <div class="parent f-right">
+    <!-- Twitter -->
+    <a href="https://twitter.com/share?url=https://thereviewindex.com/blog/2018/06/15/database-solution-1/&amp;text=대용량 데이터베이스 솔루션#1&amp;hashtags=thereviewindex" target="_blank">
+      <span class="social-icon">  
+        <svg class="svgIcon-use" width="29" height="29" viewBox="0 0 29 29"><path d="M21.967 11.8c.018 5.93-4.607 11.18-11.177 11.18-2.172 0-4.25-.62-6.047-1.76l-.268.422-.038.5.186.013.168.012c.3.02.44.032.6.046 2.06-.026 3.95-.686 5.49-1.86l1.12-.85-1.4-.048c-1.57-.055-2.92-1.08-3.36-2.51l-.48.146-.05.5c.22.03.48.05.75.08.48-.02.87-.07 1.25-.15l2.33-.49-2.32-.49c-1.68-.35-2.91-1.83-2.91-3.55 0-.05 0-.01-.01.03l-.49-.1-.25.44c.63.36 1.35.57 2.07.58l1.7.04L7.4 13c-.978-.662-1.59-1.79-1.618-3.047a4.08 4.08 0 0 1 .524-1.8l-.825.07a12.188 12.188 0 0 0 8.81 4.515l.59.033-.06-.59v-.02c-.05-.43-.06-.63-.06-.87a3.617 3.617 0 0 1 6.27-2.45l.2.21.28-.06c1.01-.22 1.94-.59 2.73-1.09l-.75-.56c-.1.36-.04.89.12 1.36.23.68.58 1.13 1.17.85l-.21-.45-.42-.27c-.52.8-1.17 1.48-1.92 2L22 11l.016.28c.013.2.014.35 0 .52v.04zm.998.038c.018-.22.017-.417 0-.66l-.498.034.284.41a8.183 8.183 0 0 0 2.2-2.267l.97-1.48-1.6.755c.17-.08.3-.02.34.03a.914.914 0 0 1-.13-.292c-.1-.297-.13-.64-.1-.766l.36-1.254-1.1.695c-.69.438-1.51.764-2.41.963l.48.15a4.574 4.574 0 0 0-3.38-1.484 4.616 4.616 0 0 0-4.61 4.613c0 .29.02.51.08.984l.01.02.5-.06.03-.5c-3.17-.18-6.1-1.7-8.08-4.15l-.48-.56-.36.64c-.39.69-.62 1.48-.65 2.28.04 1.61.81 3.04 2.06 3.88l.3-.92c-.55-.02-1.11-.17-1.6-.45l-.59-.34-.14.67c-.02.08-.02.16 0 .24-.01 2.12 1.55 4.01 3.69 4.46l.1-.49-.1-.49c-.33.07-.67.12-1.03.14-.18-.02-.43-.05-.64-.07l-.76-.09.23.73c.57 1.84 2.29 3.14 4.28 3.21l-.28-.89a8.252 8.252 0 0 1-4.85 1.66c-.12-.01-.26-.02-.56-.05l-.17-.01-.18-.01L2.53 21l1.694 1.07a12.233 12.233 0 0 0 6.58 1.917c7.156 0 12.2-5.73 12.18-12.18l-.002.04z"></path></svg>
+      </span>
+    </a>
+
+    &nbsp;&nbsp;&nbsp;
+    <!-- Facebook -->
+    <a href="http://www.facebook.com/sharer.php?u=https://thereviewindex.com/blog/2018/06/15/database-solution-1/" target="_blank">
+      <span class="social-icon">
+        <svg class="svgIcon-use" width="29" height="29" viewBox="0 0 29 29"><path d="M16.39 23.61v-5.808h1.846a.55.55 0 0 0 .546-.48l.36-2.797a.551.551 0 0 0-.547-.62H16.39V12.67c0-.67.12-.813.828-.813h1.474a.55.55 0 0 0 .55-.55V8.803a.55.55 0 0 0-.477-.545c-.436-.06-1.36-.116-2.22-.116-2.5 0-4.13 1.62-4.13 4.248v1.513H10.56a.551.551 0 0 0-.55.55v2.797c0 .304.248.55.55.55h1.855v5.76c-4.172-.96-7.215-4.7-7.215-9.1 0-5.17 4.17-9.36 9.31-9.36 5.14 0 9.31 4.19 9.31 9.36 0 4.48-3.155 8.27-7.43 9.15M14.51 4C8.76 4 4.1 8.684 4.1 14.46c0 5.162 3.75 9.523 8.778 10.32a.55.55 0 0 0 .637-.543v-6.985a.551.551 0 0 0-.55-.55H11.11v-1.697h1.855a.55.55 0 0 0 .55-.55v-2.063c0-2.02 1.136-3.148 3.03-3.148.567 0 1.156.027 1.597.06v1.453h-.924c-1.363 0-1.93.675-1.93 1.912v1.78c0 .3.247.55.55.55h2.132l-.218 1.69H15.84c-.305 0-.55.24-.55.55v7.02c0 .33.293.59.623.54 5.135-.7 9.007-5.11 9.007-10.36C24.92 8.68 20.26 4 14.51 4"></path></svg>
+      </span> 
+    </a>
+  </div>
+
+  <!-- Facebook Comments HTML -->
+  <div class="m-t-6e">
+    <div class="fb-comments" data-href="http://youngwonseo.github.io/2018/06/15/database-solution-1/" data-width="800" data-numposts="5"></div>
+  </div>
+
+</article>
+
+
+  
+  	  </main>
+  		
+  		  <!-- Pagination links -->
+        
+  
+  	  </div>
+  	    
+  	    <!-- Footer -->
+        <div class="m-t-6e">
+          <footer><span>&#169;2017 - TheReviewIndex</span></footer>
+
+        </div>
+  
+  	    <!-- Script -->
+        <script src="/js/main.js"></script>	
+
+  
+    </div>
+    
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-118401942-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-118401942-1');
+</script>
+  </body>
+</html>

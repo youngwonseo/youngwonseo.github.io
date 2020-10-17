@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+	<!-- Meta -->
+	<meta charset="UTF-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+	<meta name="generator" content="Jekyll">
+
+	<title>이펙티브 자바스크립트 #4</title>
+  <meta name="description" content="">
+
+	<!-- CSS & fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,500" rel="stylesheet">
+  <link rel="stylesheet" href="/css/main.css">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="이펙티브 자바스크립트 #4">
+  <meta property="og:type" content: "website">
+  <meta property="og:url" content= "https://thereviewindex.com/blog/2018/05/23/effective-javascript-4/">
+  <meta property="og:description" content="">
+  <meta property="og:locale" content= "en_US">
+  <meta property="og:site_name" content="The Review Index">
+  <meta property="og:image" content="https://thereviewindex.com/blog/">
+  <meta property="og:image:url" content="https://thereviewindex.com/blog/">
+  <meta property="og:image:secure_url" content="https://thereviewindex.com/blog/">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="1200">
+  
+  <!-- twitter card -->
+  <meta property="twitter:card" content="summary">
+  <meta property="twitter:title" content="이펙티브 자바스크립트 #4">
+  <meta property="twitter:description" content="">
+  <meta property="twitter:url" content= "https://thereviewindex.com/blog/2018/05/23/effective-javascript-4/">
+  <meta property="twitter:image" content="https://thereviewindex.com/blog/">
+
+
+	<!-- RSS -->
+	<link href="/atom.xml" type="application/atom+xml" rel="alternate" title="ATOM Feed" />
+
+  <!-- Favicon -->
+  <link rel="shortcut icon" type="image/png" href="img/favicon.png">
+
+
+  <!-- Google Analytics -->
+  <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  
+  ga('create', 'UA-78263144-1', 'auto');
+  ga('send', 'pageview');
+  </script>
+  <!-- End Google Analytics -->
+
+</head>
+
+  <body>
+    
+    <!-- Facebook Comments Script -->
+    <div id="fb-root"></div>
+      <script>(function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = 'https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v2.11&appId=288262758360783';
+        fjs.parentNode.insertBefore(js, fjs);
+      }(document, 'script', 'facebook-jssdk'));</script>
+  
+    <div id="wrap">
+  	  	
+  	  	<!-- Navigation -->
+  	  	<nav id="nav">
+	<div id="nav-list">
+		<a href="/">Home</a>
+
+		<!-- Nav pages -->
+	  
+	    
+	  
+	    
+	  
+	    
+	      <a href="/about/" title="About">About</a>
+	    
+	  
+	    
+	      <a href="/archive/" title="Archive">Archive</a>
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	      <a href="/ml/" title="Machine Learning">Machine Learning</a>
+	    
+	  
+	    
+	      <a href="/paper_review/" title="Paper Review">Paper Review</a>
+	    
+	  
+	    
+	      <a href="/projects/" title="Projects">Projects</a>
+	    
+	  
+	    
+	  
+	    
+	      <a href="/study/" title="Study">Study</a>
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+    
+    <!-- Nav links -->
+	  <!-- <a href="/">Blog</a> -->
+
+
+	</div>
+  
+  <!-- Nav footer -->
+	
+	  <footer>
+	
+	<!-- Your custom nav footer here -->
+	
+</footer>
+	
+
+</nav>
+
+      
+      <!-- Icon menu -->
+  	  <a id="nav-menu">
+  	  	<div id="menu"></div>
+  	  </a>
+  
+        <!-- Header -->
+        
+          <header id="header">
+
+	<!-- Your custom header here -->
+	<span class="f-left">  
+		<a href="/">
+			<h1>
+				<span>Youngwon Seo</span>
+			</h1>
+		</a>
+	</span>
+
+	<span id="nav-links" class="absolute right bottom">
+		<!-- Nav pages -->
+		
+			
+		
+			
+		
+			
+				<a href="/about/" title="About">About</a>
+			
+		
+			
+				<a href="/archive/" title="Archive">Archive</a>
+			
+		
+			
+		
+			
+		
+			
+		
+			
+				<a href="/ml/" title="Machine Learning">Machine Learning</a>
+			
+		
+			
+				<a href="/paper_review/" title="Paper Review">Paper Review</a>
+			
+		
+			
+				<a href="/projects/" title="Projects">Projects</a>
+			
+		
+			
+		
+			
+				<a href="/study/" title="Study">Study</a>
+			
+		
+			
+		
+			
+		
+			
+		
+			
+		
+			
+		
+			
+		
+			
+		
+			
+		
+			
+		
+		
+		<!-- Nav links -->
+		<!-- <a href="/">Blog</a> -->
+
+	</span>
+	
+	<!-- Google Analytics -->
+  <script>
+		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+		
+		ga('create', 'UA-78263144-1', 'auto');
+		ga('send', 'pageview');
+		</script>
+		<!-- End Google Analytics -->
+</header>
+
+
+        
+  
+      <!-- Main content -->
+  	  <div id="container">
+  		  
+  		<main>
+  
+  			<article id="post-page">
+  <div class="parent f-right">
+    <!-- Twitter -->
+    <a href="https://twitter.com/share?url=https://thereviewindex.com/blog/2018/05/23/effective-javascript-4/&amp;text=이펙티브 자바스크립트 #4&amp;hashtags=thereviewindex" target="_blank">
+      <span class="social-icon">  
+        <svg class="svgIcon-use" width="29" height="29" viewBox="0 0 29 29"><path d="M21.967 11.8c.018 5.93-4.607 11.18-11.177 11.18-2.172 0-4.25-.62-6.047-1.76l-.268.422-.038.5.186.013.168.012c.3.02.44.032.6.046 2.06-.026 3.95-.686 5.49-1.86l1.12-.85-1.4-.048c-1.57-.055-2.92-1.08-3.36-2.51l-.48.146-.05.5c.22.03.48.05.75.08.48-.02.87-.07 1.25-.15l2.33-.49-2.32-.49c-1.68-.35-2.91-1.83-2.91-3.55 0-.05 0-.01-.01.03l-.49-.1-.25.44c.63.36 1.35.57 2.07.58l1.7.04L7.4 13c-.978-.662-1.59-1.79-1.618-3.047a4.08 4.08 0 0 1 .524-1.8l-.825.07a12.188 12.188 0 0 0 8.81 4.515l.59.033-.06-.59v-.02c-.05-.43-.06-.63-.06-.87a3.617 3.617 0 0 1 6.27-2.45l.2.21.28-.06c1.01-.22 1.94-.59 2.73-1.09l-.75-.56c-.1.36-.04.89.12 1.36.23.68.58 1.13 1.17.85l-.21-.45-.42-.27c-.52.8-1.17 1.48-1.92 2L22 11l.016.28c.013.2.014.35 0 .52v.04zm.998.038c.018-.22.017-.417 0-.66l-.498.034.284.41a8.183 8.183 0 0 0 2.2-2.267l.97-1.48-1.6.755c.17-.08.3-.02.34.03a.914.914 0 0 1-.13-.292c-.1-.297-.13-.64-.1-.766l.36-1.254-1.1.695c-.69.438-1.51.764-2.41.963l.48.15a4.574 4.574 0 0 0-3.38-1.484 4.616 4.616 0 0 0-4.61 4.613c0 .29.02.51.08.984l.01.02.5-.06.03-.5c-3.17-.18-6.1-1.7-8.08-4.15l-.48-.56-.36.64c-.39.69-.62 1.48-.65 2.28.04 1.61.81 3.04 2.06 3.88l.3-.92c-.55-.02-1.11-.17-1.6-.45l-.59-.34-.14.67c-.02.08-.02.16 0 .24-.01 2.12 1.55 4.01 3.69 4.46l.1-.49-.1-.49c-.33.07-.67.12-1.03.14-.18-.02-.43-.05-.64-.07l-.76-.09.23.73c.57 1.84 2.29 3.14 4.28 3.21l-.28-.89a8.252 8.252 0 0 1-4.85 1.66c-.12-.01-.26-.02-.56-.05l-.17-.01-.18-.01L2.53 21l1.694 1.07a12.233 12.233 0 0 0 6.58 1.917c7.156 0 12.2-5.73 12.18-12.18l-.002.04z"></path></svg>
+      </span>
+    </a>
+
+    &nbsp;&nbsp;&nbsp;
+    <!-- Facebook -->
+    <a href="http://www.facebook.com/sharer.php?u=https://thereviewindex.com/blog/2018/05/23/effective-javascript-4/" target="_blank">
+      <span class="social-icon">
+        <svg class="svgIcon-use" width="29" height="29" viewBox="0 0 29 29"><path d="M16.39 23.61v-5.808h1.846a.55.55 0 0 0 .546-.48l.36-2.797a.551.551 0 0 0-.547-.62H16.39V12.67c0-.67.12-.813.828-.813h1.474a.55.55 0 0 0 .55-.55V8.803a.55.55 0 0 0-.477-.545c-.436-.06-1.36-.116-2.22-.116-2.5 0-4.13 1.62-4.13 4.248v1.513H10.56a.551.551 0 0 0-.55.55v2.797c0 .304.248.55.55.55h1.855v5.76c-4.172-.96-7.215-4.7-7.215-9.1 0-5.17 4.17-9.36 9.31-9.36 5.14 0 9.31 4.19 9.31 9.36 0 4.48-3.155 8.27-7.43 9.15M14.51 4C8.76 4 4.1 8.684 4.1 14.46c0 5.162 3.75 9.523 8.778 10.32a.55.55 0 0 0 .637-.543v-6.985a.551.551 0 0 0-.55-.55H11.11v-1.697h1.855a.55.55 0 0 0 .55-.55v-2.063c0-2.02 1.136-3.148 3.03-3.148.567 0 1.156.027 1.597.06v1.453h-.924c-1.363 0-1.93.675-1.93 1.912v1.78c0 .3.247.55.55.55h2.132l-.218 1.69H15.84c-.305 0-.55.24-.55.55v7.02c0 .33.293.59.623.54 5.135-.7 9.007-5.11 9.007-10.36C24.92 8.68 20.26 4 14.51 4"></path></svg>
+      </span> 
+    </a>
+  </div>
+  
+  <h2>이펙티브 자바스크립트 #4</h2>		
+	<div class="by-line parent">
+    <time datetime="2018-05-23T00:00:00+09:00"> <i>23 May 2018</i> </time>
+    &nbsp;&nbsp; &middot; &nbsp;&nbsp;
+    <span><i></i> </span>
+  </div>
+	<div class="content">
+
+		<h1 id="4장-객체와-프로토타입">4장 객체와 프로토타입</h1>
+
+<h2 id="item30-prototype-getprototypeof-__proto__의-차이점을-이해하라">Item30. prototype, getPrototypeOf, __proto__의 차이점을 이해하라</h2>
+
+<ul>
+  <li>자바스크립트는 프로토타입에 대한 3가지 접근자가 있다.</li>
+  <li>모두 prototype의 변형된 이름을 가진다. 확실히 이해해보자.
+    <ul>
+      <li>C.prototype은 new C()로 생성된 객체의 프로토타입을 만들때 사용</li>
+      <li>Object.getPrototypeOf(obj)는 obj의 프로토타입 객체를 가져오기 위한 <strong>표준 ES5 메커니즘</strong></li>
+      <li>obj.__proto__는 obj의 프로토타입 객체를 가져오는 <strong>비표준</strong> 매커니즘</li>
+    </ul>
+  </li>
+</ul>
+
+<h4 id="첫-번째-prototype">첫 번째, prototype</h4>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">User</span><span class="p">(</span><span class="nx">name</span><span class="p">,</span> <span class="nx">passwordHash</span><span class="p">){</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="nx">name</span><span class="p">;</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">passwordHash</span> <span class="o">=</span> <span class="nx">passwordHash</span>
+<span class="p">}</span>
+<span class="nx">User</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">toString</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(){</span>
+  <span class="k">return</span> <span class="dl">"</span><span class="s2">[User </span><span class="dl">"</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">name</span> <span class="o">+</span> <span class="dl">"</span><span class="s2">]</span><span class="dl">"</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nx">User</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">checkPassword</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">password</span><span class="p">){</span>
+  <span class="k">return</span> <span class="nx">hash</span><span class="p">(</span><span class="nx">password</span><span class="p">)</span> <span class="o">===</span> <span class="k">this</span><span class="p">.</span><span class="nx">passwordHash</span>
+<span class="p">}</span>
+<span class="kd">var</span> <span class="nx">u</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">User</span><span class="p">(</span><span class="dl">"</span><span class="s2">sfalken</span><span class="dl">"</span><span class="p">,</span><span class="dl">"</span><span class="s2">231312jn3u82yh89da23232</span><span class="dl">"</span><span class="p">);</span>
+</code></pre></div></div>
+
+<ul>
+  <li>User는 처음 비어있는 property(객체)를 갖게된다.</li>
+  <li>new연산자로 생성된 User의 인스턴스 u는 User.prototype에 저장된 property객체(2개의 메서드가 포함되어있는)를 할당받는다.</li>
+  <li>이때 u는 User.prototype을 <strong>상속관계</strong>로 할당된다.</li>
+  <li>프로퍼티 탐색 메커니즘을 살펴보면, 먼저 u에서 찾을 수 있는 .name, .passwordHash는 u에서 찾은 후 즉시반환되고 u에서 찾을 수 없는 프로퍼티는 prototype에서 찾게된다.</li>
+</ul>
+
+<h4 id="두-번째-getprototypeof">두 번째, getPrototypeOf()</h4>
+
+<ul>
+  <li>
+    <p>ES5의 getPrototypeOf() 함수는 현재 객체의 프로토타입을 가져오는데 사용할 수 있다.</p>
+  </li>
+  <li>
+    <p>즉 다음과 같이 이해하자.</p>
+
+    <blockquote>
+      <p>Object.getPrototypeOf(u) === User.prototype; // true</p>
+    </blockquote>
+  </li>
+</ul>
+
+<h4 id="세-번째-__proto__">세 번째, __proto__</h4>
+
+<ul>
+  <li>
+    <p>몇몇 실행환경에서는 <strong>비표준</strong> 메커니즘인 __proto__를 지원한다.</p>
+  </li>
+  <li>
+    <p>두번째의  getPrototypeOf를 지원하지 않는 실행 환경을 위한 <strong>임시방편</strong>으로 유용하다.</p>
+
+    <blockquote>
+      <p>u.__proto__ === User.prototype; // true</p>
+    </blockquote>
+  </li>
+</ul>
+
+<h4 id="마지막으로">마지막으로~</h4>
+
+<ul>
+  <li>자바스크립트의 클래스는 기본적으로 <strong>생성자 함수</strong>와 <strong>프로토타입 객체</strong>의 조합니다.</li>
+  <li>프로토타입 객체는 해당 클래스의 인스턴스들이 공유를 하는 객체이다.</li>
+  <li>일반적으로 사용시 프로토타입에 직접적으로 접근하 필요가 없다. 그냥 사용만 하면된다.</li>
+</ul>
+
+<h4 id="기억할-점">기억할 점</h4>
+
+<ul>
+  <li>C.prototype은 new C()로 생성된 객체의 프로토타입을 결정</li>
+  <li>getPrototyoeOf()는 <strong>ES5의 표준!</strong>, __proto__는 <strong>비표준!</strong></li>
+  <li>클래스는 생성자 함수와 프로토타입으로 구성된 설계패턴이다.</li>
+</ul>
+
+<h2 id="item31-__proto__보다-objectgetprototypeof를-사용하라">Item31. __proto__보다 Object.getPrototypeOf를 사용하라</h2>
+
+<ul>
+  <li>
+    <p><strong>당연히 표준을 사용하는 것이 좋다!</strong></p>
+  </li>
+  <li>
+    <p>하지만 getPrototypeOf가 표준API로 도입되기전 비표준인 __proto__이 일반적으로 제공되고 있었다.</p>
+  </li>
+  <li>
+    <p><strong>혹시 getPrototypeOf를 지원하지 않는다면 다음과 같이 __proto__를 이용하여 직접 구현해서 써라!</strong></p>
+
+    <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">if</span><span class="p">(</span><span class="k">typeof</span> <span class="nb">Object</span><span class="p">.</span><span class="nx">getPrototypeOf</span> <span class="o">===</span> <span class="dl">"</span><span class="s2">undefined</span><span class="dl">"</span><span class="p">){</span>
+  <span class="nb">Object</span><span class="p">.</span><span class="nx">getPrototypeOf</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">obj</span><span class="p">){</span>
+    <span class="kd">var</span> <span class="nx">t</span> <span class="o">=</span> <span class="k">typeof</span> <span class="nx">obj</span><span class="p">;</span>
+    <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="nx">obj</span> <span class="o">||</span> <span class="p">(</span><span class="nx">t</span> <span class="o">!==</span> <span class="dl">"</span><span class="s2">object</span><span class="dl">"</span> <span class="o">&amp;&amp;</span> <span class="nx">t</span> <span class="o">!==</span> <span class="dl">"</span><span class="s2">function</span><span class="dl">"</span><span class="p">)){</span>
+      <span class="k">throw</span> <span class="k">new</span> <span class="nx">TypeError</span><span class="p">(</span><span class="dl">"</span><span class="s2">not an object</span><span class="dl">"</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="nx">obj</span><span class="p">.</span><span class="nx">__proto__</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>    </div>
+
+    <p>​</p>
+  </li>
+</ul>
+
+<h2 id="item32-__proto__를-절대-수정하지-마라">Item32. __proto__를 절대 수정하지 마라</h2>
+
+<ul>
+  <li>__proto__프로퍼티는 getPrototypeOf가 지원하지 않는 추가적 기능을 제공한다.</li>
+  <li>그것은 prototype의 링크를 수정하는 것이다.</li>
+  <li>하지만 절대수정해서는 안된다! 다음과 같은 이유가 존재하기 때문이다.
+    <ul>
+      <li>이식성있는 코드 작성이 안됨
+        <ul>
+          <li>플랫폼별 수정가능 여부가 다르다.</li>
+        </ul>
+      </li>
+      <li>성능이슈
+        <ul>
+          <li>자바스크립트 엔진은 객체 프로퍼티에 대한 동작이 최적화 되어있는데 이것이 무효화된다.</li>
+          <li>이것은 생각보다 많은 부분의 최적화를 무효화 시킨다.</li>
+        </ul>
+      </li>
+      <li>예측가능한 동작이 유지가 안됨
+        <ul>
+          <li>prototype을 수정하면 이것은 당연하다.</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="item33-생성자가-new와-관계-없이-동작하게-만들어라">Item33. 생성자가 new와 관계 없이 동작하게 만들어라</h2>
+
+<ul>
+  <li>
+    <p>자바스크립트에서는 객체(인스턴스)를 생성할 때 new 키워드를 사용한다.</p>
+  </li>
+  <li>
+    <p>만약 new 키워드없이 객체를 생성하면 어떻게 될까(생성이라는 표현보다는 호출)? 
+Item30에 명시된 User클래스를 이용한다.</p>
+
+    <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">u</span> <span class="o">=</span> <span class="nx">User</span><span class="p">(</span><span class="dl">"</span><span class="s2">sfalken</span><span class="dl">"</span><span class="p">,</span><span class="dl">"</span><span class="s2">231312jn3u82yh89da23232</span><span class="dl">"</span><span class="p">);</span>
+<span class="nx">u</span><span class="p">;</span> <span class="c1">//undefined</span>
+<span class="k">this</span><span class="p">.</span><span class="nx">name</span><span class="p">;</span> <span class="c1">//sfalken</span>
+<span class="k">this</span><span class="p">.</span><span class="nx">passwordHash</span><span class="p">;</span> <span class="c1">//231312jn3u82yh89da23232</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>생성을 유도했던 User는 undefined를 반환했고, 전역변수에 해당 맴버변수들이 선언(이미존재했다면 수정)되는 이상한 동작(전혀 의도하지 않은)이 발생한다.</p>
+  </li>
+  <li>
+    <p>만약 ES5의 아래와 같이 “use strict”으로 선언되어있다면 어떨까?</p>
+
+    <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">User</span><span class="p">(</span><span class="nx">name</span><span class="p">,</span> <span class="nx">passwordHash</span><span class="p">){</span>
+  <span class="dl">"</span><span class="s2">use strict</span><span class="dl">"</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="nx">name</span><span class="p">;</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">passwordHash</span> <span class="o">=</span> <span class="nx">passwordHash</span>
+<span class="p">}</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>첫 행의 var u = User(“sfalken”,”231312jn3u82yh89da23232”);에서 에러가 발생한다.</p>
+
+    <ul>
+      <li>this.name에서 this가 정의되어 있지 않다는 에러가 발생한다.</li>
+      <li>여기서 알수있는점은 최소한 <strong>스트릭트가 포함된 생성자</strong>를 사용하면, 버그를 빨리 찾을 수 있다.</li>
+    </ul>
+  </li>
+  <li>
+    <p>그래도 여전히 User의 생성자는 불안정하다. 좀 더 안정적인 생성자를 제공하는 방법은 무엇일까?</p>
+
+    <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">User</span><span class="p">(</span><span class="nx">name</span><span class="p">,</span> <span class="nx">passwordHash</span><span class="p">){</span>
+  <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="p">(</span><span class="k">this</span> <span class="k">instanceof</span> <span class="nx">User</span><span class="p">)){</span>
+    <span class="k">return</span> <span class="k">new</span> <span class="nx">User</span><span class="p">(</span><span class="nx">name</span><span class="p">,</span><span class="nx">passwordHash</span><span class="p">);</span>
+  <span class="p">}</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="nx">name</span><span class="p">;</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">passwordHash</span> <span class="o">=</span> <span class="nx">passwordHash</span>
+<span class="p">}</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>위와 같은 방식을 사용하면 User가 함수로 호출되던 생성자로 호출되더 상관없이 User.prototype을 상속한 객체가 반환된다.</p>
+
+    <ul>
+      <li>그러나 추가적인 함수 호출(함수1번호출-&gt;생성자한번호출)이 필요하기 때문에 약간의 비용이 더 들어간다.</li>
+    </ul>
+  </li>
+  <li>
+    <p>또한 가변인사(Item21,22참고)를 사용하기도 어렵다. 이유는 가변 인자 함수를 생성자로 호출하기 위한 apply 메서드를 위한 직관적인 유사체가 없기 때문이다.</p>
+
+    <ul>
+      <li>[추가]</li>
+      <li>또한 Object.create는 ES5에서 실행가능하다. 그 이전버전에 대한 예는 책을 참조하라.</li>
+    </ul>
+  </li>
+</ul>
+
+<h4 id="기억할-점-1">기억할 점</h4>
+
+<ul>
+  <li>생성자가 함수로 호출되어도 동작하도록 만들어라(자기자신을 new로 반환하던지, Object,create를 사용해서).</li>
+  <li>함수가 new로 호출되기를 원한다면, 여기에 대한 문서에 명백히 명시하라(주석도 당연히 추가).</li>
+</ul>
+
+<h2 id="item34-메서드를-프로토타입에-저장하라">Item34. 메서드를 프로토타입에 저장하라</h2>
+
+<ul>
+  <li>
+    <p>자바스크립트 클래스에서 prototype을 쓰지않고도 메소드정의가 가능은하다.</p>
+  </li>
+  <li>
+    <p>그래서 Item30에서 구현한 User클래스를 다음과 같이 정의가 가능하다.</p>
+
+    <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">User</span><span class="p">(</span><span class="nx">name</span><span class="p">,</span> <span class="nx">passwordHash</span><span class="p">){</span>
+    
+  <span class="k">this</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="nx">name</span><span class="p">;</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">passwordHash</span> <span class="o">=</span> <span class="nx">passwordHash</span><span class="p">;</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">toString</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(){</span>
+  	<span class="k">return</span> <span class="dl">"</span><span class="s2">[User </span><span class="dl">"</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">name</span> <span class="o">+</span> <span class="dl">"</span><span class="s2">]</span><span class="dl">"</span><span class="p">;</span>
+  <span class="p">};</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">checkPassword</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">password</span><span class="p">){</span>
+    <span class="k">return</span> <span class="nx">hash</span><span class="p">(</span><span class="nx">password</span><span class="p">)</span> <span class="o">===</span> <span class="k">this</span><span class="p">.</span><span class="nx">passwordHash</span>
+  <span class="p">};</span>
+<span class="p">}</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>어떤 경우(책에는 대부분이라고 표현한), 이 클래스는 원래 의도한 목적대로 동작한다.</p>
+  </li>
+  <li>
+    <p>하지만 <strong>여러개의 인스턴스를 생성</strong>하는 경우 <strong>prototype의 사용여부는 중요한 차이</strong>를 만든다. 다음그림을 통해 쉽게 이해할 수 있다.
+그림</p>
+  </li>
+  <li>
+    <p>위는 prototype이 아닌, 아래는 prototype으로 메소드를 선언한 클래스이다. 그림에서도 알 수 있듯, prototype으로 선언하지 않으면 각 인스턴스에 클래스를 복사해 따로 관리(메모리공간을)하고, prototype으로 공유된 영역에 prototype chain연결을 통해 사용된다.</p>
+  </li>
+  <li>
+    <p>어떤면에서 보면 위 경우가 prototype chain에 대한 탐색이 불필요해서 더 빠르다고 생각할 수 있지만 최신 자바스크립트 엔진은 prototype chain 탐색이 고도로 최적화 되어있다.</p>
+  </li>
+  <li>
+    <p>즉 메모리최적화를 위해서는 무조건 prototype을 사용해라. 그리고 이게 더 자바스크립트 클래스에 대한  encapsulation에 friendly한 방법이다.</p>
+  </li>
+  <li>
+    <p>추가적으로 인스턴스에 메소드 복사 시(즉, prototype을 사용하지 않을때) 각 인스별로 메소드를 따로 지정 및 변경이 가능하다.</p>
+
+    <ul>
+      <li>그렇지만 이렇게 사용하는 경우의 거의없다. 이러만 방법이 필요하다면 객체지향적관점에서의 설계를 다시 진행해야 할 것이다.</li>
+    </ul>
+  </li>
+</ul>
+
+<h4 id="기억할-점-2">기억할 점</h4>
+
+<ul>
+  <li>prototype사용과 사용하지 않을 때의 차이점을 이해하고 사용하라.</li>
+  <li><strong>클래스에 대한 메서드 생성시 무조건 prototype사용하라.</strong></li>
+</ul>
+
+<h2 id="item35-비공개-데이터를-저장하기-위해-클로저를-사용하라">Item35. 비공개 데이터를 저장하기 위해 클로저를 사용하라</h2>
+
+<h2 id="item36-인스턴스의-상태는-인스턴스-객체에만-저장하라">Item36. 인스턴스의 상태는 인스턴스 객체에만 저장하라</h2>
+
+<h2 id="item37-this의-명시적인-바인딩에-대해-이해하라">Item37. this의 명시적인 바인딩에 대해 이해하라</h2>
+
+<h2 id="item38-하위-클래스-생성자에서-상위-클래스-생성자를-호출하라">Item38. 하위 클래스 생성자에서 상위 클래스 생성자를 호출하라</h2>
+
+<h2 id="item39-상위-클래스-프로퍼티-이름을-절대-재사용하지-마라">Item39. 상위 클래스 프로퍼티 이름을 절대 재사용하지 마라</h2>
+
+<h2 id="item40-표준-클래스를-상속하지-마라">Item40. 표준 클래스를 상속하지 마라</h2>
+
+<h2 id="item41-프로토타입을-세부-구현-사항처럼-처리하라">Item41. 프로토타입을 세부 구현 사항처럼 처리하라</h2>
+
+<h2 id="item42-무모한-몽키-패칭을-하지마라">Item42. 무모한 몽키 패칭을 하지마라</h2>
+
+
+		
+  </div>
+
+  <div class="parent f-right">
+    <!-- Twitter -->
+    <a href="https://twitter.com/share?url=https://thereviewindex.com/blog/2018/05/23/effective-javascript-4/&amp;text=이펙티브 자바스크립트 #4&amp;hashtags=thereviewindex" target="_blank">
+      <span class="social-icon">  
+        <svg class="svgIcon-use" width="29" height="29" viewBox="0 0 29 29"><path d="M21.967 11.8c.018 5.93-4.607 11.18-11.177 11.18-2.172 0-4.25-.62-6.047-1.76l-.268.422-.038.5.186.013.168.012c.3.02.44.032.6.046 2.06-.026 3.95-.686 5.49-1.86l1.12-.85-1.4-.048c-1.57-.055-2.92-1.08-3.36-2.51l-.48.146-.05.5c.22.03.48.05.75.08.48-.02.87-.07 1.25-.15l2.33-.49-2.32-.49c-1.68-.35-2.91-1.83-2.91-3.55 0-.05 0-.01-.01.03l-.49-.1-.25.44c.63.36 1.35.57 2.07.58l1.7.04L7.4 13c-.978-.662-1.59-1.79-1.618-3.047a4.08 4.08 0 0 1 .524-1.8l-.825.07a12.188 12.188 0 0 0 8.81 4.515l.59.033-.06-.59v-.02c-.05-.43-.06-.63-.06-.87a3.617 3.617 0 0 1 6.27-2.45l.2.21.28-.06c1.01-.22 1.94-.59 2.73-1.09l-.75-.56c-.1.36-.04.89.12 1.36.23.68.58 1.13 1.17.85l-.21-.45-.42-.27c-.52.8-1.17 1.48-1.92 2L22 11l.016.28c.013.2.014.35 0 .52v.04zm.998.038c.018-.22.017-.417 0-.66l-.498.034.284.41a8.183 8.183 0 0 0 2.2-2.267l.97-1.48-1.6.755c.17-.08.3-.02.34.03a.914.914 0 0 1-.13-.292c-.1-.297-.13-.64-.1-.766l.36-1.254-1.1.695c-.69.438-1.51.764-2.41.963l.48.15a4.574 4.574 0 0 0-3.38-1.484 4.616 4.616 0 0 0-4.61 4.613c0 .29.02.51.08.984l.01.02.5-.06.03-.5c-3.17-.18-6.1-1.7-8.08-4.15l-.48-.56-.36.64c-.39.69-.62 1.48-.65 2.28.04 1.61.81 3.04 2.06 3.88l.3-.92c-.55-.02-1.11-.17-1.6-.45l-.59-.34-.14.67c-.02.08-.02.16 0 .24-.01 2.12 1.55 4.01 3.69 4.46l.1-.49-.1-.49c-.33.07-.67.12-1.03.14-.18-.02-.43-.05-.64-.07l-.76-.09.23.73c.57 1.84 2.29 3.14 4.28 3.21l-.28-.89a8.252 8.252 0 0 1-4.85 1.66c-.12-.01-.26-.02-.56-.05l-.17-.01-.18-.01L2.53 21l1.694 1.07a12.233 12.233 0 0 0 6.58 1.917c7.156 0 12.2-5.73 12.18-12.18l-.002.04z"></path></svg>
+      </span>
+    </a>
+
+    &nbsp;&nbsp;&nbsp;
+    <!-- Facebook -->
+    <a href="http://www.facebook.com/sharer.php?u=https://thereviewindex.com/blog/2018/05/23/effective-javascript-4/" target="_blank">
+      <span class="social-icon">
+        <svg class="svgIcon-use" width="29" height="29" viewBox="0 0 29 29"><path d="M16.39 23.61v-5.808h1.846a.55.55 0 0 0 .546-.48l.36-2.797a.551.551 0 0 0-.547-.62H16.39V12.67c0-.67.12-.813.828-.813h1.474a.55.55 0 0 0 .55-.55V8.803a.55.55 0 0 0-.477-.545c-.436-.06-1.36-.116-2.22-.116-2.5 0-4.13 1.62-4.13 4.248v1.513H10.56a.551.551 0 0 0-.55.55v2.797c0 .304.248.55.55.55h1.855v5.76c-4.172-.96-7.215-4.7-7.215-9.1 0-5.17 4.17-9.36 9.31-9.36 5.14 0 9.31 4.19 9.31 9.36 0 4.48-3.155 8.27-7.43 9.15M14.51 4C8.76 4 4.1 8.684 4.1 14.46c0 5.162 3.75 9.523 8.778 10.32a.55.55 0 0 0 .637-.543v-6.985a.551.551 0 0 0-.55-.55H11.11v-1.697h1.855a.55.55 0 0 0 .55-.55v-2.063c0-2.02 1.136-3.148 3.03-3.148.567 0 1.156.027 1.597.06v1.453h-.924c-1.363 0-1.93.675-1.93 1.912v1.78c0 .3.247.55.55.55h2.132l-.218 1.69H15.84c-.305 0-.55.24-.55.55v7.02c0 .33.293.59.623.54 5.135-.7 9.007-5.11 9.007-10.36C24.92 8.68 20.26 4 14.51 4"></path></svg>
+      </span> 
+    </a>
+  </div>
+
+  <!-- Facebook Comments HTML -->
+  <div class="m-t-6e">
+    <div class="fb-comments" data-href="http://youngwonseo.github.io/2018/05/23/effective-javascript-4/" data-width="800" data-numposts="5"></div>
+  </div>
+
+</article>
+
+
+  
+  	  </main>
+  		
+  		  <!-- Pagination links -->
+        
+  
+  	  </div>
+  	    
+  	    <!-- Footer -->
+        <div class="m-t-6e">
+          <footer><span>&#169;2017 - TheReviewIndex</span></footer>
+
+        </div>
+  
+  	    <!-- Script -->
+        <script src="/js/main.js"></script>	
+
+  
+    </div>
+    
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-118401942-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-118401942-1');
+</script>
+  </body>
+</html>

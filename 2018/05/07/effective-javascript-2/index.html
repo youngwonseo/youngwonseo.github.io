@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+	<!-- Meta -->
+	<meta charset="UTF-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+	<meta name="generator" content="Jekyll">
+
+	<title>이펙티브 자바스크립트 #2</title>
+  <meta name="description" content="">
+
+	<!-- CSS & fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,500" rel="stylesheet">
+  <link rel="stylesheet" href="/css/main.css">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="이펙티브 자바스크립트 #2">
+  <meta property="og:type" content: "website">
+  <meta property="og:url" content= "https://thereviewindex.com/blog/2018/05/07/effective-javascript-2/">
+  <meta property="og:description" content="">
+  <meta property="og:locale" content= "en_US">
+  <meta property="og:site_name" content="The Review Index">
+  <meta property="og:image" content="https://thereviewindex.com/blog/">
+  <meta property="og:image:url" content="https://thereviewindex.com/blog/">
+  <meta property="og:image:secure_url" content="https://thereviewindex.com/blog/">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="1200">
+  
+  <!-- twitter card -->
+  <meta property="twitter:card" content="summary">
+  <meta property="twitter:title" content="이펙티브 자바스크립트 #2">
+  <meta property="twitter:description" content="">
+  <meta property="twitter:url" content= "https://thereviewindex.com/blog/2018/05/07/effective-javascript-2/">
+  <meta property="twitter:image" content="https://thereviewindex.com/blog/">
+
+
+	<!-- RSS -->
+	<link href="/atom.xml" type="application/atom+xml" rel="alternate" title="ATOM Feed" />
+
+  <!-- Favicon -->
+  <link rel="shortcut icon" type="image/png" href="img/favicon.png">
+
+
+  <!-- Google Analytics -->
+  <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  
+  ga('create', 'UA-78263144-1', 'auto');
+  ga('send', 'pageview');
+  </script>
+  <!-- End Google Analytics -->
+
+</head>
+
+  <body>
+    
+    <!-- Facebook Comments Script -->
+    <div id="fb-root"></div>
+      <script>(function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = 'https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v2.11&appId=288262758360783';
+        fjs.parentNode.insertBefore(js, fjs);
+      }(document, 'script', 'facebook-jssdk'));</script>
+  
+    <div id="wrap">
+  	  	
+  	  	<!-- Navigation -->
+  	  	<nav id="nav">
+	<div id="nav-list">
+		<a href="/">Home</a>
+
+		<!-- Nav pages -->
+	  
+	    
+	  
+	    
+	  
+	    
+	      <a href="/about/" title="About">About</a>
+	    
+	  
+	    
+	      <a href="/archive/" title="Archive">Archive</a>
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	      <a href="/ml/" title="Machine Learning">Machine Learning</a>
+	    
+	  
+	    
+	      <a href="/paper_review/" title="Paper Review">Paper Review</a>
+	    
+	  
+	    
+	      <a href="/projects/" title="Projects">Projects</a>
+	    
+	  
+	    
+	  
+	    
+	      <a href="/study/" title="Study">Study</a>
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+    
+    <!-- Nav links -->
+	  <!-- <a href="/">Blog</a> -->
+
+
+	</div>
+  
+  <!-- Nav footer -->
+	
+	  <footer>
+	
+	<!-- Your custom nav footer here -->
+	
+</footer>
+	
+
+</nav>
+
+      
+      <!-- Icon menu -->
+  	  <a id="nav-menu">
+  	  	<div id="menu"></div>
+  	  </a>
+  
+        <!-- Header -->
+        
+          <header id="header">
+
+	<!-- Your custom header here -->
+	<span class="f-left">  
+		<a href="/">
+			<h1>
+				<span>Youngwon Seo</span>
+			</h1>
+		</a>
+	</span>
+
+	<span id="nav-links" class="absolute right bottom">
+		<!-- Nav pages -->
+		
+			
+		
+			
+		
+			
+				<a href="/about/" title="About">About</a>
+			
+		
+			
+				<a href="/archive/" title="Archive">Archive</a>
+			
+		
+			
+		
+			
+		
+			
+		
+			
+				<a href="/ml/" title="Machine Learning">Machine Learning</a>
+			
+		
+			
+				<a href="/paper_review/" title="Paper Review">Paper Review</a>
+			
+		
+			
+				<a href="/projects/" title="Projects">Projects</a>
+			
+		
+			
+		
+			
+				<a href="/study/" title="Study">Study</a>
+			
+		
+			
+		
+			
+		
+			
+		
+			
+		
+			
+		
+			
+		
+			
+		
+			
+		
+			
+		
+		
+		<!-- Nav links -->
+		<!-- <a href="/">Blog</a> -->
+
+	</span>
+	
+	<!-- Google Analytics -->
+  <script>
+		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+		
+		ga('create', 'UA-78263144-1', 'auto');
+		ga('send', 'pageview');
+		</script>
+		<!-- End Google Analytics -->
+</header>
+
+
+        
+  
+      <!-- Main content -->
+  	  <div id="container">
+  		  
+  		<main>
+  
+  			<article id="post-page">
+  <div class="parent f-right">
+    <!-- Twitter -->
+    <a href="https://twitter.com/share?url=https://thereviewindex.com/blog/2018/05/07/effective-javascript-2/&amp;text=이펙티브 자바스크립트 #2&amp;hashtags=thereviewindex" target="_blank">
+      <span class="social-icon">  
+        <svg class="svgIcon-use" width="29" height="29" viewBox="0 0 29 29"><path d="M21.967 11.8c.018 5.93-4.607 11.18-11.177 11.18-2.172 0-4.25-.62-6.047-1.76l-.268.422-.038.5.186.013.168.012c.3.02.44.032.6.046 2.06-.026 3.95-.686 5.49-1.86l1.12-.85-1.4-.048c-1.57-.055-2.92-1.08-3.36-2.51l-.48.146-.05.5c.22.03.48.05.75.08.48-.02.87-.07 1.25-.15l2.33-.49-2.32-.49c-1.68-.35-2.91-1.83-2.91-3.55 0-.05 0-.01-.01.03l-.49-.1-.25.44c.63.36 1.35.57 2.07.58l1.7.04L7.4 13c-.978-.662-1.59-1.79-1.618-3.047a4.08 4.08 0 0 1 .524-1.8l-.825.07a12.188 12.188 0 0 0 8.81 4.515l.59.033-.06-.59v-.02c-.05-.43-.06-.63-.06-.87a3.617 3.617 0 0 1 6.27-2.45l.2.21.28-.06c1.01-.22 1.94-.59 2.73-1.09l-.75-.56c-.1.36-.04.89.12 1.36.23.68.58 1.13 1.17.85l-.21-.45-.42-.27c-.52.8-1.17 1.48-1.92 2L22 11l.016.28c.013.2.014.35 0 .52v.04zm.998.038c.018-.22.017-.417 0-.66l-.498.034.284.41a8.183 8.183 0 0 0 2.2-2.267l.97-1.48-1.6.755c.17-.08.3-.02.34.03a.914.914 0 0 1-.13-.292c-.1-.297-.13-.64-.1-.766l.36-1.254-1.1.695c-.69.438-1.51.764-2.41.963l.48.15a4.574 4.574 0 0 0-3.38-1.484 4.616 4.616 0 0 0-4.61 4.613c0 .29.02.51.08.984l.01.02.5-.06.03-.5c-3.17-.18-6.1-1.7-8.08-4.15l-.48-.56-.36.64c-.39.69-.62 1.48-.65 2.28.04 1.61.81 3.04 2.06 3.88l.3-.92c-.55-.02-1.11-.17-1.6-.45l-.59-.34-.14.67c-.02.08-.02.16 0 .24-.01 2.12 1.55 4.01 3.69 4.46l.1-.49-.1-.49c-.33.07-.67.12-1.03.14-.18-.02-.43-.05-.64-.07l-.76-.09.23.73c.57 1.84 2.29 3.14 4.28 3.21l-.28-.89a8.252 8.252 0 0 1-4.85 1.66c-.12-.01-.26-.02-.56-.05l-.17-.01-.18-.01L2.53 21l1.694 1.07a12.233 12.233 0 0 0 6.58 1.917c7.156 0 12.2-5.73 12.18-12.18l-.002.04z"></path></svg>
+      </span>
+    </a>
+
+    &nbsp;&nbsp;&nbsp;
+    <!-- Facebook -->
+    <a href="http://www.facebook.com/sharer.php?u=https://thereviewindex.com/blog/2018/05/07/effective-javascript-2/" target="_blank">
+      <span class="social-icon">
+        <svg class="svgIcon-use" width="29" height="29" viewBox="0 0 29 29"><path d="M16.39 23.61v-5.808h1.846a.55.55 0 0 0 .546-.48l.36-2.797a.551.551 0 0 0-.547-.62H16.39V12.67c0-.67.12-.813.828-.813h1.474a.55.55 0 0 0 .55-.55V8.803a.55.55 0 0 0-.477-.545c-.436-.06-1.36-.116-2.22-.116-2.5 0-4.13 1.62-4.13 4.248v1.513H10.56a.551.551 0 0 0-.55.55v2.797c0 .304.248.55.55.55h1.855v5.76c-4.172-.96-7.215-4.7-7.215-9.1 0-5.17 4.17-9.36 9.31-9.36 5.14 0 9.31 4.19 9.31 9.36 0 4.48-3.155 8.27-7.43 9.15M14.51 4C8.76 4 4.1 8.684 4.1 14.46c0 5.162 3.75 9.523 8.778 10.32a.55.55 0 0 0 .637-.543v-6.985a.551.551 0 0 0-.55-.55H11.11v-1.697h1.855a.55.55 0 0 0 .55-.55v-2.063c0-2.02 1.136-3.148 3.03-3.148.567 0 1.156.027 1.597.06v1.453h-.924c-1.363 0-1.93.675-1.93 1.912v1.78c0 .3.247.55.55.55h2.132l-.218 1.69H15.84c-.305 0-.55.24-.55.55v7.02c0 .33.293.59.623.54 5.135-.7 9.007-5.11 9.007-10.36C24.92 8.68 20.26 4 14.51 4"></path></svg>
+      </span> 
+    </a>
+  </div>
+  
+  <h2>이펙티브 자바스크립트 #2</h2>		
+	<div class="by-line parent">
+    <time datetime="2018-05-07T00:00:00+09:00"> <i>07 May 2018</i> </time>
+    &nbsp;&nbsp; &middot; &nbsp;&nbsp;
+    <span><i></i> </span>
+  </div>
+	<div class="content">
+
+		<h1 id="2장-변수-스코프">2장 변수 스코프</h1>
+
+<h2 id="item8-전역-객체의-사용을-최소화하라">Item8. 전역 객체의 사용을 최소화하라</h2>
+
+<ul>
+  <li>자바스크립트는 쉽게 전역변수를 만들 수 있다(선언하지 않고 사용하면된다).</li>
+  <li>그러나 숙련된 프로그래머라면 전역변수를 사용하지 않아야 하는 이유을 알고 있을 것이다.
+    <ul>
+      <li>공통 네임스페이스에 대한 침해(이름충돌의 가능성)</li>
+    </ul>
+  </li>
+  <li>그럼에도 불구하고 전역변수는, 특히 자바스크립트에서의 전역변수는 “일단 사용하고 나중에 정리하자” 라는 식으로 사용될 정도로 편리하다.
+    <ul>
+      <li>그러나 당연히 좋지 않은 방법이다.</li>
+    </ul>
+  </li>
+  <li>다음과 같은 경우에는 전역 변수의 사용은 불가피하다.
+    <ul>
+      <li><strong>외부 라이브러리나 컴포넌트</strong>들을 사용자에게 제공하기 위해서는 window(전역변수)에 바인딩된다.</li>
+      <li><strong>기능탐지 여부</strong>를 위해 해당기능에 대한 전역변수의 존재여부를 검사한다.</li>
+    </ul>
+  </li>
+</ul>
+
+<h4 id="기억할-점">기억할 점</h4>
+
+<ul>
+  <li>(가능하다면)전역변수를 사용하지 말자.</li>
+  <li>단 외부라이브러리, 또는 플랫폼의 기능탐지 여부를 검사할때만 사용하자.</li>
+</ul>
+
+<h2 id="item9-항상-지역-변수를-선언하라">Item9. 항상 지역 변수를 선언하라</h2>
+
+<ul>
+  <li>
+    <p>항상 지역변수를 사용하라는 것이 아니라 <strong>선언</strong>하라는 것을 이해하자.</p>
+  </li>
+  <li>
+    <p>즉 특정 구역에서 var선언 없이 변수를 사용하면 전역객체에 바인딩된다.</p>
+
+    <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">for</span><span class="p">(</span><span class="nx">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="nx">i</span><span class="o">&lt;</span><span class="mi">10</span><span class="p">;</span><span class="nx">i</span><span class="o">++</span><span class="p">){</span>
+    <span class="nx">temp</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="p">...</span>
+<span class="p">}</span>
+      
+<span class="k">for</span><span class="p">(</span><span class="kd">var</span> <span class="nx">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="nx">i</span><span class="o">&lt;</span><span class="mi">10</span><span class="p">;</span><span class="nx">i</span><span class="o">++</span><span class="p">){</span>
+    <span class="kd">var</span> <span class="nx">temp</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="p">...</span>
+<span class="p">}</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>위의 경우 i와 temp가 선언(var)이 없다. 즉 전역객체에 i와 temp가 선언된다.</p>
+  </li>
+  <li>
+    <p>해당 스코프 이외에서 사용하지도 않을 변수들이 전역변수 사용됨으로써 네임스코드가 더러워진다.</p>
+  </li>
+</ul>
+
+<h4 id="기억할-점-1">기억할 점</h4>
+
+<ul>
+  <li>지역변수 사용시 항상 var를 붙혀 선언을 하자.</li>
+</ul>
+
+<h2 id="item10-with를-사용하지-마라">Item10. with를 사용하지 마라</h2>
+
+<ul>
+  <li>​</li>
+</ul>
+
+<h2 id="item11-클로저closure에-익숙해져라">Item11. 클로저(closure)에 익숙해져라</h2>
+
+<h4 id="클로저를-이해하기위해서는-단지-세-가지-기본적인-사실만-배우면된다">클로저를 이해하기위해서는 단지 세 가지 기본적인 사실만 배우면된다.</h4>
+
+<h5 id="첫-번째-자바스크립트는-현재-함수-외부make에서-선언된-변수를-참조할-수-있다">첫 번째, 자바스크립트는 현재 함수 외부(make)에서 선언된 변수를 참조할 수 있다.</h5>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">makeSandwich</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">magicIngredient</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">peanut butter</span><span class="dl">"</span><span class="p">;</span>
+    <span class="kd">function</span> <span class="nx">make</span><span class="p">(</span><span class="nx">filling</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nx">magicIngredient</span> <span class="o">+</span> <span class="dl">"</span><span class="s2"> and </span><span class="dl">"</span> <span class="o">+</span> <span class="nx">filling</span><span class="p">;</span> <span class="c1">//내부변수 masicIngredient 참조!</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="nx">make</span><span class="p">(</span><span class="dl">"</span><span class="s2">jelly</span><span class="dl">"</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="nx">makeSandwitch</span><span class="p">();</span> <span class="c1">//"peanut butter and jellly"</span>
+</code></pre></div></div>
+
+<ul>
+  <li>makeSandwich함수 내부의 make함수가 함수 외부에 선언된 magicIngredient를 참조한다는 사실을 주목하라!</li>
+</ul>
+
+<h5 id="두-번째-외부함수sandwichmaker에서-내부함수make를-리턴한-후에도-외부함수의-변수를-참조할-수-있다">두 번째, 외부함수(sandwichMaker)에서 내부함수(make)를 리턴한 후에도 외부함수의 변수를 참조할 수 있다.</h5>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">sandwichMaker</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">magicIngredient</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">peanut butter</span><span class="dl">"</span><span class="p">;</span>
+    <span class="kd">function</span> <span class="nx">make</span><span class="p">(</span><span class="nx">filling</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nx">magicIngredient</span> <span class="o">+</span> <span class="dl">"</span><span class="s2"> and </span><span class="dl">"</span> <span class="o">+</span> <span class="nx">filling</span><span class="p">;</span> 
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="nx">make</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kd">var</span> <span class="nx">f</span> <span class="o">=</span> <span class="nx">sandwichMaker</span><span class="p">();</span>
+<span class="nx">f</span><span class="p">(</span><span class="dl">"</span><span class="s2">jelly</span><span class="dl">"</span><span class="p">);</span> <span class="c1">//"peanut butter and jelly"</span>
+<span class="nx">f</span><span class="p">(</span><span class="dl">"</span><span class="s2">bananas</span><span class="dl">"</span><span class="p">);</span> <span class="c1">//"peanut butter and bananas"</span>
+<span class="nx">f</span><span class="p">(</span><span class="dl">"</span><span class="s2">marshmallows</span><span class="dl">"</span><span class="p">);</span> <span class="c1">//"peanut butter and marshmallows"</span>
+</code></pre></div></div>
+
+<ul>
+  <li>자바스크립트에서는 함수가 일종의 객체이기 때문에 리턴이 가능하다.
+    <ul>
+      <li>이것이 이해가지 않는다면 Item19를 참조</li>
+    </ul>
+  </li>
+  <li>중요한점은 sandwichMaker함수가 호출이 완료(리턴이 완료)된 상황에서도 make함수는 외부함수의magicIngredient를 기억하고 있다.</li>
+  <li>어떻게 이런일이 가능할까?</li>
+  <li>이유는 자바스크립트에서는 함수가 <strong>현재 스코프에서 참조가능한 모든 변수를 내부적으로 보관</strong>한다.</li>
+  <li>함수 자신이 포함된 스코프의 변수를 추적하는 함수를 <strong>클로저</strong>라고 한다.
+    <ul>
+      <li>즉 위예에서  make는 magicIngredient와 filling 두 개의 외부 변수를 참조하는 클로저이다.</li>
+    </ul>
+  </li>
+  <li>클로저는 자바스크립트에서 가장 우아하고 표현력이 높은 기능 중 하나이고, 많은 유용한 코딩 관례들의 중심이 된다.
+    <ul>
+      <li>제대로 우아하게 사용하기 위해서는 많은 연습이 필요하다.</li>
+    </ul>
+  </li>
+</ul>
+
+<h5 id="세-번째-클로저가-외부-변수의-값을-변경할-수-있다">세 번째, 클로저가 외부 변수의 값을 변경할 수 있다,</h5>
+
+<ul>
+  <li>클로저는 외부 변수값을 복사해서 가지고 있는 것이 아니라 참조를 가지고 있다.</li>
+  <li>즉 위예에서 여러개의 make를 반환해도 외부참조인 masicIngredient는 하나이다.</li>
+</ul>
+
+<h4 id="기억할-점-2">기억할 점</h4>
+
+<ul>
+  <li>함수는 외부 스코프에 선언된 변수를 참조할 수 있다,</li>
+  <li>클로저는 자신을 생성한 함수보다 더 오래 지속된다.</li>
+  <li>클로저는 내부적으로 외부 변수에 대한 참조를 저장 및 변경할 수 있다.</li>
+</ul>
+
+<h2 id="item12-변수-호이스팅에-대해-이해하라">Item12. 변수 호이스팅에 대해 이해하라</h2>
+
+<ul>
+  <li>
+    <p>자바스크립트에서는 몇몇 예외를 제외하고는 어휘적 스코프(lexical scope)를 지원한다,</p>
+  </li>
+  <li>
+    <p>특정 변수에 접근 시,  해당 변수가 정의된 가장 가까운 스코프를 향한다.</p>
+  </li>
+  <li>
+    <p>다음과 같은 예를 보자.</p>
+
+    <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">isWinner</span><span class="p">(</span><span class="nx">player</span><span class="p">,</span> <span class="nx">others</span><span class="p">){</span>
+    <span class="kd">var</span> <span class="nx">highest</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">for</span><span class="p">(</span><span class="kd">var</span> <span class="nx">i</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="nx">n</span><span class="o">=</span><span class="nx">others</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">&lt;</span><span class="nx">n</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">){</span>
+     	<span class="kd">var</span> <span class="nx">player</span> <span class="o">=</span> <span class="nx">others</span><span class="p">[</span><span class="nx">i</span><span class="p">];</span>
+        <span class="k">if</span><span class="p">(</span><span class="nx">player</span><span class="p">.</span><span class="nx">score</span> <span class="o">&gt;</span> <span class="nx">highest</span><span class="p">){</span>
+            <span class="nx">highest</span> <span class="o">=</span> <span class="nx">player</span><span class="p">.</span><span class="nx">score</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="nx">player</span><span class="p">.</span><span class="nx">score</span> <span class="o">&gt;</span> <span class="nx">highest</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>특정 플레이어가 나머지 플레이어들의 최고점수보다 높냐를 판단한다.</p>
+  </li>
+  <li>
+    <p>자바스크립트를 제외한 몇몇의 언어에서는 위와 같은 식의 표현이 가능하다. 하지만 자바스크립트에서는 의도한데로 동작하지 않는다.</p>
+  </li>
+  <li>
+    <p>이유는 반복문안의 var player에 있다. player의 내부선언은 해당 반복문안에서의 스코프가 아닌 외부(파라미터)의 player에 대한 재선언일 뿐이다.</p>
+  </li>
+  <li>
+    <p>또한 반복문이 반복될때마다 동일한 변수를 덮어쓰는 꼴이 된다.</p>
+  </li>
+  <li>
+    <p>그래서 결과로 return 을 할때 player는 입력된 파라미터의 player가 아닌 마지막 반복시 선언된 player가 된다.</p>
+  </li>
+  <li>
+    <p><strong>즉, 변수의 스코프는 중괄호가 아닌 함수이다.</strong></p>
+  </li>
+  <li>
+    <p>다음의 예제를 보자</p>
+
+    <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">test</span><span class="p">(){</span>
+    <span class="k">for</span><span class="p">(</span><span class="kd">var</span> <span class="nx">i</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="nx">n</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="nx">i</span> <span class="p">...){...}</span>
+    <span class="k">for</span><span class="p">(</span><span class="kd">var</span> <span class="nx">i</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="nx">n</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="nx">i</span> <span class="p">...){...}</span>
+    <span class="k">for</span><span class="p">(</span><span class="kd">var</span> <span class="nx">i</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="nx">n</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="nx">i</span> <span class="p">...){...}</span>
+<span class="p">}</span>
+          
+<span class="c1">//호이스팅</span>
+<span class="kd">function</span> <span class="nx">test</span><span class="p">(){</span>
+    <span class="kd">var</span> <span class="nx">i</span><span class="p">,</span><span class="nx">n</span><span class="p">;</span>
+    <span class="k">for</span><span class="p">(</span><span class="nx">i</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="nx">n</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="nx">i</span> <span class="p">...){...}</span>
+    <span class="k">for</span><span class="p">(</span><span class="nx">i</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="nx">n</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="nx">i</span> <span class="p">...){...}</span>
+    <span class="k">for</span><span class="p">(</span><span class="nx">i</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="nx">n</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="nx">i</span> <span class="p">...){...}</span>
+<span class="p">}</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>위의 test는 각 반복문에서 i와 n을 선언하고 있지만 자바스크립트의 스코프는 함수이다.</p>
+  </li>
+  <li>
+    <p>즉 세개의 반복문에서 참조하는 i와 n은 같다.</p>
+  </li>
+  <li>
+    <p>자바스크립트에서는 내부적으로 위의 test를 아래와 같이 변경한다.</p>
+
+    <ul>
+      <li>그리고 선언이 스코프가장 위에 올리는 것의 호이스팅이라 한다.</li>
+    </ul>
+  </li>
+  <li>
+    <p>한 가지 변수 스코프의 예외적인 사항이 있다면 try catch의 exception에 대한 변수이다.</p>
+
+    <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">test</span><span class="p">(){</span>
+    <span class="kd">var</span> <span class="nx">x</span> <span class="o">=</span> <span class="p">..</span>    
+    <span class="k">try</span><span class="p">{</span>        
+    <span class="p">}</span><span class="k">catch</span><span class="p">(</span><span class="nx">x</span><span class="p">){</span>
+        <span class="nx">x</span> <span class="c1">//위 선언된 x와는 다른 x</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<h4 id="기억할-점-3">기억할 점</h4>
+
+<ul>
+  <li>블록 내의 변수는 암묵적으로 그 변수가 해당하는 스코프의 가장윗부분으로 호이스팅된다,</li>
+  <li>변수재선언은 하나의 변수처럼 처리된다.</li>
+  <li>혼란을 막기위에 프로그래머가 직접 가장위에 선언하는 것을 고려하라.</li>
+</ul>
+
+<h2 id="item13-지역-변수-스코프를-만들기-위해-즉시-실행-함수-표현식을-사용하라">Item13. 지역 변수 스코프를 만들기 위해 즉시 실행 함수 표현식을 사용하라</h2>
+
+<h2 id="item14-기명-함수-표현식의-스코프에-주의하라">Item14. 기명 함수 표현식의 스코프에 주의하라</h2>
+
+<h2 id="item15-블록-지역-함수-선언문의-스코프에-주의하라">Item15. 블록-지역 함수 선언문의 스코프에 주의하라</h2>
+
+<h2 id="item16-eval을-사용해서-지역-변수를-생성하지-마라">Item16. eval을 사용해서 지역 변수를 생성하지 마라</h2>
+
+<h2 id="item17-직접적인-eval보다-간접적인-eval을-사용하라">Item17. 직접적인 eval보다 간접적인 eval을 사용하라</h2>
+
+<h2 id="references">References</h2>
+<ul>
+  <li><a href="http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&amp;mallGb=KOR&amp;barcode=9788966260850&amp;orderClick=LAG&amp;Kc=">이펙티브 자바스트립트 - 데이티브 허먼지음, 김준기 옮김(인사이트)</a></li>
+</ul>
+
+		
+  </div>
+
+  <div class="parent f-right">
+    <!-- Twitter -->
+    <a href="https://twitter.com/share?url=https://thereviewindex.com/blog/2018/05/07/effective-javascript-2/&amp;text=이펙티브 자바스크립트 #2&amp;hashtags=thereviewindex" target="_blank">
+      <span class="social-icon">  
+        <svg class="svgIcon-use" width="29" height="29" viewBox="0 0 29 29"><path d="M21.967 11.8c.018 5.93-4.607 11.18-11.177 11.18-2.172 0-4.25-.62-6.047-1.76l-.268.422-.038.5.186.013.168.012c.3.02.44.032.6.046 2.06-.026 3.95-.686 5.49-1.86l1.12-.85-1.4-.048c-1.57-.055-2.92-1.08-3.36-2.51l-.48.146-.05.5c.22.03.48.05.75.08.48-.02.87-.07 1.25-.15l2.33-.49-2.32-.49c-1.68-.35-2.91-1.83-2.91-3.55 0-.05 0-.01-.01.03l-.49-.1-.25.44c.63.36 1.35.57 2.07.58l1.7.04L7.4 13c-.978-.662-1.59-1.79-1.618-3.047a4.08 4.08 0 0 1 .524-1.8l-.825.07a12.188 12.188 0 0 0 8.81 4.515l.59.033-.06-.59v-.02c-.05-.43-.06-.63-.06-.87a3.617 3.617 0 0 1 6.27-2.45l.2.21.28-.06c1.01-.22 1.94-.59 2.73-1.09l-.75-.56c-.1.36-.04.89.12 1.36.23.68.58 1.13 1.17.85l-.21-.45-.42-.27c-.52.8-1.17 1.48-1.92 2L22 11l.016.28c.013.2.014.35 0 .52v.04zm.998.038c.018-.22.017-.417 0-.66l-.498.034.284.41a8.183 8.183 0 0 0 2.2-2.267l.97-1.48-1.6.755c.17-.08.3-.02.34.03a.914.914 0 0 1-.13-.292c-.1-.297-.13-.64-.1-.766l.36-1.254-1.1.695c-.69.438-1.51.764-2.41.963l.48.15a4.574 4.574 0 0 0-3.38-1.484 4.616 4.616 0 0 0-4.61 4.613c0 .29.02.51.08.984l.01.02.5-.06.03-.5c-3.17-.18-6.1-1.7-8.08-4.15l-.48-.56-.36.64c-.39.69-.62 1.48-.65 2.28.04 1.61.81 3.04 2.06 3.88l.3-.92c-.55-.02-1.11-.17-1.6-.45l-.59-.34-.14.67c-.02.08-.02.16 0 .24-.01 2.12 1.55 4.01 3.69 4.46l.1-.49-.1-.49c-.33.07-.67.12-1.03.14-.18-.02-.43-.05-.64-.07l-.76-.09.23.73c.57 1.84 2.29 3.14 4.28 3.21l-.28-.89a8.252 8.252 0 0 1-4.85 1.66c-.12-.01-.26-.02-.56-.05l-.17-.01-.18-.01L2.53 21l1.694 1.07a12.233 12.233 0 0 0 6.58 1.917c7.156 0 12.2-5.73 12.18-12.18l-.002.04z"></path></svg>
+      </span>
+    </a>
+
+    &nbsp;&nbsp;&nbsp;
+    <!-- Facebook -->
+    <a href="http://www.facebook.com/sharer.php?u=https://thereviewindex.com/blog/2018/05/07/effective-javascript-2/" target="_blank">
+      <span class="social-icon">
+        <svg class="svgIcon-use" width="29" height="29" viewBox="0 0 29 29"><path d="M16.39 23.61v-5.808h1.846a.55.55 0 0 0 .546-.48l.36-2.797a.551.551 0 0 0-.547-.62H16.39V12.67c0-.67.12-.813.828-.813h1.474a.55.55 0 0 0 .55-.55V8.803a.55.55 0 0 0-.477-.545c-.436-.06-1.36-.116-2.22-.116-2.5 0-4.13 1.62-4.13 4.248v1.513H10.56a.551.551 0 0 0-.55.55v2.797c0 .304.248.55.55.55h1.855v5.76c-4.172-.96-7.215-4.7-7.215-9.1 0-5.17 4.17-9.36 9.31-9.36 5.14 0 9.31 4.19 9.31 9.36 0 4.48-3.155 8.27-7.43 9.15M14.51 4C8.76 4 4.1 8.684 4.1 14.46c0 5.162 3.75 9.523 8.778 10.32a.55.55 0 0 0 .637-.543v-6.985a.551.551 0 0 0-.55-.55H11.11v-1.697h1.855a.55.55 0 0 0 .55-.55v-2.063c0-2.02 1.136-3.148 3.03-3.148.567 0 1.156.027 1.597.06v1.453h-.924c-1.363 0-1.93.675-1.93 1.912v1.78c0 .3.247.55.55.55h2.132l-.218 1.69H15.84c-.305 0-.55.24-.55.55v7.02c0 .33.293.59.623.54 5.135-.7 9.007-5.11 9.007-10.36C24.92 8.68 20.26 4 14.51 4"></path></svg>
+      </span> 
+    </a>
+  </div>
+
+  <!-- Facebook Comments HTML -->
+  <div class="m-t-6e">
+    <div class="fb-comments" data-href="http://youngwonseo.github.io/2018/05/07/effective-javascript-2/" data-width="800" data-numposts="5"></div>
+  </div>
+
+</article>
+
+
+  
+  	  </main>
+  		
+  		  <!-- Pagination links -->
+        
+  
+  	  </div>
+  	    
+  	    <!-- Footer -->
+        <div class="m-t-6e">
+          <footer><span>&#169;2017 - TheReviewIndex</span></footer>
+
+        </div>
+  
+  	    <!-- Script -->
+        <script src="/js/main.js"></script>	
+
+  
+    </div>
+    
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-118401942-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-118401942-1');
+</script>
+  </body>
+</html>

@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+	<!-- Meta -->
+	<meta charset="UTF-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+	<meta name="generator" content="Jekyll">
+
+	<title>자바스크립트 = Repaint와 Reflow</title>
+  <meta name="description" content="">
+
+	<!-- CSS & fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,500" rel="stylesheet">
+  <link rel="stylesheet" href="/css/main.css">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="자바스크립트 = Repaint와 Reflow">
+  <meta property="og:type" content: "website">
+  <meta property="og:url" content= "https://thereviewindex.com/blog/2019/07/08/js-repaint-reflow/">
+  <meta property="og:description" content="">
+  <meta property="og:locale" content= "en_US">
+  <meta property="og:site_name" content="The Review Index">
+  <meta property="og:image" content="https://thereviewindex.com/blog/">
+  <meta property="og:image:url" content="https://thereviewindex.com/blog/">
+  <meta property="og:image:secure_url" content="https://thereviewindex.com/blog/">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="1200">
+  
+  <!-- twitter card -->
+  <meta property="twitter:card" content="summary">
+  <meta property="twitter:title" content="자바스크립트 = Repaint와 Reflow">
+  <meta property="twitter:description" content="">
+  <meta property="twitter:url" content= "https://thereviewindex.com/blog/2019/07/08/js-repaint-reflow/">
+  <meta property="twitter:image" content="https://thereviewindex.com/blog/">
+
+
+	<!-- RSS -->
+	<link href="/atom.xml" type="application/atom+xml" rel="alternate" title="ATOM Feed" />
+
+  <!-- Favicon -->
+  <link rel="shortcut icon" type="image/png" href="img/favicon.png">
+
+
+  <!-- Google Analytics -->
+  <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  
+  ga('create', 'UA-78263144-1', 'auto');
+  ga('send', 'pageview');
+  </script>
+  <!-- End Google Analytics -->
+
+</head>
+
+  <body>
+    
+    <!-- Facebook Comments Script -->
+    <div id="fb-root"></div>
+      <script>(function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = 'https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v2.11&appId=288262758360783';
+        fjs.parentNode.insertBefore(js, fjs);
+      }(document, 'script', 'facebook-jssdk'));</script>
+  
+    <div id="wrap">
+  	  	
+  	  	<!-- Navigation -->
+  	  	<nav id="nav">
+	<div id="nav-list">
+		<a href="/">Home</a>
+
+		<!-- Nav pages -->
+	  
+	    
+	  
+	    
+	  
+	    
+	      <a href="/about/" title="About">About</a>
+	    
+	  
+	    
+	      <a href="/archive/" title="Archive">Archive</a>
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	      <a href="/ml/" title="Machine Learning">Machine Learning</a>
+	    
+	  
+	    
+	      <a href="/paper_review/" title="Paper Review">Paper Review</a>
+	    
+	  
+	    
+	      <a href="/projects/" title="Projects">Projects</a>
+	    
+	  
+	    
+	  
+	    
+	      <a href="/study/" title="Study">Study</a>
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+    
+    <!-- Nav links -->
+	  <!-- <a href="/">Blog</a> -->
+
+
+	</div>
+  
+  <!-- Nav footer -->
+	
+	  <footer>
+	
+	<!-- Your custom nav footer here -->
+	
+</footer>
+	
+
+</nav>
+
+      
+      <!-- Icon menu -->
+  	  <a id="nav-menu">
+  	  	<div id="menu"></div>
+  	  </a>
+  
+        <!-- Header -->
+        
+          <header id="header">
+
+	<!-- Your custom header here -->
+	<span class="f-left">  
+		<a href="/">
+			<h1>
+				<span>Youngwon Seo</span>
+			</h1>
+		</a>
+	</span>
+
+	<span id="nav-links" class="absolute right bottom">
+		<!-- Nav pages -->
+		
+			
+		
+			
+		
+			
+				<a href="/about/" title="About">About</a>
+			
+		
+			
+				<a href="/archive/" title="Archive">Archive</a>
+			
+		
+			
+		
+			
+		
+			
+		
+			
+				<a href="/ml/" title="Machine Learning">Machine Learning</a>
+			
+		
+			
+				<a href="/paper_review/" title="Paper Review">Paper Review</a>
+			
+		
+			
+				<a href="/projects/" title="Projects">Projects</a>
+			
+		
+			
+		
+			
+				<a href="/study/" title="Study">Study</a>
+			
+		
+			
+		
+			
+		
+			
+		
+			
+		
+			
+		
+			
+		
+			
+		
+			
+		
+			
+		
+		
+		<!-- Nav links -->
+		<!-- <a href="/">Blog</a> -->
+
+	</span>
+	
+	<!-- Google Analytics -->
+  <script>
+		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+		
+		ga('create', 'UA-78263144-1', 'auto');
+		ga('send', 'pageview');
+		</script>
+		<!-- End Google Analytics -->
+</header>
+
+
+        
+  
+      <!-- Main content -->
+  	  <div id="container">
+  		  
+  		<main>
+  
+  			<article id="post-page">
+  <div class="parent f-right">
+    <!-- Twitter -->
+    <a href="https://twitter.com/share?url=https://thereviewindex.com/blog/2019/07/08/js-repaint-reflow/&amp;text=자바스크립트 = Repaint와 Reflow&amp;hashtags=thereviewindex" target="_blank">
+      <span class="social-icon">  
+        <svg class="svgIcon-use" width="29" height="29" viewBox="0 0 29 29"><path d="M21.967 11.8c.018 5.93-4.607 11.18-11.177 11.18-2.172 0-4.25-.62-6.047-1.76l-.268.422-.038.5.186.013.168.012c.3.02.44.032.6.046 2.06-.026 3.95-.686 5.49-1.86l1.12-.85-1.4-.048c-1.57-.055-2.92-1.08-3.36-2.51l-.48.146-.05.5c.22.03.48.05.75.08.48-.02.87-.07 1.25-.15l2.33-.49-2.32-.49c-1.68-.35-2.91-1.83-2.91-3.55 0-.05 0-.01-.01.03l-.49-.1-.25.44c.63.36 1.35.57 2.07.58l1.7.04L7.4 13c-.978-.662-1.59-1.79-1.618-3.047a4.08 4.08 0 0 1 .524-1.8l-.825.07a12.188 12.188 0 0 0 8.81 4.515l.59.033-.06-.59v-.02c-.05-.43-.06-.63-.06-.87a3.617 3.617 0 0 1 6.27-2.45l.2.21.28-.06c1.01-.22 1.94-.59 2.73-1.09l-.75-.56c-.1.36-.04.89.12 1.36.23.68.58 1.13 1.17.85l-.21-.45-.42-.27c-.52.8-1.17 1.48-1.92 2L22 11l.016.28c.013.2.014.35 0 .52v.04zm.998.038c.018-.22.017-.417 0-.66l-.498.034.284.41a8.183 8.183 0 0 0 2.2-2.267l.97-1.48-1.6.755c.17-.08.3-.02.34.03a.914.914 0 0 1-.13-.292c-.1-.297-.13-.64-.1-.766l.36-1.254-1.1.695c-.69.438-1.51.764-2.41.963l.48.15a4.574 4.574 0 0 0-3.38-1.484 4.616 4.616 0 0 0-4.61 4.613c0 .29.02.51.08.984l.01.02.5-.06.03-.5c-3.17-.18-6.1-1.7-8.08-4.15l-.48-.56-.36.64c-.39.69-.62 1.48-.65 2.28.04 1.61.81 3.04 2.06 3.88l.3-.92c-.55-.02-1.11-.17-1.6-.45l-.59-.34-.14.67c-.02.08-.02.16 0 .24-.01 2.12 1.55 4.01 3.69 4.46l.1-.49-.1-.49c-.33.07-.67.12-1.03.14-.18-.02-.43-.05-.64-.07l-.76-.09.23.73c.57 1.84 2.29 3.14 4.28 3.21l-.28-.89a8.252 8.252 0 0 1-4.85 1.66c-.12-.01-.26-.02-.56-.05l-.17-.01-.18-.01L2.53 21l1.694 1.07a12.233 12.233 0 0 0 6.58 1.917c7.156 0 12.2-5.73 12.18-12.18l-.002.04z"></path></svg>
+      </span>
+    </a>
+
+    &nbsp;&nbsp;&nbsp;
+    <!-- Facebook -->
+    <a href="http://www.facebook.com/sharer.php?u=https://thereviewindex.com/blog/2019/07/08/js-repaint-reflow/" target="_blank">
+      <span class="social-icon">
+        <svg class="svgIcon-use" width="29" height="29" viewBox="0 0 29 29"><path d="M16.39 23.61v-5.808h1.846a.55.55 0 0 0 .546-.48l.36-2.797a.551.551 0 0 0-.547-.62H16.39V12.67c0-.67.12-.813.828-.813h1.474a.55.55 0 0 0 .55-.55V8.803a.55.55 0 0 0-.477-.545c-.436-.06-1.36-.116-2.22-.116-2.5 0-4.13 1.62-4.13 4.248v1.513H10.56a.551.551 0 0 0-.55.55v2.797c0 .304.248.55.55.55h1.855v5.76c-4.172-.96-7.215-4.7-7.215-9.1 0-5.17 4.17-9.36 9.31-9.36 5.14 0 9.31 4.19 9.31 9.36 0 4.48-3.155 8.27-7.43 9.15M14.51 4C8.76 4 4.1 8.684 4.1 14.46c0 5.162 3.75 9.523 8.778 10.32a.55.55 0 0 0 .637-.543v-6.985a.551.551 0 0 0-.55-.55H11.11v-1.697h1.855a.55.55 0 0 0 .55-.55v-2.063c0-2.02 1.136-3.148 3.03-3.148.567 0 1.156.027 1.597.06v1.453h-.924c-1.363 0-1.93.675-1.93 1.912v1.78c0 .3.247.55.55.55h2.132l-.218 1.69H15.84c-.305 0-.55.24-.55.55v7.02c0 .33.293.59.623.54 5.135-.7 9.007-5.11 9.007-10.36C24.92 8.68 20.26 4 14.51 4"></path></svg>
+      </span> 
+    </a>
+  </div>
+  
+  <h2>자바스크립트 = Repaint와 Reflow</h2>		
+	<div class="by-line parent">
+    <time datetime="2019-07-08T00:00:00+09:00"> <i>08 Jul 2019</i> </time>
+    &nbsp;&nbsp; &middot; &nbsp;&nbsp;
+    <span><i></i> </span>
+  </div>
+	<div class="content">
+
+		<p>자바스크립트의 중요한 특징 가운데 하나는 DOM과 상호작용한다는 것입니다. DOM은 Document Object Model의 약자로 플랫폼이나 언어에 독립적으로 문서를 구성하고 디자인을 적용시킬 수 있는 인터페이스 입니다. HTML과 함께 XML, SVG등이 DOM을 기반으로 구성됩니다.</p>
+
+<p>자바스크립트는 특히 HTML과 조합되어 사용자에게 적절한 데이터를 보여줍니다. 최근에는 비동기통신으로 자바스크립트에서 받은 데이터를 HTML의 DOM조작 통해서 동적으로 데이터를 출력하거나 DOM디자인을 조작하는작업이 많아 졌습니다.</p>
+
+<p>DOM을 동적으로 조작하는것은 생각보다 간단한 작업이 아닙니다. 이유는 <strong>TREE를 순회하는 조작이 같이 발생해 컴퓨팅 자원 소모가 심하다는 것</strong>입니다(DOM은 TREE구조를 가집니다). 본 글에서는 이렇게 자바스크립트를 이용하여 DOM을 동적으로 조작할 때 알아야하는 <strong>DOM repaint</strong>와 <strong>DOM reflow</strong>에 대해 알아보겠습니다.</p>
+
+<h2 id="dom-repaint">DOM repaint</h2>
+<p>먼저 DOM repaint는 특정 엘리먼트의 visibility를 수정하거나 글자색, 배경색 처럼 HTML의 엘리먼트들의 위치는 변경되지 않고, 색상등의 스타일만 변경될 때 발생합니다. DOM repaint의 경우 <strong>해당 DOM의 하위 트리 구조 전체를 탐색</strong>하므로 CPU자원이 소모됩니다.</p>
+
+<h2 id="dom-reflow">DOM reflow</h2>
+<p>DOM reflow는 repaint와 다르게 DOM의 구조나 크기, 클래스가 변경(클래스에 대한 새로운 CSS가 적용되므로)될때 발생합니다. 이는 DOM의 구조가 변경되 각 엘리먼트의 위치를 다시 계산되는 것을 의미합니다. repaint보다 reflow는 작업특성상 자원소모가 더 큽니다.</p>
+
+<h2 id="dom-reflow-최소화-하기">DOM reflow 최소화 하기</h2>
+<p>reflow를 최소화하는 것은 그만큼 CPU자원소모를 최소화하는 것입니다. reflow는 변경되는 엘리먼트의 하위 엘리먼트들의 위치를 계산하므로 CPU를 사용하는 것인데, 자주 변경되는 엘리먼트들의 position을 absolute나 fixed로 설정하면 좋습니다. 이는 웹 페이지 천제에는 영향을 미치기 않기 때문입니다. 아주 간단한 방법이지만 일반적 DOM 엘리먼트를 변경하는 것과 비교하면 월등하게 성능상 유리합니다.</p>
+
+<p>position을 absolute로 지정하고 left와 top을 지정하여 reflow에 영향을 미치지 않게 할 수도 있지만 position : relative를 이용하면 위치계산없이 페이지의 중간에 absolute를 사용할 수 있다.</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;html&gt;</span>
+<span class="nt">&lt;head&gt;</span>
+  <span class="nt">&lt;style&gt;</span>
+    <span class="nf">#bannerWrapper</span> <span class="p">{</span>
+      <span class="nl">overflow</span><span class="p">:</span> <span class="nb">hidden</span><span class="p">;</span>
+      <span class="nl">height</span><span class="p">:</span> <span class="m">400px</span><span class="p">;</span>
+      <span class="nl">width</span><span class="p">:</span> <span class="m">265px</span><span class="p">;</span>
+      <span class="nl">position</span><span class="p">:</span> <span class="nb">absolute</span><span class="p">;</span>
+    <span class="p">}</span>
+    
+    <span class="nf">#bannerImg</span> <span class="p">{</span>
+      <span class="nl">position</span><span class="p">:</span> <span class="nb">absolute</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="nf">#bannerImg</span><span class="nc">.mouseover</span> <span class="p">{</span>
+      <span class="nl">top</span><span class="p">:</span> <span class="m">-400px</span><span class="p">;</span>
+    <span class="p">}</span>
+  <span class="nt">&lt;/style&gt;</span>
+<span class="nt">&lt;/head&gt;</span>
+<span class="nt">&lt;body&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"bannerWrapper"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;img</span> <span class="na">id=</span><span class="s">"bannerImg"</span> <span class="na">src=</span><span class="s">"http://i.imgur.com/3DpJ0ou.png"</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;script&gt;</span>
+    <span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
+      <span class="kd">var</span> <span class="nx">imgBannerImg</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="dl">'</span><span class="s1">bannerImg</span><span class="dl">'</span><span class="p">);</span>
+      <span class="nx">imgBannerImg</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">'</span><span class="s1">mouseover</span><span class="dl">'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(){</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">classList</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="dl">'</span><span class="s1">mouseover</span><span class="dl">'</span><span class="p">);</span>
+      <span class="p">});</span>
+
+      <span class="nx">imgBannerImg</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">'</span><span class="s1">mouseout</span><span class="dl">'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(){</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">classList</span><span class="p">.</span><span class="nx">remove</span><span class="p">(</span><span class="dl">'</span><span class="s1">mouseover</span><span class="dl">'</span><span class="p">);</span>
+      <span class="p">});</span>
+    <span class="p">}());</span>
+  <span class="nt">&lt;/script&gt;</span>
+<span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</code></pre></div></div>
+<p>위 예제는 배너이미지에 마우스오버 이벤트를 등록한 예제입니다. bannerImg가 absolute로 적용되어 mouseover가 적용되어도 bannerImg또는 그 하위(위 소스에는 하위가 없음) 엘리먼트만 reflow가 발생하도록 적용되었습니다. 위 같은 상황은 메뉴의 드랍아웃등의 예제로 확장 될 수 있습니다.</p>
+
+
+		
+  </div>
+
+  <div class="parent f-right">
+    <!-- Twitter -->
+    <a href="https://twitter.com/share?url=https://thereviewindex.com/blog/2019/07/08/js-repaint-reflow/&amp;text=자바스크립트 = Repaint와 Reflow&amp;hashtags=thereviewindex" target="_blank">
+      <span class="social-icon">  
+        <svg class="svgIcon-use" width="29" height="29" viewBox="0 0 29 29"><path d="M21.967 11.8c.018 5.93-4.607 11.18-11.177 11.18-2.172 0-4.25-.62-6.047-1.76l-.268.422-.038.5.186.013.168.012c.3.02.44.032.6.046 2.06-.026 3.95-.686 5.49-1.86l1.12-.85-1.4-.048c-1.57-.055-2.92-1.08-3.36-2.51l-.48.146-.05.5c.22.03.48.05.75.08.48-.02.87-.07 1.25-.15l2.33-.49-2.32-.49c-1.68-.35-2.91-1.83-2.91-3.55 0-.05 0-.01-.01.03l-.49-.1-.25.44c.63.36 1.35.57 2.07.58l1.7.04L7.4 13c-.978-.662-1.59-1.79-1.618-3.047a4.08 4.08 0 0 1 .524-1.8l-.825.07a12.188 12.188 0 0 0 8.81 4.515l.59.033-.06-.59v-.02c-.05-.43-.06-.63-.06-.87a3.617 3.617 0 0 1 6.27-2.45l.2.21.28-.06c1.01-.22 1.94-.59 2.73-1.09l-.75-.56c-.1.36-.04.89.12 1.36.23.68.58 1.13 1.17.85l-.21-.45-.42-.27c-.52.8-1.17 1.48-1.92 2L22 11l.016.28c.013.2.014.35 0 .52v.04zm.998.038c.018-.22.017-.417 0-.66l-.498.034.284.41a8.183 8.183 0 0 0 2.2-2.267l.97-1.48-1.6.755c.17-.08.3-.02.34.03a.914.914 0 0 1-.13-.292c-.1-.297-.13-.64-.1-.766l.36-1.254-1.1.695c-.69.438-1.51.764-2.41.963l.48.15a4.574 4.574 0 0 0-3.38-1.484 4.616 4.616 0 0 0-4.61 4.613c0 .29.02.51.08.984l.01.02.5-.06.03-.5c-3.17-.18-6.1-1.7-8.08-4.15l-.48-.56-.36.64c-.39.69-.62 1.48-.65 2.28.04 1.61.81 3.04 2.06 3.88l.3-.92c-.55-.02-1.11-.17-1.6-.45l-.59-.34-.14.67c-.02.08-.02.16 0 .24-.01 2.12 1.55 4.01 3.69 4.46l.1-.49-.1-.49c-.33.07-.67.12-1.03.14-.18-.02-.43-.05-.64-.07l-.76-.09.23.73c.57 1.84 2.29 3.14 4.28 3.21l-.28-.89a8.252 8.252 0 0 1-4.85 1.66c-.12-.01-.26-.02-.56-.05l-.17-.01-.18-.01L2.53 21l1.694 1.07a12.233 12.233 0 0 0 6.58 1.917c7.156 0 12.2-5.73 12.18-12.18l-.002.04z"></path></svg>
+      </span>
+    </a>
+
+    &nbsp;&nbsp;&nbsp;
+    <!-- Facebook -->
+    <a href="http://www.facebook.com/sharer.php?u=https://thereviewindex.com/blog/2019/07/08/js-repaint-reflow/" target="_blank">
+      <span class="social-icon">
+        <svg class="svgIcon-use" width="29" height="29" viewBox="0 0 29 29"><path d="M16.39 23.61v-5.808h1.846a.55.55 0 0 0 .546-.48l.36-2.797a.551.551 0 0 0-.547-.62H16.39V12.67c0-.67.12-.813.828-.813h1.474a.55.55 0 0 0 .55-.55V8.803a.55.55 0 0 0-.477-.545c-.436-.06-1.36-.116-2.22-.116-2.5 0-4.13 1.62-4.13 4.248v1.513H10.56a.551.551 0 0 0-.55.55v2.797c0 .304.248.55.55.55h1.855v5.76c-4.172-.96-7.215-4.7-7.215-9.1 0-5.17 4.17-9.36 9.31-9.36 5.14 0 9.31 4.19 9.31 9.36 0 4.48-3.155 8.27-7.43 9.15M14.51 4C8.76 4 4.1 8.684 4.1 14.46c0 5.162 3.75 9.523 8.778 10.32a.55.55 0 0 0 .637-.543v-6.985a.551.551 0 0 0-.55-.55H11.11v-1.697h1.855a.55.55 0 0 0 .55-.55v-2.063c0-2.02 1.136-3.148 3.03-3.148.567 0 1.156.027 1.597.06v1.453h-.924c-1.363 0-1.93.675-1.93 1.912v1.78c0 .3.247.55.55.55h2.132l-.218 1.69H15.84c-.305 0-.55.24-.55.55v7.02c0 .33.293.59.623.54 5.135-.7 9.007-5.11 9.007-10.36C24.92 8.68 20.26 4 14.51 4"></path></svg>
+      </span> 
+    </a>
+  </div>
+
+  <!-- Facebook Comments HTML -->
+  <div class="m-t-6e">
+    <div class="fb-comments" data-href="http://youngwonseo.github.io/2019/07/08/js-repaint-reflow/" data-width="800" data-numposts="5"></div>
+  </div>
+
+</article>
+
+
+  
+  	  </main>
+  		
+  		  <!-- Pagination links -->
+        
+  
+  	  </div>
+  	    
+  	    <!-- Footer -->
+        <div class="m-t-6e">
+          <footer><span>&#169;2017 - TheReviewIndex</span></footer>
+
+        </div>
+  
+  	    <!-- Script -->
+        <script src="/js/main.js"></script>	
+
+  
+    </div>
+    
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-118401942-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-118401942-1');
+</script>
+  </body>
+</html>

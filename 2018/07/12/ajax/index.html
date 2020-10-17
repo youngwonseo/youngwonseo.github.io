@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+	<!-- Meta -->
+	<meta charset="UTF-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+	<meta name="generator" content="Jekyll">
+
+	<title>자바스크립트 - AJAX와 다이내믹 로딩</title>
+  <meta name="description" content="">
+
+	<!-- CSS & fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,500" rel="stylesheet">
+  <link rel="stylesheet" href="/css/main.css">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="자바스크립트 - AJAX와 다이내믹 로딩">
+  <meta property="og:type" content: "website">
+  <meta property="og:url" content= "https://thereviewindex.com/blog/2018/07/12/ajax/">
+  <meta property="og:description" content="">
+  <meta property="og:locale" content= "en_US">
+  <meta property="og:site_name" content="The Review Index">
+  <meta property="og:image" content="https://thereviewindex.com/blog/">
+  <meta property="og:image:url" content="https://thereviewindex.com/blog/">
+  <meta property="og:image:secure_url" content="https://thereviewindex.com/blog/">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="1200">
+  
+  <!-- twitter card -->
+  <meta property="twitter:card" content="summary">
+  <meta property="twitter:title" content="자바스크립트 - AJAX와 다이내믹 로딩">
+  <meta property="twitter:description" content="">
+  <meta property="twitter:url" content= "https://thereviewindex.com/blog/2018/07/12/ajax/">
+  <meta property="twitter:image" content="https://thereviewindex.com/blog/">
+
+
+	<!-- RSS -->
+	<link href="/atom.xml" type="application/atom+xml" rel="alternate" title="ATOM Feed" />
+
+  <!-- Favicon -->
+  <link rel="shortcut icon" type="image/png" href="img/favicon.png">
+
+
+  <!-- Google Analytics -->
+  <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  
+  ga('create', 'UA-78263144-1', 'auto');
+  ga('send', 'pageview');
+  </script>
+  <!-- End Google Analytics -->
+
+</head>
+
+  <body>
+    
+    <!-- Facebook Comments Script -->
+    <div id="fb-root"></div>
+      <script>(function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = 'https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v2.11&appId=288262758360783';
+        fjs.parentNode.insertBefore(js, fjs);
+      }(document, 'script', 'facebook-jssdk'));</script>
+  
+    <div id="wrap">
+  	  	
+  	  	<!-- Navigation -->
+  	  	<nav id="nav">
+	<div id="nav-list">
+		<a href="/">Home</a>
+
+		<!-- Nav pages -->
+	  
+	    
+	  
+	    
+	  
+	    
+	      <a href="/about/" title="About">About</a>
+	    
+	  
+	    
+	      <a href="/archive/" title="Archive">Archive</a>
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	      <a href="/ml/" title="Machine Learning">Machine Learning</a>
+	    
+	  
+	    
+	      <a href="/paper_review/" title="Paper Review">Paper Review</a>
+	    
+	  
+	    
+	      <a href="/projects/" title="Projects">Projects</a>
+	    
+	  
+	    
+	  
+	    
+	      <a href="/study/" title="Study">Study</a>
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+    
+    <!-- Nav links -->
+	  <!-- <a href="/">Blog</a> -->
+
+
+	</div>
+  
+  <!-- Nav footer -->
+	
+	  <footer>
+	
+	<!-- Your custom nav footer here -->
+	
+</footer>
+	
+
+</nav>
+
+      
+      <!-- Icon menu -->
+  	  <a id="nav-menu">
+  	  	<div id="menu"></div>
+  	  </a>
+  
+        <!-- Header -->
+        
+          <header id="header">
+
+	<!-- Your custom header here -->
+	<span class="f-left">  
+		<a href="/">
+			<h1>
+				<span>Youngwon Seo</span>
+			</h1>
+		</a>
+	</span>
+
+	<span id="nav-links" class="absolute right bottom">
+		<!-- Nav pages -->
+		
+			
+		
+			
+		
+			
+				<a href="/about/" title="About">About</a>
+			
+		
+			
+				<a href="/archive/" title="Archive">Archive</a>
+			
+		
+			
+		
+			
+		
+			
+		
+			
+				<a href="/ml/" title="Machine Learning">Machine Learning</a>
+			
+		
+			
+				<a href="/paper_review/" title="Paper Review">Paper Review</a>
+			
+		
+			
+				<a href="/projects/" title="Projects">Projects</a>
+			
+		
+			
+		
+			
+				<a href="/study/" title="Study">Study</a>
+			
+		
+			
+		
+			
+		
+			
+		
+			
+		
+			
+		
+			
+		
+			
+		
+			
+		
+			
+		
+		
+		<!-- Nav links -->
+		<!-- <a href="/">Blog</a> -->
+
+	</span>
+	
+	<!-- Google Analytics -->
+  <script>
+		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+		
+		ga('create', 'UA-78263144-1', 'auto');
+		ga('send', 'pageview');
+		</script>
+		<!-- End Google Analytics -->
+</header>
+
+
+        
+  
+      <!-- Main content -->
+  	  <div id="container">
+  		  
+  		<main>
+  
+  			<article id="post-page">
+  <div class="parent f-right">
+    <!-- Twitter -->
+    <a href="https://twitter.com/share?url=https://thereviewindex.com/blog/2018/07/12/ajax/&amp;text=자바스크립트 - AJAX와 다이내믹 로딩&amp;hashtags=thereviewindex" target="_blank">
+      <span class="social-icon">  
+        <svg class="svgIcon-use" width="29" height="29" viewBox="0 0 29 29"><path d="M21.967 11.8c.018 5.93-4.607 11.18-11.177 11.18-2.172 0-4.25-.62-6.047-1.76l-.268.422-.038.5.186.013.168.012c.3.02.44.032.6.046 2.06-.026 3.95-.686 5.49-1.86l1.12-.85-1.4-.048c-1.57-.055-2.92-1.08-3.36-2.51l-.48.146-.05.5c.22.03.48.05.75.08.48-.02.87-.07 1.25-.15l2.33-.49-2.32-.49c-1.68-.35-2.91-1.83-2.91-3.55 0-.05 0-.01-.01.03l-.49-.1-.25.44c.63.36 1.35.57 2.07.58l1.7.04L7.4 13c-.978-.662-1.59-1.79-1.618-3.047a4.08 4.08 0 0 1 .524-1.8l-.825.07a12.188 12.188 0 0 0 8.81 4.515l.59.033-.06-.59v-.02c-.05-.43-.06-.63-.06-.87a3.617 3.617 0 0 1 6.27-2.45l.2.21.28-.06c1.01-.22 1.94-.59 2.73-1.09l-.75-.56c-.1.36-.04.89.12 1.36.23.68.58 1.13 1.17.85l-.21-.45-.42-.27c-.52.8-1.17 1.48-1.92 2L22 11l.016.28c.013.2.014.35 0 .52v.04zm.998.038c.018-.22.017-.417 0-.66l-.498.034.284.41a8.183 8.183 0 0 0 2.2-2.267l.97-1.48-1.6.755c.17-.08.3-.02.34.03a.914.914 0 0 1-.13-.292c-.1-.297-.13-.64-.1-.766l.36-1.254-1.1.695c-.69.438-1.51.764-2.41.963l.48.15a4.574 4.574 0 0 0-3.38-1.484 4.616 4.616 0 0 0-4.61 4.613c0 .29.02.51.08.984l.01.02.5-.06.03-.5c-3.17-.18-6.1-1.7-8.08-4.15l-.48-.56-.36.64c-.39.69-.62 1.48-.65 2.28.04 1.61.81 3.04 2.06 3.88l.3-.92c-.55-.02-1.11-.17-1.6-.45l-.59-.34-.14.67c-.02.08-.02.16 0 .24-.01 2.12 1.55 4.01 3.69 4.46l.1-.49-.1-.49c-.33.07-.67.12-1.03.14-.18-.02-.43-.05-.64-.07l-.76-.09.23.73c.57 1.84 2.29 3.14 4.28 3.21l-.28-.89a8.252 8.252 0 0 1-4.85 1.66c-.12-.01-.26-.02-.56-.05l-.17-.01-.18-.01L2.53 21l1.694 1.07a12.233 12.233 0 0 0 6.58 1.917c7.156 0 12.2-5.73 12.18-12.18l-.002.04z"></path></svg>
+      </span>
+    </a>
+
+    &nbsp;&nbsp;&nbsp;
+    <!-- Facebook -->
+    <a href="http://www.facebook.com/sharer.php?u=https://thereviewindex.com/blog/2018/07/12/ajax/" target="_blank">
+      <span class="social-icon">
+        <svg class="svgIcon-use" width="29" height="29" viewBox="0 0 29 29"><path d="M16.39 23.61v-5.808h1.846a.55.55 0 0 0 .546-.48l.36-2.797a.551.551 0 0 0-.547-.62H16.39V12.67c0-.67.12-.813.828-.813h1.474a.55.55 0 0 0 .55-.55V8.803a.55.55 0 0 0-.477-.545c-.436-.06-1.36-.116-2.22-.116-2.5 0-4.13 1.62-4.13 4.248v1.513H10.56a.551.551 0 0 0-.55.55v2.797c0 .304.248.55.55.55h1.855v5.76c-4.172-.96-7.215-4.7-7.215-9.1 0-5.17 4.17-9.36 9.31-9.36 5.14 0 9.31 4.19 9.31 9.36 0 4.48-3.155 8.27-7.43 9.15M14.51 4C8.76 4 4.1 8.684 4.1 14.46c0 5.162 3.75 9.523 8.778 10.32a.55.55 0 0 0 .637-.543v-6.985a.551.551 0 0 0-.55-.55H11.11v-1.697h1.855a.55.55 0 0 0 .55-.55v-2.063c0-2.02 1.136-3.148 3.03-3.148.567 0 1.156.027 1.597.06v1.453h-.924c-1.363 0-1.93.675-1.93 1.912v1.78c0 .3.247.55.55.55h2.132l-.218 1.69H15.84c-.305 0-.55.24-.55.55v7.02c0 .33.293.59.623.54 5.135-.7 9.007-5.11 9.007-10.36C24.92 8.68 20.26 4 14.51 4"></path></svg>
+      </span> 
+    </a>
+  </div>
+  
+  <h2>자바스크립트 - AJAX와 다이내믹 로딩</h2>		
+	<div class="by-line parent">
+    <time datetime="2018-07-12T00:00:00+09:00"> <i>12 Jul 2018</i> </time>
+    &nbsp;&nbsp; &middot; &nbsp;&nbsp;
+    <span><i></i> </span>
+  </div>
+	<div class="content">
+
+		<h2 id="ajax와-다이내믹-로딩">AJAX와 다이내믹 로딩</h2>
+
+<h3 id="ajax">Ajax</h3>
+
+<h4 id="1-변하지-않는-데이터">1. 변하지 않는 데이터</h4>
+
+<p>계속해서 변화하는 데이터를 캐싱하는 것은 서비스의 가치나 신뢰도를 하락시키는 원인이된다. 그러나 변하지 않는 데이터라면 캐싱을 이용하여 불필요한 네트워크 사용과 네트워크 지연시간을 줄 일 수 있다.</p>
+
+<h4 id="2-일정한-주기로-변하는-데이터">2. 일정한 주기로 변하는 데이터</h4>
+
+<h4 id="3-로컬-저장소를-이용한-캐싱">3. 로컬 저장소를 이용한 캐싱</h4>
+
+<h3 id="다이내믹-로딩">다이내믹 로딩</h3>
+
+<h4 id="이미지-로딩-속도-최적화">이미지 로딩 속도 최적화</h4>
+
+<p>이미지 로딩 최적화를 위한 방법들로 다음과 같은것들이 존재한다. 이미지 로딩 최적화의 경우 개부분 자바스크립트를 사용하지 않고 구현가능하다.</p>
+
+<ul>
+  <li>
+    <p>CSS 스프라이트 : 이미지 파일을 하나로 합쳐 다운로드하여 불필요한 request를 줄이는 방법
+예) [앞으로],[뒤로] 등의 버튼에 대한 이미지를 하나로 합쳐 하나의 이미지에 대해 background-position 으로 출력할 위치를 정하면 이미지에 대한 request가 한번만 발생하게 만드는것</p>
+  </li>
+  <li>
+    <p>이미지 파일의 메타 정보 제거 :</p>
+  </li>
+  <li>
+    <p>display:none 이미지 처리 : 자바스크립트를 이용한 방법으로 display:none으로 처리될 이미지들은 처음부터 다운로드하지 않고 display가 none이 아닌 항목(inline, block 등)으로 변경될 때 동적으로 이미지 태그를 추가하는 방법</p>
+
+    <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">show_image</span><span class="p">(){</span>
+    <span class="kd">var</span> <span class="nx">image</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="dl">'</span><span class="s1">img</span><span class="dl">'</span><span class="p">);</span>
+    <span class="nx">image</span><span class="p">.</span><span class="nx">src</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">./image.png</span><span class="dl">'</span><span class="p">;</span>
+    <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="dl">'</span><span class="s1">#parent</span><span class="dl">'</span><span class="p">).</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">image</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<h4 id="다이내믹-로딩을-활용한-최적화">다이내믹 로딩을 활용한 최적화</h4>
+
+<p>먼저 다이내믹 로딩에 대해 용어정리를 하자.</p>
+<ul>
+  <li>다이내믹 로딩 : 지연로딩과 온디맨드 로딩을 포함해 동적인 로딩을 총칭하는 용어</li>
+  <li>지연로딩 : 웹 페이지 구성요소를 다운로드하는 시점을 의도적으로 늦추는 방법을 가르키는 용어</li>
+  <li>온디맨드 로딩 : 사용자가 원하는 시점에 웹 페이지 구성 요소를 다운로드하는 방법을 가리키는 용어</li>
+</ul>
+
+<h4 id="지연로딩">지연로딩</h4>
+
+<p>지연로딩은 렌더링 속도 향상에 중점을 둔 성능 최적화 방법으로, 웹 페이지 구성 요소들의 다운로드 시점을 조절하여 렌더링 속도를 높이는 방법이다. 다음은 대표적인 두 가지의 웹 로딩(구성요소 다운로드)에 대한 순서이다.</p>
+
+<ul>
+  <li>HTML &gt; 스타일시트 &gt; 자바스크립트 &gt; 이미지</li>
+  <li>HTML &gt; 스타일시트 &gt; 이미지 &gt; 자바스크립트</li>
+</ul>
+
+<p>위 두 유형중 어느것이 빠를까? 아래항목 더 빠르다. 이유는 위의 경우 자바스크립트를 파싱하고 실행하는 동안에는 블로킹(자바스크립트에 대한 독립적이고 안정적인 실행을 보장하기위해)이 발생해 다른작업과 병행하지 않으므로 이미지 다운로드가 지연되기 때문이다.</p>
+
+<p>그렇다면 아래의 유형을 구현 방법은 어떻게 될까? 방법은 간단하다! 그것은 스크립트에 대한 코드를 body의 마지막에 두는것이다.</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;html&gt;</span>
+    <span class="nt">&lt;body&gt;</span>
+    	...
+		<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"..."</span><span class="nt">&gt;&lt;/script&gt;</span>
+		<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"..."</span><span class="nt">&gt;&lt;/script&gt;</span>
+    <span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</code></pre></div></div>
+
+<h4 id="온디멘드-로딩">온디멘드 로딩</h4>
+
+<p>온디멘드는 사용자의 요구사항이 발생하면 필요한 요소들을 다운로는 하는 최적화 방식이다.  요소들에는 이미지나 텍스트가 될 수도 있지만 여기서는 자바스크립트 소스코드 자체를 예로 든다. 즉 자바스크립트를 동적으로 로딩하는 방식으로 다음과 같은 방법들이 존재한다.</p>
+
+<ul>
+  <li>XHR 기술들을 활용한 자바스크립트 동적 다운로드</li>
+  <li>Script DOM Injection 방식을 활용한 자바스크립트 동적 다운로드</li>
+  <li>IFrame을 활용한 자바스크립트 동적 다운로드</li>
+  <li>document.write() 메서드를 활용한 자바스크립트 동적 다운로드</li>
+</ul>
+
+<p>이 네 가지 방법은 브라우저의 자바스크립트 블로킹을 최소화하면서 자바스크립트를 다운로드 하는 방식으로 script태그를 활용해 정적으로 추가하는 방식이아닌 비동기식, 즉 동적으로 다운로드하는 것이 핵심원리이다. 즉 사용하지 않는 기능의 스크립트들을 미리 다운로드 하는것이 아닌 필요할 경우 다운로드하고 사용하는 것이다. 그럼 여기서 하나씩 살펴보자. 여기서는 핵심적인 부분과 이에 해당하는 코드위주로 설명하니 자세한 설명은 책을 참조하길 바란다.</p>
+
+<h5 id="xhr-기술을-활용한-자바스크립트-동적-다운로드">XHR 기술을 활용한 자바스크립트 동적 다운로드</h5>
+
+<h5 id="script-dom-injection방식을-활용한-자바스크립트-동적-다운로드">Script DOM Injection방식을 활용한 자바스크립트 동적 다운로드</h5>
+
+<h5 id="iframe을-활용한-자바스크립트-동적-다운로드">IFrame을 활용한 자바스크립트 동적 다운로드</h5>
+
+<h5 id="documentwrite-메서드를-활용한-자바스크립트-동적-다운로드">document.write() 메서드를 활용한 자바스크립트 동적 다운로드</h5>
+
+<h3 id="references">References</h3>
+<ul>
+  <li>NHN은 이렇게한다! 자바스크립트 성능 이야기 - 박재성, 심상민, 양정권, 황준호 지음 http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&amp;mallGb=KOR&amp;barcode=9788998139001&amp;orderClick=LAG&amp;Kc=</li>
+</ul>
+
+		
+  </div>
+
+  <div class="parent f-right">
+    <!-- Twitter -->
+    <a href="https://twitter.com/share?url=https://thereviewindex.com/blog/2018/07/12/ajax/&amp;text=자바스크립트 - AJAX와 다이내믹 로딩&amp;hashtags=thereviewindex" target="_blank">
+      <span class="social-icon">  
+        <svg class="svgIcon-use" width="29" height="29" viewBox="0 0 29 29"><path d="M21.967 11.8c.018 5.93-4.607 11.18-11.177 11.18-2.172 0-4.25-.62-6.047-1.76l-.268.422-.038.5.186.013.168.012c.3.02.44.032.6.046 2.06-.026 3.95-.686 5.49-1.86l1.12-.85-1.4-.048c-1.57-.055-2.92-1.08-3.36-2.51l-.48.146-.05.5c.22.03.48.05.75.08.48-.02.87-.07 1.25-.15l2.33-.49-2.32-.49c-1.68-.35-2.91-1.83-2.91-3.55 0-.05 0-.01-.01.03l-.49-.1-.25.44c.63.36 1.35.57 2.07.58l1.7.04L7.4 13c-.978-.662-1.59-1.79-1.618-3.047a4.08 4.08 0 0 1 .524-1.8l-.825.07a12.188 12.188 0 0 0 8.81 4.515l.59.033-.06-.59v-.02c-.05-.43-.06-.63-.06-.87a3.617 3.617 0 0 1 6.27-2.45l.2.21.28-.06c1.01-.22 1.94-.59 2.73-1.09l-.75-.56c-.1.36-.04.89.12 1.36.23.68.58 1.13 1.17.85l-.21-.45-.42-.27c-.52.8-1.17 1.48-1.92 2L22 11l.016.28c.013.2.014.35 0 .52v.04zm.998.038c.018-.22.017-.417 0-.66l-.498.034.284.41a8.183 8.183 0 0 0 2.2-2.267l.97-1.48-1.6.755c.17-.08.3-.02.34.03a.914.914 0 0 1-.13-.292c-.1-.297-.13-.64-.1-.766l.36-1.254-1.1.695c-.69.438-1.51.764-2.41.963l.48.15a4.574 4.574 0 0 0-3.38-1.484 4.616 4.616 0 0 0-4.61 4.613c0 .29.02.51.08.984l.01.02.5-.06.03-.5c-3.17-.18-6.1-1.7-8.08-4.15l-.48-.56-.36.64c-.39.69-.62 1.48-.65 2.28.04 1.61.81 3.04 2.06 3.88l.3-.92c-.55-.02-1.11-.17-1.6-.45l-.59-.34-.14.67c-.02.08-.02.16 0 .24-.01 2.12 1.55 4.01 3.69 4.46l.1-.49-.1-.49c-.33.07-.67.12-1.03.14-.18-.02-.43-.05-.64-.07l-.76-.09.23.73c.57 1.84 2.29 3.14 4.28 3.21l-.28-.89a8.252 8.252 0 0 1-4.85 1.66c-.12-.01-.26-.02-.56-.05l-.17-.01-.18-.01L2.53 21l1.694 1.07a12.233 12.233 0 0 0 6.58 1.917c7.156 0 12.2-5.73 12.18-12.18l-.002.04z"></path></svg>
+      </span>
+    </a>
+
+    &nbsp;&nbsp;&nbsp;
+    <!-- Facebook -->
+    <a href="http://www.facebook.com/sharer.php?u=https://thereviewindex.com/blog/2018/07/12/ajax/" target="_blank">
+      <span class="social-icon">
+        <svg class="svgIcon-use" width="29" height="29" viewBox="0 0 29 29"><path d="M16.39 23.61v-5.808h1.846a.55.55 0 0 0 .546-.48l.36-2.797a.551.551 0 0 0-.547-.62H16.39V12.67c0-.67.12-.813.828-.813h1.474a.55.55 0 0 0 .55-.55V8.803a.55.55 0 0 0-.477-.545c-.436-.06-1.36-.116-2.22-.116-2.5 0-4.13 1.62-4.13 4.248v1.513H10.56a.551.551 0 0 0-.55.55v2.797c0 .304.248.55.55.55h1.855v5.76c-4.172-.96-7.215-4.7-7.215-9.1 0-5.17 4.17-9.36 9.31-9.36 5.14 0 9.31 4.19 9.31 9.36 0 4.48-3.155 8.27-7.43 9.15M14.51 4C8.76 4 4.1 8.684 4.1 14.46c0 5.162 3.75 9.523 8.778 10.32a.55.55 0 0 0 .637-.543v-6.985a.551.551 0 0 0-.55-.55H11.11v-1.697h1.855a.55.55 0 0 0 .55-.55v-2.063c0-2.02 1.136-3.148 3.03-3.148.567 0 1.156.027 1.597.06v1.453h-.924c-1.363 0-1.93.675-1.93 1.912v1.78c0 .3.247.55.55.55h2.132l-.218 1.69H15.84c-.305 0-.55.24-.55.55v7.02c0 .33.293.59.623.54 5.135-.7 9.007-5.11 9.007-10.36C24.92 8.68 20.26 4 14.51 4"></path></svg>
+      </span> 
+    </a>
+  </div>
+
+  <!-- Facebook Comments HTML -->
+  <div class="m-t-6e">
+    <div class="fb-comments" data-href="http://youngwonseo.github.io/2018/07/12/ajax/" data-width="800" data-numposts="5"></div>
+  </div>
+
+</article>
+
+
+  
+  	  </main>
+  		
+  		  <!-- Pagination links -->
+        
+  
+  	  </div>
+  	    
+  	    <!-- Footer -->
+        <div class="m-t-6e">
+          <footer><span>&#169;2017 - TheReviewIndex</span></footer>
+
+        </div>
+  
+  	    <!-- Script -->
+        <script src="/js/main.js"></script>	
+
+  
+    </div>
+    
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-118401942-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-118401942-1');
+</script>
+  </body>
+</html>
