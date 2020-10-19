@@ -101,6 +101,10 @@
 	    
 	  
 	    
+	      <a href="/ml_medicine/" title="ML for Medicine">ML for Medicine</a>
+	    
+	  
+	    
 	      <a href="/paper_review/" title="Paper Review">Paper Review</a>
 	    
 	  
@@ -112,6 +116,8 @@
 	  
 	    
 	      <a href="/study/" title="Study">Study</a>
+	    
+	  
 	    
 	  
 	    
@@ -195,6 +201,10 @@
 			
 		
 			
+				<a href="/ml_medicine/" title="ML for Medicine">ML for Medicine</a>
+			
+		
+			
 				<a href="/paper_review/" title="Paper Review">Paper Review</a>
 			
 		
@@ -206,6 +216,8 @@
 		
 			
 				<a href="/study/" title="Study">Study</a>
+			
+		
 			
 		
 			
@@ -308,7 +320,7 @@
 <p>treatment
 control</p>
 
-<p><img src="/public/medicine/03/01/03-01.PNG" alt="" /></p>
+<p><img src="/public/medicine/03/01/03-01.png" alt="" /></p>
 
 <ul>
   <li>각그룹에서 heart attack이 2%, 5%로 발생</li>
@@ -327,7 +339,7 @@ control</p>
   <li>예로들어 treatment그룹이 대부분 젊고 건강상태가 양호한 환자들로 구성되어있다면 treatment그룹의 heart attack에 대한 AR가 현저히 낮게 측정된 것임</li>
 </ul>
 
-<p><img src="/public/medicine/03/01/03-02.PNG" alt="" /></p>
+<p><img src="/public/medicine/03/01/03-02.png" alt="" /></p>
 <ul>
   <li>각 그룹의 평균, 표준편차 등의 특성을 이용해 두 그룹이 비슷하다는것을 보일수 있음</li>
   <li>ARR이 0.03이고 p-value가 0.001일 경우 치료가 실제로 효과를 발휘할 경우 0.03 이상의 위험 차이를 관찰 할 확률은 0.1 % 미만입니다.</li>
@@ -344,19 +356,19 @@ control</p>
   </li>
 </ul>
 
-<p><img src="/public/medicine/03/01/03-03.PNG" alt="" /></p>
+<p><img src="/public/medicine/03/01/03-03.png" alt="" /></p>
 <ul>
   <li>위 표 처럼 환자에 따라 treatment 유무에 따른 결과를 기반으로 Benefit/No effect/Harm 으로 구분</li>
   <li>위 표는 아래의 표와 같이 표현가능</li>
 </ul>
 
-<p><img src="/public/medicine/03/01/03-04.PNG" alt="" /></p>
+<p><img src="/public/medicine/03/01/03-04.png" alt="" /></p>
 <ul>
   <li>Y(1) 은 treatment적용, Y(0)은 treatment 미적용을 의미</li>
   <li>이것을 Neyman-Rubin causal model이라 함</li>
 </ul>
 
-<p><img src="/public/medicine/03/01/03-05.PNG" alt="" /></p>
+<p><img src="/public/medicine/03/01/03-05.png" alt="" /></p>
 <ul>
   <li>Y(1) - Y(0) 의 평균을 Average Treatment Effect라 함</li>
 </ul>
@@ -367,18 +379,18 @@ control</p>
   <li>이를 fundamental problem of causal inference라 함</li>
 </ul>
 
-<p><img src="/public/medicine/03/01/03-06.PNG" alt="" /></p>
+<p><img src="/public/medicine/03/01/03-06.png" alt="" /></p>
 <ul>
   <li>현실에서는 위와 같이 treatment의 유 또는 무에 대한 결과만 관찰가능</li>
   <li>실제 적용여부에 대한 결과를 observed/factual 이라하고 미적용의 알수없는 결과를 unobserved/conuterfactual이라함</li>
 </ul>
 
-<p><img src="/public/medicine/03/01/03-07.PNG" alt="" /></p>
+<p><img src="/public/medicine/03/01/03-07.png" alt="" /></p>
 <ul>
   <li>W는 treatment 적용 여부</li>
 </ul>
 
-<p><img src="/public/medicine/03/01/03-08.PNG" alt="" /></p>
+<p><img src="/public/medicine/03/01/03-08.png" alt="" /></p>
 <ul>
   <li>treatment 적용여부(W)에 따라 평균을 계산</li>
   <li>randomized controlled trials 안에서</li>
@@ -396,7 +408,7 @@ control</p>
   <li>그럼 좀더 개별적인 treatment의 effect를 구하려면 어떻게 해야할까?</li>
 </ul>
 
-<p><img src="/public/medicine/03/01/03-09.PNG" alt="" /></p>
+<p><img src="/public/medicine/03/01/03-09.png" alt="" /></p>
 <ul>
   <li>나이가 56세인 환자에 대한 effect를 계산하기 위해 같은 나이의 환자에 대한 ATE를 계산</li>
   <li>이처럼 환자의 특정 feature값에 대응되는 effect결과를 Conditional aveage treatment effect(CATE)라 함</li>
@@ -404,7 +416,7 @@ control</p>
   <li>이런 경우 환자가 가지고 있는 각 feature간의 관계를 통해 estimate를 얻을 수 있음</li>
 </ul>
 
-<p><img src="/public/medicine/03/01/03-10.PNG" alt="" /></p>
+<p><img src="/public/medicine/03/01/03-10.png" alt="" /></p>
 <ul>
   <li>x는 condition을 의미
     <ul>
@@ -416,14 +428,14 @@ control</p>
 </ul>
 
 <h3 id="t-learner">T-Learner</h3>
-<p><img src="/public/medicine/03/01/03-11.PNG" alt="" /></p>
+<p><img src="/public/medicine/03/01/03-11.png" alt="" /></p>
 <ul>
   <li>treatment response function(μ1)과 control reonse function(μ0)은 base learner를 통해 학습가능</li>
   <li>age, bp가 인풋에 해당하고 y가 아웃풋에 해당</li>
   <li>training data와 validation data로 학습</li>
 </ul>
 
-<p><img src="/public/medicine/03/01/03-12.PNG" alt="" /></p>
+<p><img src="/public/medicine/03/01/03-12.png" alt="" /></p>
 <ul>
   <li>base learner로 decision tree를 선택한 경우는 다음과 같음</li>
   <li>age=56, BP=130인 환자에 대한 risk를 계산
@@ -440,8 +452,8 @@ control</p>
 <h3 id="s-learner">S-Learner</h3>
 <ul>
   <li>하나의 모델로 treatment가 1인 경우와 0인경우의 risk를 계산하는것을 Single-Tree method 또는 S-learner라고 함
-<img src="/public/medicine/03/01/03-13.PNG" alt="" />
-<img src="/public/medicine/03/01/03-14.PNG" alt="" /></li>
+<img src="/public/medicine/03/01/03-13.png" alt="" />
+<img src="/public/medicine/03/01/03-14.png" alt="" /></li>
   <li>age=56, BP=130인 환자에 대한 risk를 계산
     <ul>
       <li>각 feature에 대한 값과 teatment 여부에 대한 판단을 하나의 모델을 통해 계산</li>
@@ -455,20 +467,20 @@ control</p>
 
 <h2 id="individualized-treatment-effect">Individualized Treatment Effect</h2>
 <h3 id="evaluate-individualized-treatment-effect">Evaluate individualized treatment effect</h3>
-<p><img src="/public/medicine/03/01/03-15.PNG" alt="" /></p>
+<p><img src="/public/medicine/03/01/03-15.png" alt="" /></p>
 <ul>
   <li>W=1이므로 Y(1)인 treatment 적용일 경우 0의 결과를 보임</li>
   <li>이때 Y(0)은 어떻게 구할것인가?</li>
   <li>여기에는 두가지 방법이 있는데 비슷한 feature를 가진 환자의 Y(0)를 구하거나 비슷한 ITE 를 가진 환자의 Y(0)을 계산하는것</li>
 </ul>
 
-<p><img src="/public/medicine/03/01/03-16.PNG" alt="" /></p>
+<p><img src="/public/medicine/03/01/03-16.png" alt="" /></p>
 <ul>
   <li>Matched Pair란 W가 서로 다른 두 쌍을 의미함</li>
   <li>ITE estimate의 평균을 사용</li>
 </ul>
 
-<p><img src="/public/medicine/03/01/03-17.PNG" alt="" /></p>
+<p><img src="/public/medicine/03/01/03-17.png" alt="" /></p>
 <ul>
   <li>각 pair에 대한 Y(1) - Y(0)의 결과에 의해 Harm/Benefit/No Effect를 판단</li>
 </ul>
@@ -488,11 +500,11 @@ control</p>
   </li>
 </ul>
 
-<p><img src="/public/medicine/03/03-18.PNG" alt="" /></p>
+<p><img src="/public/medicine/03/03-18.png" alt="" /></p>
 
 <h3 id="c-for-benefit-calculation">C-for-benefit calculation</h3>
 
-<p><img src="/public/medicine/03/01/03-19.PNG" alt="" /></p>
+<p><img src="/public/medicine/03/01/03-19.png" alt="" /></p>
 <ul>
   <li>위와 같은 pair들이 존재할때 C-index를 계산하면 다음과 같음
     <ul>
@@ -503,7 +515,7 @@ control</p>
   </li>
 </ul>
 
-<p><img src="/public/medicine/03/01/03-20.PNG" alt="" /></p>
+<p><img src="/public/medicine/03/01/03-20.png" alt="" /></p>
 <ul>
   <li>C-for-benefit을 계산하기 위해 주어진 데이터로 부터 먼저 C-index를 계산
     <ol>
@@ -515,7 +527,7 @@ control</p>
   </li>
 </ul>
 
-<p><img src="/public/medicine/03/01/03-21.PNG" alt="" /></p>
+<p><img src="/public/medicine/03/01/03-21.png" alt="" /></p>
 <ul>
   <li>C-for-benefit의 의미
     <ul>
@@ -577,7 +589,7 @@ control</p>
 
   <!-- Facebook Comments HTML -->
   <div class="m-t-6e">
-    <div class="fb-comments" data-href="http://youngwonseo.github.io/2020/06/04/03-week1/" data-width="800" data-numposts="5"></div>
+    <div class="fb-comments" data-href="http://localhost:4000/2020/06/04/03-week1/" data-width="800" data-numposts="5"></div>
   </div>
 
 </article>

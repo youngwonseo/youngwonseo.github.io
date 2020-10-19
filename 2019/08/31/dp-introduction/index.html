@@ -101,6 +101,10 @@
 	    
 	  
 	    
+	      <a href="/ml_medicine/" title="ML for Medicine">ML for Medicine</a>
+	    
+	  
+	    
 	      <a href="/paper_review/" title="Paper Review">Paper Review</a>
 	    
 	  
@@ -112,6 +116,8 @@
 	  
 	    
 	      <a href="/study/" title="Study">Study</a>
+	    
+	  
 	    
 	  
 	    
@@ -195,6 +201,10 @@
 			
 		
 			
+				<a href="/ml_medicine/" title="ML for Medicine">ML for Medicine</a>
+			
+		
+			
 				<a href="/paper_review/" title="Paper Review">Paper Review</a>
 			
 		
@@ -206,6 +216,8 @@
 		
 			
 				<a href="/study/" title="Study">Study</a>
+			
+		
 			
 		
 			
@@ -279,16 +291,18 @@
   </div>
 	<div class="content">
 
-		<p>다이나믹 프로그래밍(dynamic programing, 동적 계획법)은 하나의 큰 문제에서 중복되어 발생하는 작은 문제들을 효율적으로 계산하기 위한 알고리즘입니다. 이름에서는 프로그래밍 방법론? 같아 보이지만 그것이 아닌 알고리즘의 이름입니다. 굉장히 간단하지만 문제를 아주 효율적으로 풀수 있는 방법이죠.</p>
+		<p>다이나믹 프로그래밍(Dynamic Programming, 동적 계획법)은 하나의 문제(상위 문제)를 보다 작은 문제(하위 문제)들로 나누어 해결하는 알고리즘입니다. 이름에서는 프로그래밍 방법론의 종류처럼 보이지만 그것이 아닌 알고리즘의 이름입니다. 굉장히 간단하지만 문제를 아주 효율적으로 풀수 있는 방법입니다. 그렇다고해서 모든 문제를 다이나믹 프로그래밍을 이용해서 해결할 수 있는것은 아닙니다. 다이나믹 프로그래밍을 적용하기 위해서는 <strong>하위 문제</strong>로 분할 될 수 있는 문제이어야 합니다.</p>
 
-<p>다이나믹 프로그래밍, 그리고 다이나믹 프로그래밍의 장점을 이해하기 위해선 <strong>재귀</strong>와 <strong>메모이제이션</strong> 먼저 이해하는 것이 바람직합니다. 여기서는 피보나치(fibonacci) 수열을 사용해 각 방법에 대해 이해하고 다이나믹 프로그래밍에 대해 살펴보겠습니다.</p>
+<p>다이나믹 프로그래밍의 장점을 이해하기 위해선 <strong>재귀</strong>와 <strong>메모이제이션</strong>을 먼저 이해하는 것이 바람직합니다. 여기서는 피보나치(fibonacci) 수열을 사용해 각 방법에 대해 이해하고 다이나믹 프로그래밍에 대해 살펴보겠습니다.</p>
 
 <h2 id="피보나치-수열">피보나치 수열</h2>
-<p>피보나치 수열은 F(1) = 1, F(2) = 1, F(n) = F(n-2) + F(n-1) 로 계산되는 수열입니다. 이말은 첫 번째는 1, 두 번째는 1을 시작으로 바로앞의 두 값의 합이 현재 순서의 값이 되는 것입니다. 예로들면 3번째 값(F(3))을 구하고 싶으면 F(1)=1과 F(2)=1의 값을 합한 2가 되는것이죠.</p>
+<p>피보나치 수열은 ƒ(1) = 1, ƒ(2) = 1, ƒ(n) = ƒ(n-2) + ƒ(n-1) 로 계산되는 수열입니다. 즉 첫 번째 수열값 1, 두 번째 수열값 1을 시작으로 바로앞의 두 수열값의 합이 현재 순서의 수열 값이 되는 것입니다. 예로들면 3번째 값(ƒ(3))을 구하고 싶으면 ƒ(1)=1과 ƒ(2)=1의 값을 합한 2가 되는것이죠. 수열을 나열해보면 다음과 같습니다.</p>
 
 <blockquote>
   <p>1,1,2,3,5,8,13,21…</p>
 </blockquote>
+
+<p>위에서 다이나믹 프로그래밍을 적용하기 위해서는 하위 문제들로 분할 될수 있는 문제이어야 한다고 했습니다. 피보나치의 경우 ƒ(n) = ƒ(n-2) + ƒ(n-1) 처럼 두 개의 하위 문제로 분할될 수 있는 문제입니다. 참고로 어떤 문제가 주어졌을때 다이나믹 프로그래밍으로 해결 될 수 있는지 없는지 판단을 잘하는것은 매우 중요한 능력입니다. 주어진 문제에 따라 대가들에 의해 이미 만들어진 알고리즘을 대입하는것은 개발 시간을 매우 단축시켜주기 때문입니다!(물론 성능과 품질도 개선, 또한 코딩인터뷰에서 빠른 시간안에 정확하게 문제를 푸는것은 높은 연봉을…)</p>
 
 <h2 id="재귀">재귀</h2>
 <p>재귀(recursion)란 수학에서 말하는 귀납적 정의로써 컴퓨터 과학, 프로그래밍에서는 재귀를 재귀함수로 표현(코딩)할 수 있는데 특정 함수 f가 존재할때 해당 함수 안에서 같은 함수f를 호출하는 것을 의미합니다. 프로그래밍 입문자들이 어려워 하기도 하지만 코드의 표현보다는 이러한 귀납적 정의에 대한 논리적 표현이 잘 안되서 어려워 합니다. 피보나치 수열을 생각해 봅시다. F(n) = F(n-2) + F(n-1)로 함수 F안에서 F를 다시 호출하는 재귀함수라고 말할 수 있습니다.</p>
@@ -322,9 +336,46 @@
 
 <h2 id="메모이제이션">메모이제이션</h2>
 
-<p>메모 전략(memoization, 메모이제이션)은 이름처럼 메모를 해가면서 문제를 해결하는 방법입니다(참고로 memoization은 컴퓨터 과학에서만 사용되는 용어입니다).</p>
+<p>메모 전략(memoization, 메모이제이션)은 이름처럼 메모를 해가면서 문제를 해결하는 방법입니다(참고로 memoization은 컴퓨터 과학에서만 사용되는 용어입니다). 여기서 메모란 주어진 하위문제에 대한 답을 변수에 저장해두어 재귀에서 발생하는 중복 계산을 방지하는 것입니다.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">fibo</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="k">def</span> <span class="nf">fibonacci</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">fibo</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">fibo</span><span class="p">[</span><span class="n">n</span><span class="p">]</span>
+
+    <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">or</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">fibo</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">=</span> <span class="n">n</span>
+
+    <span class="n">fibo</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">=</span> <span class="n">fibonacci</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span> <span class="o">+</span> <span class="n">fibonacci</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">fibo</span><span class="p">[</span><span class="n">n</span><span class="p">]</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">fibonacci</span><span class="p">(</span><span class="mi">6</span><span class="p">))</span>
+</code></pre></div></div>
+
+<p>코드를 살펴보면 fibo라는 딕셔너리를 이용하여 계산된 결과값을 메모하고있습니다. 그리고 이미 계산된 문제의 경우 바로 리턴을 합니다. 재귀와 아주 작은 차이를 보이지만 이는 성능에 매우큰 영향을 미칩니다. 특히 n이 커지면 커질수록 그 영향은 매우 효과적입니다(재귀에서는 n이 커질수록 지수적으로 반복회수가 늘어남).</p>
+
+<p>메모이제이션을 살펴보면 재귀처럼 여전히 작은 하위 문제들로 접근하며 계산을 합니다. 중복계산 측면에서는 개선이 있었지만 메모리사용, 즉 재귀 호출시 스택에 메모리가 쌓이는 문제는 해결하지 못했습니다.</p>
+
+<p>재귀와 메모이제이션을 다른말로 하향식 접근법이라 합니다. 왜냐하면 가장 큰 문제를 접근하고 거기서 발생하는 하위 문제를 접근, 다시 거기서 하위 문제를 접근하기 때문입니다.</p>
 
 <h2 id="다이나믹-프로그래밍">다이나믹 프로그래밍</h2>
+<p>다이나믹 프로그래밍은 재귀나 메모이제이션과는 다르게 상향식 접근법입니다. 처음부터 가장 작은 문제, 피보나치에서는 ƒ(1)부터 차례대로 계산하여 ƒ(n)까지 계산합니다. 코드를 살펴보겠습니다.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">fibonacci</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="n">fibo</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+    <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">1</span> <span class="ow">or</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">fibo</span><span class="p">[</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="n">n</span><span class="p">):</span>
+        <span class="n">fibo</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">fibo</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span> <span class="o">+</span> <span class="n">fibo</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+
+    <span class="k">return</span> <span class="n">fibo</span><span class="p">[</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">fibonacci</span><span class="p">(</span><span class="mi">6</span><span class="p">))</span>
+</code></pre></div></div>
+
+<p>어떤가요? 보다 우아(로직측면에서)하지 않나요? 기존의 재귀나 메모이제이션의 접근법들과 비교해보면 일단 재귀가 없습니다. 즉 함수호출에 대한 스택을 사용하지 않는 구조입니다. 그리고 바로이전에 언급한것과 같이 ƒ(n)에서 하위문제로 접근하는 것이 아닌 처음부터 ƒ(1)부터 순차적으로 n번째 수열값까지 계산을 합니다(감탄).</p>
+
+<p>코딩스타일에 따라 작은부분이지만 여러형태로 표현가능합니다(즉 fibo[1, 1] 을 미리 정의할지 아니면 n이 1 그리고 2가 아닐경우에 정의 할지등의 문제는 다이나믹 프로그래밍과는 관계가 없습니다).</p>
 
 <h2 id="references">References</h2>
 <ul>
@@ -355,7 +406,7 @@
 
   <!-- Facebook Comments HTML -->
   <div class="m-t-6e">
-    <div class="fb-comments" data-href="http://youngwonseo.github.io/2019/08/31/dp-introduction/" data-width="800" data-numposts="5"></div>
+    <div class="fb-comments" data-href="http://localhost:4000/2019/08/31/dp-introduction/" data-width="800" data-numposts="5"></div>
   </div>
 
 </article>
