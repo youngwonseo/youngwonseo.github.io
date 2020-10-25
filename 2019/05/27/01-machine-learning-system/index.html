@@ -1,297 +1,122 @@
 <!DOCTYPE html>
 <html>
-
   <head>
-	<!-- Meta -->
-	<meta charset="UTF-8"/>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-	<meta name="generator" content="Jekyll">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width initial-scale=1">
 
-	<title>머신러닝 시스템</title>
-  <meta name="description" content="">
+  <title>머신러닝 시스템</title>
+  <meta name="description" content="이번 포스트에서는 머신러닝 시스템을 실제 서비스에 적용하는 문제에 대해 서술합니다. 내용은 머신러닝 실무 프로젝트의 4장 “기존 시스템에 머신런이 통합하기”을 참조합니다.">
 
-	<!-- CSS & fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,500" rel="stylesheet">
   <link rel="stylesheet" href="/css/main.css">
-
-  <!-- Open Graph -->
-  <meta property="og:title" content="머신러닝 시스템">
-  <meta property="og:type" content: "website">
-  <meta property="og:url" content= "https://thereviewindex.com/blog/2019/05/27/01-machine-learning-system/">
-  <meta property="og:description" content="">
-  <meta property="og:locale" content= "en_US">
-  <meta property="og:site_name" content="The Review Index">
-  <meta property="og:image" content="https://thereviewindex.com/blog/">
-  <meta property="og:image:url" content="https://thereviewindex.com/blog/">
-  <meta property="og:image:secure_url" content="https://thereviewindex.com/blog/">
-  <meta property="og:image:type" content="image/png">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="1200">
-  
-  <!-- twitter card -->
-  <meta property="twitter:card" content="summary">
-  <meta property="twitter:title" content="머신러닝 시스템">
-  <meta property="twitter:description" content="">
-  <meta property="twitter:url" content= "https://thereviewindex.com/blog/2019/05/27/01-machine-learning-system/">
-  <meta property="twitter:image" content="https://thereviewindex.com/blog/">
-
-
-	<!-- RSS -->
-	<link href="/atom.xml" type="application/atom+xml" rel="alternate" title="ATOM Feed" />
-
-  <!-- Favicon -->
-  <link rel="shortcut icon" type="image/png" href="img/favicon.png">
-
-
-  <!-- Google Analytics -->
-  <script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-  
-  ga('create', 'UA-78263144-1', 'auto');
-  ga('send', 'pageview');
-  </script>
-  <!-- End Google Analytics -->
-
+  <link rel="canonical" href="https://youngwonseo.github.io/2019/05/27/01-machine-learning-system/">
+  <link rel="alternate" type="application/atom+xml" title="Youngon.Seo" href="https://youngwonseo.github.io/feed.xml" />
 </head>
 
   <body>
     
-    <!-- Facebook Comments Script -->
-    <div id="fb-root"></div>
-      <script>(function(d, s, id) {
-        var js, fjs = d.getElementsByTagName(s)[0];
-        if (d.getElementById(id)) return;
-        js = d.createElement(s); js.id = id;
-        js.src = 'https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v2.11&appId=288262758360783';
-        fjs.parentNode.insertBefore(js, fjs);
-      }(document, 'script', 'facebook-jssdk'));</script>
-  
-    <div id="wrap">
-  	  	
-  	  	<!-- Navigation -->
-  	  	<nav id="nav">
-	<div id="nav-list">
-		<a href="/">Home</a>
 
-		<!-- Nav pages -->
-	  
-	    
-	  
-	    
-	  
-	    
-	      <a href="/about/" title="About">About</a>
-	    
-	  
-	    
-	      <a href="/archive/" title="Archive">Archive</a>
-	    
-	  
-	    
-	  
-	    
-	  
-	    
-	  
-	    
-	      <a href="/ml/" title="Machine Learning">Machine Learning</a>
-	    
-	  
-	    
-	      <a href="/ml_medicine/" title="ML for Medicine">ML for Medicine</a>
-	    
-	  
-	    
-	      <a href="/paper_review/" title="Paper Review">Paper Review</a>
-	    
-	  
-	    
-	      <a href="/projects/" title="Projects">Projects</a>
-	    
-	  
-	    
-	  
-	    
-	      <a href="/study/" title="Study">Study</a>
-	    
-	  
-	    
-	  
-	    
-	  
-	    
-	  
-	    
-	  
-	    
-	  
-	    
-	  
-	    
-	  
-	    
-	  
-	    
-	  
-	    
-	  
-    
-    <!-- Nav links -->
-	  <!-- <a href="/">Blog</a> -->
+<div class="header-container" id="header-container">
 
-
-	</div>
-  
-  <!-- Nav footer -->
-	
-	  <footer>
-	
-	<!-- Your custom nav footer here -->
-	
-</footer>
-	
-
-</nav>
-
+<!-- Site navigation -->
+  <nav class="site-nav">
+    <div class="trigger">
       
-      <!-- Icon menu -->
-  	  <a id="nav-menu">
-  	  	<div id="menu"></div>
-  	  </a>
-  
-        <!-- Header -->
         
-          <header id="header">
-
-	<!-- Your custom header here -->
-	<span class="f-left">  
-		<a href="/">
-			<h1>
-				<span>Youngwon Seo</span>
-			</h1>
-		</a>
-	</span>
-
-	<span id="nav-links" class="absolute right bottom">
-		<!-- Nav pages -->
-		
-			
-		
-			
-		
-			
-				<a href="/about/" title="About">About</a>
-			
-		
-			
-				<a href="/archive/" title="Archive">Archive</a>
-			
-		
-			
-		
-			
-		
-			
-		
-			
-				<a href="/ml/" title="Machine Learning">Machine Learning</a>
-			
-		
-			
-				<a href="/ml_medicine/" title="ML for Medicine">ML for Medicine</a>
-			
-		
-			
-				<a href="/paper_review/" title="Paper Review">Paper Review</a>
-			
-		
-			
-				<a href="/projects/" title="Projects">Projects</a>
-			
-		
-			
-		
-			
-				<a href="/study/" title="Study">Study</a>
-			
-		
-			
-		
-			
-		
-			
-		
-			
-		
-			
-		
-			
-		
-			
-		
-			
-		
-			
-		
-			
-		
-		
-		<!-- Nav links -->
-		<!-- <a href="/">Blog</a> -->
-
-	</span>
-	
-	<!-- Google Analytics -->
-  <script>
-		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-		})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-		
-		ga('create', 'UA-78263144-1', 'auto');
-		ga('send', 'pageview');
-		</script>
-		<!-- End Google Analytics -->
-</header>
-
-
+        <a class="page-link" href="/about/">About</a>
         
-  
-      <!-- Main content -->
-  	  <div id="container">
-  		  
-  		<main>
-  
-  			<article id="post-page">
-  <div class="parent f-right">
-    <!-- Twitter -->
-    <a href="https://twitter.com/share?url=https://thereviewindex.com/blog/2019/05/27/01-machine-learning-system/&amp;text=머신러닝 시스템&amp;hashtags=thereviewindex" target="_blank">
-      <span class="social-icon">  
-        <svg class="svgIcon-use" width="29" height="29" viewBox="0 0 29 29"><path d="M21.967 11.8c.018 5.93-4.607 11.18-11.177 11.18-2.172 0-4.25-.62-6.047-1.76l-.268.422-.038.5.186.013.168.012c.3.02.44.032.6.046 2.06-.026 3.95-.686 5.49-1.86l1.12-.85-1.4-.048c-1.57-.055-2.92-1.08-3.36-2.51l-.48.146-.05.5c.22.03.48.05.75.08.48-.02.87-.07 1.25-.15l2.33-.49-2.32-.49c-1.68-.35-2.91-1.83-2.91-3.55 0-.05 0-.01-.01.03l-.49-.1-.25.44c.63.36 1.35.57 2.07.58l1.7.04L7.4 13c-.978-.662-1.59-1.79-1.618-3.047a4.08 4.08 0 0 1 .524-1.8l-.825.07a12.188 12.188 0 0 0 8.81 4.515l.59.033-.06-.59v-.02c-.05-.43-.06-.63-.06-.87a3.617 3.617 0 0 1 6.27-2.45l.2.21.28-.06c1.01-.22 1.94-.59 2.73-1.09l-.75-.56c-.1.36-.04.89.12 1.36.23.68.58 1.13 1.17.85l-.21-.45-.42-.27c-.52.8-1.17 1.48-1.92 2L22 11l.016.28c.013.2.014.35 0 .52v.04zm.998.038c.018-.22.017-.417 0-.66l-.498.034.284.41a8.183 8.183 0 0 0 2.2-2.267l.97-1.48-1.6.755c.17-.08.3-.02.34.03a.914.914 0 0 1-.13-.292c-.1-.297-.13-.64-.1-.766l.36-1.254-1.1.695c-.69.438-1.51.764-2.41.963l.48.15a4.574 4.574 0 0 0-3.38-1.484 4.616 4.616 0 0 0-4.61 4.613c0 .29.02.51.08.984l.01.02.5-.06.03-.5c-3.17-.18-6.1-1.7-8.08-4.15l-.48-.56-.36.64c-.39.69-.62 1.48-.65 2.28.04 1.61.81 3.04 2.06 3.88l.3-.92c-.55-.02-1.11-.17-1.6-.45l-.59-.34-.14.67c-.02.08-.02.16 0 .24-.01 2.12 1.55 4.01 3.69 4.46l.1-.49-.1-.49c-.33.07-.67.12-1.03.14-.18-.02-.43-.05-.64-.07l-.76-.09.23.73c.57 1.84 2.29 3.14 4.28 3.21l-.28-.89a8.252 8.252 0 0 1-4.85 1.66c-.12-.01-.26-.02-.56-.05l-.17-.01-.18-.01L2.53 21l1.694 1.07a12.233 12.233 0 0 0 6.58 1.917c7.156 0 12.2-5.73 12.18-12.18l-.002.04z"></path></svg>
-      </span>
-    </a>
+      
+        
+        <a class="page-link" href="/archive/">Archive</a>
+        
+      
+        
+      
+        
+      
+        
+        <a class="page-link" href="/projects/">Projects</a>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+      <a class="page-link" href="/feed.xml">RSS</a>
+      <a class="twitter page-link" href="https://twitter.com/fffabs"><span class="icon-twitter"></span></a>
+      <a class="facebook page-link" href="https://www.facebook.com/fffabs"><span class="icon-facebook"></span></a>
+    </div>
+  </nav>
 
-    &nbsp;&nbsp;&nbsp;
-    <!-- Facebook -->
-    <a href="http://www.facebook.com/sharer.php?u=https://thereviewindex.com/blog/2019/05/27/01-machine-learning-system/" target="_blank">
-      <span class="social-icon">
-        <svg class="svgIcon-use" width="29" height="29" viewBox="0 0 29 29"><path d="M16.39 23.61v-5.808h1.846a.55.55 0 0 0 .546-.48l.36-2.797a.551.551 0 0 0-.547-.62H16.39V12.67c0-.67.12-.813.828-.813h1.474a.55.55 0 0 0 .55-.55V8.803a.55.55 0 0 0-.477-.545c-.436-.06-1.36-.116-2.22-.116-2.5 0-4.13 1.62-4.13 4.248v1.513H10.56a.551.551 0 0 0-.55.55v2.797c0 .304.248.55.55.55h1.855v5.76c-4.172-.96-7.215-4.7-7.215-9.1 0-5.17 4.17-9.36 9.31-9.36 5.14 0 9.31 4.19 9.31 9.36 0 4.48-3.155 8.27-7.43 9.15M14.51 4C8.76 4 4.1 8.684 4.1 14.46c0 5.162 3.75 9.523 8.778 10.32a.55.55 0 0 0 .637-.543v-6.985a.551.551 0 0 0-.55-.55H11.11v-1.697h1.855a.55.55 0 0 0 .55-.55v-2.063c0-2.02 1.136-3.148 3.03-3.148.567 0 1.156.027 1.597.06v1.453h-.924c-1.363 0-1.93.675-1.93 1.912v1.78c0 .3.247.55.55.55h2.132l-.218 1.69H15.84c-.305 0-.55.24-.55.55v7.02c0 .33.293.59.623.54 5.135-.7 9.007-5.11 9.007-10.36C24.92 8.68 20.26 4 14.51 4"></path></svg>
-      </span> 
+  <!-- The title of the site -->
+  <header class="site-header">
+    <a href="/">
+      <div class="avatar">
+        <img src="/assets/images/avatar.png" />
+      </div>
     </a>
-  </div>
-  
-  <h2>머신러닝 시스템</h2>		
-	<div class="by-line parent">
-    <time datetime="2019-05-27T00:00:00+09:00"> <i>27 May 2019</i> </time>
-    &nbsp;&nbsp; &middot; &nbsp;&nbsp;
-    <span><i></i> </span>
-  </div>
-	<div class="content">
+    <!-- <a class="site-title" href="/">Youngon.Seo</a> -->
+  </header>
 
-		<p>이번 포스트에서는 머신러닝 시스템을 실제 서비스에 적용하는 문제에 대해 서술합니다. 내용은 <a href="http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&amp;mallGb=KOR&amp;barcode=9791162240816&amp;orderClick=LEA&amp;Kc=">머신러닝 실무 프로젝트</a>의 4장 “기존 시스템에 머신런이 통합하기”을 참조합니다.</p>
+</div>
+
+      <div class="wrapper">
+        <div class="page-content">
+          <div class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">머신러닝 시스템</h1>
+    <p class="post-meta">May 27, 2019 • Youngwon Seo</p>
+  </header>
+
+  <!-- Beginning Twitter sharing Large button -->
+  <!-- <a class="twitter-share-button" href="https://twitter.com/share"
+  data-related="twitterdev"
+  data-size="large"
+  data-count="horizontal">
+  Tweet
+  </a> -->
+  <!-- End of Twitter sharing button -->
+
+  <!-- Facebook -->
+  
+
+  <article class="post-content">
+    <p>이번 포스트에서는 머신러닝 시스템을 실제 서비스에 적용하는 문제에 대해 서술합니다. 내용은 <a href="http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&amp;mallGb=KOR&amp;barcode=9791162240816&amp;orderClick=LEA&amp;Kc=">머신러닝 실무 프로젝트</a>의 4장 “기존 시스템에 머신런이 통합하기”을 참조합니다.</p>
 
 <h2 id="1-학습과-예측">1. 학습과 예측</h2>
 <p>머신러닝 테크닉들을 보면 크게 <strong>학습(learning)</strong>과 <strong>예측(prediction or test)</strong> 두 단계로 구분됩니다. 학습은 학습데이터(여기서는 지도학습의 데이터와 타켓(label)이 합쳐진 데이터)를 사용하여 신경망 같은 알고리즘에 적용시켜 가중치를 학습하는 일을 나타내고 학습된 모델에 우리가 원하는 데이터를 적용시키는 것이 예측이라고 할 수 있습니다. 예를 들어보면 이미지분류를 위해 기존에 가진 이미지셋(학습 데이터셋)으로 분류기(모델)를 생성하는것이 학습이고 실제 사용자가 이미지 1장(데이터)을 업로드하여 어떤사진인지 분류하는 작업을 예측이라 할 수 있습니다. 머신러닝을 공부하다보면 이러한 요소들을 실제 서비스에 어떻게 적용하는지 고민을 할 수 밖에 없는데 이러한 요소들을 그림을 그리며 이해해봅시다.</p>
@@ -305,21 +130,21 @@
 
 <h3 id="21-배치-학습">2.1 배치 학습</h3>
 <p>예를 들어 값 w_1 부터 w_100까지 100개가 존재하는데 이것의 평균을 배치(일괄)학습로 처리하면 다음과 같습니다.</p>
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sum</span> <span class="o">=</span> <span class="n">w_1</span> <span class="o">+</span> <span class="n">w_2</span> <span class="o">+</span> <span class="o">...</span> <span class="o">+</span> <span class="n">w_100</span>
-<span class="n">w_result</span> <span class="o">=</span> <span class="nb">sum</span> <span class="o">/</span> <span class="mi">100</span>
-</code></pre></div></div>
+<pre><code class="language-python">sum = w_1 + w_2 + ... + w_100
+w_result = sum / 100
+</code></pre>
 <p>w_1 부터 w_100 까지의 값을 더해서 100으로 나누면 우리가 원하는 평균을 구할 수 있습니다. 실시간(순차)학습은 다음과 같습니다.</p>
 
 <h3 id="22-실시간-학습">2.2 실시간 학습</h3>
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sum</span> <span class="o">=</span> <span class="mi">0</span>
-<span class="n">cnt</span> <span class="o">=</span> <span class="mi">0</span>
-<span class="k">while</span> <span class="n">has_weight</span><span class="p">():</span>
-  <span class="n">w_tmp</span> <span class="o">=</span> <span class="n">get_weight</span><span class="p">()</span>
-  <span class="nb">sum</span> <span class="o">+=</span> <span class="n">w_tmp</span>
-  <span class="n">cnt</span> <span class="o">+=</span> <span class="mi">1</span>
+<pre><code class="language-python">sum = 0
+cnt = 0
+while has_weight():
+  w_tmp = get_weight()
+  sum += w_tmp
+  cnt += 1
 
-<span class="n">w_result</span> <span class="o">=</span> <span class="nb">sum</span> <span class="o">/</span> <span class="n">cnt</span>
-</code></pre></div></div>
+w_result = sum / cnt
+</code></pre>
 <p>처음부터 100개의 데이터가 존재하는 것이 아니라 데이터가 발생할때마다 평균을 구합니다. 이말은 즉 처음부터 100개의 데이터를 가지고 있는것이 아니라 처음에는 1개의 평균, 그 다음은 2개의 평균.. 그러다 결국 100개의 평균을 구한다고 할 수 있습니다.</p>
 
 <p>이렇게 배치와 실시간을 비교해보면 학습도중 최적화하는 방법의 차이와 한 번에 다루는 데이터의 크기차이라고 할 수 있습니다.</p>
@@ -429,62 +254,113 @@
   <li><a href="http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&amp;mallGb=KOR&amp;barcode=9791162240816&amp;orderClick=LEA&amp;Kc=">머신러닝 실무 프로젝트</a></li>
 </ul>
 
-		
-  </div>
+  </article>
 
-  <div class="parent f-right">
-    <!-- Twitter -->
-    <a href="https://twitter.com/share?url=https://thereviewindex.com/blog/2019/05/27/01-machine-learning-system/&amp;text=머신러닝 시스템&amp;hashtags=thereviewindex" target="_blank">
-      <span class="social-icon">  
-        <svg class="svgIcon-use" width="29" height="29" viewBox="0 0 29 29"><path d="M21.967 11.8c.018 5.93-4.607 11.18-11.177 11.18-2.172 0-4.25-.62-6.047-1.76l-.268.422-.038.5.186.013.168.012c.3.02.44.032.6.046 2.06-.026 3.95-.686 5.49-1.86l1.12-.85-1.4-.048c-1.57-.055-2.92-1.08-3.36-2.51l-.48.146-.05.5c.22.03.48.05.75.08.48-.02.87-.07 1.25-.15l2.33-.49-2.32-.49c-1.68-.35-2.91-1.83-2.91-3.55 0-.05 0-.01-.01.03l-.49-.1-.25.44c.63.36 1.35.57 2.07.58l1.7.04L7.4 13c-.978-.662-1.59-1.79-1.618-3.047a4.08 4.08 0 0 1 .524-1.8l-.825.07a12.188 12.188 0 0 0 8.81 4.515l.59.033-.06-.59v-.02c-.05-.43-.06-.63-.06-.87a3.617 3.617 0 0 1 6.27-2.45l.2.21.28-.06c1.01-.22 1.94-.59 2.73-1.09l-.75-.56c-.1.36-.04.89.12 1.36.23.68.58 1.13 1.17.85l-.21-.45-.42-.27c-.52.8-1.17 1.48-1.92 2L22 11l.016.28c.013.2.014.35 0 .52v.04zm.998.038c.018-.22.017-.417 0-.66l-.498.034.284.41a8.183 8.183 0 0 0 2.2-2.267l.97-1.48-1.6.755c.17-.08.3-.02.34.03a.914.914 0 0 1-.13-.292c-.1-.297-.13-.64-.1-.766l.36-1.254-1.1.695c-.69.438-1.51.764-2.41.963l.48.15a4.574 4.574 0 0 0-3.38-1.484 4.616 4.616 0 0 0-4.61 4.613c0 .29.02.51.08.984l.01.02.5-.06.03-.5c-3.17-.18-6.1-1.7-8.08-4.15l-.48-.56-.36.64c-.39.69-.62 1.48-.65 2.28.04 1.61.81 3.04 2.06 3.88l.3-.92c-.55-.02-1.11-.17-1.6-.45l-.59-.34-.14.67c-.02.08-.02.16 0 .24-.01 2.12 1.55 4.01 3.69 4.46l.1-.49-.1-.49c-.33.07-.67.12-1.03.14-.18-.02-.43-.05-.64-.07l-.76-.09.23.73c.57 1.84 2.29 3.14 4.28 3.21l-.28-.89a8.252 8.252 0 0 1-4.85 1.66c-.12-.01-.26-.02-.56-.05l-.17-.01-.18-.01L2.53 21l1.694 1.07a12.233 12.233 0 0 0 6.58 1.917c7.156 0 12.2-5.73 12.18-12.18l-.002.04z"></path></svg>
-      </span>
-    </a>
-
-    &nbsp;&nbsp;&nbsp;
-    <!-- Facebook -->
-    <a href="http://www.facebook.com/sharer.php?u=https://thereviewindex.com/blog/2019/05/27/01-machine-learning-system/" target="_blank">
-      <span class="social-icon">
-        <svg class="svgIcon-use" width="29" height="29" viewBox="0 0 29 29"><path d="M16.39 23.61v-5.808h1.846a.55.55 0 0 0 .546-.48l.36-2.797a.551.551 0 0 0-.547-.62H16.39V12.67c0-.67.12-.813.828-.813h1.474a.55.55 0 0 0 .55-.55V8.803a.55.55 0 0 0-.477-.545c-.436-.06-1.36-.116-2.22-.116-2.5 0-4.13 1.62-4.13 4.248v1.513H10.56a.551.551 0 0 0-.55.55v2.797c0 .304.248.55.55.55h1.855v5.76c-4.172-.96-7.215-4.7-7.215-9.1 0-5.17 4.17-9.36 9.31-9.36 5.14 0 9.31 4.19 9.31 9.36 0 4.48-3.155 8.27-7.43 9.15M14.51 4C8.76 4 4.1 8.684 4.1 14.46c0 5.162 3.75 9.523 8.778 10.32a.55.55 0 0 0 .637-.543v-6.985a.551.551 0 0 0-.55-.55H11.11v-1.697h1.855a.55.55 0 0 0 .55-.55v-2.063c0-2.02 1.136-3.148 3.03-3.148.567 0 1.156.027 1.597.06v1.453h-.924c-1.363 0-1.93.675-1.93 1.912v1.78c0 .3.247.55.55.55h2.132l-.218 1.69H15.84c-.305 0-.55.24-.55.55v7.02c0 .33.293.59.623.54 5.135-.7 9.007-5.11 9.007-10.36C24.92 8.68 20.26 4 14.51 4"></path></svg>
-      </span> 
-    </a>
-  </div>
-
-  <!-- Facebook Comments HTML -->
-  <div class="m-t-6e">
-    <div class="fb-comments" data-href="http://localhost:4000/2019/05/27/01-machine-learning-system/" data-width="800" data-numposts="5"></div>
-  </div>
-
-</article>
-
+  <hr>
 
   
-  	  </main>
-  		
-  		  <!-- Pagination links -->
-        
+    <div id="disqus_thread"></div>
+<script>
+
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+/*
+var disqus_config = function () {
+this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://youngwonseo.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+                            
   
-  	  </div>
-  	    
-  	    <!-- Footer -->
-        <div class="m-t-6e">
-          <footer><span>&#169;2017 - TheReviewIndex</span></footer>
+  <!-- <div class="question">
+    <h2>Questions?</h2>
+    <p>Have a question regarding the post above? <br />Or any of my designs?</p>
+    <a class="twitter-follow-button"
+    href="https://twitter.com/fffabs"
+    data-show-count="true"
+    data-size="large">
+    Follow @fffabs
+    </a>
+    <script type="text/javascript">
+    window.twttr = (function (d, s, id) {
+      var t, js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src= "https://platform.twitter.com/widgets.js";
+      fjs.parentNode.insertBefore(js, fjs);
+      return window.twttr || (t = { _e: [], ready: function (f) { t._e.push(f) } });
+    }(document, "script", "twitter-wjs"));
+    </script>
+  </div> -->
+
+  <div class="related">
+    <h2>Related</h2>
+    
+      <li><a href="/2020/10/09/image-resize/" title="파이썬 이미지 리사이즈">파이썬 이미지 리사이즈
+       &nbsp; <span class="post-meta">October 09, 2020</span></a>
+    
+      <li><a href="/2020/09/22/class-activation-map/" title="Learning Deep Features for Discriminative Localization">Learning Deep Features for Discriminative Localization
+       &nbsp; <span class="post-meta">September 22, 2020</span></a>
+    
+      <li><a href="/2020/09/21/network-in-network/" title="Network In Network">Network In Network
+       &nbsp; <span class="post-meta">September 21, 2020</span></a>
+    
+  </div>
+
+</div>
 
         </div>
-  
-  	    <!-- Script -->
-        <script src="/js/main.js"></script>	
+        <footer class="site-footer">
+<p class="small">YoungwonSeo &copy 2020
+</p>
+</footer>
 
-  
     </div>
-    
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-118401942-1"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
 
-  gtag('config', 'UA-118401942-1');
-</script>
+    <script src="//cdn.jsdelivr.net/headroomjs/0.5.0/headroom.min.js"></script>
+    <script type="text/javascript">
+      var el = document.querySelector(".header-container");
+      var headroom  = new Headroom(el, {
+        "offset": 205,
+        "tolerance": 5
+      });
+      headroom.init();
+    </script>
+
+
+    <!-- Twitter Shizzle -->
+    <!-- <script type="text/javascript">
+    window.twttr = (function (d, s, id) {
+      var t, js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src= "https://platform.twitter.com/widgets.js";
+      fjs.parentNode.insertBefore(js, fjs);
+      return window.twttr || (t = { _e: [], ready: function (f) { t._e.push(f) } });
+    }(document, "script", "twitter-wjs"));
+    </script> -->
+    	<!-- Google Analytics -->
+  <script>
+		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+		
+		ga('create', 'UA-78263144-1', 'auto');
+		ga('send', 'pageview');
+		</script>
+		<!-- End Google Analytics -->
+</header>
+
+
   </body>
 </html>
