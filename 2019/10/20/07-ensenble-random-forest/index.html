@@ -2,7 +2,7 @@
 <html>
   <head>
   <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta https-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width initial-scale=1">
 
   <title>앙상블 학습과 랜덤 포레스트</title>
@@ -10,7 +10,7 @@
 
   <link rel="stylesheet" href="/css/main.css">
   <link rel="canonical" href="https://youngwonseo.github.io/2019/10/20/07-ensenble-random-forest/">
-  <link rel="alternate" type="application/atom+xml" title="Youngon.Seo" href="https://youngwonseo.github.io/feed.xml" />
+  <link rel="alternate" type="application/atom+xml" title="YoungWon" href="https://youngwonseo.github.io/feed.xml" />
 </head>
 
   <body>
@@ -77,19 +77,19 @@
         
       
       <a class="page-link" href="/feed.xml">RSS</a>
-      <a class="twitter page-link" href="https://twitter.com/fffabs"><span class="icon-twitter"></span></a>
-      <a class="facebook page-link" href="https://www.facebook.com/fffabs"><span class="icon-facebook"></span></a>
+      <!-- <a class="twitter page-link" href="httpss://twitter.com/fffabs"><span class="icon-twitter"></span></a>
+      <a class="facebook page-link" href="httpss://www.facebook.com/fffabs"><span class="icon-facebook"></span></a> -->
     </div>
   </nav>
 
   <!-- The title of the site -->
   <header class="site-header">
-    <a href="/">
-      <div class="avatar">
+    <!-- <a href="/">
+      <div class="trigger">
         <img src="/assets/images/avatar.png" />
       </div>
-    </a>
-    <!-- <a class="site-title" href="/">Youngon.Seo</a> -->
+    </a> -->
+    <a class="site-title" href="/">YoungWon</a> -->
   </header>
 
 </div>
@@ -104,7 +104,7 @@
   </header>
 
   <!-- Beginning Twitter sharing Large button -->
-  <!-- <a class="twitter-share-button" href="https://twitter.com/share"
+  <!-- <a class="twitter-share-button" href="httpss://twitter.com/share"
   data-related="twitterdev"
   data-size="large"
   data-count="horizontal">
@@ -142,7 +142,7 @@
 <h3 id="아다부스트adaboost">아다부스트(AdaBoost)</h3>
 <p>새로운 모델을 학습하는 과정에서 이전 모델에서 과소적합(underfitting)된 학습데이터에 대해 가중치를 부여하는 방식입니다. 새로운 모델을 학습하는 과정에 이전 모델에서 학습하기 어려웠던 과소적합된 데이터들을 점점 잘 학습할 수 있도록 합니다(이것이 아다부스트의 기본 아이디어입니다).</p>
 
-<p><img src="https://miro.medium.com/max/1400/0*KYszvMnr3nCtjaGy.png" alt="" /></p>
+<p><img src="httpss://miro.medium.com/max/1400/0*KYszvMnr3nCtjaGy.png" alt="" /></p>
 
 <h3 id="그래디언트-부스팅gradient-boosting">그래디언트 부스팅(Gradient Boosting)</h3>
 <p>그래디언트 부스팅은 아다부스트처럼 새로운 모델을 학습시킬때 마다 샘플에 대한 가중치를 수정하는 대신 직전 모델이 만든 잔여 오차(residual error)에 대한 새로운 모델을 학습시킵니다.</p>
@@ -166,12 +166,12 @@ y_pred = sum(tree.predict(X_new) for tree in (tree_reg1, tree_reg2, tree_reg3))
 <h2 id="스태킹">스태킹</h2>
 <p>스태킹(stacking, stacked generalization)은 ‘앙상블에 속한 모든 예측기의 예측을 취합하는 간단한 함수를 사용하는 대신 취합하는 모델을 훈현시킬 수 없을까요?’라는 아이디어로 출발합니다. 즉 여러 모델의 예측값을 학습해서 하나의 예측값을 출력하는 모델을 학습하는 것입니다. 이러한 최종 예측값을 출력하는 모델을 블렌더(blender) 또는 메타 학습기(meta-learner)라고 합니다.</p>
 
-<p>https://scikit-learn.org/stable/modules/ensemble.html#stacking</p>
+<p>httpss://scikit-learn.org/stable/modules/ensemble.html#stacking</p>
 
 <h2 id="reference">Reference</h2>
 <ul>
-  <li><a href="http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&amp;mallGb=KOR&amp;barcode=9791162240731&amp;orderClick=LEa&amp;Kc=">핸즈온 머신러닝(오렐리앙 제롱 지음, 박해선 옮김) - 한빛미디어</a></li>
-  <li>https://towardsdatascience.com/understanding-adaboost-for-decision-tree-ff8f07d2851</li>
+  <li><a href="https://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&amp;mallGb=KOR&amp;barcode=9791162240731&amp;orderClick=LEa&amp;Kc=">핸즈온 머신러닝(오렐리앙 제롱 지음, 박해선 옮김) - 한빛미디어</a></li>
+  <li>httpss://towardsdatascience.com/understanding-adaboost-for-decision-tree-ff8f07d2851</li>
 </ul>
 
 
@@ -185,7 +185,7 @@ y_pred = sum(tree.predict(X_new) for tree in (tree_reg1, tree_reg2, tree_reg3))
 
 /**
 *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
-*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: httpss://disqus.com/admin/universalcode/#configuration-variables*/
 /*
 var disqus_config = function () {
 this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
@@ -194,19 +194,19 @@ this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your pag
 */
 (function() { // DON'T EDIT BELOW THIS LINE
 var d = document, s = d.createElement('script');
-s.src = 'https://youngwonseo.disqus.com/embed.js';
+s.src = 'httpss://youngwonseo.disqus.com/embed.js';
 s.setAttribute('data-timestamp', +new Date());
 (d.head || d.body).appendChild(s);
 })();
 </script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<noscript>Please enable JavaScript to view the <a href="httpss://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
                             
   
   <!-- <div class="question">
     <h2>Questions?</h2>
     <p>Have a question regarding the post above? <br />Or any of my designs?</p>
     <a class="twitter-follow-button"
-    href="https://twitter.com/fffabs"
+    href="httpss://twitter.com/fffabs"
     data-show-count="true"
     data-size="large">
     Follow @fffabs
@@ -216,7 +216,7 @@ s.setAttribute('data-timestamp', +new Date());
       var t, js, fjs = d.getElementsByTagName(s)[0];
       if (d.getElementById(id)) return;
       js = d.createElement(s); js.id = id;
-      js.src= "https://platform.twitter.com/widgets.js";
+      js.src= "httpss://platform.twitter.com/widgets.js";
       fjs.parentNode.insertBefore(js, fjs);
       return window.twttr || (t = { _e: [], ready: function (f) { t._e.push(f) } });
     }(document, "script", "twitter-wjs"));
@@ -226,14 +226,14 @@ s.setAttribute('data-timestamp', +new Date());
   <div class="related">
     <h2>Related</h2>
     
+      <li><a href="/2020/11/11/detecting-aortic-stenosis-using-electrocardiography/" title="Detecting Aortic Stenosis Using Electrocardiography">Detecting Aortic Stenosis Using Electrocardiography
+       &nbsp; <span class="post-meta">November 11, 2020</span></a>
+    
       <li><a href="/2020/10/09/image-resize/" title="파이썬 이미지 리사이즈">파이썬 이미지 리사이즈
        &nbsp; <span class="post-meta">October 09, 2020</span></a>
     
       <li><a href="/2020/09/22/class-activation-map/" title="Learning Deep Features for Discriminative Localization">Learning Deep Features for Discriminative Localization
        &nbsp; <span class="post-meta">September 22, 2020</span></a>
-    
-      <li><a href="/2020/09/21/network-in-network/" title="Network In Network">Network In Network
-       &nbsp; <span class="post-meta">September 21, 2020</span></a>
     
   </div>
 
@@ -264,7 +264,7 @@ s.setAttribute('data-timestamp', +new Date());
       var t, js, fjs = d.getElementsByTagName(s)[0];
       if (d.getElementById(id)) return;
       js = d.createElement(s); js.id = id;
-      js.src= "https://platform.twitter.com/widgets.js";
+      js.src= "httpss://platform.twitter.com/widgets.js";
       fjs.parentNode.insertBefore(js, fjs);
       return window.twttr || (t = { _e: [], ready: function (f) { t._e.push(f) } });
     }(document, "script", "twitter-wjs"));
@@ -274,7 +274,7 @@ s.setAttribute('data-timestamp', +new Date());
 		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
 		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-		})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+		})(window,document,'script','httpss://www.google-analytics.com/analytics.js','ga');
 		
 		ga('create', 'UA-78263144-1', 'auto');
 		ga('send', 'pageview');

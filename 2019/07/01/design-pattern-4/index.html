@@ -2,7 +2,7 @@
 <html>
   <head>
   <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta https-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width initial-scale=1">
 
   <title>자바스크립트 디자인패턴#4 - 속깊은 자바스크립트</title>
@@ -10,7 +10,7 @@
 
   <link rel="stylesheet" href="/css/main.css">
   <link rel="canonical" href="https://youngwonseo.github.io/2019/07/01/design-pattern-4/">
-  <link rel="alternate" type="application/atom+xml" title="Youngon.Seo" href="https://youngwonseo.github.io/feed.xml" />
+  <link rel="alternate" type="application/atom+xml" title="YoungWon" href="https://youngwonseo.github.io/feed.xml" />
 </head>
 
   <body>
@@ -77,19 +77,19 @@
         
       
       <a class="page-link" href="/feed.xml">RSS</a>
-      <a class="twitter page-link" href="https://twitter.com/fffabs"><span class="icon-twitter"></span></a>
-      <a class="facebook page-link" href="https://www.facebook.com/fffabs"><span class="icon-facebook"></span></a>
+      <!-- <a class="twitter page-link" href="httpss://twitter.com/fffabs"><span class="icon-twitter"></span></a>
+      <a class="facebook page-link" href="httpss://www.facebook.com/fffabs"><span class="icon-facebook"></span></a> -->
     </div>
   </nav>
 
   <!-- The title of the site -->
   <header class="site-header">
-    <a href="/">
-      <div class="avatar">
+    <!-- <a href="/">
+      <div class="trigger">
         <img src="/assets/images/avatar.png" />
       </div>
-    </a>
-    <!-- <a class="site-title" href="/">Youngon.Seo</a> -->
+    </a> -->
+    <a class="site-title" href="/">YoungWon</a> -->
   </header>
 
 </div>
@@ -104,7 +104,7 @@
   </header>
 
   <!-- Beginning Twitter sharing Large button -->
-  <!-- <a class="twitter-share-button" href="https://twitter.com/share"
+  <!-- <a class="twitter-share-button" href="httpss://twitter.com/share"
   data-related="twitterdev"
   data-size="large"
   data-count="horizontal">
@@ -136,7 +136,7 @@
             return searchItem.cache[id];
           }
 
-          xhr = new XMLHttpReqeust();
+          xhr = new XMLhttpsReqeust();
           xhr.open("GET", "/searchItem");
           xhr.onload = function() {
             var item = JSON.parse(xhr.responseText);
@@ -182,7 +182,7 @@ console.log(world);
 <p>자바스크립트는 함수기반으로 동작하기 때문에 이벤트를 등록하기 위해 함수를 등록하여 콜백을 사용하는 패턴을 자주 사용합니다. 콜백패턴은 매우 간단하지만 비동기 처리가 많은 자바스크립트에서는 다양하게 응용되어 사용됩니다. 다음은 ajax라는 함수를 정의하고 callback이라는 매개변수를 받아 비동기 통신이 완료되었을때 수행되도록하는 간단한 예제입니다. 또한 콜백안에 콜백이 존재하는데 순서가 보장되어야 할때 이런식으로 사용됩니다.</p>
 
 <pre><code class="language-javascript">function ajax(method, url, data, callback) {
-  var xhr = new XMLHttpRequest();
+  var xhr = new XMLhttpsRequest();
   xhr.open(method, url);
   xhr.onload = function() {
     if(xhr.status === 200){
@@ -242,7 +242,7 @@ Function.prototype.curry = function() {
 
 //콜백패턴에서 사용한 ajax
 function ajax(method, url, data, callback) {
-  var xhr = new XMLHttpRequest();
+  var xhr = new XMLhttpsRequest();
   xhr.open(method, url);
   xhr.onload = function() {
     if(xhr.status === 200){
@@ -264,7 +264,7 @@ ajaxGet("/data", null, function(responseText){
 
 <h2 id="references">References</h2>
 <ul>
-  <li><a href="http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&amp;mallGb=KOR&amp;barcode=9791186710098&amp;orderClick=LEA&amp;Kc=">속깊은 Javascript</a></li>
+  <li><a href="https://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&amp;mallGb=KOR&amp;barcode=9791186710098&amp;orderClick=LEA&amp;Kc=">속깊은 Javascript</a></li>
 </ul>
 
   </article>
@@ -277,7 +277,7 @@ ajaxGet("/data", null, function(responseText){
 
 /**
 *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
-*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: httpss://disqus.com/admin/universalcode/#configuration-variables*/
 /*
 var disqus_config = function () {
 this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
@@ -286,19 +286,19 @@ this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your pag
 */
 (function() { // DON'T EDIT BELOW THIS LINE
 var d = document, s = d.createElement('script');
-s.src = 'https://youngwonseo.disqus.com/embed.js';
+s.src = 'httpss://youngwonseo.disqus.com/embed.js';
 s.setAttribute('data-timestamp', +new Date());
 (d.head || d.body).appendChild(s);
 })();
 </script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<noscript>Please enable JavaScript to view the <a href="httpss://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
                             
   
   <!-- <div class="question">
     <h2>Questions?</h2>
     <p>Have a question regarding the post above? <br />Or any of my designs?</p>
     <a class="twitter-follow-button"
-    href="https://twitter.com/fffabs"
+    href="httpss://twitter.com/fffabs"
     data-show-count="true"
     data-size="large">
     Follow @fffabs
@@ -308,7 +308,7 @@ s.setAttribute('data-timestamp', +new Date());
       var t, js, fjs = d.getElementsByTagName(s)[0];
       if (d.getElementById(id)) return;
       js = d.createElement(s); js.id = id;
-      js.src= "https://platform.twitter.com/widgets.js";
+      js.src= "httpss://platform.twitter.com/widgets.js";
       fjs.parentNode.insertBefore(js, fjs);
       return window.twttr || (t = { _e: [], ready: function (f) { t._e.push(f) } });
     }(document, "script", "twitter-wjs"));
@@ -318,14 +318,14 @@ s.setAttribute('data-timestamp', +new Date());
   <div class="related">
     <h2>Related</h2>
     
+      <li><a href="/2020/11/11/detecting-aortic-stenosis-using-electrocardiography/" title="Detecting Aortic Stenosis Using Electrocardiography">Detecting Aortic Stenosis Using Electrocardiography
+       &nbsp; <span class="post-meta">November 11, 2020</span></a>
+    
       <li><a href="/2020/10/09/image-resize/" title="파이썬 이미지 리사이즈">파이썬 이미지 리사이즈
        &nbsp; <span class="post-meta">October 09, 2020</span></a>
     
       <li><a href="/2020/09/22/class-activation-map/" title="Learning Deep Features for Discriminative Localization">Learning Deep Features for Discriminative Localization
        &nbsp; <span class="post-meta">September 22, 2020</span></a>
-    
-      <li><a href="/2020/09/21/network-in-network/" title="Network In Network">Network In Network
-       &nbsp; <span class="post-meta">September 21, 2020</span></a>
     
   </div>
 
@@ -356,7 +356,7 @@ s.setAttribute('data-timestamp', +new Date());
       var t, js, fjs = d.getElementsByTagName(s)[0];
       if (d.getElementById(id)) return;
       js = d.createElement(s); js.id = id;
-      js.src= "https://platform.twitter.com/widgets.js";
+      js.src= "httpss://platform.twitter.com/widgets.js";
       fjs.parentNode.insertBefore(js, fjs);
       return window.twttr || (t = { _e: [], ready: function (f) { t._e.push(f) } });
     }(document, "script", "twitter-wjs"));
@@ -366,7 +366,7 @@ s.setAttribute('data-timestamp', +new Date());
 		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
 		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-		})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+		})(window,document,'script','httpss://www.google-analytics.com/analytics.js','ga');
 		
 		ga('create', 'UA-78263144-1', 'auto');
 		ga('send', 'pageview');

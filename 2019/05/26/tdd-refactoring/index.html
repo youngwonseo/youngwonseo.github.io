@@ -2,15 +2,15 @@
 <html>
   <head>
   <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta https-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width initial-scale=1">
 
   <title>[우아한테크세미나] TDD, 리팩토링 - 자바지기 박재성</title>
-  <meta name="description" content="본 글은 [우아한테크세미나]에서 진행한 자바지기 박재성님의 TDD, 리팩토링강의의 정리내용입니다. 아래의 링크에 가시면 전체영상을 보실 수 있습니다.  https://www.youtube.com/watch?v=bIeqAlmNRrA">
+  <meta name="description" content="본 글은 [우아한테크세미나]에서 진행한 자바지기 박재성님의 TDD, 리팩토링강의의 정리내용입니다. 아래의 링크에 가시면 전체영상을 보실 수 있습니다.  httpss://www.youtube.com/watch?v=bIeqAlmNRrA">
 
   <link rel="stylesheet" href="/css/main.css">
   <link rel="canonical" href="https://youngwonseo.github.io/2019/05/26/tdd-refactoring/">
-  <link rel="alternate" type="application/atom+xml" title="Youngon.Seo" href="https://youngwonseo.github.io/feed.xml" />
+  <link rel="alternate" type="application/atom+xml" title="YoungWon" href="https://youngwonseo.github.io/feed.xml" />
 </head>
 
   <body>
@@ -77,19 +77,19 @@
         
       
       <a class="page-link" href="/feed.xml">RSS</a>
-      <a class="twitter page-link" href="https://twitter.com/fffabs"><span class="icon-twitter"></span></a>
-      <a class="facebook page-link" href="https://www.facebook.com/fffabs"><span class="icon-facebook"></span></a>
+      <!-- <a class="twitter page-link" href="httpss://twitter.com/fffabs"><span class="icon-twitter"></span></a>
+      <a class="facebook page-link" href="httpss://www.facebook.com/fffabs"><span class="icon-facebook"></span></a> -->
     </div>
   </nav>
 
   <!-- The title of the site -->
   <header class="site-header">
-    <a href="/">
-      <div class="avatar">
+    <!-- <a href="/">
+      <div class="trigger">
         <img src="/assets/images/avatar.png" />
       </div>
-    </a>
-    <!-- <a class="site-title" href="/">Youngon.Seo</a> -->
+    </a> -->
+    <a class="site-title" href="/">YoungWon</a> -->
   </header>
 
 </div>
@@ -104,7 +104,7 @@
   </header>
 
   <!-- Beginning Twitter sharing Large button -->
-  <!-- <a class="twitter-share-button" href="https://twitter.com/share"
+  <!-- <a class="twitter-share-button" href="httpss://twitter.com/share"
   data-related="twitterdev"
   data-size="large"
   data-count="horizontal">
@@ -118,7 +118,7 @@
   <article class="post-content">
     <p>본 글은 [우아한테크세미나]에서 진행한 <strong>자바지기 박재성님</strong>의 <strong>TDD, 리팩토링</strong>강의의 정리내용입니다. 아래의 링크에 가시면 전체영상을 보실 수 있습니다.</p>
 <ul>
-  <li><a href="https://www.youtube.com/watch?v=bIeqAlmNRrA">https://www.youtube.com/watch?v=bIeqAlmNRrA</a></li>
+  <li><a href="httpss://www.youtube.com/watch?v=bIeqAlmNRrA">httpss://www.youtube.com/watch?v=bIeqAlmNRrA</a></li>
 </ul>
 
 <p>목차는 다음과 같습니다.</p>
@@ -151,7 +151,7 @@
 <h3 id="우아한테크-과정">우아한테크 과정</h3>
 <p>1주차</p>
 <ul>
-  <li>자바 코드 컨벤션을 지키면서 프로그래밍하기 <a href="https://google.github.io/styleguide/javaguide.html">https://google.github.io/styleguide/javaguide.html</a></li>
+  <li>자바 코드 컨벤션을 지키면서 프로그래밍하기 <a href="httpss://google.github.io/styleguide/javaguide.html">httpss://google.github.io/styleguide/javaguide.html</a></li>
   <li>indent depth가 최대 2, 즉 두번의 들여쓰기 이상 들여쓰기가 안됨, 이를 위해 함수이용</li>
   <li>함수는 한가지 일만하도록 최대한 작게 만들기</li>
 </ul>
@@ -382,7 +382,7 @@ public class StringCalculator {
 
 <h3 id="구체적인-연습-목표-찾기">구체적인 연습 목표 찾기</h3>
 <p>이러한 방법들은 박재성님이 만드신게 아니라 아래의 책들에서 명시하는 방법이라고 합니다.</p>
-<h4 id="객체지향-생활체조-원칙-the-thoughtworks-anthology">객체지향 생활체조 원칙 <a href="http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&amp;mallGb=KOR&amp;barcode=9788992939249&amp;orderClick=LAG&amp;Kc=">The ThoughtWorks Anthology</a></h4>
+<h4 id="객체지향-생활체조-원칙-the-thoughtworks-anthology">객체지향 생활체조 원칙 <a href="https://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&amp;mallGb=KOR&amp;barcode=9788992939249&amp;orderClick=LAG&amp;Kc=">The ThoughtWorks Anthology</a></h4>
 <ul>
   <li>규칙 1 : 한 메서드에 오직 한 단계의 들여쓰기만 한다.</li>
   <li>규칙 2 : else 예약어를 쓰지 않는다.</li>
@@ -395,7 +395,7 @@ public class StringCalculator {
   <li>규칙 9 : 게터/세터/프로퍼티를 쓰지 않는다.</li>
 </ul>
 
-<h4 id="메소드-인자-원칙-cleancode">메소드 인자 원칙 <a href="http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&amp;mallGb=KOR&amp;barcode=9788966260959&amp;orderClick=LAH&amp;Kc=">CleanCode</a></h4>
+<h4 id="메소드-인자-원칙-cleancode">메소드 인자 원칙 <a href="https://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&amp;mallGb=KOR&amp;barcode=9788966260959&amp;orderClick=LAH&amp;Kc=">CleanCode</a></h4>
 <ul>
   <li>메소드 인자 개수</li>
   <li>메소드에서 이상적인 인자개수는 0개이다. 다음은 1개이고, 다음은 2개이다.</li>
@@ -422,7 +422,7 @@ public class StringCalculator {
 
 /**
 *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
-*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: httpss://disqus.com/admin/universalcode/#configuration-variables*/
 /*
 var disqus_config = function () {
 this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
@@ -431,19 +431,19 @@ this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your pag
 */
 (function() { // DON'T EDIT BELOW THIS LINE
 var d = document, s = d.createElement('script');
-s.src = 'https://youngwonseo.disqus.com/embed.js';
+s.src = 'httpss://youngwonseo.disqus.com/embed.js';
 s.setAttribute('data-timestamp', +new Date());
 (d.head || d.body).appendChild(s);
 })();
 </script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<noscript>Please enable JavaScript to view the <a href="httpss://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
                             
   
   <!-- <div class="question">
     <h2>Questions?</h2>
     <p>Have a question regarding the post above? <br />Or any of my designs?</p>
     <a class="twitter-follow-button"
-    href="https://twitter.com/fffabs"
+    href="httpss://twitter.com/fffabs"
     data-show-count="true"
     data-size="large">
     Follow @fffabs
@@ -453,7 +453,7 @@ s.setAttribute('data-timestamp', +new Date());
       var t, js, fjs = d.getElementsByTagName(s)[0];
       if (d.getElementById(id)) return;
       js = d.createElement(s); js.id = id;
-      js.src= "https://platform.twitter.com/widgets.js";
+      js.src= "httpss://platform.twitter.com/widgets.js";
       fjs.parentNode.insertBefore(js, fjs);
       return window.twttr || (t = { _e: [], ready: function (f) { t._e.push(f) } });
     }(document, "script", "twitter-wjs"));
@@ -463,14 +463,14 @@ s.setAttribute('data-timestamp', +new Date());
   <div class="related">
     <h2>Related</h2>
     
+      <li><a href="/2020/11/11/detecting-aortic-stenosis-using-electrocardiography/" title="Detecting Aortic Stenosis Using Electrocardiography">Detecting Aortic Stenosis Using Electrocardiography
+       &nbsp; <span class="post-meta">November 11, 2020</span></a>
+    
       <li><a href="/2020/10/09/image-resize/" title="파이썬 이미지 리사이즈">파이썬 이미지 리사이즈
        &nbsp; <span class="post-meta">October 09, 2020</span></a>
     
       <li><a href="/2020/09/22/class-activation-map/" title="Learning Deep Features for Discriminative Localization">Learning Deep Features for Discriminative Localization
        &nbsp; <span class="post-meta">September 22, 2020</span></a>
-    
-      <li><a href="/2020/09/21/network-in-network/" title="Network In Network">Network In Network
-       &nbsp; <span class="post-meta">September 21, 2020</span></a>
     
   </div>
 
@@ -501,7 +501,7 @@ s.setAttribute('data-timestamp', +new Date());
       var t, js, fjs = d.getElementsByTagName(s)[0];
       if (d.getElementById(id)) return;
       js = d.createElement(s); js.id = id;
-      js.src= "https://platform.twitter.com/widgets.js";
+      js.src= "httpss://platform.twitter.com/widgets.js";
       fjs.parentNode.insertBefore(js, fjs);
       return window.twttr || (t = { _e: [], ready: function (f) { t._e.push(f) } });
     }(document, "script", "twitter-wjs"));
@@ -511,7 +511,7 @@ s.setAttribute('data-timestamp', +new Date());
 		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
 		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-		})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+		})(window,document,'script','httpss://www.google-analytics.com/analytics.js','ga');
 		
 		ga('create', 'UA-78263144-1', 'auto');
 		ga('send', 'pageview');

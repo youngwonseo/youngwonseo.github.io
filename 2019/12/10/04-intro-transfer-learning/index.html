@@ -2,7 +2,7 @@
 <html>
   <head>
   <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta https-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width initial-scale=1">
 
   <title>전이학습의 기초</title>
@@ -10,7 +10,7 @@
 
   <link rel="stylesheet" href="/css/main.css">
   <link rel="canonical" href="https://youngwonseo.github.io/2019/12/10/04-intro-transfer-learning/">
-  <link rel="alternate" type="application/atom+xml" title="Youngon.Seo" href="https://youngwonseo.github.io/feed.xml" />
+  <link rel="alternate" type="application/atom+xml" title="YoungWon" href="https://youngwonseo.github.io/feed.xml" />
 </head>
 
   <body>
@@ -77,19 +77,19 @@
         
       
       <a class="page-link" href="/feed.xml">RSS</a>
-      <a class="twitter page-link" href="https://twitter.com/fffabs"><span class="icon-twitter"></span></a>
-      <a class="facebook page-link" href="https://www.facebook.com/fffabs"><span class="icon-facebook"></span></a>
+      <!-- <a class="twitter page-link" href="httpss://twitter.com/fffabs"><span class="icon-twitter"></span></a>
+      <a class="facebook page-link" href="httpss://www.facebook.com/fffabs"><span class="icon-facebook"></span></a> -->
     </div>
   </nav>
 
   <!-- The title of the site -->
   <header class="site-header">
-    <a href="/">
-      <div class="avatar">
+    <!-- <a href="/">
+      <div class="trigger">
         <img src="/assets/images/avatar.png" />
       </div>
-    </a>
-    <!-- <a class="site-title" href="/">Youngon.Seo</a> -->
+    </a> -->
+    <a class="site-title" href="/">YoungWon</a> -->
   </header>
 
 </div>
@@ -104,7 +104,7 @@
   </header>
 
   <!-- Beginning Twitter sharing Large button -->
-  <!-- <a class="twitter-share-button" href="https://twitter.com/share"
+  <!-- <a class="twitter-share-button" href="httpss://twitter.com/share"
   data-related="twitterdev"
   data-size="large"
   data-count="horizontal">
@@ -116,14 +116,14 @@
   
 
   <article class="post-content">
-    <p>본 글은 <a href="https://wikibook.co.kr/transfer-learning/" target="_blank">파이썬을 활용한 딥러닝 전이학습, (송영숙, 심상진, 한수미, 고재선 옮김, 위키북스)</a>의 <strong>4장 전이학습의 기초</strong> 내용을 요약한 것입니다.</p>
+    <p>본 글은 <a href="httpss://wikibook.co.kr/transfer-learning/" target="_blank">파이썬을 활용한 딥러닝 전이학습, (송영숙, 심상진, 한수미, 고재선 옮김, 위키북스)</a>의 <strong>4장 전이학습의 기초</strong> 내용을 요약한 것입니다.</p>
 
 <p>머신러닝이나 딥러닝은 전통적으로 데이터나 문제에 따라 별개로 작동하도록 설계되었습니다. 그래서 학습할 데이터의 특성 공간의 분포가 바뀌면 다시 학습을 진행해야 했습니다. 전이학습의 아이디어는 고립된 학습 패러다임을 극복하고 이미 학습된 모델을 활용해 새로운 문제나 데이터에 대한 모델을 만드는것 입니다.</p>
 
 <h2 id="전이학습-소개">전이학습 소개</h2>
 <p>전이학습 분야의 초기 연구동기는 1995년 신경 정보 처리 학회(Neural Information Processing Systems, NIPS) 워크샵에서 발표한 “Learning to Learn: Knowledge Consolidation and Inductive Transfer”라고 할 수 있습니다.</p>
 <blockquote>
-  <p>http://plato.acadiau.ca/courses/comp/dsilver/NIPS95_LTL/transfer.workshop.1995.html</p>
+  <p>https://plato.acadiau.ca/courses/comp/dsilver/NIPS95_LTL/transfer.workshop.1995.html</p>
 </blockquote>
 
 <p>전이학습은 기존 학습된 소스모델과 도메인이 있을때 비슷한 도메인의 새로운 모델인 타켓 모델을 위해 소스 모델을 이용한다는 원리입니다. 타켓모델을 위해 실제로는 많은 데이터가 있어야 일반화된 좋은 성능의 모델을 학습 시킬수 있는데 기존 학습된 소스모델을 활용해 보다 적은 타겟 도메인의 데이터를 학습해 성능이 좋은 모델을 학습하는 원리입니다. 이는 특히 이미지 분류처럼 에지와 모양, 조명과 같은 저수준 특성이 도메인간 공유될 수 있으므로 전이가 가능한 경우입니다.</p>
@@ -164,7 +164,7 @@
 </ul>
 
 <blockquote>
-  <p>https://www.cse.ust.hk/~qyang/Docs/2009/tkde_transfer_learning.pdf</p>
+  <p>httpss://www.cse.ust.hk/~qyang/Docs/2009/tkde_transfer_learning.pdf</p>
 </blockquote>
 
 <h3 id="전이학습-분류">전이학습 분류</h3>
@@ -288,7 +288,7 @@
 
 <h2 id="references">References</h2>
 <ul>
-  <li><a href="https://wikibook.co.kr/transfer-learning/">파이썬을 활용한 딥러닝 전이학습, (송영숙, 심상진, 한수미, 고재선 옮김, 위키북스)</a></li>
+  <li><a href="httpss://wikibook.co.kr/transfer-learning/">파이썬을 활용한 딥러닝 전이학습, (송영숙, 심상진, 한수미, 고재선 옮김, 위키북스)</a></li>
 </ul>
 
   </article>
@@ -301,7 +301,7 @@
 
 /**
 *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
-*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: httpss://disqus.com/admin/universalcode/#configuration-variables*/
 /*
 var disqus_config = function () {
 this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
@@ -310,19 +310,19 @@ this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your pag
 */
 (function() { // DON'T EDIT BELOW THIS LINE
 var d = document, s = d.createElement('script');
-s.src = 'https://youngwonseo.disqus.com/embed.js';
+s.src = 'httpss://youngwonseo.disqus.com/embed.js';
 s.setAttribute('data-timestamp', +new Date());
 (d.head || d.body).appendChild(s);
 })();
 </script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<noscript>Please enable JavaScript to view the <a href="httpss://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
                             
   
   <!-- <div class="question">
     <h2>Questions?</h2>
     <p>Have a question regarding the post above? <br />Or any of my designs?</p>
     <a class="twitter-follow-button"
-    href="https://twitter.com/fffabs"
+    href="httpss://twitter.com/fffabs"
     data-show-count="true"
     data-size="large">
     Follow @fffabs
@@ -332,7 +332,7 @@ s.setAttribute('data-timestamp', +new Date());
       var t, js, fjs = d.getElementsByTagName(s)[0];
       if (d.getElementById(id)) return;
       js = d.createElement(s); js.id = id;
-      js.src= "https://platform.twitter.com/widgets.js";
+      js.src= "httpss://platform.twitter.com/widgets.js";
       fjs.parentNode.insertBefore(js, fjs);
       return window.twttr || (t = { _e: [], ready: function (f) { t._e.push(f) } });
     }(document, "script", "twitter-wjs"));
@@ -342,14 +342,14 @@ s.setAttribute('data-timestamp', +new Date());
   <div class="related">
     <h2>Related</h2>
     
+      <li><a href="/2020/11/11/detecting-aortic-stenosis-using-electrocardiography/" title="Detecting Aortic Stenosis Using Electrocardiography">Detecting Aortic Stenosis Using Electrocardiography
+       &nbsp; <span class="post-meta">November 11, 2020</span></a>
+    
       <li><a href="/2020/10/09/image-resize/" title="파이썬 이미지 리사이즈">파이썬 이미지 리사이즈
        &nbsp; <span class="post-meta">October 09, 2020</span></a>
     
       <li><a href="/2020/09/22/class-activation-map/" title="Learning Deep Features for Discriminative Localization">Learning Deep Features for Discriminative Localization
        &nbsp; <span class="post-meta">September 22, 2020</span></a>
-    
-      <li><a href="/2020/09/21/network-in-network/" title="Network In Network">Network In Network
-       &nbsp; <span class="post-meta">September 21, 2020</span></a>
     
   </div>
 
@@ -380,7 +380,7 @@ s.setAttribute('data-timestamp', +new Date());
       var t, js, fjs = d.getElementsByTagName(s)[0];
       if (d.getElementById(id)) return;
       js = d.createElement(s); js.id = id;
-      js.src= "https://platform.twitter.com/widgets.js";
+      js.src= "httpss://platform.twitter.com/widgets.js";
       fjs.parentNode.insertBefore(js, fjs);
       return window.twttr || (t = { _e: [], ready: function (f) { t._e.push(f) } });
     }(document, "script", "twitter-wjs"));
@@ -390,7 +390,7 @@ s.setAttribute('data-timestamp', +new Date());
 		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
 		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-		})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+		})(window,document,'script','httpss://www.google-analytics.com/analytics.js','ga');
 		
 		ga('create', 'UA-78263144-1', 'auto');
 		ga('send', 'pageview');

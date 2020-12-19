@@ -2,7 +2,7 @@
 <html>
   <head>
   <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta https-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width initial-scale=1">
 
   <title>자바스크립트 디자인패턴#2 - 속깊은 자바스크립트</title>
@@ -10,7 +10,7 @@
 
   <link rel="stylesheet" href="/css/main.css">
   <link rel="canonical" href="https://youngwonseo.github.io/2018/12/27/08-design-pattern-2/">
-  <link rel="alternate" type="application/atom+xml" title="Youngon.Seo" href="https://youngwonseo.github.io/feed.xml" />
+  <link rel="alternate" type="application/atom+xml" title="YoungWon" href="https://youngwonseo.github.io/feed.xml" />
 </head>
 
   <body>
@@ -77,19 +77,19 @@
         
       
       <a class="page-link" href="/feed.xml">RSS</a>
-      <a class="twitter page-link" href="https://twitter.com/fffabs"><span class="icon-twitter"></span></a>
-      <a class="facebook page-link" href="https://www.facebook.com/fffabs"><span class="icon-facebook"></span></a>
+      <!-- <a class="twitter page-link" href="httpss://twitter.com/fffabs"><span class="icon-twitter"></span></a>
+      <a class="facebook page-link" href="httpss://www.facebook.com/fffabs"><span class="icon-facebook"></span></a> -->
     </div>
   </nav>
 
   <!-- The title of the site -->
   <header class="site-header">
-    <a href="/">
-      <div class="avatar">
+    <!-- <a href="/">
+      <div class="trigger">
         <img src="/assets/images/avatar.png" />
       </div>
-    </a>
-    <!-- <a class="site-title" href="/">Youngon.Seo</a> -->
+    </a> -->
+    <a class="site-title" href="/">YoungWon</a> -->
   </header>
 
 </div>
@@ -104,7 +104,7 @@
   </header>
 
   <!-- Beginning Twitter sharing Large button -->
-  <!-- <a class="twitter-share-button" href="https://twitter.com/share"
+  <!-- <a class="twitter-share-button" href="httpss://twitter.com/share"
   data-related="twitterdev"
   data-size="large"
   data-count="horizontal">
@@ -117,14 +117,14 @@
 
   <article class="post-content">
     <h1 id="디자인패턴2---프락시-패턴-데커레이터-패턴">디자인패턴#2 - 프락시 패턴, 데커레이터 패턴</h1>
-<p>본 글을 <a href="http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&amp;mallGb=KOR&amp;barcode=9791186710098&amp;orderClick=LEA&amp;Kc=">속깊은 Javascript</a>의 디자인 패턴(프락시, 데터레이터) 부분을 정리한 글입니다.</p>
+<p>본 글을 <a href="https://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&amp;mallGb=KOR&amp;barcode=9791186710098&amp;orderClick=LEA&amp;Kc=">속깊은 Javascript</a>의 디자인 패턴(프락시, 데터레이터) 부분을 정리한 글입니다.</p>
 
 <h2 id="프락시-패턴proxy-pattern">프락시 패턴(proxy pattern)</h2>
 <h3 id="프락시-기본">프락시 기본</h3>
 <p>프락시 패턴은 말 그대로 하나의 객체가 프락시 역활을 수행하여 상황에 따라 수행해야할 함수를 선택하여 호출해주는 패턴을 의미합니다. 다음의 예제를 살펴봅시다.</p>
 <pre><code class="language-js">&lt;html&gt;
 &lt;body&gt;
-&lt;video  style="width:480px" id="videoBunny" src="http://media.w3.org/2010/05/bunny/movie.ogv"&gt;&lt;/video&gt;
+&lt;video  style="width:480px" id="videoBunny" src="https://media.w3.org/2010/05/bunny/movie.ogv"&gt;&lt;/video&gt;
 &lt;div id="controlPanel"&gt;
 	&lt;button id="play"&gt;Play&lt;/button&gt;
 	&lt;button id="pause"&gt;Pause&lt;/button&gt;
@@ -177,9 +177,9 @@ var divControlPanel = document.getElementById("controlPanel"),
 
 <pre><code class="language-html">&lt;html&gt;
 &lt;body&gt;
-&lt;video style="width:240px" id="videoBunnySmall" src="http://media.w3.org/2010/05/bunny/movie.ogv"&gt;&lt;/video&gt;
-&lt;video style="width:320px" id="videoBunnyMedium" src="http://media.w3.org/2010/05/bunny/movie.ogv"&gt;&lt;/video&gt;
-&lt;video style="width:480px" id="videoBunnyLarge" src="http://media.w3.org/2010/05/bunny/movie.ogv"&gt;&lt;/video&gt;
+&lt;video style="width:240px" id="videoBunnySmall" src="https://media.w3.org/2010/05/bunny/movie.ogv"&gt;&lt;/video&gt;
+&lt;video style="width:320px" id="videoBunnyMedium" src="https://media.w3.org/2010/05/bunny/movie.ogv"&gt;&lt;/video&gt;
+&lt;video style="width:480px" id="videoBunnyLarge" src="https://media.w3.org/2010/05/bunny/movie.ogv"&gt;&lt;/video&gt;
 &lt;div id="controlPanel"&gt;
 	&lt;select id="controlVideo"&gt;
 		&lt;option&gt;videoBunnySmall&lt;/option&gt;
@@ -371,7 +371,7 @@ validator.decorate("number", function(input) {
 
 <h2 id="references">References</h2>
 <ul>
-  <li><a href="http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&amp;mallGb=KOR&amp;barcode=9791186710098&amp;orderClick=LEA&amp;Kc=">속깊은 Javascript</a></li>
+  <li><a href="https://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&amp;mallGb=KOR&amp;barcode=9791186710098&amp;orderClick=LEA&amp;Kc=">속깊은 Javascript</a></li>
 </ul>
 
   </article>
@@ -384,7 +384,7 @@ validator.decorate("number", function(input) {
 
 /**
 *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
-*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: httpss://disqus.com/admin/universalcode/#configuration-variables*/
 /*
 var disqus_config = function () {
 this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
@@ -393,19 +393,19 @@ this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your pag
 */
 (function() { // DON'T EDIT BELOW THIS LINE
 var d = document, s = d.createElement('script');
-s.src = 'https://youngwonseo.disqus.com/embed.js';
+s.src = 'httpss://youngwonseo.disqus.com/embed.js';
 s.setAttribute('data-timestamp', +new Date());
 (d.head || d.body).appendChild(s);
 })();
 </script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<noscript>Please enable JavaScript to view the <a href="httpss://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
                             
   
   <!-- <div class="question">
     <h2>Questions?</h2>
     <p>Have a question regarding the post above? <br />Or any of my designs?</p>
     <a class="twitter-follow-button"
-    href="https://twitter.com/fffabs"
+    href="httpss://twitter.com/fffabs"
     data-show-count="true"
     data-size="large">
     Follow @fffabs
@@ -415,7 +415,7 @@ s.setAttribute('data-timestamp', +new Date());
       var t, js, fjs = d.getElementsByTagName(s)[0];
       if (d.getElementById(id)) return;
       js = d.createElement(s); js.id = id;
-      js.src= "https://platform.twitter.com/widgets.js";
+      js.src= "httpss://platform.twitter.com/widgets.js";
       fjs.parentNode.insertBefore(js, fjs);
       return window.twttr || (t = { _e: [], ready: function (f) { t._e.push(f) } });
     }(document, "script", "twitter-wjs"));
@@ -425,14 +425,14 @@ s.setAttribute('data-timestamp', +new Date());
   <div class="related">
     <h2>Related</h2>
     
+      <li><a href="/2020/11/11/detecting-aortic-stenosis-using-electrocardiography/" title="Detecting Aortic Stenosis Using Electrocardiography">Detecting Aortic Stenosis Using Electrocardiography
+       &nbsp; <span class="post-meta">November 11, 2020</span></a>
+    
       <li><a href="/2020/10/09/image-resize/" title="파이썬 이미지 리사이즈">파이썬 이미지 리사이즈
        &nbsp; <span class="post-meta">October 09, 2020</span></a>
     
       <li><a href="/2020/09/22/class-activation-map/" title="Learning Deep Features for Discriminative Localization">Learning Deep Features for Discriminative Localization
        &nbsp; <span class="post-meta">September 22, 2020</span></a>
-    
-      <li><a href="/2020/09/21/network-in-network/" title="Network In Network">Network In Network
-       &nbsp; <span class="post-meta">September 21, 2020</span></a>
     
   </div>
 
@@ -463,7 +463,7 @@ s.setAttribute('data-timestamp', +new Date());
       var t, js, fjs = d.getElementsByTagName(s)[0];
       if (d.getElementById(id)) return;
       js = d.createElement(s); js.id = id;
-      js.src= "https://platform.twitter.com/widgets.js";
+      js.src= "httpss://platform.twitter.com/widgets.js";
       fjs.parentNode.insertBefore(js, fjs);
       return window.twttr || (t = { _e: [], ready: function (f) { t._e.push(f) } });
     }(document, "script", "twitter-wjs"));
@@ -473,7 +473,7 @@ s.setAttribute('data-timestamp', +new Date());
 		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
 		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-		})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+		})(window,document,'script','httpss://www.google-analytics.com/analytics.js','ga');
 		
 		ga('create', 'UA-78263144-1', 'auto');
 		ga('send', 'pageview');

@@ -2,7 +2,7 @@
 <html>
   <head>
   <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta https-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width initial-scale=1">
 
   <title>파이썬을 사용한 알고리즘1</title>
@@ -10,7 +10,7 @@
 
   <link rel="stylesheet" href="/css/main.css">
   <link rel="canonical" href="https://youngwonseo.github.io/2018/03/30/start-algorithms-01/">
-  <link rel="alternate" type="application/atom+xml" title="Youngon.Seo" href="https://youngwonseo.github.io/feed.xml" />
+  <link rel="alternate" type="application/atom+xml" title="YoungWon" href="https://youngwonseo.github.io/feed.xml" />
 </head>
 
   <body>
@@ -77,19 +77,19 @@
         
       
       <a class="page-link" href="/feed.xml">RSS</a>
-      <a class="twitter page-link" href="https://twitter.com/fffabs"><span class="icon-twitter"></span></a>
-      <a class="facebook page-link" href="https://www.facebook.com/fffabs"><span class="icon-facebook"></span></a>
+      <!-- <a class="twitter page-link" href="httpss://twitter.com/fffabs"><span class="icon-twitter"></span></a>
+      <a class="facebook page-link" href="httpss://www.facebook.com/fffabs"><span class="icon-facebook"></span></a> -->
     </div>
   </nav>
 
   <!-- The title of the site -->
   <header class="site-header">
-    <a href="/">
-      <div class="avatar">
+    <!-- <a href="/">
+      <div class="trigger">
         <img src="/assets/images/avatar.png" />
       </div>
-    </a>
-    <!-- <a class="site-title" href="/">Youngon.Seo</a> -->
+    </a> -->
+    <a class="site-title" href="/">YoungWon</a> -->
   </header>
 
 </div>
@@ -104,7 +104,7 @@
   </header>
 
   <!-- Beginning Twitter sharing Large button -->
-  <!-- <a class="twitter-share-button" href="https://twitter.com/share"
+  <!-- <a class="twitter-share-button" href="httpss://twitter.com/share"
   data-related="twitterdev"
   data-size="large"
   data-count="horizontal">
@@ -127,9 +127,9 @@
   <li>주어진 문제를 프로그래밍 언어로 작성해서 원하는 결과를 출력하게 만들면 모두 좋은 알고리즘일까?</li>
   <li>당연히 아니다! 컴퓨터는 한정된 자원(CPU,RAM,..)을 바탕으로 작업(연산)을 진행한다. 그러므로 알고리즘을 작성할때는 자원의 사용을 최소화하는 알고리즘이 무엇인지 항상 생각해야한다.</li>
   <li>그렇다면 효율적인 알고리즘을 판단하는 요소는 무엇일까? 그것은 바로 시간복잡도(time complexity)와 공간복잡도(space complexity)이다!</li>
-  <li>시간복잡도 [https://en.wikipedia.org/wiki/Time_complexity]</li>
-  <li>공간복잡도 [https://en.wikipedia.org/wiki/DSPACE]</li>
-  <li>BigO Notation Cheetsheet! [http://www.bigocheatsheet.com/]</li>
+  <li>시간복잡도 [httpss://en.wikipedia.org/wiki/Time_complexity]</li>
+  <li>공간복잡도 [httpss://en.wikipedia.org/wiki/DSPACE]</li>
+  <li>BigO Notation Cheetsheet! [https://www.bigocheatsheet.com/]</li>
   <li>발전된 하드웨어 스펙으로인해 최근에는 공간복잡도에 대한 최적화가 시간복잡도보다는 덜 이루어진다.</li>
   <li>여기서는 시간복잡도에 대한 접근 방식을 살펴보겠다.</li>
 </ul>
@@ -140,7 +140,7 @@
   <li>여기서 말하는 코드란 반복문(for), 조건문(if) 등의 프로그램 코드를 말한다.</li>
   <li>그렇다면 코드의 실행횟수가 어떻게 되어야 좋은 알고리즘일까? 당연히 적게 실행된것, 적게 실행되어 결과를 빨리 출력하는 알고리즘이 좋은 알고리즘이다.</li>
   <li>시간복잡도에 대한 자세한 사항은 위키피디아를 참조하기를 바란다. 여기서는 아주 간략한 설명만 진행한다.
-<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Comparison_computational_complexity.svg/512px-Comparison_computational_complexity.svg.png" alt="Alt text" /></li>
+<img src="httpss://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Comparison_computational_complexity.svg/512px-Comparison_computational_complexity.svg.png" alt="Alt text" /></li>
   <li>위 그림은 위키피디아 페이지에 존재하는 그림이다. 가로축은 입력 데이터 수이고 세로축은 실행 횟수이다. 각각의 측정치에는 n!, 2^n, n^2.. 등이 보인다.</li>
   <li>즉 n개의 데이터를 입력할 경우 연산이 얼마나 이루어지나를 나타낸것이다. 위 그래프에서는 n!이 최악의 성능을 나타내고 1이 최고의 성능을 나타낸다. 이것은 조금만 생각해보면 당연히 알수 있는 내용이다.</li>
   <li>이러한 표기법을 Big-O 표기법이라한다. 이 표기법은 다항식에서 가장 높은 차수의 항만을 표기한다.
@@ -300,7 +300,7 @@ if __name__ == "__main__":
     <h2>Questions?</h2>
     <p>Have a question regarding the post above? <br />Or any of my designs?</p>
     <a class="twitter-follow-button"
-    href="https://twitter.com/fffabs"
+    href="httpss://twitter.com/fffabs"
     data-show-count="true"
     data-size="large">
     Follow @fffabs
@@ -310,7 +310,7 @@ if __name__ == "__main__":
       var t, js, fjs = d.getElementsByTagName(s)[0];
       if (d.getElementById(id)) return;
       js = d.createElement(s); js.id = id;
-      js.src= "https://platform.twitter.com/widgets.js";
+      js.src= "httpss://platform.twitter.com/widgets.js";
       fjs.parentNode.insertBefore(js, fjs);
       return window.twttr || (t = { _e: [], ready: function (f) { t._e.push(f) } });
     }(document, "script", "twitter-wjs"));
@@ -320,14 +320,14 @@ if __name__ == "__main__":
   <div class="related">
     <h2>Related</h2>
     
+      <li><a href="/2020/11/11/detecting-aortic-stenosis-using-electrocardiography/" title="Detecting Aortic Stenosis Using Electrocardiography">Detecting Aortic Stenosis Using Electrocardiography
+       &nbsp; <span class="post-meta">November 11, 2020</span></a>
+    
       <li><a href="/2020/10/09/image-resize/" title="파이썬 이미지 리사이즈">파이썬 이미지 리사이즈
        &nbsp; <span class="post-meta">October 09, 2020</span></a>
     
       <li><a href="/2020/09/22/class-activation-map/" title="Learning Deep Features for Discriminative Localization">Learning Deep Features for Discriminative Localization
        &nbsp; <span class="post-meta">September 22, 2020</span></a>
-    
-      <li><a href="/2020/09/21/network-in-network/" title="Network In Network">Network In Network
-       &nbsp; <span class="post-meta">September 21, 2020</span></a>
     
   </div>
 
@@ -358,7 +358,7 @@ if __name__ == "__main__":
       var t, js, fjs = d.getElementsByTagName(s)[0];
       if (d.getElementById(id)) return;
       js = d.createElement(s); js.id = id;
-      js.src= "https://platform.twitter.com/widgets.js";
+      js.src= "httpss://platform.twitter.com/widgets.js";
       fjs.parentNode.insertBefore(js, fjs);
       return window.twttr || (t = { _e: [], ready: function (f) { t._e.push(f) } });
     }(document, "script", "twitter-wjs"));
@@ -368,7 +368,7 @@ if __name__ == "__main__":
 		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
 		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-		})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+		})(window,document,'script','httpss://www.google-analytics.com/analytics.js','ga');
 		
 		ga('create', 'UA-78263144-1', 'auto');
 		ga('send', 'pageview');

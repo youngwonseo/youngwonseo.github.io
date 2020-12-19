@@ -2,7 +2,7 @@
 <html>
   <head>
   <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta https-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width initial-scale=1">
 
   <title>구글맵에 레이어 표기하기</title>
@@ -10,7 +10,7 @@
 
   <link rel="stylesheet" href="/css/main.css">
   <link rel="canonical" href="https://youngwonseo.github.io/2019/02/13/google-map-layer/">
-  <link rel="alternate" type="application/atom+xml" title="Youngon.Seo" href="https://youngwonseo.github.io/feed.xml" />
+  <link rel="alternate" type="application/atom+xml" title="YoungWon" href="https://youngwonseo.github.io/feed.xml" />
 </head>
 
   <body>
@@ -77,19 +77,19 @@
         
       
       <a class="page-link" href="/feed.xml">RSS</a>
-      <a class="twitter page-link" href="https://twitter.com/fffabs"><span class="icon-twitter"></span></a>
-      <a class="facebook page-link" href="https://www.facebook.com/fffabs"><span class="icon-facebook"></span></a>
+      <!-- <a class="twitter page-link" href="httpss://twitter.com/fffabs"><span class="icon-twitter"></span></a>
+      <a class="facebook page-link" href="httpss://www.facebook.com/fffabs"><span class="icon-facebook"></span></a> -->
     </div>
   </nav>
 
   <!-- The title of the site -->
   <header class="site-header">
-    <a href="/">
-      <div class="avatar">
+    <!-- <a href="/">
+      <div class="trigger">
         <img src="/assets/images/avatar.png" />
       </div>
-    </a>
-    <!-- <a class="site-title" href="/">Youngon.Seo</a> -->
+    </a> -->
+    <a class="site-title" href="/">YoungWon</a> -->
   </header>
 
 </div>
@@ -104,7 +104,7 @@
   </header>
 
   <!-- Beginning Twitter sharing Large button -->
-  <!-- <a class="twitter-share-button" href="https://twitter.com/share"
+  <!-- <a class="twitter-share-button" href="httpss://twitter.com/share"
   data-related="twitterdev"
   data-size="large"
   data-count="horizontal">
@@ -136,7 +136,7 @@
 <h2 id="3-references">3. References</h2>
 <ul>
   <li>먼저 참고했던 대표적 자료를 명시한다.</li>
-  <li>http://blog.hkwon.me/draw-korean-map-chart-with-geojson/</li>
+  <li>https://blog.hkwon.me/draw-korean-map-chart-with-geojson/</li>
 </ul>
 
 <h2 id="4-geojson-생성">4. GeoJSON 생성</h2>
@@ -147,7 +147,7 @@
 <h3 id="41-shp다운로드">4.1 SHP다운로드</h3>
 <ul>
   <li>GeoJSON파일을 생성하기 위해서 한국의 구역정보와 좌표정보가 포함된 SHP파일이 필요하다(SHP파일의 정확한 정의 및 포맷을 알고싶으면 구글링을 하자).</li>
-  <li>해당 SHP파일은 공간정보시스템 기반 기술 연구소[http://www.gisdeveloper.co.kr/?p=2332] 에서 다운받자.</li>
+  <li>해당 SHP파일은 공간정보시스템 기반 기술 연구소[https://www.gisdeveloper.co.kr/?p=2332] 에서 다운받자.</li>
   <li>시도/시군구/읍면동/리 단위로 제공되는 파일중 필요한것을 다운받자. 여기서는 읍면동을 선택하였다.</li>
   <li>참고로 해당 데이터는 법정동 코드르를 기준으로 데이터가 구성되어 있다.</li>
 </ul>
@@ -155,7 +155,7 @@
 <h3 id="42-좌표변환">4.2 좌표변환</h3>
 <ul>
   <li>다운 받은 SHP파일의 내용이 보이지는 않지만 포함된 좌표값이 구글맵에서 지원하는 위도경도기반이 아니다.</li>
-  <li>여기서는 국가에서 제공하는 수치지도활용소프트웨어[http://www.nsdi.go.kr/index.html?menuno=2772&amp;cateIndex=712&amp;bbsno=233&amp;boardno=552&amp;ztag=rO0ABXQAMDxjYWxsIHR5cGU9ImJvYXJkIiBza2luPSJmcmVlIiBubz0iNTUyIiA%2BPC9jYWxsPg%3D%3D&amp;siteno=18&amp;act=view] 를 포함하여 좌표체게를 변환한다.</li>
+  <li>여기서는 국가에서 제공하는 수치지도활용소프트웨어[https://www.nsdi.go.kr/index.html?menuno=2772&amp;cateIndex=712&amp;bbsno=233&amp;boardno=552&amp;ztag=rO0ABXQAMDxjYWxsIHR5cGU9ImJvYXJkIiBza2luPSJmcmVlIiBubz0iNTUyIiA%2BPC9jYWxsPg%3D%3D&amp;siteno=18&amp;act=view] 를 포함하여 좌표체게를 변환한다.</li>
   <li>먼저 해당 프로그램에서 다운받은 shp파일(공간정보시스템 연구소에서 제공하는 파일을 다운받고 압축을 풀면 dbs와 shx파일이 포함되어있지만 shp만 사용한다)을 불러온다.</li>
   <li>메뉴중 좌표변환메뉴를 선택한다.</li>
   <li>입력사항은 UTM-K이고 출력사항은 경위도로 선택한다(그냥 처음 선택하면 다 설정이 되어있다).</li>
@@ -178,7 +178,7 @@
   <li>현재까지의 작업내용을 통해서도 구글에 레이어를 출력할 수 있다.</li>
   <li>하지만 웹 환경에서는 반응속도가 중요하기 때문에 레이어를 경량화하여 용량을 줄여 사용한다.</li>
   <li>구글맵에 올릴것이기 때문에 레이어가 보간되어도 사용자 입장에서 큰 차이점을 못느끼고 사용한다.</li>
-  <li>해당작업을 위해 mapshaper[http://mapshaper.org] 에 GeoJSON파일을 입력하고 Simplify를 진행한다.</li>
+  <li>해당작업을 위해 mapshaper[https://mapshaper.org] 에 GeoJSON파일을 입력하고 Simplify를 진행한다.</li>
   <li>여기서는 10%까지 simplify한 결과 대략 70MB에서 4MB까지 줄였다.</li>
 </ul>
 
@@ -206,7 +206,7 @@
 
 /**
 *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
-*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: httpss://disqus.com/admin/universalcode/#configuration-variables*/
 /*
 var disqus_config = function () {
 this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
@@ -215,19 +215,19 @@ this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your pag
 */
 (function() { // DON'T EDIT BELOW THIS LINE
 var d = document, s = d.createElement('script');
-s.src = 'https://youngwonseo.disqus.com/embed.js';
+s.src = 'httpss://youngwonseo.disqus.com/embed.js';
 s.setAttribute('data-timestamp', +new Date());
 (d.head || d.body).appendChild(s);
 })();
 </script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<noscript>Please enable JavaScript to view the <a href="httpss://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
                             
   
   <!-- <div class="question">
     <h2>Questions?</h2>
     <p>Have a question regarding the post above? <br />Or any of my designs?</p>
     <a class="twitter-follow-button"
-    href="https://twitter.com/fffabs"
+    href="httpss://twitter.com/fffabs"
     data-show-count="true"
     data-size="large">
     Follow @fffabs
@@ -237,7 +237,7 @@ s.setAttribute('data-timestamp', +new Date());
       var t, js, fjs = d.getElementsByTagName(s)[0];
       if (d.getElementById(id)) return;
       js = d.createElement(s); js.id = id;
-      js.src= "https://platform.twitter.com/widgets.js";
+      js.src= "httpss://platform.twitter.com/widgets.js";
       fjs.parentNode.insertBefore(js, fjs);
       return window.twttr || (t = { _e: [], ready: function (f) { t._e.push(f) } });
     }(document, "script", "twitter-wjs"));
@@ -247,14 +247,14 @@ s.setAttribute('data-timestamp', +new Date());
   <div class="related">
     <h2>Related</h2>
     
+      <li><a href="/2020/11/11/detecting-aortic-stenosis-using-electrocardiography/" title="Detecting Aortic Stenosis Using Electrocardiography">Detecting Aortic Stenosis Using Electrocardiography
+       &nbsp; <span class="post-meta">November 11, 2020</span></a>
+    
       <li><a href="/2020/10/09/image-resize/" title="파이썬 이미지 리사이즈">파이썬 이미지 리사이즈
        &nbsp; <span class="post-meta">October 09, 2020</span></a>
     
       <li><a href="/2020/09/22/class-activation-map/" title="Learning Deep Features for Discriminative Localization">Learning Deep Features for Discriminative Localization
        &nbsp; <span class="post-meta">September 22, 2020</span></a>
-    
-      <li><a href="/2020/09/21/network-in-network/" title="Network In Network">Network In Network
-       &nbsp; <span class="post-meta">September 21, 2020</span></a>
     
   </div>
 
@@ -285,7 +285,7 @@ s.setAttribute('data-timestamp', +new Date());
       var t, js, fjs = d.getElementsByTagName(s)[0];
       if (d.getElementById(id)) return;
       js = d.createElement(s); js.id = id;
-      js.src= "https://platform.twitter.com/widgets.js";
+      js.src= "httpss://platform.twitter.com/widgets.js";
       fjs.parentNode.insertBefore(js, fjs);
       return window.twttr || (t = { _e: [], ready: function (f) { t._e.push(f) } });
     }(document, "script", "twitter-wjs"));
@@ -295,7 +295,7 @@ s.setAttribute('data-timestamp', +new Date());
 		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
 		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-		})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+		})(window,document,'script','httpss://www.google-analytics.com/analytics.js','ga');
 		
 		ga('create', 'UA-78263144-1', 'auto');
 		ga('send', 'pageview');
