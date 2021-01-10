@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width initial-scale=1">
+
+  <title>분류</title>
+  <meta name="description" content="본 글은 핸즈온 머신러닝을 요약한 글입니다.">
+  
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="https://youngwonseo.github.io/03-classification/">
+  <link rel="alternate" type="application/atom+xml" title="Graceful" href="https://youngwonseo.github.io/feed.xml" />  
+  <link rel="stylesheet" href="/assets/css/syntax.css">
+</head>
+
+  <body>
+    
+
+<div class="header-container" id="header-container">
+
+<!-- Site navigation -->
+  <nav class="site-nav">
+    <div class="trigger">
+      
+        
+        <a class="page-link" href="/about/">About</a>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+        <a class="page-link" href="/category/">Paper</a>
+        
+      
+        
+        <a class="page-link" href="/projects/">Projects</a>
+        
+      
+        
+        <a class="page-link" href="/study/">Study</a>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+      <a class="page-link" href="/feed.xml">RSS</a>
+    </div>
+  </nav>
+
+  <!-- The title of the site -->
+  <header class="site-header">
+    <!-- <a href="/">
+      <div class="avatar">
+        <img src="/assets/images/avatar.png" />
+      </div>
+    </a> -->
+    <a class="site-title" href="/">Graceful</a>
+  </header>
+
+</div>
+
+      <div class="wrapper">
+        <div class="page-content">
+          <div class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">분류</h1>
+    <p class="post-meta">October 1, 2019 • Youngwon Seo</p>
+  </header>
+
+
+
+  <article class="post-content">
+    <p>본 글은 <a href="http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&amp;mallGb=KOR&amp;barcode=9791162240731&amp;orderClick=LEa&amp;Kc=">핸즈온 머신러닝</a>을 요약한 글입니다.</p>
+
+<p>3장의 주제는 분류(Classification)입니다. 다음과 같은 요소들에 대해 학습합니다.</p>
+
+<ul>
+  <li>이진/다중 분류</li>
+  <li>분류에 대한 성능 측정
+    <ul>
+      <li>교차검증</li>
+      <li>오차행렬
+        <ul>
+          <li>정밀도(precision), 재현율(recall), F1 점수(F1 score)</li>
+          <li>정밀도와 재현율의 트레이드 오프</li>
+        </ul>
+      </li>
+      <li>ROC 곡선(receiver operating characteristic)</li>
+    </ul>
+  </li>
+  <li>에러분석</li>
+  <li>다중 레이블 분류</li>
+</ul>
+
+<p>분류를 학습하기위해 <strong>숫자 손글씨 데이터(MNIST)</strong>를 사용합니다. 머신러닝 또는 딥러닝 분야 학습에서 분류에 대한 입문을 위해 많이 사용되는 데이터셋 입니다. 사이킷런에 내장되어 있어 쉽게 받을 수 있습니다(참고로 Keras에도 내장 되어 있습니다).</p>
+
+<div class="language-py highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">fetch_openml</span>
+<span class="n">mnist</span> <span class="o">=</span> <span class="n">fetch_openml</span><span class="p">(</span><span class="s">'mnist_784'</span><span class="p">,</span> <span class="n">version</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>위에서 받은 mnist는 숫자 손글씨에 대한 이미지(<strong>data</strong>, 정확하게 설명하면 숫자 손글씨 이미지에 포함된 그레이 컬러셋의 픽셀정보)와 숫자 손글씨에 대한 숫자(<strong>target</strong>)로 구성되어 있습니다(그외 frame, feature_names, DESCR등의 정보가 포함되어 있습니다).</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">mnist</span><span class="p">[</span><span class="s">'data'</span><span class="p">],</span> <span class="n">mnist</span><span class="p">[</span><span class="s">'target'</span><span class="p">]</span>
+<span class="k">print</span><span class="p">(</span><span class="s">'shape of X'</span><span class="p">,</span> <span class="n">X</span><span class="p">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">'shape of y'</span><span class="p">,</span> <span class="n">y</span><span class="p">.</span><span class="n">shape</span><span class="p">)</span>
+</code></pre></div></div>
+<pre>
+shape of X (70000, 784)
+shape of y (70000,)
+</pre>
+
+<p>mnist의 data와 target은 numpy배열로 구성되어 있습니다. 먼저 X의 (70000, 784)은 70000x784 행렬을 의미 하는데 숫자 손글씨가 7만개로 구성되어 있고 각 손글씨는 784, 즉 28x28의 크기를 가진다는 것을 의미합니다. target은 각 손글씨에 대한 숫자(0,1,…,9)이기 때문에 70000x1, 즉 7만개를 가지는 것을 의미합니다.</p>
+
+<p>손글씨 이미지에 해당하는 data는 784(28x28)차원(이미지의 픽셀)으로 구성되어 있습니다. 색상셋이 RGB가 아닌 그레이셋(흑백)이고 하나의 픽셀의 0~255(8bit)의 값을 가집니다. 다음은 7만개의 손글씨중 임의로 선택한 36001번째(0이 첫 번째 인덱스) 데이터를 시각화한 결과입니다.</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">%</span><span class="n">matplotlib</span> <span class="n">inline</span>
+<span class="kn">import</span> <span class="nn">matplotlib</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+
+<span class="n">some_digit</span> <span class="o">=</span> <span class="n">X</span><span class="p">[</span><span class="mi">36000</span><span class="p">]</span>
+<span class="n">some_digit_image</span> <span class="o">=</span> <span class="n">some_digit</span><span class="p">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">28</span><span class="p">,</span> <span class="mi">28</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">some_digit_image</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">matplotlib</span><span class="p">.</span><span class="n">cm</span><span class="p">.</span><span class="n">binary</span><span class="p">,</span> <span class="n">interpolation</span><span class="o">=</span><span class="s">"nearest"</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">axis</span><span class="p">(</span><span class="s">"off"</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div></div>
+<p><img src="/public/hands-on-ml/03-01.png" alt="" /></p>
+
+<p>숫자 9처럼 보이는데 target의 36001번째를 출력해 보겠습니다.</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">y</span><span class="p">[</span><span class="mi">36000</span><span class="p">]</span>
+</code></pre></div></div>
+<pre>
+'9'
+</pre>
+
+<p>분류기를 학습하고 평가하기 위해서는 train set과 test set으로 구분이 필요합니다. 사이킷런의 mnist는 전체 7만개 데이터에서 앞쪽 6만개가 train set, 뒤 1만개가 test set을 의미합니다. test set에 대한 평가 이전에 검증을 위해 k-fold-validation을 사용하는데 데이터셋이 순차적(앞쪽 6천개가 0, 그다음 6천개가 1, .. 마지막 6천개가 9)으로 배치되어 있으면 모든 target에 대한 적절한 학습 및 검증이 수행되지 않습니다. 몇 가지 알고리즘은 이러한 순서에 민감해 같은 타겟을 가진 데이터가 연속해서 학습되면 성능이 나빠집니다. 이를 해결하기 위해 train set의 6만개의 데이터를 섞어 줍니다(사이킷런에서 제공되는 mnist는 이미 섞여있습니다).</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
+
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">X</span><span class="p">[:</span><span class="mi">60000</span><span class="p">],</span> <span class="n">X</span><span class="p">[</span><span class="mi">60000</span><span class="p">:],</span> <span class="n">y</span><span class="p">[:</span><span class="mi">60000</span><span class="p">],</span> <span class="n">y</span><span class="p">[</span><span class="mi">60000</span><span class="p">:]</span>
+<span class="n">shuffle_index</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="n">permutation</span><span class="p">(</span><span class="mi">60000</span><span class="p">)</span>
+<span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span> <span class="o">=</span> <span class="n">X_train</span><span class="p">[</span><span class="n">shuffle_index</span><span class="p">],</span> <span class="n">y_train</span><span class="p">[</span><span class="n">shuffle_index</span><span class="p">]</span>
+</code></pre></div></div>
+
+<h2 id="이진분류">이진분류</h2>
+
+<h2 id="성능측정">성능측정</h2>
+<p>분류에 대한 성능을 측정하는 요소들을 살펴보겠습니다. 머신러닝을 사용해 분류기를 개발(학습)할 경우 <strong>정확하게 평가하는 것은 성능개선을 위해 매우 중요</strong>합니다.</p>
+
+<h3 id="교차검증">교차검증</h3>
+
+<h3 id="오차행렬">오차행렬</h3>
+
+<h3 id="정밀도와-재현율">정밀도와 재현율</h3>
+
+<h3 id="roc-곡선">ROC 곡선</h3>
+
+<h2 id="다중분류">다중분류</h2>
+<p>이번에는 여러개의 클래스를 구분하는 다중분류(multiclass classifier, multinomial classifier)로 , 다중 분류에는 다음과 같은 전략이 존재합니다.</p>
+
+<ul>
+  <li>일대다(one-versus-all, one-versus-the-rest, OvA) : 각 클래스에 대한 점수를 통해 가장 높은 점수를 가진 클래스로 분류하는 전략</li>
+  <li>일대일(one-versus-one, OvO) : 특정클래스와 나머지 클래스들과의 이진분류기를 훈련하는 전략, 클래스가 N개일때 (N X (N-1))/2 개의 분류기가 필요</li>
+</ul>
+
+<h2 id="references">References</h2>
+<ul>
+  <li></li>
+</ul>
+
+  </article>
+
+  <hr>
+
+  <!-- <div class="question">
+    <h2>Questions?</h2>
+    <p>Have a question regarding the post above? <br />Or any of my designs?</p>
+    
+
+  </div> -->
+
+  <div class="related">
+    <h2>Related</h2>
+    
+      <li><a href="/again-probability/" title="[길벗] 다시 확률통계 확률편 리뷰">[길벗] 다시 확률통계 확률편 리뷰
+       &nbsp; <span class="post-meta">January 06, 2021</span></a>
+    
+      <li><a href="/debounce-throttle/" title="자바스크립트 - 실시간검색과 무한스크롤(디바운스와 스로틀) ">자바스크립트 - 실시간검색과 무한스크롤(디바운스와 스로틀) 
+       &nbsp; <span class="post-meta">January 05, 2021</span></a>
+    
+      <li><a href="/image-resize/" title="파이썬 이미지 리사이즈">파이썬 이미지 리사이즈
+       &nbsp; <span class="post-meta">October 09, 2020</span></a>
+    
+  </div>
+
+</div>
+
+        </div>
+        <footer class="site-footer">
+<p class="small">YOUNGWON &copy 2021
+</p>
+</footer>
+
+    </div>
+
+    <script src="//cdn.jsdelivr.net/headroomjs/0.5.0/headroom.min.js"></script>
+    <script type="text/javascript">
+      var el = document.querySelector(".header-container");
+      var headroom  = new Headroom(el, {
+        "offset": 205,
+        "tolerance": 5
+      });
+      headroom.init();
+    </script>
+
+
+    <!-- Twitter Shizzle -->
+    <script type="text/javascript">
+    window.twttr = (function (d, s, id) {
+      var t, js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src= "https://platform.twitter.com/widgets.js";
+      fjs.parentNode.insertBefore(js, fjs);
+      return window.twttr || (t = { _e: [], ready: function (f) { t._e.push(f) } });
+    }(document, "script", "twitter-wjs"));
+    </script>
+
+  </body>
+</html>

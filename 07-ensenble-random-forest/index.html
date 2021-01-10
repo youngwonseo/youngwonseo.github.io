@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width initial-scale=1">
+
+  <title>앙상블 학습과 랜덤 포레스트</title>
+  <meta name="description" content="앙상블 학습(Ensemble Leraning)이란 여러개의 모델(분류 또는 회귀)을 학습 시키는 기법입니다. 가장 좋은 모델 하나의 예측보다 앙상블을 이용해 여러개의 모델의 예측을 이용해 최종 예측을 결정하는 것이 좋은 결과를 나타낸다고 알려져 있습니다. 랜덤 포레스트(Random...">
+  
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="https://youngwonseo.github.io/07-ensenble-random-forest/">
+  <link rel="alternate" type="application/atom+xml" title="Graceful" href="https://youngwonseo.github.io/feed.xml" />  
+  <link rel="stylesheet" href="/assets/css/syntax.css">
+</head>
+
+  <body>
+    
+
+<div class="header-container" id="header-container">
+
+<!-- Site navigation -->
+  <nav class="site-nav">
+    <div class="trigger">
+      
+        
+        <a class="page-link" href="/about/">About</a>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+        <a class="page-link" href="/category/">Paper</a>
+        
+      
+        
+        <a class="page-link" href="/projects/">Projects</a>
+        
+      
+        
+        <a class="page-link" href="/study/">Study</a>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+      <a class="page-link" href="/feed.xml">RSS</a>
+    </div>
+  </nav>
+
+  <!-- The title of the site -->
+  <header class="site-header">
+    <!-- <a href="/">
+      <div class="avatar">
+        <img src="/assets/images/avatar.png" />
+      </div>
+    </a> -->
+    <a class="site-title" href="/">Graceful</a>
+  </header>
+
+</div>
+
+      <div class="wrapper">
+        <div class="page-content">
+          <div class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">앙상블 학습과 랜덤 포레스트</h1>
+    <p class="post-meta">October 20, 2019 • Youngwon Seo</p>
+  </header>
+
+
+
+  <article class="post-content">
+    <p>앙상블 학습(Ensemble Leraning)이란 여러개의 모델(분류 또는 회귀)을 학습 시키는 기법입니다. 가장 좋은 모델 하나의 예측보다 앙상블을 이용해 여러개의 모델의 예측을 이용해 최종 예측을 결정하는 것이 좋은 결과를 나타낸다고 알려져 있습니다. 랜덤 포레스트(Random Forest)는 여러개의 결정트리를 학습하는 앙상블 기법입니다.</p>
+
+<h2 id="배깅과-페이스팅">배깅과 페이스팅</h2>
+<p>앙상블 학습에 있어서 동일한 학습데이터는 여러 모델에 대해 사용될 수 있습니다. 하지만 하나의 모델에 대해 학습데이터를 중복사용하는 경우와 그렇지 않은 경우가 구분되는데 이것을 <strong>배깅</strong>과 <strong>페이스팅</strong>이라 합니다.</p>
+
+<ul>
+  <li>배깅(bagging, bootstrap aggregating의 줄임말) : 학습데이터의 중복 샘플링 허용하는 방식, 즉 하나의 모델을 학습시키기위해 학습데이터를 무작위 샘플링하며 이를 부트스트래핑(bootstraping, 중복 허용되는 리샘플링)이라 함</li>
+  <li>페이스팅(pasting) : 중복을 허용하지 않는 방식</li>
+</ul>
+
+<p>여러개의 모델에 대한 앙상블을 통해 최종 예측을 결정합니다. 전형적인 분류문제일 경우 통계적 최빈값(statistical mode)을 사용하고 회귀의 경우 평균을 계산합니다.</p>
+
+<p>편향과 분산</p>
+
+<p>또한 앙상블은 여러개의 모델을 학습시키고 예측을 실행하기 때문에 여러머신(여러 CPU)에서 병렬로 처리가능합니다. 이러한 확장성 덕분에 배깅과 페이스팅의 인기각 높습니다.</p>
+
+<h3 id="사이킷런-배깅과-페이스팅">사이킷런 배깅과 페이스팅</h3>
+
+<h2 id="랜덤-포레스트">랜덤 포레스트</h2>
+
+<h2 id="부스팅">부스팅</h2>
+<p>부스팅(boosting, hypothsis boosting)은 약학 학습기를 여러개 연결하여 강한 학습기를 만드는 앙상블 방법을 의미합니다. 여러 모델의 학습 과정에서 앞의 모델을 보완해나가면서 새로운 모델을 학습시키는 것입니다. 여기서는 가장 인기있는 부스팅방 법인 아다부트스와 그래이언트 부스팅 방법을 알아봅니다.</p>
+
+<h3 id="아다부스트adaboost">아다부스트(AdaBoost)</h3>
+<p>새로운 모델을 학습하는 과정에서 이전 모델에서 과소적합(underfitting)된 학습데이터에 대해 가중치를 부여하는 방식입니다. 새로운 모델을 학습하는 과정에 이전 모델에서 학습하기 어려웠던 과소적합된 데이터들을 점점 잘 학습할 수 있도록 합니다(이것이 아다부스트의 기본 아이디어입니다).</p>
+
+<p><img src="https://miro.medium.com/max/1400/0*KYszvMnr3nCtjaGy.png" alt="" /></p>
+
+<h3 id="그래디언트-부스팅gradient-boosting">그래디언트 부스팅(Gradient Boosting)</h3>
+<p>그래디언트 부스팅은 아다부스트처럼 새로운 모델을 학습시킬때 마다 샘플에 대한 가중치를 수정하는 대신 직전 모델이 만든 잔여 오차(residual error)에 대한 새로운 모델을 학습시킵니다.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">sklearn.tree</span> <span class="kn">import</span> <span class="n">DecisionTreeRegressor</span>
+
+<span class="n">tree_reg1</span> <span class="o">=</span> <span class="n">DecisionTreeRegressor</span><span class="p">(</span><span class="n">max_depth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">tree_reg1</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+
+<span class="n">y2</span> <span class="o">=</span> <span class="n">y</span> <span class="o">-</span> <span class="n">tree_reg1</span><span class="p">.</span><span class="n">predict</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="n">tree_reg2</span> <span class="o">=</span> <span class="n">DecisionTreeRegressor</span><span class="p">(</span><span class="n">max_depth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">tree_reg2</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y2</span><span class="p">)</span>
+
+<span class="n">y3</span> <span class="o">=</span> <span class="n">y2</span> <span class="o">-</span> <span class="n">tree_reg1</span><span class="p">.</span><span class="n">predict</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="n">tree_reg3</span> <span class="o">=</span> <span class="n">DecisionTreeRegressor</span><span class="p">(</span><span class="n">max_depth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">tree_reg3</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y3</span><span class="p">)</span>
+
+<span class="n">y_pred</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">tree</span><span class="p">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_new</span><span class="p">)</span> <span class="k">for</span> <span class="n">tree</span> <span class="ow">in</span> <span class="p">(</span><span class="n">tree_reg1</span><span class="p">,</span> <span class="n">tree_reg2</span><span class="p">,</span> <span class="n">tree_reg3</span><span class="p">))</span>
+</code></pre></div></div>
+
+<h2 id="스태킹">스태킹</h2>
+<p>스태킹(stacking, stacked generalization)은 ‘앙상블에 속한 모든 예측기의 예측을 취합하는 간단한 함수를 사용하는 대신 취합하는 모델을 훈현시킬 수 없을까요?’라는 아이디어로 출발합니다. 즉 여러 모델의 예측값을 학습해서 하나의 예측값을 출력하는 모델을 학습하는 것입니다. 이러한 최종 예측값을 출력하는 모델을 블렌더(blender) 또는 메타 학습기(meta-learner)라고 합니다.</p>
+
+<p>https://scikit-learn.org/stable/modules/ensemble.html#stacking</p>
+
+<h2 id="reference">Reference</h2>
+<ul>
+  <li><a href="http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&amp;mallGb=KOR&amp;barcode=9791162240731&amp;orderClick=LEa&amp;Kc=">핸즈온 머신러닝(오렐리앙 제롱 지음, 박해선 옮김) - 한빛미디어</a></li>
+  <li>https://towardsdatascience.com/understanding-adaboost-for-decision-tree-ff8f07d2851</li>
+</ul>
+
+
+  </article>
+
+  <hr>
+
+  <!-- <div class="question">
+    <h2>Questions?</h2>
+    <p>Have a question regarding the post above? <br />Or any of my designs?</p>
+    
+
+  </div> -->
+
+  <div class="related">
+    <h2>Related</h2>
+    
+      <li><a href="/again-probability/" title="[길벗] 다시 확률통계 확률편 리뷰">[길벗] 다시 확률통계 확률편 리뷰
+       &nbsp; <span class="post-meta">January 06, 2021</span></a>
+    
+      <li><a href="/debounce-throttle/" title="자바스크립트 - 실시간검색과 무한스크롤(디바운스와 스로틀) ">자바스크립트 - 실시간검색과 무한스크롤(디바운스와 스로틀) 
+       &nbsp; <span class="post-meta">January 05, 2021</span></a>
+    
+      <li><a href="/image-resize/" title="파이썬 이미지 리사이즈">파이썬 이미지 리사이즈
+       &nbsp; <span class="post-meta">October 09, 2020</span></a>
+    
+  </div>
+
+</div>
+
+        </div>
+        <footer class="site-footer">
+<p class="small">YOUNGWON &copy 2021
+</p>
+</footer>
+
+    </div>
+
+    <script src="//cdn.jsdelivr.net/headroomjs/0.5.0/headroom.min.js"></script>
+    <script type="text/javascript">
+      var el = document.querySelector(".header-container");
+      var headroom  = new Headroom(el, {
+        "offset": 205,
+        "tolerance": 5
+      });
+      headroom.init();
+    </script>
+
+
+    <!-- Twitter Shizzle -->
+    <script type="text/javascript">
+    window.twttr = (function (d, s, id) {
+      var t, js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src= "https://platform.twitter.com/widgets.js";
+      fjs.parentNode.insertBefore(js, fjs);
+      return window.twttr || (t = { _e: [], ready: function (f) { t._e.push(f) } });
+    }(document, "script", "twitter-wjs"));
+    </script>
+
+  </body>
+</html>

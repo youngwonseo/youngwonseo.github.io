@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width initial-scale=1">
+
+  <title>AI for Medical Diagnosis - Week2</title>
+  <meta name="description" content="Evaluating models">
+  
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="https://youngwonseo.github.io/01-week2/">
+  <link rel="alternate" type="application/atom+xml" title="Graceful" href="https://youngwonseo.github.io/feed.xml" />  
+  <link rel="stylesheet" href="/assets/css/syntax.css">
+</head>
+
+  <body>
+    
+
+<div class="header-container" id="header-container">
+
+<!-- Site navigation -->
+  <nav class="site-nav">
+    <div class="trigger">
+      
+        
+        <a class="page-link" href="/about/">About</a>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+        <a class="page-link" href="/category/">Paper</a>
+        
+      
+        
+        <a class="page-link" href="/projects/">Projects</a>
+        
+      
+        
+        <a class="page-link" href="/study/">Study</a>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+      <a class="page-link" href="/feed.xml">RSS</a>
+    </div>
+  </nav>
+
+  <!-- The title of the site -->
+  <header class="site-header">
+    <!-- <a href="/">
+      <div class="avatar">
+        <img src="/assets/images/avatar.png" />
+      </div>
+    </a> -->
+    <a class="site-title" href="/">Graceful</a>
+  </header>
+
+</div>
+
+      <div class="wrapper">
+        <div class="page-content">
+          <div class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">AI for Medical Diagnosis - Week2</h1>
+    <p class="post-meta">April 25, 2020 • Youngwon Seo</p>
+  </header>
+
+
+
+  <article class="post-content">
+    <p>Evaluating models</p>
+
+<h2 id="2주차-key-concepts">2주차 Key Concepts</h2>
+<ul>
+  <li>Calculate true positives, true negatives, false positives, false negatives.</li>
+  <li>Calculate sensitivity and specificity</li>
+  <li>Calculate Positive Predictive Value (PPV) and Negative Predictive Value (NPV).</li>
+  <li>Understand confidence intervals, ROC curve, and F1 score.</li>
+</ul>
+
+<p>의료 분야에서 진단에 대한 결정은 높은 영향력을 가집니다. 그래서 진단에 대한 딥러닝 모델을 개발시 모델에 대한 평가..</p>
+
+<ol>
+  <li>정확도 메트릭의 단점, sencitivity, specificity 정화도로 부터 의료 평가</li>
+  <li>의사들을 의사결정을 위한 예측 값</li>
+  <li></li>
+</ol>
+
+<p>다음은 정확도를 조건부 확률로 해석하는 과정입니다. +는 positive, 즉 질병(disease)으로 결정, -는 negative 질병이 아닌(normal)으로 결정을 의미합니다.
+<img src="/public/medicine/01/week2-03.png" alt="" /></p>
+
+<ul>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td>Sensitivity : 질병일 경우 질병으로 예측할 확률, P(+</td>
+          <td>disease), (true positive rate)</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td>Specificity : 질병이 아닐경우 질병이 아닌것으로 예측할 확률, P(-</td>
+          <td>normal), (true negative rate)</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+</ul>
+
+<p><img src="/public/medicine/01/week2-04.png" alt="" />
+Sensitivity와 Specificity를 사용해 정확도를 다시 표현해 봅니다.</p>
+<ul>
+  <li>Prevalence : 질병이 발병할 학률, P(disease)</li>
+</ul>
+
+<p>질병이 아닌 확률은 P(1-prevalence), P(1 - P(disease))입니다.</p>
+
+<p>이것은 정확도를 sensitivity와 specificity의 가중치 평균으로 ..</p>
+
+<p>예제를 살펴보겠습니다.
+<img src="/public/medicine/01/week2-05.png" alt="" /></p>
+
+<ul>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td>Sensitivity : P(+</td>
+          <td>disease) = #(+ and disease) / #(disease) = 2/3 = 0.67</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td>Specificity : P(-</td>
+          <td>normal) = #(- and normal) / #(normal) = 6/7 = 0.86</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>Prevalence : P(disease) = #(disease) / #(total) = 3/10 = 0.3</li>
+  <li>Accuracy : Sensitivity X prevalence + Specificity X (1 - prevalence) = 0.67 x 0.3 + 0.86 x 0.7 = 0.8</li>
+</ul>
+
+<table>
+  <tbody>
+    <tr>
+      <td>PPV(positive predictive value) : P(disease</td>
+      <td>+)</td>
+    </tr>
+    <tr>
+      <td>NPV(nagative predictive value) : P(normal</td>
+      <td>-)</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><img src="/public/medicine/01/week2-06.png" alt="" /></p>
+
+<p>Sensitivity, Specificity와 PPV, NPV의 관계를 Confusion matrix를 통해 알아니다.</p>
+
+<p>의료 모델에서 가장 유용한모델인 ROC curve에 대해 알아봅니다.</p>
+
+<p>이때 threshold가 0이면 sensitivity가 1,specificity 0</p>
+
+<p>threshold가 1이면 sensitivity가 0,specificity 1</p>
+
+<p>모델의 추정치에 대한 변동성
+confidence intervals</p>
+
+<p>p는 population accuracy</p>
+
+<p>p에 대한 모델 학습은 불가능</p>
+
+<p>lower bound
+upper bound</p>
+
+<p>confidence를 통해 confidence interval을 계산, population accuracy의 정확도를 유추
+모델의 성능을 confidence intervals로 보고</p>
+
+<p>구간내에 있을 확률이 95% x
+샘플 정확도의 95%가 구간내에 있을 확률  x</p>
+
+<p>Metrics</p>
+<ul>
+  <li>TP, TN, FP, FN</li>
+  <li>Accuracy</li>
+  <li>Prevalence</li>
+  <li>Sensitivity and Specificity</li>
+  <li>PPV and NPV</li>
+  <li>AUC
+Confidence Intervals</li>
+</ul>
+
+
+  </article>
+
+  <hr>
+
+  <!-- <div class="question">
+    <h2>Questions?</h2>
+    <p>Have a question regarding the post above? <br />Or any of my designs?</p>
+    
+
+  </div> -->
+
+  <div class="related">
+    <h2>Related</h2>
+    
+      <li><a href="/again-probability/" title="[길벗] 다시 확률통계 확률편 리뷰">[길벗] 다시 확률통계 확률편 리뷰
+       &nbsp; <span class="post-meta">January 06, 2021</span></a>
+    
+      <li><a href="/debounce-throttle/" title="자바스크립트 - 실시간검색과 무한스크롤(디바운스와 스로틀) ">자바스크립트 - 실시간검색과 무한스크롤(디바운스와 스로틀) 
+       &nbsp; <span class="post-meta">January 05, 2021</span></a>
+    
+      <li><a href="/image-resize/" title="파이썬 이미지 리사이즈">파이썬 이미지 리사이즈
+       &nbsp; <span class="post-meta">October 09, 2020</span></a>
+    
+  </div>
+
+</div>
+
+        </div>
+        <footer class="site-footer">
+<p class="small">YOUNGWON &copy 2021
+</p>
+</footer>
+
+    </div>
+
+    <script src="//cdn.jsdelivr.net/headroomjs/0.5.0/headroom.min.js"></script>
+    <script type="text/javascript">
+      var el = document.querySelector(".header-container");
+      var headroom  = new Headroom(el, {
+        "offset": 205,
+        "tolerance": 5
+      });
+      headroom.init();
+    </script>
+
+
+    <!-- Twitter Shizzle -->
+    <script type="text/javascript">
+    window.twttr = (function (d, s, id) {
+      var t, js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src= "https://platform.twitter.com/widgets.js";
+      fjs.parentNode.insertBefore(js, fjs);
+      return window.twttr || (t = { _e: [], ready: function (f) { t._e.push(f) } });
+    }(document, "script", "twitter-wjs"));
+    </script>
+
+  </body>
+</html>

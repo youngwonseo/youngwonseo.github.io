@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width initial-scale=1">
+
+  <title>An Algorithm Based on Deep Learning for Predicting In-Hospital Cardiac Arrest</title>
+  <meta name="description" content="논문링크https://www.researchgate.net/publication/325998266_An_Algorithm_Based_on_Deep_Learning_for_Predicting_In-Hospital_Cardiac_Arrest/fulltext/5b6221aaa6fdccf...">
+  
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="https://youngwonseo.github.io/vuno-01/">
+  <link rel="alternate" type="application/atom+xml" title="Graceful" href="https://youngwonseo.github.io/feed.xml" />  
+  <link rel="stylesheet" href="/assets/css/syntax.css">
+</head>
+
+  <body>
+    
+
+<div class="header-container" id="header-container">
+
+<!-- Site navigation -->
+  <nav class="site-nav">
+    <div class="trigger">
+      
+        
+        <a class="page-link" href="/about/">About</a>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+        <a class="page-link" href="/category/">Paper</a>
+        
+      
+        
+        <a class="page-link" href="/projects/">Projects</a>
+        
+      
+        
+        <a class="page-link" href="/study/">Study</a>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+      <a class="page-link" href="/feed.xml">RSS</a>
+    </div>
+  </nav>
+
+  <!-- The title of the site -->
+  <header class="site-header">
+    <!-- <a href="/">
+      <div class="avatar">
+        <img src="/assets/images/avatar.png" />
+      </div>
+    </a> -->
+    <a class="site-title" href="/">Graceful</a>
+  </header>
+
+</div>
+
+      <div class="wrapper">
+        <div class="page-content">
+          <div class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">An Algorithm Based on Deep Learning for Predicting In-Hospital Cardiac Arrest</h1>
+    <p class="post-meta">June 22, 2020 • Youngwon Seo</p>
+  </header>
+
+
+
+  <article class="post-content">
+    <h2 id="논문링크">논문링크</h2>
+<p>https://www.researchgate.net/publication/325998266_An_Algorithm_Based_on_Deep_Learning_for_Predicting_In-Hospital_Cardiac_Arrest/fulltext/5b6221aaa6fdccf0b206c3d4/An-Algorithm-Based-on-Deep-Learning-for-Predicting-In-Hospital-Cardiac-Arrest.pdf?origin=publication_detail</p>
+
+<h2 id="absract">Absract</h2>
+<ul>
+  <li>4개의 vital sign을 사용해 심정지와 사망에 대한 위험도를 예측
+    <ul>
+      <li>systolic blood pressure</li>
+      <li>heart rate</li>
+      <li>respiratory rate</li>
+      <li>body temperature</li>
+    </ul>
+  </li>
+  <li>2010.06 ~ 2017.07에 수집한 52,131명의 환자 데이터를 사용
+    <ul>
+      <li>2010.06~2017.01 학습 데이터로 사용</li>
+      <li>2017.02~2017.07 테스트 데이터로 사용</li>
+    </ul>
+  </li>
+  <li>순환신경망을 사용
+    <ul>
+      <li>순환신경망 기반의 LSTM을 사용</li>
+    </ul>
+  </li>
+  <li>기존의 방법보다 높은 sensitivity와 낮은 false-alarm을 보임
+    <ul>
+      <li>sensitivity - event가 발생했다고 예측하는 것 중 실제 event가 발생한 비율</li>
+      <li>결국 sensitivity가 높다는것은 낮은 false-alarm을 의미</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="background">Background</h2>
+<ul>
+  <li>80%의 심정지 환자는 악화증상을 심정지 8시간 전에 보임</li>
+  <li>생존율이 20%이하를 보임(미국 기준)</li>
+  <li>심정지를 예측하기 위해 TTS(track-and-trigger system)기반의 RRS(Rapid response system) 사용 됨
+    <ul>
+      <li>각 vital sign 수치의 임계값(upper, under)을 기반으로 검사</li>
+      <li>각 vital sign에 가중치를 사용해 계산후 합계를 기반으로 score를 계산</li>
+      <li>정해진 가중치 값들을 이용해 계산한 결과를 MEWS(the modified early warning score)라고 함</li>
+    </ul>
+  </li>
+  <li>많은 이전 연구들은 sensitivity을 개선하는것에 초점을 둠
+    <ul>
+      <li>false-alarm에 대한 의료진의 시간낭비, 운영 비용증가</li>
+    </ul>
+  </li>
+  <li>본 연구에서는 DEWS(deep learning based early warning system)을 제안
+    <ul>
+      <li>높은 sensitivity와 낮은 false-alarm의 성능</li>
+      <li>vital sign과 심정지의 관계를 deep learning으로 학습</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="deep-learning-model-for-early-warning-system">Deep learning model for early warning system</h2>
+<p><img src="/public/vuno01.PNG" alt="" /></p>
+
+<h2 id="results">Results</h2>
+<h3 id="study-flow-chart">Study flow chart</h3>
+<p><img src="/public/vuno02.PNG" alt="" /></p>
+
+<h3 id="accuracy">Accuracy</h3>
+<p><img src="/public/vuno03.PNG" alt="" /></p>
+
+  </article>
+
+  <hr>
+
+  <!-- <div class="question">
+    <h2>Questions?</h2>
+    <p>Have a question regarding the post above? <br />Or any of my designs?</p>
+    
+
+  </div> -->
+
+  <div class="related">
+    <h2>Related</h2>
+    
+      <li><a href="/again-probability/" title="[길벗] 다시 확률통계 확률편 리뷰">[길벗] 다시 확률통계 확률편 리뷰
+       &nbsp; <span class="post-meta">January 06, 2021</span></a>
+    
+      <li><a href="/debounce-throttle/" title="자바스크립트 - 실시간검색과 무한스크롤(디바운스와 스로틀) ">자바스크립트 - 실시간검색과 무한스크롤(디바운스와 스로틀) 
+       &nbsp; <span class="post-meta">January 05, 2021</span></a>
+    
+      <li><a href="/image-resize/" title="파이썬 이미지 리사이즈">파이썬 이미지 리사이즈
+       &nbsp; <span class="post-meta">October 09, 2020</span></a>
+    
+  </div>
+
+</div>
+
+        </div>
+        <footer class="site-footer">
+<p class="small">YOUNGWON &copy 2021
+</p>
+</footer>
+
+    </div>
+
+    <script src="//cdn.jsdelivr.net/headroomjs/0.5.0/headroom.min.js"></script>
+    <script type="text/javascript">
+      var el = document.querySelector(".header-container");
+      var headroom  = new Headroom(el, {
+        "offset": 205,
+        "tolerance": 5
+      });
+      headroom.init();
+    </script>
+
+
+    <!-- Twitter Shizzle -->
+    <script type="text/javascript">
+    window.twttr = (function (d, s, id) {
+      var t, js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src= "https://platform.twitter.com/widgets.js";
+      fjs.parentNode.insertBefore(js, fjs);
+      return window.twttr || (t = { _e: [], ready: function (f) { t._e.push(f) } });
+    }(document, "script", "twitter-wjs"));
+    </script>
+
+  </body>
+</html>

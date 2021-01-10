@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width initial-scale=1">
+
+  <title>자바 맵 오브젝트 변환</title>
+  <meta name="description" content="자바 맵 오브젝트 변환">
+  
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="https://youngwonseo.github.io/java-map-object-convert/">
+  <link rel="alternate" type="application/atom+xml" title="Graceful" href="https://youngwonseo.github.io/feed.xml" />  
+  <link rel="stylesheet" href="/assets/css/syntax.css">
+</head>
+
+  <body>
+    
+
+<div class="header-container" id="header-container">
+
+<!-- Site navigation -->
+  <nav class="site-nav">
+    <div class="trigger">
+      
+        
+        <a class="page-link" href="/about/">About</a>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+        <a class="page-link" href="/category/">Paper</a>
+        
+      
+        
+        <a class="page-link" href="/projects/">Projects</a>
+        
+      
+        
+        <a class="page-link" href="/study/">Study</a>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+      <a class="page-link" href="/feed.xml">RSS</a>
+    </div>
+  </nav>
+
+  <!-- The title of the site -->
+  <header class="site-header">
+    <!-- <a href="/">
+      <div class="avatar">
+        <img src="/assets/images/avatar.png" />
+      </div>
+    </a> -->
+    <a class="site-title" href="/">Graceful</a>
+  </header>
+
+</div>
+
+      <div class="wrapper">
+        <div class="page-content">
+          <div class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">자바 맵 오브젝트 변환</h1>
+    <p class="post-meta">January 21, 2019 • Youngwon Seo</p>
+  </header>
+
+
+
+  <article class="post-content">
+    <h1 id="자바-맵-오브젝트-변환">자바 맵 오브젝트 변환</h1>
+
+<p>맵과 오브젝트 사이를 변환하는 예제입니다.</p>
+
+<h2 id="uservojava">UserVo.java</h2>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">UserVo</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="nc">String</span> <span class="n">id</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="nc">String</span> <span class="n">name</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="nc">String</span> <span class="n">addr</span><span class="o">;</span>
+    
+    <span class="kd">public</span> <span class="nc">String</span> <span class="nf">getId</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">id</span><span class="o">;</span>
+    <span class="o">}</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setId</span><span class="o">(</span><span class="nc">String</span> <span class="n">id</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">id</span> <span class="o">=</span> <span class="n">id</span><span class="o">;</span>
+    <span class="o">}</span>
+    <span class="kd">public</span> <span class="nc">String</span> <span class="nf">getName</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">name</span><span class="o">;</span>
+    <span class="o">}</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setName</span><span class="o">(</span><span class="nc">String</span> <span class="n">name</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">name</span> <span class="o">=</span> <span class="n">name</span><span class="o">;</span>
+    <span class="o">}</span>
+    <span class="kd">public</span> <span class="nc">String</span> <span class="nf">getAddr</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">addr</span><span class="o">;</span>
+    <span class="o">}</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setAddr</span><span class="o">(</span><span class="nc">String</span> <span class="n">addr</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">addr</span> <span class="o">=</span> <span class="n">addr</span><span class="o">;</span>
+    <span class="o">}</span>
+    
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="nc">String</span> <span class="nf">toString</span><span class="o">()</span> <span class="o">{</span>
+        <span class="nc">StringBuffer</span> <span class="n">sb</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">StringBuffer</span><span class="o">();</span>
+        <span class="n">sb</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="s">"["</span><span class="o">);</span>
+        <span class="n">sb</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="s">"id : "</span><span class="o">).</span><span class="na">append</span><span class="o">(</span><span class="n">id</span><span class="o">).</span><span class="na">append</span><span class="o">(</span><span class="s">", "</span><span class="o">);</span>
+        <span class="n">sb</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="s">"name : "</span><span class="o">).</span><span class="na">append</span><span class="o">(</span><span class="n">name</span><span class="o">).</span><span class="na">append</span><span class="o">(</span><span class="s">", "</span><span class="o">);</span>
+        <span class="n">sb</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="s">"addr : "</span><span class="o">).</span><span class="na">append</span><span class="o">(</span><span class="n">addr</span><span class="o">);</span>
+        <span class="n">sb</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="s">"]"</span><span class="o">);</span>
+        <span class="k">return</span> <span class="n">sb</span><span class="o">.</span><span class="na">toString</span><span class="o">();</span>
+    <span class="o">}</span>    
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h2 id="obejctutiljava">ObejctUtil.java</h2>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">java.lang.reflect.Field</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.lang.reflect.Method</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.HashMap</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.Iterator</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.Map</span><span class="o">;</span>
+ 
+ 
+ 
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">ObjectUtil</span> <span class="o">{</span>
+    
+    <span class="kd">public</span> <span class="kd">static</span> <span class="nc">Map</span> <span class="nf">convertObjectToMap</span><span class="o">(</span><span class="nc">Object</span> <span class="n">obj</span><span class="o">){</span>
+        <span class="nc">Map</span> <span class="n">map</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">HashMap</span><span class="o">();</span>
+        <span class="nc">Field</span><span class="o">[]</span> <span class="n">fields</span> <span class="o">=</span> <span class="n">obj</span><span class="o">.</span><span class="na">getClass</span><span class="o">().</span><span class="na">getDeclaredFields</span><span class="o">();</span>
+        <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span><span class="n">fields</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">i</span><span class="o">++){</span>
+            <span class="n">fields</span><span class="o">[</span><span class="n">i</span><span class="o">].</span><span class="na">setAccessible</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
+            <span class="k">try</span><span class="o">{</span>
+                <span class="n">map</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">fields</span><span class="o">[</span><span class="n">i</span><span class="o">].</span><span class="na">getName</span><span class="o">(),</span> <span class="n">fields</span><span class="o">[</span><span class="n">i</span><span class="o">].</span><span class="na">get</span><span class="o">(</span><span class="n">obj</span><span class="o">));</span>
+            <span class="o">}</span><span class="k">catch</span><span class="o">(</span><span class="nc">Exception</span> <span class="n">e</span><span class="o">){</span>
+                <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+            <span class="o">}</span>
+        <span class="o">}</span>        
+        <span class="k">return</span> <span class="n">map</span><span class="o">;</span>
+    <span class="o">}</span>
+ 
+ 
+    <span class="kd">public</span> <span class="kd">static</span> <span class="nc">Object</span> <span class="nf">convertMapToObject</span><span class="o">(</span><span class="nc">Map</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">,</span><span class="nc">Object</span><span class="o">&gt;</span> <span class="n">map</span><span class="o">,</span><span class="nc">Object</span> <span class="n">obj</span><span class="o">){</span>
+        <span class="nc">String</span> <span class="n">keyAttribute</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+        <span class="nc">String</span> <span class="n">setMethodString</span> <span class="o">=</span> <span class="s">"set"</span><span class="o">;</span>
+        <span class="nc">String</span> <span class="n">methodString</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+        <span class="nc">Iterator</span> <span class="n">itr</span> <span class="o">=</span> <span class="n">map</span><span class="o">.</span><span class="na">keySet</span><span class="o">().</span><span class="na">iterator</span><span class="o">();</span>
+        
+        <span class="k">while</span><span class="o">(</span><span class="n">itr</span><span class="o">.</span><span class="na">hasNext</span><span class="o">()){</span>
+            <span class="n">keyAttribute</span> <span class="o">=</span> <span class="o">(</span><span class="nc">String</span><span class="o">)</span> <span class="n">itr</span><span class="o">.</span><span class="na">next</span><span class="o">();</span>
+            <span class="n">methodString</span> <span class="o">=</span> <span class="n">setMethodString</span><span class="o">+</span><span class="n">keyAttribute</span><span class="o">.</span><span class="na">substring</span><span class="o">(</span><span class="mi">0</span><span class="o">,</span><span class="mi">1</span><span class="o">).</span><span class="na">toUpperCase</span><span class="o">()+</span><span class="n">keyAttribute</span><span class="o">.</span><span class="na">substring</span><span class="o">(</span><span class="mi">1</span><span class="o">);</span>            
+            <span class="nc">Method</span><span class="o">[]</span> <span class="n">methods</span> <span class="o">=</span> <span class="n">obj</span><span class="o">.</span><span class="na">getClass</span><span class="o">().</span><span class="na">getDeclaredMethods</span><span class="o">();</span>
+            <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span><span class="n">i</span><span class="o">&lt;</span><span class="n">methods</span><span class="o">.</span><span class="na">length</span><span class="o">;</span><span class="n">i</span><span class="o">++){</span>
+                <span class="k">if</span><span class="o">(</span><span class="n">methodString</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">methods</span><span class="o">[</span><span class="n">i</span><span class="o">].</span><span class="na">getName</span><span class="o">())){</span>
+                    <span class="k">try</span><span class="o">{</span>
+                        <span class="n">methods</span><span class="o">[</span><span class="n">i</span><span class="o">].</span><span class="na">invoke</span><span class="o">(</span><span class="n">obj</span><span class="o">,</span> <span class="n">map</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">keyAttribute</span><span class="o">));</span>
+                    <span class="o">}</span><span class="k">catch</span><span class="o">(</span><span class="nc">Exception</span> <span class="n">e</span><span class="o">){</span>
+                        <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+                    <span class="o">}</span>
+                <span class="o">}</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+        <span class="k">return</span> <span class="n">obj</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h2 id="main-method">Main Method</h2>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">java.util.Map</span><span class="o">;</span>
+ 
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">TestCode</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">){</span>
+        <span class="nc">UserVo</span> <span class="n">vo</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">UserVo</span><span class="o">();</span>
+        <span class="n">vo</span><span class="o">.</span><span class="na">setId</span><span class="o">(</span><span class="s">"Youngwon"</span><span class="o">);</span>
+        <span class="n">vo</span><span class="o">.</span><span class="na">setName</span><span class="o">(</span><span class="s">"서영원"</span><span class="o">);</span>
+        <span class="n">vo</span><span class="o">.</span><span class="na">setAddr</span><span class="o">(</span><span class="s">"Korea"</span><span class="o">);</span>
+        
+        <span class="nc">Map</span> <span class="n">map</span> <span class="o">=</span> <span class="nc">ObjectUtil</span><span class="o">.</span><span class="na">convertObjectToMap</span><span class="o">(</span><span class="n">vo</span><span class="o">);</span>    
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">map</span><span class="o">);</span>
+        
+        <span class="nc">UserVo</span> <span class="n">vo2</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">UserVo</span><span class="o">();</span>
+        <span class="nc">ObjectUtil</span><span class="o">.</span><span class="na">convertMapToObject</span><span class="o">(</span><span class="n">map</span><span class="o">,</span><span class="n">vo2</span><span class="o">);</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">vo2</span><span class="o">.</span><span class="na">toString</span><span class="o">());</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+  </article>
+
+  <hr>
+
+  <!-- <div class="question">
+    <h2>Questions?</h2>
+    <p>Have a question regarding the post above? <br />Or any of my designs?</p>
+    
+
+  </div> -->
+
+  <div class="related">
+    <h2>Related</h2>
+    
+      <li><a href="/again-probability/" title="[길벗] 다시 확률통계 확률편 리뷰">[길벗] 다시 확률통계 확률편 리뷰
+       &nbsp; <span class="post-meta">January 06, 2021</span></a>
+    
+      <li><a href="/debounce-throttle/" title="자바스크립트 - 실시간검색과 무한스크롤(디바운스와 스로틀) ">자바스크립트 - 실시간검색과 무한스크롤(디바운스와 스로틀) 
+       &nbsp; <span class="post-meta">January 05, 2021</span></a>
+    
+      <li><a href="/image-resize/" title="파이썬 이미지 리사이즈">파이썬 이미지 리사이즈
+       &nbsp; <span class="post-meta">October 09, 2020</span></a>
+    
+  </div>
+
+</div>
+
+        </div>
+        <footer class="site-footer">
+<p class="small">YOUNGWON &copy 2021
+</p>
+</footer>
+
+    </div>
+
+    <script src="//cdn.jsdelivr.net/headroomjs/0.5.0/headroom.min.js"></script>
+    <script type="text/javascript">
+      var el = document.querySelector(".header-container");
+      var headroom  = new Headroom(el, {
+        "offset": 205,
+        "tolerance": 5
+      });
+      headroom.init();
+    </script>
+
+
+    <!-- Twitter Shizzle -->
+    <script type="text/javascript">
+    window.twttr = (function (d, s, id) {
+      var t, js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src= "https://platform.twitter.com/widgets.js";
+      fjs.parentNode.insertBefore(js, fjs);
+      return window.twttr || (t = { _e: [], ready: function (f) { t._e.push(f) } });
+    }(document, "script", "twitter-wjs"));
+    </script>
+
+  </body>
+</html>

@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width initial-scale=1">
+
+  <title>자바스크립트 디자인패턴#2 - 속깊은 자바스크립트</title>
+  <meta name="description" content="디자인패턴#2 - 프락시 패턴, 데커레이터 패턴본 글을 속깊은 Javascript의 디자인 패턴(프락시, 데터레이터) 부분을 정리한 글입니다.">
+  
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="https://youngwonseo.github.io/08-design-pattern-2/">
+  <link rel="alternate" type="application/atom+xml" title="Graceful" href="https://youngwonseo.github.io/feed.xml" />  
+  <link rel="stylesheet" href="/assets/css/syntax.css">
+</head>
+
+  <body>
+    
+
+<div class="header-container" id="header-container">
+
+<!-- Site navigation -->
+  <nav class="site-nav">
+    <div class="trigger">
+      
+        
+        <a class="page-link" href="/about/">About</a>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+        <a class="page-link" href="/category/">Paper</a>
+        
+      
+        
+        <a class="page-link" href="/projects/">Projects</a>
+        
+      
+        
+        <a class="page-link" href="/study/">Study</a>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+      <a class="page-link" href="/feed.xml">RSS</a>
+    </div>
+  </nav>
+
+  <!-- The title of the site -->
+  <header class="site-header">
+    <!-- <a href="/">
+      <div class="avatar">
+        <img src="/assets/images/avatar.png" />
+      </div>
+    </a> -->
+    <a class="site-title" href="/">Graceful</a>
+  </header>
+
+</div>
+
+      <div class="wrapper">
+        <div class="page-content">
+          <div class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">자바스크립트 디자인패턴#2 - 속깊은 자바스크립트</h1>
+    <p class="post-meta">December 27, 2018 • Youngwon Seo</p>
+  </header>
+
+
+
+  <article class="post-content">
+    <h1 id="디자인패턴2---프락시-패턴-데커레이터-패턴">디자인패턴#2 - 프락시 패턴, 데커레이터 패턴</h1>
+<p>본 글을 <a href="http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&amp;mallGb=KOR&amp;barcode=9791186710098&amp;orderClick=LEA&amp;Kc=">속깊은 Javascript</a>의 디자인 패턴(프락시, 데터레이터) 부분을 정리한 글입니다.</p>
+
+<h2 id="프락시-패턴proxy-pattern">프락시 패턴(proxy pattern)</h2>
+<h3 id="프락시-기본">프락시 기본</h3>
+<p>프락시 패턴은 말 그대로 하나의 객체가 프락시 역활을 수행하여 상황에 따라 수행해야할 함수를 선택하여 호출해주는 패턴을 의미합니다. 다음의 예제를 살펴봅시다.</p>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&lt;</span><span class="nx">html</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="nx">body</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="nx">video</span>  <span class="nx">style</span><span class="o">=</span><span class="dl">"</span><span class="s2">width:480px</span><span class="dl">"</span> <span class="nx">id</span><span class="o">=</span><span class="dl">"</span><span class="s2">videoBunny</span><span class="dl">"</span> <span class="nx">src</span><span class="o">=</span><span class="dl">"</span><span class="s2">http://media.w3.org/2010/05/bunny/movie.ogv</span><span class="dl">"</span><span class="o">&gt;&lt;</span><span class="sr">/video</span><span class="err">&gt;
+</span><span class="o">&lt;</span><span class="nx">div</span> <span class="nx">id</span><span class="o">=</span><span class="dl">"</span><span class="s2">controlPanel</span><span class="dl">"</span><span class="o">&gt;</span>
+	<span class="o">&lt;</span><span class="nx">button</span> <span class="nx">id</span><span class="o">=</span><span class="dl">"</span><span class="s2">play</span><span class="dl">"</span><span class="o">&gt;</span><span class="nx">Play</span><span class="o">&lt;</span><span class="sr">/button</span><span class="err">&gt;
+</span>	<span class="o">&lt;</span><span class="nx">button</span> <span class="nx">id</span><span class="o">=</span><span class="dl">"</span><span class="s2">pause</span><span class="dl">"</span><span class="o">&gt;</span><span class="nx">Pause</span><span class="o">&lt;</span><span class="sr">/button</span><span class="err">&gt;
+</span>	<span class="o">&lt;</span><span class="nx">button</span> <span class="nx">id</span><span class="o">=</span><span class="dl">"</span><span class="s2">volumeUp</span><span class="dl">"</span><span class="o">&gt;</span><span class="nx">Volume</span><span class="o">++&lt;</span><span class="sr">/button</span><span class="err">&gt;
+</span>	<span class="o">&lt;</span><span class="nx">button</span> <span class="nx">id</span><span class="o">=</span><span class="dl">"</span><span class="s2">volumeDown</span><span class="dl">"</span><span class="o">&gt;</span><span class="nx">Volume</span><span class="o">--&lt;</span><span class="sr">/button</span><span class="err">&gt;
+</span><span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
+</span><span class="o">&lt;</span><span class="nx">script</span><span class="o">&gt;</span>
+<span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
+<span class="kd">var</span> <span class="nx">divControlPanel</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="dl">"</span><span class="s2">controlPanel</span><span class="dl">"</span><span class="p">),</span>
+	<span class="nx">videoBunny</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="dl">"</span><span class="s2">videoBunny</span><span class="dl">"</span><span class="p">),</span>
+	<span class="nx">proxyClickEventHandler</span> <span class="o">=</span> <span class="p">{</span>
+		<span class="dl">"</span><span class="s2">play</span><span class="dl">"</span><span class="p">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+			<span class="nx">videoBunny</span><span class="p">.</span><span class="nx">play</span><span class="p">();</span>
+		<span class="p">},</span>
+		<span class="dl">"</span><span class="s2">pause</span><span class="dl">"</span><span class="p">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+			<span class="nx">videoBunny</span><span class="p">.</span><span class="nx">pause</span><span class="p">();</span>
+		<span class="p">},</span>
+		<span class="dl">"</span><span class="s2">volumeUp</span><span class="dl">"</span><span class="p">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+			<span class="k">if</span><span class="p">(</span><span class="nx">videoBunny</span><span class="p">.</span><span class="nx">volume</span> <span class="o">&lt;=</span> <span class="mf">0.9</span><span class="p">)</span> <span class="p">{</span>
+				<span class="nx">videoBunny</span><span class="p">.</span><span class="nx">volume</span> <span class="o">+=</span> <span class="mf">0.1</span><span class="p">;</span>
+			<span class="p">}</span><span class="k">else</span><span class="p">{</span>
+				<span class="nx">video</span><span class="p">.</span><span class="nx">volume</span> <span class="o">=</span> <span class="mi">1</span>
+			<span class="p">}</span>
+		<span class="p">},</span>
+		<span class="dl">"</span><span class="s2">volumeDown</span><span class="dl">"</span><span class="p">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+			<span class="k">if</span><span class="p">(</span><span class="nx">videoBunny</span><span class="p">.</span><span class="nx">volume</span> <span class="o">&gt;=</span> <span class="mf">0.1</span><span class="p">)</span> <span class="p">{</span>
+				<span class="nx">videoBunny</span><span class="p">.</span><span class="nx">volume</span> <span class="o">-=</span> <span class="mf">0.1</span><span class="p">;</span>
+			<span class="p">}</span><span class="k">else</span><span class="p">{</span>
+				<span class="nx">videoBunny</span><span class="p">.</span><span class="nx">volume</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+			<span class="p">}</span>
+		<span class="p">}</span>
+	<span class="p">};</span>
+	<span class="nx">divControlPanel</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">"</span><span class="s2">click</span><span class="dl">"</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+		<span class="kd">var</span>  <span class="nx">target</span> <span class="o">=</span> <span class="nx">e</span><span class="p">.</span><span class="nx">target</span> <span class="o">||</span> <span class="nx">e</span><span class="p">.</span><span class="nx">srcElement</span><span class="p">;</span>
+		<span class="k">if</span><span class="p">(</span><span class="nx">proxyClickEventHandler</span><span class="p">.</span><span class="nx">hasOwnProperty</span><span class="p">(</span><span class="nx">target</span><span class="p">.</span><span class="nx">id</span><span class="p">))</span> <span class="p">{</span>
+			<span class="nx">proxyClickEventHandler</span><span class="p">[</span><span class="nx">target</span><span class="p">.</span><span class="nx">id</span><span class="p">].</span><span class="nx">call</span><span class="p">();</span>
+		<span class="p">}</span>
+	<span class="p">},</span> <span class="kc">true</span><span class="p">);</span>
+<span class="p">}());</span>
+<span class="o">&lt;</span><span class="sr">/script</span><span class="err">&gt;
+</span><span class="o">&lt;</span><span class="sr">/body</span><span class="err">&gt;
+</span><span class="o">&lt;</span><span class="sr">/html</span><span class="err">&gt;
+</span></code></pre></div></div>
+<p>controlPanel안에 속한 4가지 버튼에 대한 기능을 하나의 객체(proxyClickEventHandler)에 정의합니다. 4가지에 대한 각각의 버튼에 이벤트를 등록하지 않고 controlPanel에 이벤트를 등록하고 어떤기능이 실행될지를 id를 통해 선택합니다. 이때 id에 해당하는 함수가 proxyClickEventHandler에 존재하는지 hasOwnProperty로 검사 후 존재하면 call을 통해 해당 함수를 호출합니다.</p>
+
+<p>각각의 버튼에 이벤트를 등록하는 것 보다 코드를 작성하거나 유지보수하는 면에서 깔끔해질 수 있음을 알 수 있습니다. <strong>실제 기능이 추가되면 해당 프록시객체에 기능을 추가하고 버튼을 추가해주면 두 개의 추가된 요소에 대해 따로 처리해줄 일이 없음을 알 수 있습니다. 즉 프락시 객체만 확인하면서 기능들을 관리할 수 있습니다.</strong></p>
+
+<h3 id="프락시를-이용한-캐시">프락시를 이용한 캐시</h3>
+<p>프락시 객체를 이용한 한가지 예제를 더 살펴봅시다. 다음은 프락시를 이용하여 DOM탐색을 캐시를 이용하여 최적화한 예제입니다.</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;html&gt;</span>
+<span class="nt">&lt;body&gt;</span>
+<span class="nt">&lt;video</span> <span class="na">style=</span><span class="s">"width:240px"</span> <span class="na">id=</span><span class="s">"videoBunnySmall"</span> <span class="na">src=</span><span class="s">"http://media.w3.org/2010/05/bunny/movie.ogv"</span><span class="nt">&gt;&lt;/video&gt;</span>
+<span class="nt">&lt;video</span> <span class="na">style=</span><span class="s">"width:320px"</span> <span class="na">id=</span><span class="s">"videoBunnyMedium"</span> <span class="na">src=</span><span class="s">"http://media.w3.org/2010/05/bunny/movie.ogv"</span><span class="nt">&gt;&lt;/video&gt;</span>
+<span class="nt">&lt;video</span> <span class="na">style=</span><span class="s">"width:480px"</span> <span class="na">id=</span><span class="s">"videoBunnyLarge"</span> <span class="na">src=</span><span class="s">"http://media.w3.org/2010/05/bunny/movie.ogv"</span><span class="nt">&gt;&lt;/video&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"controlPanel"</span><span class="nt">&gt;</span>
+	<span class="nt">&lt;select</span> <span class="na">id=</span><span class="s">"controlVideo"</span><span class="nt">&gt;</span>
+		<span class="nt">&lt;option&gt;</span>videoBunnySmall<span class="nt">&lt;/option&gt;</span>
+		<span class="nt">&lt;option&gt;</span>videoBunnyMedium<span class="nt">&lt;/option&gt;</span>
+		<span class="nt">&lt;option&gt;</span>videoBunnyLarge<span class="nt">&lt;/option&gt;</span>
+	<span class="nt">&lt;/select&gt;</span>
+	<span class="nt">&lt;button</span> <span class="na">id=</span><span class="s">"play"</span><span class="nt">&gt;</span>Play<span class="nt">&lt;/button&gt;</span>
+	<span class="nt">&lt;button</span> <span class="na">id=</span><span class="s">"pause"</span><span class="nt">&gt;</span>Pause<span class="nt">&lt;/button&gt;</span>
+	<span class="nt">&lt;button</span> <span class="na">id=</span><span class="s">"volumeUp"</span><span class="nt">&gt;</span>Volume++<span class="nt">&lt;/button&gt;</span>
+	<span class="nt">&lt;button</span> <span class="na">id=</span><span class="s">"volumeDown"</span><span class="nt">&gt;</span>Volume--<span class="nt">&lt;/button&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;script&gt;</span>
+<span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+<span class="kd">var</span> <span class="nx">divControlPanel</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="dl">"</span><span class="s2">controlPanel</span><span class="dl">"</span><span class="p">),</span>
+	<span class="nx">selectControlVideo</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="dl">"</span><span class="s2">controlVideo</span><span class="dl">"</span><span class="p">),</span>
+	<span class="nx">controlVideo</span> <span class="o">=</span> <span class="p">{</span>
+		<span class="dl">"</span><span class="s2">play</span><span class="dl">"</span><span class="p">:</span>  <span class="kd">function</span><span class="p">(</span><span class="nx">video</span><span class="p">)</span> <span class="p">{</span>
+			<span class="nx">video</span><span class="p">.</span><span class="nx">play</span><span class="p">();</span>
+		<span class="p">},</span>
+		<span class="dl">"</span><span class="s2">pause</span><span class="dl">"</span><span class="p">:</span>  <span class="kd">function</span><span class="p">(</span><span class="nx">video</span><span class="p">)</span> <span class="p">{</span>
+			<span class="nx">video</span><span class="p">.</span><span class="nx">pause</span><span class="p">();</span>
+		<span class="p">},</span>
+		<span class="dl">"</span><span class="s2">volumeUp</span><span class="dl">"</span><span class="p">:</span>  <span class="kd">function</span><span class="p">(</span><span class="nx">video</span><span class="p">)</span> <span class="p">{</span>
+			<span class="k">if</span><span class="p">(</span><span class="nx">video</span><span class="p">.</span><span class="nx">volume</span> <span class="o">&lt;=</span> <span class="mf">0.9</span><span class="p">)</span> <span class="p">{</span>
+				<span class="nx">video</span><span class="p">.</span><span class="nx">volume</span> <span class="o">+=</span> <span class="mf">0.1</span><span class="p">;</span>
+			<span class="p">}</span><span class="k">else</span><span class="p">{</span>
+				<span class="nx">video</span><span class="p">.</span><span class="nx">volume</span> <span class="o">=</span> <span class="mi">1</span>
+			<span class="p">}</span>
+		<span class="p">},</span>
+		<span class="dl">"</span><span class="s2">volumeDown</span><span class="dl">"</span><span class="p">:</span>  <span class="kd">function</span><span class="p">(</span><span class="nx">video</span><span class="p">)</span> <span class="p">{</span>
+			<span class="k">if</span><span class="p">(</span><span class="nx">video</span><span class="p">.</span><span class="nx">volume</span> <span class="o">&gt;=</span> <span class="mf">0.1</span><span class="p">)</span> <span class="p">{</span>
+				<span class="nx">video</span><span class="p">.</span><span class="nx">volume</span> <span class="o">-=</span> <span class="mf">0.1</span><span class="p">;</span>
+			<span class="p">}</span><span class="k">else</span><span class="p">{</span>
+				<span class="nx">video</span><span class="p">.</span><span class="nx">volume</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+			<span class="p">}</span>
+		<span class="p">},</span>
+		<span class="dl">"</span><span class="s2">getVideoById</span><span class="dl">"</span><span class="p">:</span>  <span class="kd">function</span><span class="p">(</span><span class="nx">id</span><span class="p">)</span> <span class="p">{</span>
+			<span class="k">return</span>  <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="nx">id</span><span class="p">);</span>
+		<span class="p">}</span>
+	<span class="p">},</span>
+	<span class="nx">proxyClickEventHandler</span> <span class="o">=</span> <span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+		<span class="kd">var</span>  <span class="nx">cache</span> <span class="o">=</span> <span class="p">{};</span>
+		<span class="k">return</span> <span class="kd">function</span><span class="p">(</span><span class="nx">command</span><span class="p">)</span> <span class="p">{</span>			
+			<span class="kd">var</span>  <span class="nx">video</span><span class="p">;</span>
+			<span class="k">if</span><span class="p">(</span><span class="nx">controlVideo</span><span class="p">.</span><span class="nx">hasOwnProperty</span><span class="p">(</span><span class="nx">command</span><span class="p">))</span> <span class="p">{</span>
+				<span class="k">if</span><span class="p">(</span><span class="nx">cache</span><span class="p">.</span><span class="nx">hasOwnProperty</span><span class="p">(</span><span class="nx">selectControlVideo</span><span class="p">.</span><span class="nx">value</span><span class="p">)){</span>
+					<span class="nx">video</span> <span class="o">=</span> <span class="nx">cache</span><span class="p">[</span><span class="nx">selectControlVideo</span><span class="p">.</span><span class="nx">value</span><span class="p">];</span>
+				<span class="p">}</span><span class="k">else</span><span class="p">{</span>
+					<span class="nx">video</span> <span class="o">=</span> <span class="nx">controlVideo</span><span class="p">.</span><span class="nx">getVideoById</span><span class="p">(</span><span class="nx">selectControlVideo</span><span class="p">.</span><span class="nx">value</span><span class="p">);</span>
+					<span class="nx">cache</span><span class="p">[</span><span class="nx">selectControlVideo</span><span class="p">.</span><span class="nx">value</span><span class="p">]</span> <span class="o">=</span> <span class="nx">video</span><span class="p">;</span>
+				<span class="p">}</span>
+				<span class="nx">controlVideo</span><span class="p">[</span><span class="nx">command</span><span class="p">].</span><span class="nx">call</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="nx">video</span><span class="p">);</span>
+			<span class="p">}</span>
+		<span class="p">};</span>
+	<span class="p">}());</span>
+<span class="nx">divControlPanel</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">"</span><span class="s2">click</span><span class="dl">"</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+	<span class="kd">var</span>  <span class="nx">target</span> <span class="o">=</span> <span class="nx">e</span><span class="p">.</span><span class="nx">target</span> <span class="o">||</span> <span class="nx">e</span><span class="p">.</span><span class="nx">srcElement</span><span class="p">;</span>
+	<span class="nx">proxyClickEventHandler</span><span class="p">(</span><span class="nx">target</span><span class="p">.</span><span class="nx">id</span><span class="p">);</span>
+<span class="p">},</span> <span class="kc">true</span><span class="p">);</span>
+<span class="p">}());</span>
+<span class="nt">&lt;/script&gt;</span>
+<span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</code></pre></div></div>
+<p>처음예제와 비슷하지만 여러개의 비디오가 존재하고 selectbox로 비디오를 선택하는 구조로 변경된것을 알 수 있습니다.  또한 프록시 객체와 프록시에서 호출할 기능에 대한 객체가 분리되어있습니다.
+기본적인 프록시 동작방식보다 어떻게 프록시가 캐시기능을 가지는지 살펴봅시다. 이전과 다르게 프록시 객체가 즉시호출함수로 리던된 함수를 참조하고 있고 cache가 클로저라는 것을 알 수 있습니다.(클로저에 대한 개념이 없다면 <a href="/2018/11/28/02-closure/">클로저</a>를 바주세요). 즉 프록시에 기능 버튼에 대한 id가 입력되면 selectbox로 선택된 비디오에 해당 기능을 수행해야 하는데 참조한 적이 있는 비디오인지 아닌지를 cache객체로 확인하며 참조한 적이 있으면 cache에서 불러 기능을 수행합니다.</p>
+
+<h3 id="프락시를-이용한-래퍼">프락시를 이용한 래퍼</h3>
+<p>자바스크립트 특성상 기존 함수 또는 라이브러리를 한 번더 감싸서 원하는 기능을 구형하는 래퍼(wrapper) 형식의 기능을 쉽게 구현하고 제공할 수 있습니다. 이는 기존의 특정 기능에 대한 전처리를 쉽게 적용할 수 있음을 의미합니다. 프락시 패턴을 이용한 래퍼예제를 살펴봅시다.</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;html&gt;</span>
+<span class="nt">&lt;body&gt;</span>
+<span class="nt">&lt;script&gt;</span>
+<span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+	<span class="kd">function</span> <span class="nx">wrap</span><span class="p">(</span><span class="nx">func</span><span class="p">,</span> <span class="nx">wrapper</span><span class="p">)</span> <span class="p">{</span>
+		<span class="k">return</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+			<span class="kd">var</span> <span class="nx">args</span> <span class="o">=</span> <span class="p">[</span><span class="nx">func</span><span class="p">].</span><span class="nx">concat</span><span class="p">(</span><span class="nb">Array</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">slice</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="nx">arguments</span><span class="p">));</span>
+			<span class="k">return</span> <span class="nx">wrapper</span><span class="p">.</span><span class="nx">apply</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="nx">args</span><span class="p">)</span>
+		<span class="p">}</span>
+	<span class="p">}</span>
+	<span class="kd">function</span> <span class="nx">existingFunction</span><span class="p">()</span> <span class="p">{</span>
+		<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">Existing function is called with arguments</span><span class="dl">"</span><span class="p">);</span>
+		<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">arguments</span><span class="p">);</span>
+	<span class="p">}</span>
+	<span class="kd">var</span> <span class="nx">wrapperFunction</span> <span class="o">=</span> <span class="nx">wrap</span><span class="p">(</span><span class="nx">existingFunction</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">func</span><span class="p">)</span> <span class="p">{</span>
+		<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">Wrapper function is called with arguments</span><span class="dl">"</span><span class="p">);</span>
+		<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">arguments</span><span class="p">);</span>
+		<span class="nx">func</span><span class="p">.</span><span class="nx">apply</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="nb">Array</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">slice</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="nx">arguments</span><span class="p">,</span> <span class="mi">1</span><span class="p">));</span>
+	<span class="p">});</span>
+
+	<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">1. Calling existing existing function</span><span class="dl">"</span><span class="p">);</span>
+	<span class="nx">existingFunction</span><span class="p">(</span><span class="dl">"</span><span class="s2">First argument</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">Second argument</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">Third argument</span><span class="dl">"</span><span class="p">);</span>
+
+	<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="se">\n</span><span class="s2">2. Calling wrapped existing function</span><span class="dl">"</span><span class="p">);</span>
+	<span class="nx">wrapperFunction</span><span class="p">(</span><span class="dl">"</span><span class="s2">First argument</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">Second argument</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">Third argument</span><span class="dl">"</span><span class="p">);</span>
+<span class="p">}());</span>
+
+<span class="nt">&lt;/script&gt;</span>
+<span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</code></pre></div></div>
+<p><img src="/public/js-proxy" alt="" />
+처음 정의된 wrap함수가 wrapper기능을 구현하는 함수입니다. 첫 번째 인자가 기존함수, 두 번째 인자가 전처리할 함수입니다. 수행순서를 보면 1. Calling.. 로그가 출력되고 existingFunction함수가 호출되어 해당 로그와 arguments가 콘솔에 출력됩니다.
+그 다음 2. Calling.. 로그가 출력되며 wrapperFunction이 호출됩니다. 여기서부터 실제 전처리가 적용된 함수가 호출됩니다. wrapperFunction은 wrap함수로 전처리가 추가된 함수입니다. 처음 설명과 같이 첫 번째가 기존함수(existingFunction) 두 번째가 전처리함수(function(func){..})로 쉽게 전처리 함수가 추가된것을 확인 할 수 있습니다.
+wrap함수의 실행에 대해 살펴보면 실행될 함수와 모든 arguments를 함쳐 두 번째 인자의 wrapper함수를 호출하는데 wrapper함수해서는 합쳐진 arguments의 첫번째 함수를 실행하는 형태입니다.</p>
+
+<h2 id="데커레이터-패턴decorator-pattern">데커레이터 패턴(decorator pattern)</h2>
+<p>프락시 패턴이 프락시 객체를 두어 어떤 함수를 호출할 시 결정하는 패턴이라면 데커레이터 패턴은 호출 대상이 되는 객체에 추가 기능들을 자유롭게 추가하는 패턴입니다.</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="nt">&lt;html&gt;</span>
+<span class="nt">&lt;body&gt;</span>
+
+<span class="nt">&lt;script&gt;</span>
+<span class="kd">function</span> <span class="nx">Validator</span><span class="p">(</span><span class="nx">form</span><span class="p">){</span>
+	<span class="k">this</span><span class="p">.</span><span class="nx">validatingForm</span> <span class="o">=</span> <span class="nx">form</span><span class="p">;</span>
+	<span class="nx">form</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">"</span><span class="s2">submit</span><span class="dl">"</span><span class="p">,</span> <span class="kd">function</span><span class="p">(){</span>
+		<span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="nx">validator</span><span class="p">.</span><span class="nx">validate</span><span class="p">(</span><span class="k">this</span><span class="p">)){</span>
+			<span class="nx">event</span><span class="p">.</span><span class="nx">preventDefault</span><span class="p">();</span>
+			<span class="nx">event</span><span class="p">.</span><span class="nx">returnValue</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+			<span class="k">return</span> <span class="kc">true</span><span class="p">;</span>
+		<span class="p">}</span>
+		<span class="nx">alert</span><span class="p">(</span><span class="dl">"</span><span class="s2">Success to validate</span><span class="dl">"</span><span class="p">);</span>
+		<span class="k">return</span> <span class="kc">true</span><span class="p">;</span>
+	<span class="p">});</span>
+<span class="p">}</span>
+
+
+<span class="nx">Validator</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">ruleSet</span> <span class="o">=</span> <span class="p">{};</span>
+<span class="nx">Validator</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">decorate</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">ruleName</span><span class="p">,</span> <span class="nx">ruleFunction</span><span class="p">)</span> <span class="p">{</span>
+	<span class="k">this</span><span class="p">.</span><span class="nx">ruleSet</span><span class="p">[</span><span class="nx">ruleName</span><span class="p">]</span> <span class="o">=</span> <span class="nx">ruleFunction</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nx">Validator</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">validate</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">form</span><span class="p">)</span> <span class="p">{</span>
+	<span class="kd">var</span> <span class="nx">validatingForm</span> <span class="o">=</span> <span class="nx">form</span> <span class="o">||</span> <span class="k">this</span><span class="p">.</span><span class="nx">validatingForm</span><span class="p">,</span>
+		<span class="nx">inputs</span> <span class="o">=</span> <span class="nx">validatingForm</span><span class="p">.</span><span class="nx">getElementByClassName</span><span class="p">(</span><span class="dl">"</span><span class="s2">validate</span><span class="dl">"</span><span class="p">),</span>
+		<span class="nx">length</span> <span class="o">=</span> <span class="nx">inputs</span><span class="p">.</span><span class="nx">length</span><span class="p">,</span>
+		<span class="nx">i</span><span class="p">,</span> <span class="nx">j</span><span class="p">,</span>
+		<span class="nx">input</span><span class="p">,</span>
+		<span class="nx">checkRules</span><span class="p">,</span>
+		<span class="nx">rule</span><span class="p">,</span>
+		<span class="nx">ruleLength</span><span class="p">;</span>
+	<span class="k">for</span><span class="p">(</span><span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span> <span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">length</span> <span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+		<span class="nx">input</span> <span class="o">=</span> <span class="nx">inputs</span><span class="p">[</span><span class="nx">i</span><span class="p">];</span>
+		<span class="k">if</span><span class="p">(</span><span class="nx">input</span><span class="p">.</span><span class="nx">dataset</span><span class="p">.</span><span class="nx">validateRuls</span><span class="p">)</span> <span class="p">{</span>
+			<span class="nx">checkRules</span> <span class="o">=</span> <span class="nx">input</span><span class="p">.</span><span class="nx">dataset</span><span class="p">.</span><span class="nx">validateUrls</span><span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="dl">"</span><span class="s2"> </span><span class="dl">"</span><span class="p">);</span>
+			<span class="nx">ruleLength</span> <span class="o">=</span> <span class="nx">checkRules</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span>
+			<span class="k">for</span><span class="p">(</span><span class="nx">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">j</span> <span class="o">&lt;</span> <span class="nx">ruleLength</span><span class="p">;</span> <span class="nx">j</span><span class="o">++</span><span class="p">){</span>
+				<span class="nx">rule</span> <span class="o">=</span> <span class="nx">checkRules</span><span class="p">[</span><span class="nx">j</span><span class="p">];</span>
+				<span class="k">if</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">ruleSet</span><span class="p">.</span><span class="nx">hasOwnProperty</span><span class="p">(</span><span class="nx">rule</span><span class="p">))</span> <span class="p">{</span>
+					<span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="k">this</span><span class="p">.</span><span class="nx">ruleSet</span><span class="p">[</span><span class="nx">rule</span><span class="p">].</span><span class="nx">call</span><span class="p">(</span><span class="kc">null</span><span class="p">,</span> <span class="nx">input</span><span class="p">)){</span>
+						<span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
+					<span class="p">}</span>
+				<span class="p">}</span>
+			<span class="p">}</span>
+		<span class="p">}</span>
+	<span class="p">}</span>
+<span class="p">};</span>
+
+<span class="nx">validator</span><span class="p">.</span><span class="nx">decorate</span><span class="p">(</span><span class="dl">"</span><span class="s2">require</span><span class="dl">"</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">input</span><span class="p">)</span> <span class="p">{</span>
+	<span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="nx">input</span><span class="p">.</span><span class="nx">value</span><span class="p">){</span>
+		<span class="nx">alert</span><span class="p">(</span><span class="nx">input</span><span class="p">.</span><span class="nx">name</span> <span class="o">+</span> <span class="dl">"</span><span class="s2"> is required</span><span class="dl">"</span><span class="p">);</span>
+		<span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
+	<span class="p">}</span>
+	<span class="k">return</span> <span class="kc">true</span><span class="p">;</span>
+<span class="p">})</span>
+
+<span class="nx">validator</span><span class="p">.</span><span class="nx">decorate</span><span class="p">(</span><span class="dl">"</span><span class="s2">alphabet</span><span class="dl">"</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">input</span><span class="p">)</span> <span class="p">{</span>
+	<span class="kd">var</span> <span class="nx">regex</span> <span class="o">=</span> <span class="sr">/^</span><span class="se">[</span><span class="sr">a-zA-Z</span><span class="se">\s]</span><span class="sr">*$/</span><span class="p">;</span>
+	<span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="nx">regex</span><span class="p">.</span><span class="nx">test</span><span class="p">(</span><span class="nx">input</span><span class="p">.</span><span class="nx">value</span><span class="p">))</span> <span class="p">{</span>
+		<span class="nx">alert</span><span class="p">(</span><span class="nx">input</span><span class="p">.</span><span class="nx">name</span> <span class="o">+</span> <span class="dl">"</span><span class="s2"> has to be only alphabets</span><span class="dl">"</span><span class="p">);</span>
+		<span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
+	<span class="p">}</span>
+	<span class="k">return</span> <span class="kc">true</span><span class="p">;</span>
+<span class="p">});</span>
+
+<span class="nx">validator</span><span class="p">.</span><span class="nx">decorate</span><span class="p">(</span><span class="dl">"</span><span class="s2">number</span><span class="dl">"</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">input</span><span class="p">)</span> <span class="p">{</span>
+	<span class="kd">var</span> <span class="nx">regex</span> <span class="o">=</span> <span class="sr">/^</span><span class="se">[</span><span class="sr">0-9</span><span class="se">]</span><span class="sr">*$/</span><span class="p">;</span>
+	<span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="nx">regex</span><span class="p">.</span><span class="nx">test</span><span class="p">(</span><span class="nx">input</span><span class="p">.</span><span class="nx">value</span><span class="p">))</span> <span class="p">{</span>
+		<span class="nx">alert</span><span class="p">(</span><span class="nx">input</span><span class="p">.</span><span class="nx">name</span> <span class="o">+</span> <span class="dl">"</span><span class="s2"> has to be only numbers</span><span class="dl">"</span><span class="p">);</span>
+		<span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
+	<span class="p">}</span>
+	<span class="k">return</span> <span class="kc">true</span><span class="p">;</span>
+<span class="p">});</span>
+<span class="nt">&lt;/script&gt;</span>
+<span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</code></pre></div></div>
+
+<h2 id="references">References</h2>
+<ul>
+  <li><a href="http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&amp;mallGb=KOR&amp;barcode=9791186710098&amp;orderClick=LEA&amp;Kc=">속깊은 Javascript</a></li>
+</ul>
+
+  </article>
+
+  <hr>
+
+  <!-- <div class="question">
+    <h2>Questions?</h2>
+    <p>Have a question regarding the post above? <br />Or any of my designs?</p>
+    
+
+  </div> -->
+
+  <div class="related">
+    <h2>Related</h2>
+    
+      <li><a href="/again-probability/" title="[길벗] 다시 확률통계 확률편 리뷰">[길벗] 다시 확률통계 확률편 리뷰
+       &nbsp; <span class="post-meta">January 06, 2021</span></a>
+    
+      <li><a href="/debounce-throttle/" title="자바스크립트 - 실시간검색과 무한스크롤(디바운스와 스로틀) ">자바스크립트 - 실시간검색과 무한스크롤(디바운스와 스로틀) 
+       &nbsp; <span class="post-meta">January 05, 2021</span></a>
+    
+      <li><a href="/image-resize/" title="파이썬 이미지 리사이즈">파이썬 이미지 리사이즈
+       &nbsp; <span class="post-meta">October 09, 2020</span></a>
+    
+  </div>
+
+</div>
+
+        </div>
+        <footer class="site-footer">
+<p class="small">YOUNGWON &copy 2021
+</p>
+</footer>
+
+    </div>
+
+    <script src="//cdn.jsdelivr.net/headroomjs/0.5.0/headroom.min.js"></script>
+    <script type="text/javascript">
+      var el = document.querySelector(".header-container");
+      var headroom  = new Headroom(el, {
+        "offset": 205,
+        "tolerance": 5
+      });
+      headroom.init();
+    </script>
+
+
+    <!-- Twitter Shizzle -->
+    <script type="text/javascript">
+    window.twttr = (function (d, s, id) {
+      var t, js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src= "https://platform.twitter.com/widgets.js";
+      fjs.parentNode.insertBefore(js, fjs);
+      return window.twttr || (t = { _e: [], ready: function (f) { t._e.push(f) } });
+    }(document, "script", "twitter-wjs"));
+    </script>
+
+  </body>
+</html>

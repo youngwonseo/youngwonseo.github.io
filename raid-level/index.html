@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width initial-scale=1">
+
+  <title>RAID Levels</title>
+  <meta name="description" content="RAID 0두 개 또는 그 이상의 디스크(데이터베이스서버)에 데이터를 분산시켜 저장하는 방식이다. 성능에 대해 장점이 있지만(항상 그런 것은 아님) 데이터 손실 시 복구 할 수 없다.">
+  
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="https://youngwonseo.github.io/raid-level/">
+  <link rel="alternate" type="application/atom+xml" title="Graceful" href="https://youngwonseo.github.io/feed.xml" />  
+  <link rel="stylesheet" href="/assets/css/syntax.css">
+</head>
+
+  <body>
+    
+
+<div class="header-container" id="header-container">
+
+<!-- Site navigation -->
+  <nav class="site-nav">
+    <div class="trigger">
+      
+        
+        <a class="page-link" href="/about/">About</a>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+        <a class="page-link" href="/category/">Paper</a>
+        
+      
+        
+        <a class="page-link" href="/projects/">Projects</a>
+        
+      
+        
+        <a class="page-link" href="/study/">Study</a>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+      <a class="page-link" href="/feed.xml">RSS</a>
+    </div>
+  </nav>
+
+  <!-- The title of the site -->
+  <header class="site-header">
+    <!-- <a href="/">
+      <div class="avatar">
+        <img src="/assets/images/avatar.png" />
+      </div>
+    </a> -->
+    <a class="site-title" href="/">Graceful</a>
+  </header>
+
+</div>
+
+      <div class="wrapper">
+        <div class="page-content">
+          <div class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">RAID Levels</h1>
+    <p class="post-meta">August 2, 2018 • Youngwon Seo</p>
+  </header>
+
+
+
+  <article class="post-content">
+    <h2 id="raid-0">RAID 0</h2>
+<p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9b/RAID_0.svg/325px-RAID_0.svg.png" alt="RAID0" />
+두 개 또는 그 이상의 디스크(데이터베이스서버)에 데이터를 분산시켜 저장하는 방식이다. 성능에 대해 장점이 있지만(항상 그런 것은 아님) 데이터 손실 시 복구 할 수 없다.</p>
+
+<p>위 그림에서 A1과 A2가 서로 다른 디스크에 저장되어 있기 때문에 두 데이터를 모두 읽을 경우 한 디스크에 저장되어 있을 때 보다 빠르지만(두 디스크가 동시에 헤더를 이동하고 데이터를 읽을 수 있다) Disk0 = 120GB, Disk1 = 130GB 일 경우 모든 디스크의 최대 크기를 120GB(디스크중 최소 용량)로 제한시켜야 되는 단점이 있다.</p>
+
+<h2 id="raid-1">RAID 1</h2>
+<p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/RAID_1.svg/325px-RAID_1.svg.png" alt="" />
+똑같은 데이터의 디스크를 하나 더 관리한다. RAID1과 마찬가지로 두 디스크에서 데이터를 동시에 읽어올 수 있기 때문에 읽기성능에 대한 이점이 있다(읽기에 대한 성능은 변화없다).</p>
+
+<p>RAID1처럼 모든 디스크들의 최대크기를 디스크 중 최소 크기로 제한된다.</p>
+
+<h2 id="raid-2">RAID 2</h2>
+<p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/RAID2_arch.svg/1000px-RAID2_arch.svg.png" alt="" />
+데이터를 블록(Block)단위가 아닌 bit단위로 나누어 여러 디스크에 저장하고 데이터에대한 해밍코드를 저장하여 오류를 검출 할 수 있다.</p>
+
+<p>그림을 보면 A,B,C,D의 데이터가 나누어져(bit) 여러디스크에 저장되는데 이는 A를 읽을 시 모든 디스크가 A(1,2,3,4)를 읽어야 됨을 의미한다. 여기서 알수있는 한가지 성능이슈는 여러 디스크에 분산되어 저장되지만 동시에 한 작업밖에 할 수 없다는 것이다. 또한 동시에 여러 디스크를 읽으므로 읽기 성능이 뛰어나다는 장점을 알 수 있다.</p>
+
+<p>현재는 사용을 하지 않는다.</p>
+
+<h2 id="raid-3">RAID 3</h2>
+<p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f9/RAID_3.svg/675px-RAID_3.svg.png" alt="" />
+데이터를 바이트단위로 저장하고 패리티 디스크(오류 검출)를 함께 운영한다. 대용량 스캔 연산에는 빠르지만 개별적(or 랜덤)으로 발생되는 연산에는 느리다. 이는 RAID2와 마찬가지로 동시에 여러 디스크를 읽어야하기 때문이다.</p>
+
+<p>대용량의 sequential 한 데이터의 읽기와 쓰기에 적합하지만 작은 데이터 혹은 랜덤 엑세스에 대해서는 좋은 성능을 기대할 수 없다.(RAID1의 장점에 어느정도 부합되지만 바이트단위 저장에 따른 단점을 나타낸다)</p>
+
+<p>현재는 쓰이지 않는다(RAID5로 대체).</p>
+
+<h2 id="raid-4">RAID 4</h2>
+<p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ad/RAID_4.svg/675px-RAID_4.svg.png" alt="" />
+데이터가 블록(Block)단위로 저장되고 패리티를 위한 디스크가 따로 운영된다. 데이터의 중복 저장이 없기 때문에 용량이 적게 들고 데이터가 분산되어 있기 때문에 RAID0, 1과 마찬가지로 읽기 연산에 빠르다(병렬처리). 그러나 여러 디스크에 패리티 디스크가 하나 운영되기 때문에 읽기 연산은 패리티디스크의 읽기 속도에 의존적이라고 할 수 있다. 현재 거의 사용되지 않는다.</p>
+
+<h2 id="raid-5">RAID 5</h2>
+<p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/64/RAID_5.svg/675px-RAID_5.svg.png" alt="" />
+패리티를 전체 디스크에 분산시켜 RAID4에서 패리티 디스크 손상 시 모든 디스크의 패리티를 읽게되는 상황을 방지한다. 여러 디스크를 같이 읽으므로 읽기 성능이 우수(block으로 저장하기 때문에 동시에 여러작업도 가능) 하다.</p>
+
+<p>최소 3개 이상의 디스크가 필요하다.</p>
+
+<h2 id="raid-6">RAID 6</h2>
+<p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/70/RAID_6.svg/850px-RAID_6.svg.png" alt="" />
+RAID5의 확장 버전으로 여러개의 패리티를 전 디스크에 분산 시켜 저장하는 동시에 패리티 또한 분산되어 저장되는 방식이다. 읽기에는 성능에 대한 패널티가 없지만 쓰기에는 패널티가 있다.(여러 패리티를 같이 수정해야 해야하기 때문이다)</p>
+
+<p>RAID5보다 좋은 성능을 제공할 수 있다.</p>
+
+<h2 id="raid-01">RAID 0+1</h2>
+<p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ad/RAID_01.svg/1000px-RAID_01.svg.png" alt="" /></p>
+
+<h2 id="raid-10">RAID 1+0</h2>
+<p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e6/RAID_10_01.svg/1000px-RAID_10_01.svg.png" alt="" /></p>
+
+<h2 id="raid-50-raid-5--1">RAID 50 (RAID 5 + 1)</h2>
+<p><img src="https://upload.wikimedia.org/wikipedia/commons/9/9d/RAID_50.png" alt="" /></p>
+
+<h2 id="raid-60-raid-6--0">RAID 60 (RAID 6 + 0)</h2>
+<p><img src="https://upload.wikimedia.org/wikipedia/commons/0/0d/RAID_60.png" alt="" /></p>
+
+<h2 id="raid-100raid-10--raid-0">RAID 100(RAID 10 + RAID 0)</h2>
+<p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/ce/RAID_100.svg/885px-RAID_100.svg.png" alt="" /></p>
+
+<h2 id="references">References</h2>
+<ul>
+  <li>http://en.wikipedia.org/wiki/Standard_RAID_levels</li>
+  <li>http://en.wikipedia.org/wiki/Nested_RAID_levels#RAID_1.2B0</li>
+</ul>
+
+  </article>
+
+  <hr>
+
+  <!-- <div class="question">
+    <h2>Questions?</h2>
+    <p>Have a question regarding the post above? <br />Or any of my designs?</p>
+    
+
+  </div> -->
+
+  <div class="related">
+    <h2>Related</h2>
+    
+      <li><a href="/again-probability/" title="[길벗] 다시 확률통계 확률편 리뷰">[길벗] 다시 확률통계 확률편 리뷰
+       &nbsp; <span class="post-meta">January 06, 2021</span></a>
+    
+      <li><a href="/debounce-throttle/" title="자바스크립트 - 실시간검색과 무한스크롤(디바운스와 스로틀) ">자바스크립트 - 실시간검색과 무한스크롤(디바운스와 스로틀) 
+       &nbsp; <span class="post-meta">January 05, 2021</span></a>
+    
+      <li><a href="/image-resize/" title="파이썬 이미지 리사이즈">파이썬 이미지 리사이즈
+       &nbsp; <span class="post-meta">October 09, 2020</span></a>
+    
+  </div>
+
+</div>
+
+        </div>
+        <footer class="site-footer">
+<p class="small">YOUNGWON &copy 2021
+</p>
+</footer>
+
+    </div>
+
+    <script src="//cdn.jsdelivr.net/headroomjs/0.5.0/headroom.min.js"></script>
+    <script type="text/javascript">
+      var el = document.querySelector(".header-container");
+      var headroom  = new Headroom(el, {
+        "offset": 205,
+        "tolerance": 5
+      });
+      headroom.init();
+    </script>
+
+
+    <!-- Twitter Shizzle -->
+    <script type="text/javascript">
+    window.twttr = (function (d, s, id) {
+      var t, js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src= "https://platform.twitter.com/widgets.js";
+      fjs.parentNode.insertBefore(js, fjs);
+      return window.twttr || (t = { _e: [], ready: function (f) { t._e.push(f) } });
+    }(document, "script", "twitter-wjs"));
+    </script>
+
+  </body>
+</html>

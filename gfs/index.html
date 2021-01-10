@@ -1,0 +1,215 @@
+<h1 id="the-google-file-system">The Google File System</h1>
+
+<h2 id="abstract">ABSTRACT</h2>
+
+<ul>
+  <li>scalable distributed file system for large distributed data-intensive appications</li>
+  <li>provides fault tolerance, high aggregate performance</li>
+  <li>used in Google’s service that require to handle large data sets</li>
+  <li>provides hundreds of terabytes of storage across thousands of disks on over a thousand machine</li>
+</ul>
+
+<h2 id="1-introduction">1. INTRODUCTION</h2>
+
+<ul>
+  <li>In Google, need to process data that are rapidly growing</li>
+  <li>share many of the same goals as previous distributed file system
+    <ul>
+      <li>performance</li>
+      <li>scalability</li>
+      <li>reliability</li>
+      <li>availability</li>
+    </ul>
+  </li>
+  <li>departure from some earlier file system that current, anticipated file system design assumptions</li>
+  <li>differente point in design space
+    <ul>
+      <li>first, component failures are the norm rather then the exception.</li>
+      <li>second, file are huge by traditaional standards.</li>
+      <li>third, most files are mutated by appending new data rather then overwriteing existing data.</li>
+      <li>fourth, co-desigging the applications and the file system API benefits the overall system by increasing out flexibility.</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="2-design-overview">2. DESIGN OVERVIEW</h2>
+
+<h3 id="21-assumptions">2.1 Assumptions</h3>
+
+<ul>
+  <li>build from many inexpensive commodity components
+    <ul>
+      <li>It must constantly monitor inself and detect, tolerate, and recover from component failures.</li>
+    </ul>
+  </li>
+  <li>stores a modest number of large files</li>
+  <li>workloads consist of two kinds of reads
+    <ul>
+      <li>First, large streaming reads.</li>
+      <li>Second, small random reads.</li>
+    </ul>
+  </li>
+  <li>workloads have sequential writes.</li>
+  <li>implement well-defined semantics for multiple clients that concurrently append to the same file.</li>
+  <li>hight sustained bandwidth is more important than low latency.</li>
+</ul>
+
+<h3 id="22-inferface">2.2 Inferface</h3>
+
+<ul>
+  <li>provieds a familiar file system interface, though it does not implement a standard API such as POSIX
+    <ul>
+      <li>hierarchical directories and path</li>
+      <li>support create, delete, open, close, read, write</li>
+    </ul>
+  </li>
+  <li>understanding defference between NFS and GFS!</li>
+  <li>GFS has snapshot and record append operations.
+    <ul>
+      <li>snapshot : create copy of a file or directory tree at low cost.</li>
+      <li>record append : allows multiple clients to append data to the same file concurrently</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="23-architecture">2.3 Architecture</h3>
+
+<p><img src="http://2.bp.blogspot.com/-C7Qcn2akF7E/U0zVjII34hI/AAAAAAAAAQY/7Cvy2OX9m9s/s1600/GFS+architecture.JPG" alt="Figure. 1" /></p>
+
+<ul>
+  <li>A GFS cluster consist of a <strong>single master</strong> and <strong>multiple chunkservers</strong>.</li>
+  <li>chunk servers
+    <ul>
+      <li>fixed-size</li>
+      <li>identified by immutable and globally unique 64 bit chunk handle assigned by the master at a time of chunk creation</li>
+      <li>store chunks on local disk as Linux files</li>
+      <li>read or write</li>
+      <li><strong>For reliability, each chunk is replicated on multiple chunkservers</strong>.</li>
+    </ul>
+  </li>
+  <li>master
+    <ul>
+      <li>maintains all file system metadata.
+        <ul>
+          <li>include namespace, access control information, the mapping from files to chunks, the current locations of chunks.</li>
+        </ul>
+      </li>
+      <li>controls system-wide activities
+        <ul>
+          <li>such as chunk lease management, garbage collection, chunk migration between chunk servers</li>
+        </ul>
+      </li>
+      <li>communicates with each chunkserver in HeartBeat messages</li>
+    </ul>
+  </li>
+  <li>client
+    <ul>
+      <li>GFS client code linked into each application implements the file system API</li>
+      <li>communicates with the master and chunk server to read or write data
+        <ul>
+          <li>with master :  metadata operations(chunk’s location, …)</li>
+          <li>with chukserver : data-bearing communication(read or write of data)</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="24-single-master">2.4 Single Master</h3>
+
+<ul>
+  <li>make sophisticated chunk placement and replication decisitions using global knowledge</li>
+  <li>
+    <p>minimize its involvement in read and write so that it does not become a bottlenect</p>
+  </li>
+  <li>client never read and write file data through the master</li>
+  <li>client asks the master which chunkservers it should contact</li>
+  <li>Figure 1
+    <ul>
+      <li>First, client request chunk information by file name, chunk index</li>
+      <li>Second, master replies with the location of replicas</li>
+      <li>Third, client caches this information</li>
+      <li>Fourth, client send a request to one of the replicas as closest one</li>
+      <li>Fifth, client communicate with chunk server until cache information expires</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="25-chunk-size">2.5 Chunk Size</h3>
+
+<ul>
+  <li>one of the key design parameter</li>
+  <li>chose 64MB,</li>
+</ul>
+
+<h3 id="26-metadata">2.6 Metadata</h3>
+
+<ul>
+  <li>stores three major types of metadatas</li>
+  <li>all metadata is kept in the master’s memory</li>
+  <li>​</li>
+</ul>
+
+<h5 id="261-in-memory-data-strutures">2.6.1 In-Memory Data Strutures</h5>
+
+<h5 id="262-chunk-locations">2.6.2 Chunk Locations</h5>
+
+<h5 id="263-operation-log">2.6.3 Operation Log</h5>
+
+<ul>
+  <li>central of GFS</li>
+  <li>​</li>
+</ul>
+
+<h3 id="27-consistency-model">2.7 Consistency Model</h3>
+
+<h5 id="271-guarantees-by-gfs">2.7.1 Guarantees by GFS</h5>
+
+<h5 id="272-implications-for-applications">2.7.2 Implications for Applications</h5>
+
+<h2 id="3-system-interactions">3. SYSTEM INTERACTIONS</h2>
+
+<ul>
+  <li>designed the system to minimize the master’s involvement in all operations</li>
+</ul>
+
+<h3 id="31-lease-and-mutations-order">3.1 Lease and Mutations Order</h3>
+
+<ul>
+  <li>primary</li>
+  <li>​</li>
+</ul>
+
+<h3 id="32-data-flow">3.2 Data Flow</h3>
+
+<h3 id="33-atomic-record-appends">3.3 Atomic Record Appends</h3>
+
+<h3 id="34-snapshot">3.4 Snapshot</h3>
+
+<ul>
+  <li>record append :</li>
+  <li>​</li>
+</ul>
+
+<h2 id="4-master-operation">4. MASTER OPERATION</h2>
+
+<ul>
+  <li>excutes all namespace operations</li>
+  <li>manages chunk replicas throughout the system
+    <ul>
+      <li>placement decisions</li>
+      <li>create, coordinates, balance,</li>
+      <li>reclaim unuse storage</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="41-namespace-management-and-locking">4.1 Namespace Management and Locking</h3>
+
+<h2 id="5-fault-tolerance-and-diagnosis">5. FAULT TOLERANCE AND DIAGNOSIS</h2>
+
+<h2 id="6-experiences">6. EXPERIENCES</h2>
+
+<h2 id="7-related-work">7. RELATED WORK</h2>
+
+<h2 id="9-conclusions">9. CONCLUSIONS</h2>

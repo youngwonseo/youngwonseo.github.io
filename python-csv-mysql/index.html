@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width initial-scale=1">
+
+  <title>파이썬에서 CSV파일 MySql에 입력하기</title>
+  <meta name="description" content="코드```pythonimport pymysqlimport csv">
+  
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="https://youngwonseo.github.io/python-csv-mysql/">
+  <link rel="alternate" type="application/atom+xml" title="Graceful" href="https://youngwonseo.github.io/feed.xml" />  
+  <link rel="stylesheet" href="/assets/css/syntax.css">
+</head>
+
+  <body>
+    
+
+<div class="header-container" id="header-container">
+
+<!-- Site navigation -->
+  <nav class="site-nav">
+    <div class="trigger">
+      
+        
+        <a class="page-link" href="/about/">About</a>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+        <a class="page-link" href="/category/">Paper</a>
+        
+      
+        
+        <a class="page-link" href="/projects/">Projects</a>
+        
+      
+        
+        <a class="page-link" href="/study/">Study</a>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+      <a class="page-link" href="/feed.xml">RSS</a>
+    </div>
+  </nav>
+
+  <!-- The title of the site -->
+  <header class="site-header">
+    <!-- <a href="/">
+      <div class="avatar">
+        <img src="/assets/images/avatar.png" />
+      </div>
+    </a> -->
+    <a class="site-title" href="/">Graceful</a>
+  </header>
+
+</div>
+
+      <div class="wrapper">
+        <div class="page-content">
+          <div class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">파이썬에서 CSV파일 MySql에 입력하기</h1>
+    <p class="post-meta">April 16, 2019 • Youngwon Seo</p>
+  </header>
+
+
+
+  <article class="post-content">
+    <h2 id="코드">코드</h2>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">pymysql</span>
+<span class="kn">import</span> <span class="nn">csv</span>
+
+<span class="n">conn</span> <span class="o">=</span> <span class="n">pymysql</span><span class="p">.</span><span class="n">connect</span><span class="p">(</span><span class="n">host</span><span class="o">=</span><span class="s">'localhost'</span><span class="p">,</span> <span class="n">user</span><span class="o">=</span><span class="s">'username'</span><span class="p">,</span> <span class="n">password</span><span class="o">=</span><span class="s">'password'</span><span class="p">,</span>
+                       <span class="n">db</span><span class="o">=</span><span class="s">'dbname'</span><span class="p">,</span> <span class="n">charset</span><span class="o">=</span><span class="s">'utf8'</span><span class="p">)</span>
+<span class="n">cursor</span> <span class="o">=</span> <span class="n">conn</span><span class="p">.</span><span class="n">cursor</span><span class="p">()</span>
+
+<span class="n">table_name</span> <span class="o">=</span> <span class="s">'users'</span>
+<span class="n">file_name</span> <span class="o">=</span> <span class="s">'users.csv'</span>
+
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">file_name</span><span class="p">,</span><span class="n">encoding</span><span class="o">=</span><span class="s">'utf-8-sig'</span><span class="p">)</span> <span class="k">as</span> <span class="n">csvfile</span><span class="p">:</span>
+    <span class="n">reader</span> <span class="o">=</span> <span class="n">csv</span><span class="p">.</span><span class="n">DictReader</span><span class="p">(</span><span class="n">csvfile</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">reader</span><span class="p">:</span>
+        <span class="n">placeholders</span> <span class="o">=</span> <span class="s">', '</span><span class="p">.</span><span class="n">join</span><span class="p">([</span><span class="s">'%s'</span><span class="p">]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">row</span><span class="p">))</span>
+        <span class="n">columns</span> <span class="o">=</span> <span class="s">', '</span><span class="p">.</span><span class="n">join</span><span class="p">(</span><span class="n">row</span><span class="p">.</span><span class="n">keys</span><span class="p">())</span>
+        <span class="n">sql</span> <span class="o">=</span> <span class="s">"INSERT INTO %s ( %s ) VALUES ( %s )"</span> <span class="o">%</span> <span class="p">(</span><span class="n">table_name</span><span class="p">,</span> <span class="n">columns</span><span class="p">,</span> <span class="n">placeholders</span><span class="p">)</span>
+        <span class="n">cursor</span><span class="p">.</span><span class="n">execute</span><span class="p">(</span><span class="n">sql</span><span class="p">,</span> <span class="nb">list</span><span class="p">(</span><span class="n">row</span><span class="p">.</span><span class="n">values</span><span class="p">()))</span>
+        <span class="n">conn</span><span class="p">.</span><span class="n">commit</span><span class="p">()</span>
+
+
+<span class="n">cursor</span><span class="p">.</span><span class="n">close</span><span class="p">()</span>
+<span class="n">conn</span><span class="p">.</span><span class="n">close</span><span class="p">()</span>
+</code></pre></div></div>
+
+  </article>
+
+  <hr>
+
+  <!-- <div class="question">
+    <h2>Questions?</h2>
+    <p>Have a question regarding the post above? <br />Or any of my designs?</p>
+    
+
+  </div> -->
+
+  <div class="related">
+    <h2>Related</h2>
+    
+      <li><a href="/again-probability/" title="[길벗] 다시 확률통계 확률편 리뷰">[길벗] 다시 확률통계 확률편 리뷰
+       &nbsp; <span class="post-meta">January 06, 2021</span></a>
+    
+      <li><a href="/debounce-throttle/" title="자바스크립트 - 실시간검색과 무한스크롤(디바운스와 스로틀) ">자바스크립트 - 실시간검색과 무한스크롤(디바운스와 스로틀) 
+       &nbsp; <span class="post-meta">January 05, 2021</span></a>
+    
+      <li><a href="/image-resize/" title="파이썬 이미지 리사이즈">파이썬 이미지 리사이즈
+       &nbsp; <span class="post-meta">October 09, 2020</span></a>
+    
+  </div>
+
+</div>
+
+        </div>
+        <footer class="site-footer">
+<p class="small">YOUNGWON &copy 2021
+</p>
+</footer>
+
+    </div>
+
+    <script src="//cdn.jsdelivr.net/headroomjs/0.5.0/headroom.min.js"></script>
+    <script type="text/javascript">
+      var el = document.querySelector(".header-container");
+      var headroom  = new Headroom(el, {
+        "offset": 205,
+        "tolerance": 5
+      });
+      headroom.init();
+    </script>
+
+
+    <!-- Twitter Shizzle -->
+    <script type="text/javascript">
+    window.twttr = (function (d, s, id) {
+      var t, js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src= "https://platform.twitter.com/widgets.js";
+      fjs.parentNode.insertBefore(js, fjs);
+      return window.twttr || (t = { _e: [], ready: function (f) { t._e.push(f) } });
+    }(document, "script", "twitter-wjs"));
+    </script>
+
+  </body>
+</html>

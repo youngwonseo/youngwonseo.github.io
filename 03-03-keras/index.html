@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width initial-scale=1">
+
+  <title>신경망 시작하기#3 - 뉴스기사분류(다중분류)</title>
+  <meta name="description" content="[케라스창시자에게 배우는 딥러닝]의 3장 내용을 정리한 것입니다.">
+  
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="https://youngwonseo.github.io/03-03-keras/">
+  <link rel="alternate" type="application/atom+xml" title="Graceful" href="https://youngwonseo.github.io/feed.xml" />  
+  <link rel="stylesheet" href="/assets/css/syntax.css">
+</head>
+
+  <body>
+    
+
+<div class="header-container" id="header-container">
+
+<!-- Site navigation -->
+  <nav class="site-nav">
+    <div class="trigger">
+      
+        
+        <a class="page-link" href="/about/">About</a>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+        <a class="page-link" href="/category/">Paper</a>
+        
+      
+        
+        <a class="page-link" href="/projects/">Projects</a>
+        
+      
+        
+        <a class="page-link" href="/study/">Study</a>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+      <a class="page-link" href="/feed.xml">RSS</a>
+    </div>
+  </nav>
+
+  <!-- The title of the site -->
+  <header class="site-header">
+    <!-- <a href="/">
+      <div class="avatar">
+        <img src="/assets/images/avatar.png" />
+      </div>
+    </a> -->
+    <a class="site-title" href="/">Graceful</a>
+  </header>
+
+</div>
+
+      <div class="wrapper">
+        <div class="page-content">
+          <div class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">신경망 시작하기#3 - 뉴스기사분류(다중분류)</h1>
+    <p class="post-meta">November 11, 2019 • Youngwon Seo</p>
+  </header>
+
+
+
+  <article class="post-content">
+    <p>[케라스창시자에게 배우는 딥러닝]의 3장 내용을 정리한 것입니다.</p>
+
+<h2 id="뉴스-기사-분류---다중분류-로이터-데이터셋">뉴스 기사 분류 - 다중분류 (로이터 데이터셋)</h2>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">keras.datasets</span> <span class="kn">import</span> <span class="n">reuters</span>
+<span class="p">(</span><span class="n">train_data</span><span class="p">,</span> <span class="n">train_labels</span><span class="p">),</span> <span class="p">(</span><span class="n">test_data</span><span class="p">,</span> <span class="n">test_labels</span><span class="p">)</span> <span class="o">=</span> <span class="n">reuters</span><span class="p">.</span><span class="n">load_data</span><span class="p">(</span><span class="n">num_words</span><span class="o">=</span><span class="mi">10000</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
+
+<span class="k">def</span> <span class="nf">vectorize_sequences</span><span class="p">(</span><span class="n">sequences</span><span class="p">,</span> <span class="n">dimension</span><span class="o">=</span><span class="mi">10000</span><span class="p">):</span>
+  <span class="n">results</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">zeros</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">sequences</span><span class="p">),</span> <span class="n">dimension</span><span class="p">))</span>
+  <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">sequence</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">sequences</span><span class="p">):</span>
+    <span class="n">results</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">sequence</span><span class="p">]</span> <span class="o">=</span> <span class="mf">1.</span>
+  <span class="k">return</span> <span class="n">results</span>
+
+<span class="n">x_train</span> <span class="o">=</span> <span class="n">vectorize_sequences</span><span class="p">(</span><span class="n">train_data</span><span class="p">)</span>
+<span class="n">x_test</span> <span class="o">=</span> <span class="n">vectorize_sequences</span><span class="p">(</span><span class="n">test_data</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">keras.utils.np_utils</span> <span class="kn">import</span> <span class="n">to_categorical</span>
+
+<span class="n">one_hot_train_labels</span> <span class="o">=</span> <span class="n">to_categorical</span><span class="p">(</span><span class="n">train_labels</span><span class="p">)</span>
+<span class="n">one_hot_test_labels</span> <span class="o">=</span> <span class="n">to_categorical</span><span class="p">(</span><span class="n">test_labels</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">keras</span> <span class="kn">import</span> <span class="n">models</span>
+<span class="kn">from</span> <span class="nn">keras</span> <span class="kn">import</span> <span class="n">layers</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">models</span><span class="p">.</span><span class="n">Sequential</span><span class="p">()</span>
+<span class="n">model</span><span class="p">.</span><span class="n">add</span><span class="p">(</span><span class="n">layers</span><span class="p">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">64</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s">'relu'</span><span class="p">,</span> <span class="n">input_shape</span><span class="o">=</span><span class="p">(</span><span class="mi">10000</span><span class="p">,)))</span>
+<span class="n">model</span><span class="p">.</span><span class="n">add</span><span class="p">(</span><span class="n">layers</span><span class="p">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">64</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s">'relu'</span><span class="p">))</span>
+<span class="n">model</span><span class="p">.</span><span class="n">add</span><span class="p">(</span><span class="n">layers</span><span class="p">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">46</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s">'softmax'</span><span class="p">))</span>
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">model</span><span class="p">.</span><span class="nb">compile</span><span class="p">(</span><span class="n">optimizer</span><span class="o">=</span><span class="s">'rmsprop'</span><span class="p">,</span>
+             <span class="n">loss</span><span class="o">=</span><span class="s">'categorical_crossentropy'</span><span class="p">,</span>
+             <span class="n">metrics</span><span class="o">=</span><span class="p">[</span><span class="s">'accuracy'</span><span class="p">])</span>
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">x_val</span> <span class="o">=</span> <span class="n">x_train</span><span class="p">[:</span><span class="mi">1000</span><span class="p">]</span>
+<span class="n">partial_x_train</span> <span class="o">=</span> <span class="n">x_train</span><span class="p">[</span><span class="mi">1000</span><span class="p">:]</span>
+
+<span class="n">y_val</span> <span class="o">=</span> <span class="n">one_hot_train_labels</span><span class="p">[:</span><span class="mi">1000</span><span class="p">]</span>
+<span class="n">partial_y_train</span> <span class="o">=</span> <span class="n">one_hot_train_labels</span><span class="p">[</span><span class="mi">1000</span><span class="p">:]</span>
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">history</span> <span class="o">=</span> <span class="n">model</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">partial_x_train</span><span class="p">,</span>
+                   <span class="n">partial_y_train</span><span class="p">,</span>
+                   <span class="n">epochs</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span>
+                   <span class="n">batch_size</span><span class="o">=</span><span class="mi">512</span><span class="p">,</span>
+                   <span class="n">validation_data</span><span class="o">=</span><span class="p">(</span><span class="n">x_val</span><span class="p">,</span><span class="n">y_val</span><span class="p">))</span>
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+
+<span class="n">loss</span> <span class="o">=</span> <span class="n">history</span><span class="p">.</span><span class="n">history</span><span class="p">[</span><span class="s">'loss'</span><span class="p">]</span>
+<span class="n">val_loss</span> <span class="o">=</span> <span class="n">history</span><span class="p">.</span><span class="n">history</span><span class="p">[</span><span class="s">'val_loss'</span><span class="p">]</span>
+
+<span class="n">epochs</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">loss</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="p">.</span><span class="n">plot</span><span class="p">(</span><span class="n">epochs</span><span class="p">,</span> <span class="n">loss</span><span class="p">,</span> <span class="s">'bo'</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s">'Training loss'</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">plot</span><span class="p">(</span><span class="n">epochs</span><span class="p">,</span> <span class="n">val_loss</span><span class="p">,</span> <span class="s">'b'</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s">'Validation loss'</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">title</span><span class="p">(</span><span class="s">'Training and validation loss'</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s">'Epochs'</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s">'Loss'</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">legend</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="p">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">plt</span><span class="p">.</span><span class="n">clf</span><span class="p">()</span>
+
+<span class="n">acc</span> <span class="o">=</span> <span class="n">history</span><span class="p">.</span><span class="n">history</span><span class="p">[</span><span class="s">'acc'</span><span class="p">]</span>
+<span class="n">val_acc</span> <span class="o">=</span> <span class="n">history</span><span class="p">.</span><span class="n">history</span><span class="p">[</span><span class="s">'val_acc'</span><span class="p">]</span>
+
+
+<span class="n">plt</span><span class="p">.</span><span class="n">plot</span><span class="p">(</span><span class="n">epochs</span><span class="p">,</span> <span class="n">acc</span><span class="p">,</span> <span class="s">'bo'</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s">'Training acc'</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">plot</span><span class="p">(</span><span class="n">epochs</span><span class="p">,</span> <span class="n">val_acc</span><span class="p">,</span> <span class="s">'b'</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s">'Validation acc'</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">title</span><span class="p">(</span><span class="s">'Training and validation acc'</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s">'Epochs'</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s">'Accuracy'</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">legend</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="p">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">model</span> <span class="o">=</span> <span class="n">models</span><span class="p">.</span><span class="n">Sequential</span><span class="p">()</span>
+<span class="n">model</span><span class="p">.</span><span class="n">add</span><span class="p">(</span><span class="n">layers</span><span class="p">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">64</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s">'relu'</span><span class="p">,</span> <span class="n">input_shape</span><span class="o">=</span><span class="p">(</span><span class="mi">10000</span><span class="p">,)))</span>
+<span class="n">model</span><span class="p">.</span><span class="n">add</span><span class="p">(</span><span class="n">layers</span><span class="p">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">64</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s">'relu'</span><span class="p">))</span>
+<span class="n">model</span><span class="p">.</span><span class="n">add</span><span class="p">(</span><span class="n">layers</span><span class="p">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">46</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s">'softmax'</span><span class="p">))</span>
+
+<span class="n">model</span><span class="p">.</span><span class="nb">compile</span><span class="p">(</span><span class="n">optimizer</span><span class="o">=</span><span class="s">'rmsprop'</span><span class="p">,</span>
+             <span class="n">loss</span><span class="o">=</span><span class="s">'categorical_crossentropy'</span><span class="p">,</span>
+             <span class="n">metrics</span><span class="o">=</span><span class="p">[</span><span class="s">'accuracy'</span><span class="p">])</span>
+
+<span class="n">model</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">partial_x_train</span><span class="p">,</span>
+                   <span class="n">partial_y_train</span><span class="p">,</span>
+                   <span class="n">epochs</span><span class="o">=</span><span class="mi">9</span><span class="p">,</span>
+                   <span class="n">batch_size</span><span class="o">=</span><span class="mi">512</span><span class="p">,</span>
+                   <span class="n">validation_data</span><span class="o">=</span><span class="p">(</span><span class="n">x_val</span><span class="p">,</span><span class="n">y_val</span><span class="p">))</span>
+
+<span class="n">results</span> <span class="o">=</span> <span class="n">model</span><span class="p">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">x_test</span><span class="p">,</span> <span class="n">one_hot_test_labels</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">results</span>
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">copy</span>
+<span class="n">test_labels_copy</span> <span class="o">=</span> <span class="n">copy</span><span class="p">.</span><span class="n">copy</span><span class="p">(</span><span class="n">test_labels</span><span class="p">)</span>
+<span class="n">np</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="n">shuffle</span><span class="p">(</span><span class="n">test_labels_copy</span><span class="p">)</span>
+<span class="n">hist_array</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">(</span><span class="n">test_labels</span><span class="p">)</span> <span class="o">==</span> <span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">(</span><span class="n">test_labels_copy</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">np</span><span class="p">.</span><span class="nb">sum</span><span class="p">(</span><span class="n">hist_array</span><span class="p">))</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">test_labels</span><span class="p">))</span>
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">predictions</span> <span class="o">=</span> <span class="n">model</span><span class="p">.</span><span class="n">predict</span><span class="p">(</span><span class="n">x_test</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">print</span><span class="p">(</span><span class="n">predictions</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">shape</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">np</span><span class="p">.</span><span class="nb">sum</span><span class="p">(</span><span class="n">predictions</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+<span class="k">print</span><span class="p">(</span><span class="n">np</span><span class="p">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">predictions</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+</code></pre></div></div>
+
+  </article>
+
+  <hr>
+
+  <!-- <div class="question">
+    <h2>Questions?</h2>
+    <p>Have a question regarding the post above? <br />Or any of my designs?</p>
+    
+
+  </div> -->
+
+  <div class="related">
+    <h2>Related</h2>
+    
+      <li><a href="/again-probability/" title="[길벗] 다시 확률통계 확률편 리뷰">[길벗] 다시 확률통계 확률편 리뷰
+       &nbsp; <span class="post-meta">January 06, 2021</span></a>
+    
+      <li><a href="/debounce-throttle/" title="자바스크립트 - 실시간검색과 무한스크롤(디바운스와 스로틀) ">자바스크립트 - 실시간검색과 무한스크롤(디바운스와 스로틀) 
+       &nbsp; <span class="post-meta">January 05, 2021</span></a>
+    
+      <li><a href="/image-resize/" title="파이썬 이미지 리사이즈">파이썬 이미지 리사이즈
+       &nbsp; <span class="post-meta">October 09, 2020</span></a>
+    
+  </div>
+
+</div>
+
+        </div>
+        <footer class="site-footer">
+<p class="small">YOUNGWON &copy 2021
+</p>
+</footer>
+
+    </div>
+
+    <script src="//cdn.jsdelivr.net/headroomjs/0.5.0/headroom.min.js"></script>
+    <script type="text/javascript">
+      var el = document.querySelector(".header-container");
+      var headroom  = new Headroom(el, {
+        "offset": 205,
+        "tolerance": 5
+      });
+      headroom.init();
+    </script>
+
+
+    <!-- Twitter Shizzle -->
+    <script type="text/javascript">
+    window.twttr = (function (d, s, id) {
+      var t, js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src= "https://platform.twitter.com/widgets.js";
+      fjs.parentNode.insertBefore(js, fjs);
+      return window.twttr || (t = { _e: [], ready: function (f) { t._e.push(f) } });
+    }(document, "script", "twitter-wjs"));
+    </script>
+
+  </body>
+</html>

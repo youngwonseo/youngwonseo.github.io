@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width initial-scale=1">
+
+  <title>구글맵에 레이어 클릭이벤트</title>
+  <meta name="description" content="1. background  continue with 01_layer_on_google_map..">
+  
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="https://youngwonseo.github.io/layer-click/">
+  <link rel="alternate" type="application/atom+xml" title="Graceful" href="https://youngwonseo.github.io/feed.xml" />  
+  <link rel="stylesheet" href="/assets/css/syntax.css">
+</head>
+
+  <body>
+    
+
+<div class="header-container" id="header-container">
+
+<!-- Site navigation -->
+  <nav class="site-nav">
+    <div class="trigger">
+      
+        
+        <a class="page-link" href="/about/">About</a>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+        <a class="page-link" href="/category/">Paper</a>
+        
+      
+        
+        <a class="page-link" href="/projects/">Projects</a>
+        
+      
+        
+        <a class="page-link" href="/study/">Study</a>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+      <a class="page-link" href="/feed.xml">RSS</a>
+    </div>
+  </nav>
+
+  <!-- The title of the site -->
+  <header class="site-header">
+    <!-- <a href="/">
+      <div class="avatar">
+        <img src="/assets/images/avatar.png" />
+      </div>
+    </a> -->
+    <a class="site-title" href="/">Graceful</a>
+  </header>
+
+</div>
+
+      <div class="wrapper">
+        <div class="page-content">
+          <div class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">구글맵에 레이어 클릭이벤트</h1>
+    <p class="post-meta">March 2, 2018 • Youngwon Seo</p>
+  </header>
+
+
+
+  <article class="post-content">
+    <h3 id="1-background">1. background</h3>
+<ul>
+  <li>continue with 01_layer_on_google_map..</li>
+</ul>
+
+<h3 id="2-click-event">2. click event</h3>
+<ul>
+  <li>we already implement layer on google map.</li>
+  <li>click is implmented in views/index.html</li>
+  <li>
+    <p>this is code for click event and it is focused on Busan!</p>
+
+    <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">//fillColor, fillOpacity, strokeWeight..</span>
+<span class="nx">mapData</span><span class="p">.</span><span class="nx">setStyle</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">feature</span><span class="p">){</span>
+    <span class="c1">//console.log(feature);</span>
+    <span class="c1">//EMD_CD is localcode</span>
+    <span class="k">if</span><span class="p">(</span><span class="nx">feature</span><span class="p">.</span><span class="nx">getProperty</span><span class="p">(</span><span class="dl">'</span><span class="s1">EMD_CD</span><span class="dl">'</span><span class="p">).</span><span class="nx">startsWith</span><span class="p">(</span><span class="dl">'</span><span class="s1">26</span><span class="dl">'</span><span class="p">)){</span>
+        <span class="c1">//it is Busan. busan is filled blue.</span>
+        <span class="k">return</span> <span class="p">{</span><span class="na">fillColor</span><span class="p">:</span><span class="dl">'</span><span class="s1">#0000ff</span><span class="dl">'</span><span class="p">};</span>
+    <span class="p">}</span><span class="k">else</span><span class="p">{</span>
+        <span class="c1">//it is not Busan.</span>
+        <span class="k">return</span> <span class="kc">null</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">});</span>
+
+<span class="nx">mapData</span><span class="p">.</span><span class="nx">addListener</span><span class="p">(</span><span class="dl">'</span><span class="s1">click</span><span class="dl">'</span><span class="p">,</span><span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">){</span>
+    <span class="c1">//localcode</span>
+    <span class="k">if</span><span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">feature</span><span class="p">.</span><span class="nx">getProperty</span><span class="p">(</span><span class="dl">'</span><span class="s1">EMD_CD</span><span class="dl">'</span><span class="p">).</span><span class="nx">startsWith</span><span class="p">(</span><span class="dl">'</span><span class="s1">26</span><span class="dl">'</span><span class="p">)){</span>
+        <span class="nx">alert</span><span class="p">(</span><span class="dl">'</span><span class="s1">this is Busan! </span><span class="dl">'</span> <span class="o">+</span> <span class="nx">e</span><span class="p">.</span><span class="nx">feature</span><span class="p">.</span><span class="nx">getProperty</span><span class="p">(</span><span class="dl">'</span><span class="s1">EMD_CD</span><span class="dl">'</span><span class="p">))</span>	
+    <span class="p">}</span><span class="k">else</span><span class="p">{</span>
+        <span class="c1">//nothing</span>
+    <span class="p">}</span>
+
+<span class="p">})</span>
+</code></pre></div>    </div>
+  </li>
+  <li>after occur click event, it saperate by localcode that is EMD_CD.</li>
+</ul>
+
+<h3 id="3-run-code">3. run code</h3>
+
+<ul>
+  <li>npm install (download dependency package)</li>
+  <li>node app.js (run server by 3000 port)</li>
+</ul>
+
+  </article>
+
+  <hr>
+
+  <!-- <div class="question">
+    <h2>Questions?</h2>
+    <p>Have a question regarding the post above? <br />Or any of my designs?</p>
+    
+
+  </div> -->
+
+  <div class="related">
+    <h2>Related</h2>
+    
+      <li><a href="/again-probability/" title="[길벗] 다시 확률통계 확률편 리뷰">[길벗] 다시 확률통계 확률편 리뷰
+       &nbsp; <span class="post-meta">January 06, 2021</span></a>
+    
+      <li><a href="/debounce-throttle/" title="자바스크립트 - 실시간검색과 무한스크롤(디바운스와 스로틀) ">자바스크립트 - 실시간검색과 무한스크롤(디바운스와 스로틀) 
+       &nbsp; <span class="post-meta">January 05, 2021</span></a>
+    
+      <li><a href="/image-resize/" title="파이썬 이미지 리사이즈">파이썬 이미지 리사이즈
+       &nbsp; <span class="post-meta">October 09, 2020</span></a>
+    
+  </div>
+
+</div>
+
+        </div>
+        <footer class="site-footer">
+<p class="small">YOUNGWON &copy 2021
+</p>
+</footer>
+
+    </div>
+
+    <script src="//cdn.jsdelivr.net/headroomjs/0.5.0/headroom.min.js"></script>
+    <script type="text/javascript">
+      var el = document.querySelector(".header-container");
+      var headroom  = new Headroom(el, {
+        "offset": 205,
+        "tolerance": 5
+      });
+      headroom.init();
+    </script>
+
+
+    <!-- Twitter Shizzle -->
+    <script type="text/javascript">
+    window.twttr = (function (d, s, id) {
+      var t, js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src= "https://platform.twitter.com/widgets.js";
+      fjs.parentNode.insertBefore(js, fjs);
+      return window.twttr || (t = { _e: [], ready: function (f) { t._e.push(f) } });
+    }(document, "script", "twitter-wjs"));
+    </script>
+
+  </body>
+</html>

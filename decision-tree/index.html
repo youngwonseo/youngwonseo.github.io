@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width initial-scale=1">
+
+  <title>결정트리</title>
+  <meta name="description" content="결정트리(Decision Tree)결정트리는 데이터마이닝에서 사용되는 전통적 알고리즘으로 학습하는 알고리즘에서 거의 유일하게 학습결과에 대해 설명가능한 알고리즘입니다. 이름과 같이 트리형태의 자료구조를 가지며 각 노드가 feature가 가지는 class들을 구분하고 각 class에...">
+  
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="https://youngwonseo.github.io/decision-tree/">
+  <link rel="alternate" type="application/atom+xml" title="Graceful" href="https://youngwonseo.github.io/feed.xml" />  
+  <link rel="stylesheet" href="/assets/css/syntax.css">
+</head>
+
+  <body>
+    
+
+<div class="header-container" id="header-container">
+
+<!-- Site navigation -->
+  <nav class="site-nav">
+    <div class="trigger">
+      
+        
+        <a class="page-link" href="/about/">About</a>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+        <a class="page-link" href="/category/">Paper</a>
+        
+      
+        
+        <a class="page-link" href="/projects/">Projects</a>
+        
+      
+        
+        <a class="page-link" href="/study/">Study</a>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+      <a class="page-link" href="/feed.xml">RSS</a>
+    </div>
+  </nav>
+
+  <!-- The title of the site -->
+  <header class="site-header">
+    <!-- <a href="/">
+      <div class="avatar">
+        <img src="/assets/images/avatar.png" />
+      </div>
+    </a> -->
+    <a class="site-title" href="/">Graceful</a>
+  </header>
+
+</div>
+
+      <div class="wrapper">
+        <div class="page-content">
+          <div class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">결정트리</h1>
+    <p class="post-meta">April 22, 2019 • Youngwon Seo</p>
+  </header>
+
+
+
+  <article class="post-content">
+    <h2 id="결정트리decision-tree">결정트리(Decision Tree)</h2>
+<p>결정트리는 데이터마이닝에서 사용되는 전통적 알고리즘으로 학습하는 알고리즘에서 거의 유일하게 <strong>학습결과에 대해 설명가능한 알고리즘</strong>입니다. 이름과 같이 트리형태의 자료구조를 가지며 각 노드가 feature가 가지는 class들을 구분하고 각 class에 대한 자식을 생성한다. 먼저 한 가지 예를 갈펴봅시다.</p>
+
+<p><img src="/public/decision_tree_1.png" alt="" /></p>
+
+<p>위 예제는 테스트 경기가 가능한가에 대한 결정트리입니다. outlook, humidity, wind를 가진 데이터가 입력되면 위 트리를 통해 경기가 가능한지, 아닌지를 판별할 수 있습니다.</p>
+
+<p>그러면 이제부터 우리가 가진 데이터로 부터 어떻게 트리를 만드는지 알아봅니다. 이를 위해 다음과 같은 데이터를 사용합니다.</p>
+
+<p><img src="/public/decision_tree_2.png" alt="" /></p>
+
+<h2 id="entropy">Entropy</h2>
+<p>결국 결정트리를 만든다는것, 즉 우리의 데이터로부터 결정트리를 어떻게 학습하냐에 따라 트리의 형태가 달라집니다. 위 데이터에서 outlook을 루트로 정할지, temperature를 루트로 정할지 등을 어떻게 결정하느냐에 따라 트리의 깊이가 작을 수도 있고 클수도 있습니다. 여기서 소개할 Entropy는 트리를 만들때 우리의 데이터에 포함된 여러개의 feature를 어떻게 배치할지를 결정합니다(보다 자세한 내용은  Entropy를 검색해주세요).</p>
+
+<p>Entropy는 특정 집단에서의 불확실성에 대한 지표를 정량화한 값입니다. 즉 Entorpy가 높으면 얻을 수있는 정보가 없다는 것이죠. 결정트리를 만들때 각 노드는 Entropy가 낮은 쪽으로 학습을 진행해야합니다. 엔트로피는 계산은 다음과 같습니다.</p>
+<blockquote>
+  <p>엔트로피는 특정 데이터셋 S에서 데이터를 encode하는데 필요한 예상 비트수를 나타냅니다.</p>
+</blockquote>
+
+<p><img src="/public/entropy.png" alt="" /></p>
+
+<p>첫 번째 수식은 binary class를 가진 노드, 즉 feature가 가진 값이 두 가지 일때의 경우(위 데이터의 humidity를 보면 high와 normal 두 가지만 존재)고 두 번째의 수식은 일반적인 경우의 수식입니다.</p>
+
+<p>그럼 Entropy를 계산해 봅시다. Entropy에 대한 명확하게 보기위해 A,B,C 3개의 binary feature를 가지고 비교해봅시다.</p>
+
+<p><img src="/public/decision_tree_3.png" alt="" /></p>
+
+<p>위와 같이 3개의 feature가 있을 때 어떤 feature를 선택해야 데이터를 명확하게 분류할 수 있을까요? 사실 딱봐도 B가 T와 F를 가장 잘 분류한다고 판단이 가능합니다.</p>
+
+<p><img src="/public/decision_tree_4.png" alt="" /></p>
+
+<p>계산결과를 면 B의 Entropy(불확실성)이 가장 낮습니다. 결정트리에 적용해보면 즉 B를 노드로 선택하면 위 데이터를 가장 잘 나눌수 있다는 의미이죠. 그러면 트리처럼 노드들이 계속 이어질 경우는 어떻게 할까요? 이것을 위해 Information Gain이 사용됩니다.</p>
+
+<h2 id="information-gain">Information Gain</h2>
+
+<h2 id="overfitting">Overfitting</h2>
+
+<h3 id="pre-prone">Pre-prone</h3>
+<h3 id="post-prone">Post-prone</h3>
+
+  </article>
+
+  <hr>
+
+  <!-- <div class="question">
+    <h2>Questions?</h2>
+    <p>Have a question regarding the post above? <br />Or any of my designs?</p>
+    
+
+  </div> -->
+
+  <div class="related">
+    <h2>Related</h2>
+    
+      <li><a href="/again-probability/" title="[길벗] 다시 확률통계 확률편 리뷰">[길벗] 다시 확률통계 확률편 리뷰
+       &nbsp; <span class="post-meta">January 06, 2021</span></a>
+    
+      <li><a href="/debounce-throttle/" title="자바스크립트 - 실시간검색과 무한스크롤(디바운스와 스로틀) ">자바스크립트 - 실시간검색과 무한스크롤(디바운스와 스로틀) 
+       &nbsp; <span class="post-meta">January 05, 2021</span></a>
+    
+      <li><a href="/image-resize/" title="파이썬 이미지 리사이즈">파이썬 이미지 리사이즈
+       &nbsp; <span class="post-meta">October 09, 2020</span></a>
+    
+  </div>
+
+</div>
+
+        </div>
+        <footer class="site-footer">
+<p class="small">YOUNGWON &copy 2021
+</p>
+</footer>
+
+    </div>
+
+    <script src="//cdn.jsdelivr.net/headroomjs/0.5.0/headroom.min.js"></script>
+    <script type="text/javascript">
+      var el = document.querySelector(".header-container");
+      var headroom  = new Headroom(el, {
+        "offset": 205,
+        "tolerance": 5
+      });
+      headroom.init();
+    </script>
+
+
+    <!-- Twitter Shizzle -->
+    <script type="text/javascript">
+    window.twttr = (function (d, s, id) {
+      var t, js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src= "https://platform.twitter.com/widgets.js";
+      fjs.parentNode.insertBefore(js, fjs);
+      return window.twttr || (t = { _e: [], ready: function (f) { t._e.push(f) } });
+    }(document, "script", "twitter-wjs"));
+    </script>
+
+  </body>
+</html>
