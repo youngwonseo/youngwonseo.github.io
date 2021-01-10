@@ -2,16 +2,17 @@
 <html>
   <head>
   <meta charset="utf-8">
-  <meta https-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width initial-scale=1">
 
-  <title>YoungWon</title>
-  <meta name="description" content="YoungwonSeo &copy 2020
+  <title>Graceful</title>
+  <meta name="description" content="YOUNGWON &copy 2021
 ">
-
+  
   <link rel="stylesheet" href="/css/main.css">
   <link rel="canonical" href="https://youngwonseo.github.io/blog/page/3/">
-  <link rel="alternate" type="application/atom+xml" title="YoungWon" href="https://youngwonseo.github.io/feed.xml" />
+  <link rel="alternate" type="application/atom+xml" title="Graceful" href="https://youngwonseo.github.io/feed.xml" />  
+  <link rel="stylesheet" href="/assets/css/syntax.css">
 </head>
 
   <body>
@@ -28,11 +29,13 @@
         
       
         
-        <a class="page-link" href="/archive/">Archive</a>
-        
       
         
       
+        
+      
+        
+        <a class="page-link" href="/category/">Paper</a>
         
       
         
@@ -40,21 +43,7 @@
         
       
         
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
+        <a class="page-link" href="/study/">Study</a>
         
       
         
@@ -80,19 +69,17 @@
         
       
       <a class="page-link" href="/feed.xml">RSS</a>
-      <!-- <a class="twitter page-link" href="httpss://twitter.com/fffabs"><span class="icon-twitter"></span></a>
-      <a class="facebook page-link" href="httpss://www.facebook.com/fffabs"><span class="icon-facebook"></span></a> -->
     </div>
   </nav>
 
   <!-- The title of the site -->
   <header class="site-header">
     <!-- <a href="/">
-      <div class="trigger">
+      <div class="avatar">
         <img src="/assets/images/avatar.png" />
       </div>
     </a> -->
-    <a class="site-title" href="/">YoungWon</a> -->
+    <a class="site-title" href="/">Graceful</a>
   </header>
 
 </div>
@@ -100,13 +87,8 @@
       <div class="wrapper">
         <div class="page-content">
           <!-- Brief intro -->
-<div class="header-intro">
-  <h2>YoungWon Seo</h2>
-  <p>Machine Learnig & Back-end Engineer.</p>
-  <br/>
-  <p>What I cannot create, I do not understand.</p>
-</div>
-<hr />
+<h1>Graceful</h1>
+
 <!-- End intro -->
 
 <div class="home">
@@ -114,50 +96,20 @@
   <ul id="post-list">
     
       <li>
-        <a href="/2020/04/20/01-week1/">
-        <aside class="dates">Apr 20</aside>
+        <a href="/04-intro-transfer-learning/">
+        <aside class="dates">Dec 10</aside>
         </a>
-        <a href="/2020/04/20/01-week1/">AI for Medical Diagnosis - Week1 <h2></h2></a>
+        <a href="/04-intro-transfer-learning/">전이학습 #4 - 전이학습의 기초 <h2></h2></a>
         <!-- <p>
-        <p>Disease detection with computer vision</p> <h2 id="key-concepts">Key Concepts</h2> <ul> <li>Data pre-processing: checking for data leakage</li> <li>Preprocess images properly for the train, validation and test sets</li> <li>Implement a weighted loss function to address class imbalance.</li> <li>Set up a pre-trained neural network to make disease predictions on chest x-rays.</li> </ul> <p>httpss://www.kaggle.com/c/rsna-pneumonia-detection-challenge httpss://www.kaggle.com/c/siim-acr-pneumothorax-segmentation...
+        <p>본 글은 <a href="https://wikibook.co.kr/transfer-learning/" target="_blank">파이썬을 활용한 딥러닝 전이학습, (송영숙, 심상진, 한수미, 고재선 옮김, 위키북스)</a>의 <strong>4장 전이학습의 기초</strong> 내용을 요약한 것입니다.</p> <p>머신러닝이나 딥러닝은 전통적으로 데이터나 문제에 따라 별개로 작동하도록 설계되었습니다. 그래서 학습할 데이터의 특성 공간의 분포가 바뀌면 다시 학습을 진행해야 했습니다. 전이학습의 아이디어는 고립된 학습 패러다임을 극복하고 이미 학습된 모델을 활용해...
         </p> -->
       </li>
     
       <li>
-        <a href="/2020/04/15/structured-data/">
-        <aside class="dates">Apr 15</aside>
+        <a href="/08-game/">
+        <aside class="dates">Dec 10</aside>
         </a>
-        <a href="/2020/04/15/structured-data/">텐서플로우 - 구조화된 데이터 <h2></h2></a>
-        <!-- <p>
-        <p>본 글은 텐서플로우 공식 사이트의 <a href="httpss://www.tensorflow.org/tutorials/structured_data/feature_columns">구조화된 데이터</a>를 정리한 글입니다.</p> <ul> <li>특성 열(feature_columns)</li> <li></li> </ul> <p>텐서플로우에서 제공하는 특성 열 feature_columns의 종류</p> <p>numeric column bucketized column categorical column embedding column</p> <p>categorical_column_with_hash_bucket feature cross</p> <p>수치형일 경우 실제 데이터와는 독립적으로 feature의 이름(column의 이름)으로만으로 구성할 수 있습니다.</p> <p>이후 DenseFeatures를 통하여 모델에 주입</p> <pre><code class="language-python">model...
-        </p> -->
-      </li>
-    
-      <li>
-        <a href="/2020/03/17/this/">
-        <aside class="dates">Mar 17</aside>
-        </a>
-        <a href="/2020/03/17/this/">자바스크립트 - 기존 function과 화살표 함수에서의 This <h2></h2></a>
-        <!-- <p>
-        <p>ES6에서 존재하는 화살표함수와 기존의 function은 바인딩되는 this의 차이가 존재합니다.</p> <pre><code class="language-javascript">function BlackDog() { this.name = '흰둥이'; return { name: '검둥이', bark: function() { console.log(this.name + ': 멍멍!'); } } } function WhiteDog() { this.name = '흰둥이'; return { name: '검둥이', bark: () =&gt; { console.log(this.name + ': 멍멍!'); } }...
-        </p> -->
-      </li>
-    
-      <li>
-        <a href="/2020/03/09/docker-start-project/">
-        <aside class="dates">Mar 9</aside>
-        </a>
-        <a href="/2020/03/09/docker-start-project/">도커를 사용하여 컨테이너 기반으로 노드 실행 <h2></h2></a>
-        <!-- <p>
-        <h2 id="목표">목표</h2> <p>도커를 사용하여 컨테이너 기반으로 노드 실행 및 접근</p> <h2 id="단계">단계</h2> <ol> <li>노드js 앱 생성</li> <li>Dockerfile 생성</li> <li>Dockerfile 빌드</li> <li>컨테이너 이미지 실행</li> <li>웹 브라우저에서 노드js 앱 접근</li> </ol> <h2 id="1-노드-앱-작성">1. 노드 앱 작성</h2> <p>컨테이너 테스트용으로 express기반의 간단한 노드 앱을 작성합니다.</p> <h3 id="packagejson">package.json</h3> <pre><code class="language-json">{ "dependencies": { "express": "*" },...
-        </p> -->
-      </li>
-    
-      <li>
-        <a href="/2020/03/06/02-spring-boot-jpa/">
-        <aside class="dates">Mar 6</aside>
-        </a>
-        <a href="/2020/03/06/02-spring-boot-jpa/">02 Spring Boot Jpa <h2></h2></a>
+        <a href="/08-game/">08 Game <h2></h2></a>
         <!-- <p>
         
 
@@ -165,43 +117,10 @@
       </li>
     
       <li>
-        <a href="/2020/02/29/02-maven-multi-module/">
-        <aside class="dates">Feb 29</aside>
+        <a href="/07-compose/">
+        <aside class="dates">Dec 6</aside>
         </a>
-        <a href="/2020/02/29/02-maven-multi-module/">메이븐 멀티모듈 SNS 개발 #2 - domain과 service <h2></h2></a>
-        <!-- <p>
-        <h2 id="web-프로젝트">Web 프로젝트</h2> <p>먼저 사용자의 뷰를 담당하는 Web 프로젝트를 구성해 보겠습니다. Web프로젝트는 웹 브라우저를 통해 접근하는 사용자에 대한 entry point입니다. 즉 Front-end에 대한 구현체이며 기본적인 사항은 다음과 같습니다.</p> <ul> <li>Spring MVC 5</li> <li>Thymeleaf</li> </ul> <p>위 두가지를 사용하기 위해 pom.xml에 두가지에 대한 메이븐 의존성을 추가합니다.</p> <pre><code class="language-xml">&lt;project xmlns="https://maven.apache.org/POM/4.0.0" xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd"&gt;...
-        </p> -->
-      </li>
-    
-      <li>
-        <a href="/2020/02/29/01-maven-multi-module/">
-        <aside class="dates">Feb 29</aside>
-        </a>
-        <a href="/2020/02/29/01-maven-multi-module/">메이븐 멀티모듈 SNS 개발 #1 - 프로젝트 구성 <h2></h2></a>
-        <!-- <p>
-        <p>본 포스트는 메이븐 멀티 모듈을 기반으로 스프링 프로젝트들을 구성하고 SNS 서비스를 개발을 합니다.</p> <h2 id="메이븐-멀티-모듈">메이븐 멀티 모듈</h2> <p>프로젝트를 진행하다 보면 단일 프로젝트가 아닌 여러개의 프로젝트로 구성해야할 경우가 많습니다. 특히 마이크로서비스(Microservice)등의 기술로 인해 기존의 front-end와 back-end뿐만 아니라 기능별로 프로젝트를 분리하고 각 모듈별로 배포 및 운영가능하게 만드는 것이 당연시 되고 있습니다.</p> <p>스프링...
-        </p> -->
-      </li>
-    
-      <li>
-        <a href="/2020/02/28/spring-cheat-sheet/">
-        <aside class="dates">Feb 28</aside>
-        </a>
-        <a href="/2020/02/28/spring-cheat-sheet/">Spring Expressino Language(SpEL) <h2></h2></a>
-        <!-- <p>
-        <h2 id="controller">Controller</h2>
-
-<h2 id="jpa">JPA</h2>
-
-        </p> -->
-      </li>
-    
-      <li>
-        <a href="/2020/01/07/sw-engineering-ml/">
-        <aside class="dates">Jan 7</aside>
-        </a>
-        <a href="/2020/01/07/sw-engineering-ml/">Sw Engineering Ml <h2></h2></a>
+        <a href="/07-compose/">07 Compose <h2></h2></a>
         <!-- <p>
         
 
@@ -209,13 +128,181 @@
       </li>
     
       <li>
-        <a href="/2020/01/06/12-colorization/">
-        <aside class="dates">Jan 6</aside>
+        <a href="/06-write/">
+        <aside class="dates">Dec 1</aside>
         </a>
-        <a href="/2020/01/06/12-colorization/">전이학습 #12 - 이미지 채색 <h2></h2></a>
+        <a href="/06-write/">06 Write <h2></h2></a>
         <!-- <p>
         
 
+        </p> -->
+      </li>
+    
+      <li>
+        <a href="/05-draw/">
+        <aside class="dates">Nov 28</aside>
+        </a>
+        <a href="/05-draw/">05 Draw <h2></h2></a>
+        <!-- <p>
+        
+
+        </p> -->
+      </li>
+    
+      <li>
+        <a href="/09-01-keras/">
+        <aside class="dates">Nov 20</aside>
+        </a>
+        <a href="/09-01-keras/">결론 #1 <h2></h2></a>
+        <!-- <p>
+        <p>책의 마지막장인 결론의 내용입니다.</p> <h2 id="핵심-개념-리뷰">핵심 개념 리뷰</h2> <p>먼저 AI와 딥러닝의 관계를 다음과 같이 표현할 수 있습니다.</p> <h3 id="ai--머신러닝--딥러닝">AI &gt; 머신러닝 &gt; 딥러닝</h3> <p><strong>AI(인공지능)</strong>는 인지 과정을 자동화하기 위한 모든 방법입니다. <strong>머신러닝</strong>은 훈련데이터를 사용해서 인지 과정을 자동화하는 AI의 하위 개념입니다. 여기서 훈련데이터를 사용한다는 것은 훈련데이터를 학습한다는 의미 입니다. <strong>딥러닝</strong>은 머신러닝의 일부로써...
+        </p> -->
+      </li>
+    
+      <li>
+        <a href="/08-02-keras/">
+        <aside class="dates">Nov 19</aside>
+        </a>
+        <a href="/08-02-keras/">08 02 Keras <h2></h2></a>
+        <!-- <p>
+        
+
+        </p> -->
+      </li>
+    
+      <li>
+        <a href="/07-02-keras/">
+        <aside class="dates">Nov 16</aside>
+        </a>
+        <a href="/07-02-keras/">딥러닝을 위한 고급도구#2 - 콜백와 모델성능올리기 <h2></h2></a>
+        <!-- <p>
+        <p>함수형 API</p>
+
+<p>케라스 콜백과 텐서보드
+모델 성능 끌어올리기</p>
+
+        </p> -->
+      </li>
+    
+      <li>
+        <a href="/07-01-keras/">
+        <aside class="dates">Nov 16</aside>
+        </a>
+        <a href="/07-01-keras/">딥러닝을 위한 고급도구#1 - 케라스 함수형 API <h2></h2></a>
+        <!-- <p>
+        <h2 id="다중출력과-다중입력-모델">다중출력과 다중입력 모델</h2> <p>지금까지 실습한 모델을 보면 모두 Sequential 모델을 사용하여 만들었습니다. Sequential 모델은 입력과 출력이 각각 하나라고 가정합니다. 하지만 경우에 따라 여러개의 입력이 사용되거나 여러개의 출력이 사용됩니다. 예를 들어 중고 의류 시장의 가격을 예측하는 모델을 생각해봅시다. 입력데이터로 의류의 메타데이터(의류 브랜드, 연도, 새상품가격 등), 설명글(의류 상태 등의 판매자가 작성한...
+        </p> -->
+      </li>
+    
+      <li>
+        <a href="/06-04-keras/">
+        <aside class="dates">Nov 15</aside>
+        </a>
+        <a href="/06-04-keras/">컨브넷을 사용한 시퀀스 처리 <h2></h2></a>
+        <!-- <p>
+        
+
+        </p> -->
+      </li>
+    
+      <li>
+        <a href="/06-03-keras/">
+        <aside class="dates">Nov 15</aside>
+        </a>
+        <a href="/06-03-keras/">순환 신경망의 고급 사용법 <h2></h2></a>
+        <!-- <p>
+        <p>이번 포스트에서는 순환신경망의 성능과 일반화 능력을 향상시키기 위한 세 가지 고급 기술을 살펴보겠습니다. 이를 위해 건물 옥상에서 측정된 온도, 기압, 습도와 같은 데이터를 이용하여 24시간 이후의 온도를 예측하는 문제를 풀어보겠습니다.</p> <ul> <li>순환 드롭아웃(recurrent dropout):</li> <li>스태킹 순환 층(stacking recurrent layer):</li> <li>양뱡항 순환 층(bidirectional recurrent layer):</li> </ul> <h2 id="기온-예측-문제">기온 예측 문제</h2> <p>wget...
+        </p> -->
+      </li>
+    
+      <li>
+        <a href="/06-02-keras/">
+        <aside class="dates">Nov 15</aside>
+        </a>
+        <a href="/06-02-keras/">순환 신경망 이해하기 <h2></h2></a>
+        <!-- <p>
+        <p>이번 글에는 순환 신경망(recurrent nerual network)에 대해 알아봅니다.</p> <p>이전까지의 네트워크 구조를 살펴보면 메모리를 포함하고 있지 않다는 것입니다. 입력은 개별적으로 처리되며 입력간의 유지되는 상태는 존재하지 않습니다. 이는 순차 데이터나 시계열 데이터를 처리하는데 있어서 시계열 데이터를 하나의 데이터 포인트(텐서)로 변환후 각각 처리해야합니다. 이전 입력은 현재 입력과 독립되어 있습니다.</p> <p>이와 다르게 입력에 대한...
+        </p> -->
+      </li>
+    
+      <li>
+        <a href="/06-01-keras/">
+        <aside class="dates">Nov 15</aside>
+        </a>
+        <a href="/06-01-keras/">텍스트 데이터 처리하기 - 순환 신경망 <h2></h2></a>
+        <!-- <p>
+        <p>이번장에서는 텍스트(단어의 시퀀스 또는 문자의 시퀀스), 시계열 또는 시퀀스 데이터를 처리하는 딥러닝 모델을 살펴봅니다. 기본적으로 시퀀스 데이터 처리를 위한 딥러닝 모델은 순환 신경망(recurrent neural network)과 1D 컨브넷(1D convnet)입니다.</p> <p>먼저 가장 대표적인 시퀀스 데이터인 텍스트(문장 및 단어)를 다뤄보겠습니다.</p> <h2 id="1-텍스트-데이터-다루기">1. 텍스트 데이터 다루기</h2> <p>텍스트 패턴인식</p> <p>다음은</p> <ul> <li>텍스트를 단어로 나누고 각...
+        </p> -->
+      </li>
+    
+      <li>
+        <a href="/03-informed_search/">
+        <aside class="dates">Nov 15</aside>
+        </a>
+        <a href="/03-informed_search/">Informed Search(Heuristic Search) <h2></h2></a>
+        <!-- <p>
+        <p>어떤 문제에서 goal까지의 경로를 찾을 때, 모든 경로를 검사하게 되면 상당히 비 효율적이다. 대표적인 예로 깊이우선탐색(BFS : Breadth First Search)나 깊이우선 탐색(Depth First Search)으로 문제에 대한 해는 주어지지만 결국 가능한 모든 경로를 검사하며 Search를 수행한다. 이러한 방법을 Uninformd Search 또는 Blind Search라 한다.</p> <p>Informed Search란 위 처럼 모든 경로를 탐색하기...
+        </p> -->
+      </li>
+    
+      <li>
+        <a href="/02-alpha-beta-pruning/">
+        <aside class="dates">Nov 15</aside>
+        </a>
+        <a href="/02-alpha-beta-pruning/">Alpha-beta Pruning <h2></h2></a>
+        <!-- <p>
+        <p>*Minmax Search를 먼저 이해하여야 한다.</p> <p>Alpha Beta Pruning 이란 Minmax Search에서 발생하는 연산을 최소한으로 감소시킬수 있는 알고리즘이다. 기존의 MinmaxSearch는 트리를 생성한 후 상태를 평가한다. 즉 생성과 판단이 분리되어 있고 각각 이루어 져야하지만 Alpha Beta Pruning은 이러한 Minmax의 문제점을 보완하고자 생성과 판단을 동시에 진행한다. 이는 트리를 깊이 생성할수록 생성되기전 Pruning으로 인하여...
+        </p> -->
+      </li>
+    
+      <li>
+        <a href="/01-minmax-search/">
+        <aside class="dates">Nov 15</aside>
+        </a>
+        <a href="/01-minmax-search/">Minmax Search <h2></h2></a>
+        <!-- <p>
+        <p>Minmax Search는 Adversarial Search 알고리즘으로써 두 에이전트(플레이어)가 게임을 시행할 때 앞의 몇수를 계산하는 알고리즘입니다. 여기서는 Minmax Search를 설명하기 위해 틱택톡 게임을 예로 설명하겠습니다(Tic-Tac-Toe : 3X3의 보드에 3개의 돌이 연속적으로 열,행 혹은 대각선이 되도록 먼저 두는자가 승리하는 게임이다. 한국의 오목과 유사하다).</p> <p><img src="/public/ai/01_minmax.png" alt="" /></p> <p>위의 트리는 Minmax Search의 결과 트리로써...
+        </p> -->
+      </li>
+    
+      <li>
+        <a href="/sentence-classification-cnn/">
+        <aside class="dates">Nov 13</aside>
+        </a>
+        <a href="/sentence-classification-cnn/">Sentence Classification Cnn <h2></h2></a>
+        <!-- <p>
+        
+
+        </p> -->
+      </li>
+    
+      <li>
+        <a href="/04-01-keras/">
+        <aside class="dates">Nov 12</aside>
+        </a>
+        <a href="/04-01-keras/">머신러닝의 기본요소#1 <h2></h2></a>
+        <!-- <p>
+        <p>[케라스창시자에게 배우는 딥러닝]의 4장 내용을 정리한 것입니다.</p> <p>앞까지의 내용을 통해 신경망을 사용하여 분류와 회귀에 대한 문제를 어떻게 해결하는지 경험하였습니다. 또한 머신러닝에서 아주 중요한 문제인 과대적합에 대해서도 경험하였습니다. 이번장부터는 앞까지의 내용을 좀더 확고한 개념으로 정립하고 모델 평가, 데이터 전처리, 특성공학, 과대적합 같은 개념을 포함한 <strong>머신러닝 문제를 해결하기 위한 7단계의 작업 흐름</strong>을...
+        </p> -->
+      </li>
+    
+      <li>
+        <a href="/03-04-keras/">
+        <aside class="dates">Nov 11</aside>
+        </a>
+        <a href="/03-04-keras/">신경망 시작하기#4 - 주택가격예측(회귀) <h2></h2></a>
+        <!-- <p>
+        <p>[케라스창시자에게 배우는 딥러닝]의 3장 내용을 정리한 것입니다.</p> <h2 id="주택-가격-예측---회귀-보스턴-주택-가격-데이터셋">주택 가격 예측 - 회귀 (보스턴 주택 가격 데이터셋)</h2> <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">keras.datasets</span> <span class="kn">import</span> <span class="n">boston_housing</span> <span class="p">(</span><span class="n">train_data</span><span class="p">,</span> <span class="n">train_targets</span><span class="p">),</span> <span class="p">(</span><span class="n">test_data</span><span class="p">,</span> <span class="n">test_targets</span><span class="p">)</span> <span class="o">=</span> <span class="n">boston_housing</span><span class="p">.</span><span class="n">load_data</span><span class="p">()</span>...
+        </p> -->
+      </li>
+    
+      <li>
+        <a href="/03-03-keras/">
+        <aside class="dates">Nov 11</aside>
+        </a>
+        <a href="/03-03-keras/">신경망 시작하기#3 - 뉴스기사분류(다중분류) <h2></h2></a>
+        <!-- <p>
+        <p>[케라스창시자에게 배우는 딥러닝]의 3장 내용을 정리한 것입니다.</p> <h2 id="뉴스-기사-분류---다중분류-로이터-데이터셋">뉴스 기사 분류 - 다중분류 (로이터 데이터셋)</h2> <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">keras.datasets</span> <span class="kn">import</span> <span class="n">reuters</span> <span class="p">(</span><span class="n">train_data</span><span class="p">,</span> <span class="n">train_labels</span><span class="p">),</span> <span class="p">(</span><span class="n">test_data</span><span class="p">,</span> <span class="n">test_labels</span><span class="p">)</span> <span class="o">=</span> <span class="n">reuters</span><span class="p">.</span><span class="n">load_data</span><span class="p">(</span><span class="n">num_words</span><span class="o">=</span><span...
         </p> -->
       </li>
     
@@ -234,7 +321,7 @@
 
         </div>
         <footer class="site-footer">
-<p class="small">YoungwonSeo &copy 2020
+<p class="small">YOUNGWON &copy 2021
 </p>
 </footer>
 
@@ -252,29 +339,16 @@
 
 
     <!-- Twitter Shizzle -->
-    <!-- <script type="text/javascript">
+    <script type="text/javascript">
     window.twttr = (function (d, s, id) {
       var t, js, fjs = d.getElementsByTagName(s)[0];
       if (d.getElementById(id)) return;
       js = d.createElement(s); js.id = id;
-      js.src= "httpss://platform.twitter.com/widgets.js";
+      js.src= "https://platform.twitter.com/widgets.js";
       fjs.parentNode.insertBefore(js, fjs);
       return window.twttr || (t = { _e: [], ready: function (f) { t._e.push(f) } });
     }(document, "script", "twitter-wjs"));
-    </script> -->
-    	<!-- Google Analytics -->
-  <script>
-		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-		})(window,document,'script','httpss://www.google-analytics.com/analytics.js','ga');
-		
-		ga('create', 'UA-78263144-1', 'auto');
-		ga('send', 'pageview');
-		</script>
-		<!-- End Google Analytics -->
-</header>
-
+    </script>
 
   </body>
 </html>

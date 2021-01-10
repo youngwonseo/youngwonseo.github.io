@@ -1,7 +1,64 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="https://www.w3.org/2005/Atom" ><generator uri="httpss://jekyllrb.com/" version="4.1.1">Jekyll</generator><link href="https://youngwonseo.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://youngwonseo.github.io/" rel="alternate" type="text/html" /><updated>2020-12-17T12:29:34+09:00</updated><id>https://youngwonseo.github.io/feed.xml</id><title type="html">YoungWon</title><subtitle>YoungwonSeo &amp;copy 2020
-</subtitle><entry><title type="html">Detecting Aortic Stenosis Using Electrocardiography</title><link href="https://youngwonseo.github.io/2020/11/11/detecting-aortic-stenosis-using-electrocardiography/" rel="alternate" type="text/html" title="Detecting Aortic Stenosis Using Electrocardiography" /><published>2020-11-11T00:00:00+09:00</published><updated>2020-11-11T00:00:00+09:00</updated><id>https://youngwonseo.github.io/2020/11/11/detecting-aortic-stenosis-using-electrocardiography</id><content type="html" xml:base="https://youngwonseo.github.io/2020/11/11/detecting-aortic-stenosis-using-electrocardiography/">&lt;p&gt;demographic information, features, and 500-Hz, 12-lead ECG raw data as predictive variable&lt;/p&gt;</content><author><name></name></author><summary type="html"></summary></entry><entry><title type="html">파이썬 이미지 리사이즈</title><link href="https://youngwonseo.github.io/2020/10/09/image-resize/" rel="alternate" type="text/html" title="파이썬 이미지 리사이즈" /><published>2020-10-09T00:00:00+09:00</published><updated>2020-10-09T00:00:00+09:00</updated><id>https://youngwonseo.github.io/2020/10/09/image-resize</id><content type="html" xml:base="https://youngwonseo.github.io/2020/10/09/image-resize/">&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;PIL&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Image&lt;/span&gt;
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Graceful</title>
+    <description>YOUNGWON &amp;copy 2021
+</description>
+    <link>https://youngwonseo.github.io/</link>
+    <atom:link href="https://youngwonseo.github.io/feed.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Sun, 10 Jan 2021 16:47:40 +0900</pubDate>
+    <lastBuildDate>Sun, 10 Jan 2021 16:47:40 +0900</lastBuildDate>
+    <generator>Jekyll v4.2.0</generator>
+    
+      <item>
+        <title>[길벗] 다시 확률통계 확률편 리뷰</title>
+        <description>&lt;p&gt;본 글은 이번에 길벗에서 출간(번역)한 &lt;a href=&quot;https://www.gilbut.co.kr/book/view?bookcode=BN002794&quot; target=&quot;_blank&quot;&gt;다시 확률 통계 : 확률편&lt;/a&gt;에 대한 리뷰글입니다.&lt;/p&gt;
 
-&lt;span class=&quot;n&quot;&gt;Image&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;open&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;file_path&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;resize&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;</content><author><name>Youngwon Seo</name></author><summary type="html">from PIL import Image</summary></entry><entry><title type="html">Learning Deep Features for Discriminative Localization</title><link href="https://youngwonseo.github.io/2020/09/22/class-activation-map/" rel="alternate" type="text/html" title="Learning Deep Features for Discriminative Localization" /><published>2020-09-22T00:00:00+09:00</published><updated>2020-09-22T00:00:00+09:00</updated><id>https://youngwonseo.github.io/2020/09/22/class-activation-map</id><content type="html" xml:base="https://youngwonseo.github.io/2020/09/22/class-activation-map/">&lt;h2 id=&quot;abstract&quot;&gt;Abstract&lt;/h2&gt;
+&lt;h2 id=&quot;통계의-기본기&quot;&gt;통계의 기본기&lt;/h2&gt;
+&lt;p&gt;본 도서는 확률에 대한 기본 내용을 다루고 있습니다. 집합부터 경우의 수, 순열, 조합, 확률계산, 베이즈이론 등을 설명하고 있으며 각 항목에서는 관련용어 용어, 법칙 그리고 예제를 그림과 함께 친절히 설명하고 있습니다. 이는 확률관련 지식을 공부한적이 없는 사람, 또는 학교를 졸업한지 오래되어 관련내용을 다시 상기시키고 싶으신 분들에게 아주 좋은 학습접근법을 제공할 것입니다. 대학 교양과목의 확률론에서 다루는 확률분포나 극한 등의 내용은 다루지 않기 때문에 이쪽 분야 전공이 아닌 학생들도 부담없이 읽으며 기본기를 쌓을 수 있는 도서입니다.&lt;/p&gt;
+
+&lt;h2 id=&quot;수-많은-연습문제&quot;&gt;수 많은 연습문제&lt;/h2&gt;
+&lt;p&gt;총 4장으로 구성되어 있는 본 도서는 1,2장에서 경우의 수와 확률을 다루고 있으며 3,4장에서는 앞장에서 배운내용들에 대한 연습문제를 제공하고 있습니다. 각 연습문제의 해설 또한 포함되어있으며 문제를 풀면서 확률문제에 대한 논리력을 키울수 있습니다. 이러한 논리력 연습을 통해 프로그래머의 개발능력을 한 단계 발전시킬 것이라고 믿어의심치 않습니다. 그러므로 코딩능력을 발전시키고 싶거나 문제해결 능력을 발전시키고 싶은 프로그래머들에게 특히 본 도서를 추천합니다. 또한 연습문제를 코드로 작성해보며 해결하는것을 추천합니다.&lt;/p&gt;
+</description>
+        <pubDate>Wed, 06 Jan 2021 00:00:00 +0900</pubDate>
+        <link>https://youngwonseo.github.io/again-probability/</link>
+        <guid isPermaLink="true">https://youngwonseo.github.io/again-probability/</guid>
+        
+        
+      </item>
+    
+      <item>
+        <title>자바스크립트 - 실시간검색과 무한스크롤(디바운스와 스로틀) </title>
+        <description>&lt;p&gt;이번 포스트에서는 실시간검색과 무한스크롤 기능구현에 대해 살펴보겠습니다. 전체 코드는 &lt;a href=&quot;https://github.com/youngwonseo/debounce-throttle&quot; target=&quot;_blank&quot;&gt;깃허브&lt;/a&gt;를 참조해주세요.&lt;/p&gt;
+
+&lt;p&gt;인스타그램과 페이스북과 같은 서비스를 살펴보면&lt;/p&gt;
+
+&lt;h1 id=&quot;references&quot;&gt;References&lt;/h1&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&amp;amp;mallGb=KOR&amp;amp;barcode=9791163031451&amp;amp;orderClick=LAG&amp;amp;Kc=&quot; target=&quot;_blank&quot;&gt;Do it! 리액트 프로그래밍 정석&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        <pubDate>Tue, 05 Jan 2021 00:00:00 +0900</pubDate>
+        <link>https://youngwonseo.github.io/debounce-throttle/</link>
+        <guid isPermaLink="true">https://youngwonseo.github.io/debounce-throttle/</guid>
+        
+        
+      </item>
+    
+      <item>
+        <title>파이썬 이미지 리사이즈</title>
+        <description>
+</description>
+        <pubDate>Fri, 09 Oct 2020 00:00:00 +0900</pubDate>
+        <link>https://youngwonseo.github.io/image-resize/</link>
+        <guid isPermaLink="true">https://youngwonseo.github.io/image-resize/</guid>
+        
+        
+      </item>
+    
+      <item>
+        <title>Learning Deep Features for Discriminative Localization</title>
+        <description>&lt;h2 id=&quot;abstract&quot;&gt;Abstract&lt;/h2&gt;
 &lt;ul&gt;
   &lt;li&gt;이전에 제시된 Global average pooling layer를 다시 논의함&lt;/li&gt;
   &lt;li&gt;이미지&lt;/li&gt;
@@ -30,7 +87,25 @@
 
 &lt;h2 id=&quot;visulizing-class-specific-units&quot;&gt;Visulizing Class-Specific Units&lt;/h2&gt;
 
-&lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;</content><author><name>Youngwon Seo</name></author><summary type="html">Abstract 이전에 제시된 Global average pooling layer를 다시 논의함 이미지 이전에는 regularizing training 으로 방법으로 제안됨 generic localizable deep representation</summary></entry><entry><title type="html">Network In Network</title><link href="https://youngwonseo.github.io/2020/09/21/network-in-network/" rel="alternate" type="text/html" title="Network In Network" /><published>2020-09-21T00:00:00+09:00</published><updated>2020-09-21T00:00:00+09:00</updated><id>https://youngwonseo.github.io/2020/09/21/network-in-network</id><content type="html" xml:base="https://youngwonseo.github.io/2020/09/21/network-in-network/">&lt;h2 id=&quot;abstract&quot;&gt;Abstract&lt;/h2&gt;
+&lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;
+
+</description>
+        <pubDate>Tue, 22 Sep 2020 00:00:00 +0900</pubDate>
+        <link>https://youngwonseo.github.io/class-activation-map/</link>
+        <guid isPermaLink="true">https://youngwonseo.github.io/class-activation-map/</guid>
+        
+        <category>Class Activation Map</category>
+        
+        <category>Convolutional Nerual Network</category>
+        
+        
+        <category>Deep Learning</category>
+        
+      </item>
+    
+      <item>
+        <title>Network In Network</title>
+        <description>&lt;h2 id=&quot;abstract&quot;&gt;Abstract&lt;/h2&gt;
 &lt;ul&gt;
   &lt;li&gt;&lt;/li&gt;
   &lt;li&gt;novel deep network structure인 Network In Network(NIN)을 제시&lt;/li&gt;
@@ -60,7 +135,52 @@
 
 &lt;h2 id=&quot;experiments&quot;&gt;Experiments&lt;/h2&gt;
 
-&lt;h2 id=&quot;convlusions&quot;&gt;Convlusions&lt;/h2&gt;</content><author><name>Youngwon Seo</name></author><summary type="html">Abstract novel deep network structure인 Network In Network(NIN)을 제시</summary></entry><entry><title type="html">Breat Cancer Classification in Ultrasound Images using Transfer Learning</title><link href="https://youngwonseo.github.io/2020/09/08/breat-cancer-classification/" rel="alternate" type="text/html" title="Breat Cancer Classification in Ultrasound Images using Transfer Learning" /><published>2020-09-08T00:00:00+09:00</published><updated>2020-09-08T00:00:00+09:00</updated><id>https://youngwonseo.github.io/2020/09/08/breat-cancer-classification</id><content type="html" xml:base="https://youngwonseo.github.io/2020/09/08/breat-cancer-classification/"></content><author><name>Youngwon Seo</name></author><summary type="html"></summary></entry><entry><title type="html">Structure Boundary Preserving Segmentation for Medical Imagewith Ambiguous Boundary</title><link href="https://youngwonseo.github.io/2020/09/03/structure-boundary-preserving-segmentation/" rel="alternate" type="text/html" title="Structure Boundary Preserving Segmentation for Medical Imagewith Ambiguous Boundary" /><published>2020-09-03T00:00:00+09:00</published><updated>2020-09-03T00:00:00+09:00</updated><id>https://youngwonseo.github.io/2020/09/03/structure-boundary-preserving-segmentation</id><content type="html" xml:base="https://youngwonseo.github.io/2020/09/03/structure-boundary-preserving-segmentation/"></content><author><name>Youngwon Seo</name></author><summary type="html"></summary></entry><entry><title type="html">Prediction of Post-Intubation Tachycardia Using Machine-Learning Models</title><link href="https://youngwonseo.github.io/2020/09/01/post-intubation-tachycardia/" rel="alternate" type="text/html" title="Prediction of Post-Intubation Tachycardia Using Machine-Learning Models" /><published>2020-09-01T00:00:00+09:00</published><updated>2020-09-01T00:00:00+09:00</updated><id>https://youngwonseo.github.io/2020/09/01/post-intubation-tachycardia</id><content type="html" xml:base="https://youngwonseo.github.io/2020/09/01/post-intubation-tachycardia/"></content><author><name>Youngwon Seo</name></author><summary type="html"></summary></entry><entry><title type="html">Structured Nerual Summarization</title><link href="https://youngwonseo.github.io/2020/08/28/structured-nerual-summarization/" rel="alternate" type="text/html" title="Structured Nerual Summarization" /><published>2020-08-28T00:00:00+09:00</published><updated>2020-08-28T00:00:00+09:00</updated><id>https://youngwonseo.github.io/2020/08/28/structured-nerual-summarization</id><content type="html" xml:base="https://youngwonseo.github.io/2020/08/28/structured-nerual-summarization/">&lt;h2 id=&quot;adstract&quot;&gt;Adstract&lt;/h2&gt;
+&lt;h2 id=&quot;convlusions&quot;&gt;Convlusions&lt;/h2&gt;
+
+</description>
+        <pubDate>Mon, 21 Sep 2020 00:00:00 +0900</pubDate>
+        <link>https://youngwonseo.github.io/network-in-network/</link>
+        <guid isPermaLink="true">https://youngwonseo.github.io/network-in-network/</guid>
+        
+        
+      </item>
+    
+      <item>
+        <title>Breat Cancer Classification in Ultrasound Images using Transfer Learning</title>
+        <description>
+</description>
+        <pubDate>Tue, 08 Sep 2020 00:00:00 +0900</pubDate>
+        <link>https://youngwonseo.github.io/breat-cancer-classification/</link>
+        <guid isPermaLink="true">https://youngwonseo.github.io/breat-cancer-classification/</guid>
+        
+        
+      </item>
+    
+      <item>
+        <title>Structure Boundary Preserving Segmentation for Medical Imagewith Ambiguous Boundary</title>
+        <description>
+</description>
+        <pubDate>Thu, 03 Sep 2020 00:00:00 +0900</pubDate>
+        <link>https://youngwonseo.github.io/structure-boundary-preserving-segmentation/</link>
+        <guid isPermaLink="true">https://youngwonseo.github.io/structure-boundary-preserving-segmentation/</guid>
+        
+        
+      </item>
+    
+      <item>
+        <title>Prediction of Post-Intubation Tachycardia Using Machine-Learning Models</title>
+        <description>
+</description>
+        <pubDate>Tue, 01 Sep 2020 00:00:00 +0900</pubDate>
+        <link>https://youngwonseo.github.io/post-intubation-tachycardia/</link>
+        <guid isPermaLink="true">https://youngwonseo.github.io/post-intubation-tachycardia/</guid>
+        
+        
+      </item>
+    
+      <item>
+        <title>Structured Nerual Summarization</title>
+        <description>&lt;h2 id=&quot;adstract&quot;&gt;Adstract&lt;/h2&gt;
 
 &lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
 
@@ -83,15 +203,26 @@
 
 &lt;h2 id=&quot;related-work&quot;&gt;Related Work&lt;/h2&gt;
 
-&lt;h2 id=&quot;discussion--conclusions&quot;&gt;Discussion &amp;amp; Conclusions&lt;/h2&gt;</content><author><name>Youngwon Seo</name></author><summary type="html">Adstract</summary></entry><entry><title type="html">Hybrid computing using a nerual network with dynamic external memory</title><link href="https://youngwonseo.github.io/2020/08/26/differentiable-nerual-compupters/" rel="alternate" type="text/html" title="Hybrid computing using a nerual network with dynamic external memory" /><published>2020-08-26T00:00:00+09:00</published><updated>2020-08-26T00:00:00+09:00</updated><id>https://youngwonseo.github.io/2020/08/26/differentiable-nerual-compupters</id><content type="html" xml:base="https://youngwonseo.github.io/2020/08/26/differentiable-nerual-compupters/">&lt;p&gt;Differentiable Nerual Computers&lt;/p&gt;</content><author><name>Youngwon Seo</name></author><summary type="html">Differentiable Nerual Computers</summary></entry><entry><title type="html">Short-term Reproducibility of Pulmonary Nodule and Mass Detection in Chest Rediographs: Comparison among Radiologists and Four Different Computer-Aided Detections with Convolutional Neural Net</title><link href="https://youngwonseo.github.io/2020/08/20/reproducibility-pulmonary-nodule-mass-detection/" rel="alternate" type="text/html" title="Short-term Reproducibility of Pulmonary Nodule and Mass Detection in Chest Rediographs: Comparison among Radiologists and Four Different Computer-Aided Detections with Convolutional Neural Net" /><published>2020-08-20T00:00:00+09:00</published><updated>2020-08-20T00:00:00+09:00</updated><id>https://youngwonseo.github.io/2020/08/20/reproducibility-pulmonary-nodule-mass-detection</id><content type="html" xml:base="https://youngwonseo.github.io/2020/08/20/reproducibility-pulmonary-nodule-mass-detection/">&lt;ul&gt;
-  &lt;li&gt;pulmonary nodule : 고립성 폐결절&lt;/li&gt;
-&lt;/ul&gt;
+&lt;h2 id=&quot;discussion--conclusions&quot;&gt;Discussion &amp;amp; Conclusions&lt;/h2&gt;
 
-&lt;h2 id=&quot;abstract&quot;&gt;Abstract&lt;/h2&gt;
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;p&gt;단기간 같은 환자에 대한 고립성 폐결절의 computer-aided detection(CAM)과 masses for consecutive chest radiographies(CXRs)의 Radiologists와 ConvNet의 재현성을 조사&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;944개의 CXRs(chest PA) with nodules and masses, 2010,1 ~ 2016.11 Asan Medical Cneter&lt;/li&gt;
-  &lt;li&gt;&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>Youngwon Seo</name></author><summary type="html">pulmonary nodule : 고립성 폐결절</summary></entry></feed>
+</description>
+        <pubDate>Fri, 28 Aug 2020 00:00:00 +0900</pubDate>
+        <link>https://youngwonseo.github.io/structured-nerual-summarization/</link>
+        <guid isPermaLink="true">https://youngwonseo.github.io/structured-nerual-summarization/</guid>
+        
+        
+      </item>
+    
+      <item>
+        <title>Hybrid computing using a nerual network with dynamic external memory</title>
+        <description>&lt;p&gt;Differentiable Nerual Computers&lt;/p&gt;
+</description>
+        <pubDate>Wed, 26 Aug 2020 00:00:00 +0900</pubDate>
+        <link>https://youngwonseo.github.io/differentiable-nerual-compupters/</link>
+        <guid isPermaLink="true">https://youngwonseo.github.io/differentiable-nerual-compupters/</guid>
+        
+        
+      </item>
+    
+  </channel>
+</rss>

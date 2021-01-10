@@ -2,16 +2,17 @@
 <html>
   <head>
   <meta charset="utf-8">
-  <meta https-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width initial-scale=1">
 
-  <title>YoungWon</title>
-  <meta name="description" content="YoungwonSeo &copy 2020
+  <title>Graceful</title>
+  <meta name="description" content="YOUNGWON &copy 2021
 ">
-
+  
   <link rel="stylesheet" href="/css/main.css">
   <link rel="canonical" href="https://youngwonseo.github.io/blog/page/5/">
-  <link rel="alternate" type="application/atom+xml" title="YoungWon" href="https://youngwonseo.github.io/feed.xml" />
+  <link rel="alternate" type="application/atom+xml" title="Graceful" href="https://youngwonseo.github.io/feed.xml" />  
+  <link rel="stylesheet" href="/assets/css/syntax.css">
 </head>
 
   <body>
@@ -28,11 +29,13 @@
         
       
         
-        <a class="page-link" href="/archive/">Archive</a>
-        
       
         
       
+        
+      
+        
+        <a class="page-link" href="/category/">Paper</a>
         
       
         
@@ -40,21 +43,7 @@
         
       
         
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
+        <a class="page-link" href="/study/">Study</a>
         
       
         
@@ -80,19 +69,17 @@
         
       
       <a class="page-link" href="/feed.xml">RSS</a>
-      <!-- <a class="twitter page-link" href="httpss://twitter.com/fffabs"><span class="icon-twitter"></span></a>
-      <a class="facebook page-link" href="httpss://www.facebook.com/fffabs"><span class="icon-facebook"></span></a> -->
     </div>
   </nav>
 
   <!-- The title of the site -->
   <header class="site-header">
     <!-- <a href="/">
-      <div class="trigger">
+      <div class="avatar">
         <img src="/assets/images/avatar.png" />
       </div>
     </a> -->
-    <a class="site-title" href="/">YoungWon</a> -->
+    <a class="site-title" href="/">Graceful</a>
   </header>
 
 </div>
@@ -100,13 +87,8 @@
       <div class="wrapper">
         <div class="page-content">
           <!-- Brief intro -->
-<div class="header-intro">
-  <h2>YoungWon Seo</h2>
-  <p>Machine Learnig & Back-end Engineer.</p>
-  <br/>
-  <p>What I cannot create, I do not understand.</p>
-</div>
-<hr />
+<h1>Graceful</h1>
+
 <!-- End intro -->
 
 <div class="home">
@@ -114,34 +96,73 @@
   <ul id="post-list">
     
       <li>
-        <a href="/2019/11/16/07-02-keras/">
-        <aside class="dates">Nov 16</aside>
+        <a href="/services-labels-selectors/">
+        <aside class="dates">Aug 16</aside>
         </a>
-        <a href="/2019/11/16/07-02-keras/">딥러닝을 위한 고급도구#2 - 콜백와 모델성능올리기 <h2></h2></a>
+        <a href="/services-labels-selectors/">Services, Labels, and Selectors <h2></h2></a>
         <!-- <p>
-        <p>함수형 API</p>
+        <p><img src="/public/gcp/service1.PNG" alt="" /></p> <ul> <li>service는 POD에 고정 IP를 할당, POD간 통신 가능</li> <li>cluster에는 외부 IP와 내부 IP가 존재하며, 포트 노드는 IP에 대한 접근을 인식</li> <li>IP 접근시 로드 벨런스 사용</li> <li>다른 설정의 여러개의 서비스운영</li> <li>위 그림에서 프론트 및 백엔드 존재</li> <li>구글 클라우드 로드벨런서 작동</li> </ul> <p><img src="/public/gcp/service2.PNG" alt="" /></p> <ul>...
+        </p> -->
+      </li>
+    
+      <li>
+        <a href="/deployments-and-rolling-updates/">
+        <aside class="dates">Aug 16</aside>
+        </a>
+        <a href="/deployments-and-rolling-updates/">Deployments and Rolling Updates <h2></h2></a>
+        <!-- <p>
+        <ul> <li>컨테이너 기반의 장점은 응용을 분리해서 서비스로 연결하는 것</li> <li>또 다른 장점은 개발, 스테이징, 제품환경의 각 환경들을 비슷하게 유지하는것, 그래서 마이그레이션 쉬움</li> <li>이를 위해 kubernetes는 deployments, replica sets이라는 도구를 제공해서 빌드 및 운영환경을 나누고 스케일하는것을 관리하게 함</li> <li>이러한 툴을 사용하면 rolling updates, canaries, blue greens 업데이트를 쉽게할수 있음</li> </ul> <p><img...
+        </p> -->
+      </li>
+    
+      <li>
+        <a href="/clusters-nodes-pods/">
+        <aside class="dates">Aug 15</aside>
+        </a>
+        <a href="/clusters-nodes-pods/">Clusters, Nodes, and Pods <h2></h2></a>
+        <!-- <p>
+        <p>컨테이너를 사용하면 어플리케이션을 하드웨어, 소프트웨어, OS 요구사항에 맞게 모듈화 할 수 있습니다. 또한 같은 머신 또는 다른 머신에서 실행하고 빠르게 시작,정지할 수 있습니다. 하지만 머신 또는 컨테이너의 수, 실패에 대한 예외처리, 다른 컨테이너 또는 다른 스토리지들과의 연결에 대한 관리를 지원하지 않는데 이를 위해 Kubernates같은 컨테이너 오케스트레이션 시스템을 사용합니다.</p> <p>Kubernetes는 실행할...
+        </p> -->
+      </li>
+    
+      <li>
+        <a href="/what-is-docker/">
+        <aside class="dates">Aug 14</aside>
+        </a>
+        <a href="/what-is-docker/">GCP - What is Docker? <h2></h2></a>
+        <!-- <p>
+        <p><img src="/public/gcp/docker1.PNG" alt="" /></p>
+<ul>
+  <li>파이썬 웹 서버를 실행하는 도커</li>
+  <li>오른쪽은 Dockerfile의 내용</li>
+  <li>왼쪽은 해당 Dockerfile을 실행하는 command</li>
+</ul>
 
-<p>케라스 콜백과 텐서보드
-모델 성능 끌어올리기</p>
+<p><img src="/public/gcp/docker2.PNG" alt="" /></p>
+<ul>
+  <li>Image를 Registry에 push하거나 Refistry에서 pull해서 사용</li>
+</ul>
+
+<p><img src="/public/gcp/docker3.PNG" alt="" /></p>
 
         </p> -->
       </li>
     
       <li>
-        <a href="/2019/11/16/07-01-keras/">
-        <aside class="dates">Nov 16</aside>
+        <a href="/what-are-container/">
+        <aside class="dates">Aug 13</aside>
         </a>
-        <a href="/2019/11/16/07-01-keras/">딥러닝을 위한 고급도구#1 - 케라스 함수형 API <h2></h2></a>
+        <a href="/what-are-container/">GCP - What are Containers? <h2></h2></a>
         <!-- <p>
-        <h2 id="다중출력과-다중입력-모델">다중출력과 다중입력 모델</h2> <p>지금까지 실습한 모델을 보면 모두 Sequential 모델을 사용하여 만들었습니다. Sequential 모델은 입력과 출력이 각각 하나라고 가정합니다. 하지만 경우에 따라 여러개의 입력이 사용되거나 여러개의 출력이 사용됩니다. 예를 들어 중고 의류 시장의 가격을 예측하는 모델을 생각해봅시다. 입력데이터로 의류의 메타데이터(의류 브랜드, 연도, 새상품가격 등), 설명글(의류 상태 등의 판매자가 작성한...
+        <h1 id="컨테이너란-무엇인가">컨테이너란 무엇인가?</h1> <p>로그인, 재고 관리, 결제, 배송등의 기능이 있는 쇼핑몰을 개발한다고 할 때 하나의 응용 프로그램을 각 모듈로 나누어 개발할 수 있습니다. 이를 실행하기 위해(또한 확장을 위해) 여러개의 소프트웨어 인스턴스가 필요한데 이때 각 인스턴스는 하드웨어(CPU, RAM, DISK, ETC) 및 소프트웨어(OS, NETWORK, ETC) 요구사항이 있습니다.</p> <p><strong>컨테이너는 이러한 요구사항(H/W, S/W, to...
         </p> -->
       </li>
     
       <li>
-        <a href="/2019/11/15/06-04-keras/">
-        <aside class="dates">Nov 15</aside>
+        <a href="/js-standard/">
+        <aside class="dates">Aug 11</aside>
         </a>
-        <a href="/2019/11/15/06-04-keras/">컨브넷을 사용한 시퀀스 처리 <h2></h2></a>
+        <a href="/js-standard/">자바스크립트 표준 - 속깊은 자바스크립트 <h2></h2></a>
         <!-- <p>
         
 
@@ -149,72 +170,213 @@
       </li>
     
       <li>
-        <a href="/2019/11/15/06-03-keras/">
-        <aside class="dates">Nov 15</aside>
+        <a href="/backpropagation/">
+        <aside class="dates">Aug 1</aside>
         </a>
-        <a href="/2019/11/15/06-03-keras/">순환 신경망의 고급 사용법 <h2></h2></a>
+        <a href="/backpropagation/">딥러닝의 역전파 <h2></h2></a>
         <!-- <p>
-        <p>이번 포스트에서는 순환신경망의 성능과 일반화 능력을 향상시키기 위한 세 가지 고급 기술을 살펴보겠습니다. 이를 위해 건물 옥상에서 측정된 온도, 기압, 습도와 같은 데이터를 이용하여 24시간 이후의 온도를 예측하는 문제를 풀어보겠습니다.</p> <ul> <li>순환 드롭아웃(recurrent dropout):</li> <li>스태킹 순환 층(stacking recurrent layer):</li> <li>양뱡항 순환 층(bidirectional recurrent layer):</li> </ul> <h2 id="기온-예측-문제">기온 예측 문제</h2> <p>wget...
+        <p>여기서는 역전파의 기본원리를 알아보겠습니다. 이를 위해 계산 그래프(computational graph)를 이용합니다. 계산 그래프는 계산과정을 그래프(node와 edge로 구성)구조로 나타내는 것을 의미합니다. 일반적인 수식으로 이해하는 것보다 좀더 직관적이고 쉽게 이해할 수 있는 장점이 있습니다.</p> <p>또한 신경망과 비용함수, 경사하강법등의 기본지식을 알고 있다고 가정하고 설명을 진행합니다.</p> <h1 id="계산-그래프">계산 그래프</h1> <p>먼저 계산그래프의 예를 살펴보겠습니다. 다음과 같은...
         </p> -->
       </li>
     
       <li>
-        <a href="/2019/11/15/06-02-keras/">
-        <aside class="dates">Nov 15</aside>
+        <a href="/jquery-promise/">
+        <aside class="dates">Jul 30</aside>
         </a>
-        <a href="/2019/11/15/06-02-keras/">순환 신경망 이해하기 <h2></h2></a>
-        <!-- <p>
-        <p>이번 글에는 순환 신경망(recurrent nerual network)에 대해 알아봅니다.</p> <p>이전까지의 네트워크 구조를 살펴보면 메모리를 포함하고 있지 않다는 것입니다. 입력은 개별적으로 처리되며 입력간의 유지되는 상태는 존재하지 않습니다. 이는 순차 데이터나 시계열 데이터를 처리하는데 있어서 시계열 데이터를 하나의 데이터 포인트(텐서)로 변환후 각각 처리해야합니다. 이전 입력은 현재 입력과 독립되어 있습니다.</p> <p>이와 다르게 입력에 대한...
-        </p> -->
-      </li>
-    
-      <li>
-        <a href="/2019/11/15/06-01-keras/">
-        <aside class="dates">Nov 15</aside>
-        </a>
-        <a href="/2019/11/15/06-01-keras/">텍스트 데이터 처리하기 - 순환 신경망 <h2></h2></a>
-        <!-- <p>
-        <p>이번장에서는 텍스트(단어의 시퀀스 또는 문자의 시퀀스), 시계열 또는 시퀀스 데이터를 처리하는 딥러닝 모델을 살펴봅니다. 기본적으로 시퀀스 데이터 처리를 위한 딥러닝 모델은 순환 신경망(recurrent neural network)과 1D 컨브넷(1D convnet)입니다.</p> <p>먼저 가장 대표적인 시퀀스 데이터인 텍스트(문장 및 단어)를 다뤄보겠습니다.</p> <h2 id="1-텍스트-데이터-다루기">1. 텍스트 데이터 다루기</h2> <p>텍스트 패턴인식</p> <p>다음은</p> <ul> <li>텍스트를 단어로 나누고 각...
-        </p> -->
-      </li>
-    
-      <li>
-        <a href="/2019/11/15/03-informed_search/">
-        <aside class="dates">Nov 15</aside>
-        </a>
-        <a href="/2019/11/15/03-informed_search/">Informed Search(Heuristic Search) <h2></h2></a>
-        <!-- <p>
-        <p>어떤 문제에서 goal까지의 경로를 찾을 때, 모든 경로를 검사하게 되면 상당히 비 효율적이다. 대표적인 예로 깊이우선탐색(BFS : Breadth First Search)나 깊이우선 탐색(Depth First Search)으로 문제에 대한 해는 주어지지만 결국 가능한 모든 경로를 검사하며 Search를 수행한다. 이러한 방법을 Uninformd Search 또는 Blind Search라 한다.</p> <p>Informed Search란 위 처럼 모든 경로를 탐색하기...
-        </p> -->
-      </li>
-    
-      <li>
-        <a href="/2019/11/15/02-alpha-beta-pruning/">
-        <aside class="dates">Nov 15</aside>
-        </a>
-        <a href="/2019/11/15/02-alpha-beta-pruning/">Alpha-beta Pruning <h2></h2></a>
-        <!-- <p>
-        <p>*Minmax Search를 먼저 이해하여야 한다.</p> <p>Alpha Beta Pruning 이란 Minmax Search에서 발생하는 연산을 최소한으로 감소시킬수 있는 알고리즘이다. 기존의 MinmaxSearch는 트리를 생성한 후 상태를 평가한다. 즉 생성과 판단이 분리되어 있고 각각 이루어 져야하지만 Alpha Beta Pruning은 이러한 Minmax의 문제점을 보완하고자 생성과 판단을 동시에 진행한다. 이는 트리를 깊이 생성할수록 생성되기전 Pruning으로 인하여...
-        </p> -->
-      </li>
-    
-      <li>
-        <a href="/2019/11/15/01-minmax-search/">
-        <aside class="dates">Nov 15</aside>
-        </a>
-        <a href="/2019/11/15/01-minmax-search/">Minmax Search <h2></h2></a>
-        <!-- <p>
-        <p>Minmax Search는 Adversarial Search 알고리즘으로써 두 에이전트(플레이어)가 게임을 시행할 때 앞의 몇수를 계산하는 알고리즘입니다. 여기서는 Minmax Search를 설명하기 위해 틱택톡 게임을 예로 설명하겠습니다(Tic-Tac-Toe : 3X3의 보드에 3개의 돌이 연속적으로 열,행 혹은 대각선이 되도록 먼저 두는자가 승리하는 게임이다. 한국의 오목과 유사하다).</p> <p><img src="/public/ai/01_minmax.png" alt="" /></p> <p>위의 트리는 Minmax Search의 결과 트리로써...
-        </p> -->
-      </li>
-    
-      <li>
-        <a href="/2019/11/13/sentence-classification-cnn/">
-        <aside class="dates">Nov 13</aside>
-        </a>
-        <a href="/2019/11/13/sentence-classification-cnn/">Sentence Classification Cnn <h2></h2></a>
+        <a href="/jquery-promise/">Jquery Promise <h2></h2></a>
         <!-- <p>
         
+
+        </p> -->
+      </li>
+    
+      <li>
+        <a href="/01-rx-java/">
+        <aside class="dates">Jul 26</aside>
+        </a>
+        <a href="/01-rx-java/">01 Rx Java <h2></h2></a>
+        <!-- <p>
+        
+
+        </p> -->
+      </li>
+    
+      <li>
+        <a href="/kafka-desing-01/">
+        <aside class="dates">Jul 21</aside>
+        </a>
+        <a href="/kafka-desing-01/">Kafka Desing 01 <h2></h2></a>
+        <!-- <p>
+        
+<p>카프카 디자인의 특성</p>
+
+<p>분산 시스템
+페이지 캐시
+배치 전송 처리</p>
+
+<p>카프카 데이터 모델</p>
+
+<p>토픽
+파티션</p>
+
+<p>카프카의 고가용성과 리플리케이션</p>
+
+
+        </p> -->
+      </li>
+    
+      <li>
+        <a href="/01-scala-start/">
+        <aside class="dates">Jul 17</aside>
+        </a>
+        <a href="/01-scala-start/">스칼라 입문 <h2></h2></a>
+        <!-- <p>
+        <p>#
+값</p>
+
+<p>변수</p>
+
+<p>타입</p>
+
+<p>튜플</p>
+
+<h1 id="references">References</h1>
+<ul>
+  <li><a href="http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&amp;mallGb=KOR&amp;barcode=9791185890791&amp;orderClick=LAG&amp;Kc=">러닝 스칼라</a></li>
+</ul>
+
+        </p> -->
+      </li>
+    
+      <li>
+        <a href="/time-series/">
+        <aside class="dates">Jul 15</aside>
+        </a>
+        <a href="/time-series/">시계열 데이터 분석 입문하기 <h2></h2></a>
+        <!-- <p>
+        <p>본 글은 시계열 데이터 분석에 앞서 시계열 데이터의 특성을 알아보고 시계열 데이터 분석을 위한 방법론들을 살펴보겠습니다.</p> <h1 id="1-시계열-데이터란">1. 시계열 데이터란?</h1> <p>시계열(time series) 데이터란 일정한 시간 간격으로 배치된 데이터를 의미합니다. 즉 시간을 기준으로 생성(발생)된 데이터를 의미합니다. 이때 각 데이터들은 시간을 기준으로 앞, 뒤라는 순서가 존재하고 대부분의 경우 시간을 기준으로 의존성을 가지게...
+        </p> -->
+      </li>
+    
+      <li>
+        <a href="/java-ds-alg-start/">
+        <aside class="dates">Jul 13</aside>
+        </a>
+        <a href="/java-ds-alg-start/"> Java Ds Alg Start <h2></h2></a>
+        <!-- <p>
+        
+<p>List</p>
+<ul>
+  <li>ArrayList</li>
+  <li>LinkedList</li>
+</ul>
+
+<p>Deque</p>
+<ul>
+  <li>ArrayDeque</li>
+</ul>
+
+<p>Map</p>
+<ul>
+  <li>Hash</li>
+  <li>Tree</li>
+</ul>
+
+
+        </p> -->
+      </li>
+    
+      <li>
+        <a href="/java-collection/">
+        <aside class="dates">Jul 11</aside>
+        </a>
+        <a href="/java-collection/">Java Collection <h2></h2></a>
+        <!-- <p>
+        
+
+        </p> -->
+      </li>
+    
+      <li>
+        <a href="/recommender-system/">
+        <aside class="dates">Jul 9</aside>
+        </a>
+        <a href="/recommender-system/">추천시스템 간략소개(무비랜드 데이터셋을 활용한 추천시스템) <h2></h2></a>
+        <!-- <p>
+        <h2 id="사용자-기반-협업-필터링">사용자 기반 협업 필터링</h2> <p>사용자 기반 협업 필터링은 “당신과 비슷한 상품을 구매한 고객은 이런 상품도 구매했다”의 방법으로 사용자 구매목록을 기반으로 추천을 하는 방식입니다.</p> <p>대표적 유사도로 피어슨 상관계수, 코사인 유사도, 자타드 계수가 존재합니다.</p> <h3 id="피어슨-상관계수pearson-product-moment-correlation-coefficient">피어슨 상관계수(Pearson product-moment correlation coefficient)</h3> <h3 id="코사인-유사도cosine-similarity">코사인 유사도(Cosine similarity)</h3> <h3 id="자카드-계수jaccard-index-jaccard-similarity-coefficient">자카드 계수(Jaccard index, Jaccard similarity coefficient)</h3>...
+        </p> -->
+      </li>
+    
+      <li>
+        <a href="/js-search-dom/">
+        <aside class="dates">Jul 8</aside>
+        </a>
+        <a href="/js-search-dom/">자바스크립트 - DOM 탐색 <h2></h2></a>
+        <!-- <p>
+        <p>자바스크립트에서 특정 DOM을 조작할려고 할 때, 우리는 먼저 DOM을 document.getElementById 등의 셀렉터로 찾습니다. 웹(프론트)을 개발하다보면 정말 수도 없이 사용하는 함수입니다. 그런데 이러한 DOM을 찾는 함수도 트리를 탐색하기 때문에 CPU소모가 발생합니다. 여기서는 트리탐색을 최소화하는 몇 가지 방법을 산단하게 살펴보겠습니다.</p> <p>다음은 트리탐색이 많은 안티패턴입니다.</p> <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span...
+        </p> -->
+      </li>
+    
+      <li>
+        <a href="/js-repaint-reflow/">
+        <aside class="dates">Jul 8</aside>
+        </a>
+        <a href="/js-repaint-reflow/">자바스크립트 = Repaint와 Reflow <h2></h2></a>
+        <!-- <p>
+        <p>자바스크립트의 중요한 특징 가운데 하나는 DOM과 상호작용한다는 것입니다. DOM은 Document Object Model의 약자로 플랫폼이나 언어에 독립적으로 문서를 구성하고 디자인을 적용시킬 수 있는 인터페이스 입니다. HTML과 함께 XML, SVG등이 DOM을 기반으로 구성됩니다.</p> <p>자바스크립트는 특히 HTML과 조합되어 사용자에게 적절한 데이터를 보여줍니다. 최근에는 비동기통신으로 자바스크립트에서 받은 데이터를 HTML의 DOM조작 통해서 동적으로 데이터를 출력하거나...
+        </p> -->
+      </li>
+    
+      <li>
+        <a href="/mongodb-space-search/">
+        <aside class="dates">Jul 7</aside>
+        </a>
+        <a href="/mongodb-space-search/">몽고DB - 확장 검색 쿼리(Map Reduce, Aggregation) <h2></h2></a>
+        <!-- <p>
+        <h2 id="insert">INSERT</h2>
+
+<h2 id="update">UPDATE</h2>
+
+<h2 id="removedelete">REMOVE(DELETE)</h2>
+
+<h2 id="find">FIND</h2>
+
+
+        </p> -->
+      </li>
+    
+      <li>
+        <a href="/mongodb-fulltext-search/">
+        <aside class="dates">Jul 6</aside>
+        </a>
+        <a href="/mongodb-fulltext-search/">몽고DB - 확장 검색 쿼리(Map Reduce, Aggregation) <h2></h2></a>
+        <!-- <p>
+        <h2 id="insert">INSERT</h2>
+
+<h2 id="update">UPDATE</h2>
+
+<h2 id="removedelete">REMOVE(DELETE)</h2>
+
+<h2 id="find">FIND</h2>
+
+
+        </p> -->
+      </li>
+    
+      <li>
+        <a href="/mongodb-aggregation/">
+        <aside class="dates">Jul 5</aside>
+        </a>
+        <a href="/mongodb-aggregation/">몽고DB - 확장 검색 쿼리(Map Reduce, Aggregation) <h2></h2></a>
+        <!-- <p>
+        <h2 id="insert">INSERT</h2>
+
+<h2 id="update">UPDATE</h2>
+
+<h2 id="removedelete">REMOVE(DELETE)</h2>
+
+<h2 id="find">FIND</h2>
+
 
         </p> -->
       </li>
@@ -234,7 +396,7 @@
 
         </div>
         <footer class="site-footer">
-<p class="small">YoungwonSeo &copy 2020
+<p class="small">YOUNGWON &copy 2021
 </p>
 </footer>
 
@@ -252,29 +414,16 @@
 
 
     <!-- Twitter Shizzle -->
-    <!-- <script type="text/javascript">
+    <script type="text/javascript">
     window.twttr = (function (d, s, id) {
       var t, js, fjs = d.getElementsByTagName(s)[0];
       if (d.getElementById(id)) return;
       js = d.createElement(s); js.id = id;
-      js.src= "httpss://platform.twitter.com/widgets.js";
+      js.src= "https://platform.twitter.com/widgets.js";
       fjs.parentNode.insertBefore(js, fjs);
       return window.twttr || (t = { _e: [], ready: function (f) { t._e.push(f) } });
     }(document, "script", "twitter-wjs"));
-    </script> -->
-    	<!-- Google Analytics -->
-  <script>
-		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-		})(window,document,'script','httpss://www.google-analytics.com/analytics.js','ga');
-		
-		ga('create', 'UA-78263144-1', 'auto');
-		ga('send', 'pageview');
-		</script>
-		<!-- End Google Analytics -->
-</header>
-
+    </script>
 
   </body>
 </html>
