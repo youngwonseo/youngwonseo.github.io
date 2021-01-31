@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width initial-scale=1">
+
+  <title>이펙티브자바 #1 - 생성과 파괴</title>
+  <meta name="description" content="생성과 파괴에서는 객체를 만들때와 만들지 말아야할때, 올바른 객체 생성 방법, 불필요한 생성을 피하는 방법등을 숙지합니다.">
+  
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="https://youngwonseo.github.io/%EC%9D%B4%ED%8E%99%ED%8B%B0%EB%B8%8C%EC%9E%90%EB%B0%94/effective-java-01/">
+  <link rel="alternate" type="application/atom+xml" title="서영원 블로그" href="https://youngwonseo.github.io/feed.xml" />  
+  <link rel="stylesheet" href="/assets/css/syntax.css">
+</head>
+
+  <body>
+    
+
+<div class="header-container" id="header-container">
+
+<!-- Site navigation -->
+  <nav class="site-nav">
+    <div class="trigger">
+      
+        
+        <a class="page-link" href="/about/">About</a>
+        
+      
+        
+        <a class="page-link" href="/archive/">Archive</a>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+        <a class="page-link" href="/category/">Paper</a>
+        
+      
+        
+        <a class="page-link" href="/projects/">Projects</a>
+        
+      
+        
+        <a class="page-link" href="/study/">Study</a>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+      <a class="page-link" href="/feed.xml">RSS</a>
+    </div>
+  </nav>
+
+  <!-- The title of the site -->
+  <header class="site-header">
+    <!-- <a href="/">
+      <div class="avatar">
+        <img src="/assets/images/avatar.png" />
+      </div>
+    </a> -->
+    <a class="site-title" href="/">서영원 블로그</a>
+  </header>
+
+</div>
+
+      <div class="wrapper">
+        <div class="page-content">
+          <div class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">이펙티브자바 #1 - 생성과 파괴</h1>
+    <p class="post-meta">2020-01-01 / 서영원</p>
+  </header>
+
+
+
+  <article class="post-content">
+    <p><strong>생성과 파괴</strong>에서는 객체를 만들때와 만들지 말아야할때, 올바른 객체 생성 방법, 불필요한 생성을 피하는 방법등을 숙지합니다.</p>
+
+<h2 id="아이템-1-생성자-대신-정적-팩터리-메서드를-고려하라">아이템 1. 생성자 대신 정적 팩터리 메서드를 고려하라</h2>
+<ul>
+  <li></li>
+  <li>디자인 패턴의 팩터리 메서드와는 관계없음</li>
+  <li>정적 팩터리 메서드가 생성자보다 좋은 다섯가지 장점
+    <ul>
+      <li>첫 번째,</li>
+      <li>두 번째,</li>
+      <li>세 번째,</li>
+      <li>네 번째,</li>
+      <li>다섯 번째,</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="아이템-2-생성자에-매개변수가-많다면-빌더를-고려하라">아이템 2. 생성자에 매개변수가 많다면 빌더를 고려하라</h2>
+
+<h2 id="아이템-3-private-생성자나-열거-타입으로-싱글턴임을-보증하라">아이템 3. private 생성자나 열거 타입으로 싱글턴임을 보증하라</h2>
+
+<h2 id="아이템-4-인스턴스화를-막으려거든-private생성자를-사용하라">아이템 4. 인스턴스화를 막으려거든 private생성자를 사용하라</h2>
+
+<h2 id="아이템-5-자원을-직접-명시하지-말고-의존-객체-주입을-사용하라">아이템 5. 자원을 직접 명시하지 말고 의존 객체 주입을 사용하라</h2>
+
+<h2 id="아이템-6-불필요한-객체-생성을-피하라">아이템 6. 불필요한 객체 생성을 피하라</h2>
+
+<h2 id="아이템-7-다-쓴-객체-참조를-해제하라">아이템 7. 다 쓴 객체 참조를 해제하라</h2>
+
+<h2 id="아이템-8-finalizer와-cleaner-사용을-피하라">아이템 8. finalizer와 cleaner 사용을 피하라</h2>
+
+<h2 id="아이템-9-try-finally보다는-try-with-resources를-사용하라">아이템 9. try-finally보다는 try-with-resources를 사용하라</h2>
+
+<h1 id="references">References</h1>
+<ul>
+  <li></li>
+</ul>
+
+  </article>
+
+  <hr>
+
+  <!-- <div class="question">
+    <h2>Questions?</h2>
+    <p>Have a question regarding the post above? <br />Or any of my designs?</p>
+    
+
+  </div> -->
+
+  <!-- <div class="related">
+    <h2>Related</h2>
+    
+      <li><a href="/nestjs-microservice/" title="Nestjs Microservice">Nestjs Microservice
+       &nbsp; <span class="post-meta">January 31, 2021</span></a>
+    
+      <li><a href="/%EB%8F%84%EC%BB%A4/docker-aws-travis/" title="도커와 AWS기반으로 CI환경 구축하기">도커와 AWS기반으로 CI환경 구축하기
+       &nbsp; <span class="post-meta">January 30, 2021</span></a>
+    
+      <li><a href="/%EB%8F%84%EC%BB%A4/docker-swarm/" title="도커 스웜">도커 스웜
+       &nbsp; <span class="post-meta">January 28, 2021</span></a>
+    
+  </div> -->
+
+  
+  
+    <div id="disqus_thread"></div>
+    <script>
+        /**
+        *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+        *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables    */
+        /*
+        var disqus_config = function () {
+        this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+        this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        };
+        */
+        (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        s.src = 'https://youngwonseo.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  
+
+</div>
+
+        </div>
+        <footer class="site-footer">
+<p class="small">YOUNGWON &copy 2021
+</p>
+</footer>
+
+    </div>
+
+    <script src="//cdn.jsdelivr.net/headroomjs/0.5.0/headroom.min.js"></script>
+    <script type="text/javascript">
+      var el = document.querySelector(".header-container");
+      var headroom  = new Headroom(el, {
+        "offset": 205,
+        "tolerance": 5
+      });
+      headroom.init();
+    </script>
+
+
+    <!-- Twitter Shizzle -->
+    <script type="text/javascript">
+    window.twttr = (function (d, s, id) {
+      var t, js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src= "https://platform.twitter.com/widgets.js";
+      fjs.parentNode.insertBefore(js, fjs);
+      return window.twttr || (t = { _e: [], ready: function (f) { t._e.push(f) } });
+    }(document, "script", "twitter-wjs"));
+    </script>
+
+  </body>
+</html>

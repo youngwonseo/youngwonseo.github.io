@@ -10,7 +10,7 @@
   
   <link rel="stylesheet" href="/css/main.css">
   <link rel="canonical" href="https://youngwonseo.github.io/what-are-container/">
-  <link rel="alternate" type="application/atom+xml" title="Graceful" href="https://youngwonseo.github.io/feed.xml" />  
+  <link rel="alternate" type="application/atom+xml" title="서영원 블로그" href="https://youngwonseo.github.io/feed.xml" />  
   <link rel="stylesheet" href="/assets/css/syntax.css">
 </head>
 
@@ -25,6 +25,10 @@
       
         
         <a class="page-link" href="/about/">About</a>
+        
+      
+        
+        <a class="page-link" href="/archive/">Archive</a>
         
       
         
@@ -65,6 +69,8 @@
       
         
       
+        
+      
       <a class="page-link" href="/feed.xml">RSS</a>
     </div>
   </nav>
@@ -76,7 +82,7 @@
         <img src="/assets/images/avatar.png" />
       </div>
     </a> -->
-    <a class="site-title" href="/">Graceful</a>
+    <a class="site-title" href="/">서영원 블로그</a>
   </header>
 
 </div>
@@ -87,7 +93,7 @@
 
   <header class="post-header">
     <h1 class="post-title">GCP - What are Containers?</h1>
-    <p class="post-meta">August 13, 2019 • Youngwon Seo</p>
+    <p class="post-meta">2019-08-13 / Youngwon Seo</p>
   </header>
 
 
@@ -106,30 +112,30 @@
 <p>Introduction to Containers and Docker
 Part1 : Containers</p>
 
-<p><img src="/public/gcp/container1.PNG" alt="" /></p>
+<p><img src="/assets/post/gcp/container1.PNG" alt="" /></p>
 
 <h2 id="기존방식">기존방식</h2>
 <p>베어 메탈 서버같은 하드웨어를 설치하고 OS 또는 커널, 종속되는 소프트웨어 및 환경설정 후 응용프로그램을 설치
 Bare Metal Server :</p>
 
-<p><img src="/public/gcp/container2.PNG" alt="" /></p>
+<p><img src="/assets/post/gcp/container2.PNG" alt="" /></p>
 
 <h2 id="하이퍼-바이저">하이퍼 바이저</h2>
 <p>VMWare가 개발한것으로 하드웨어를 커널과 분리(하드웨어와 응용 분리가 목적)하는 계층, 이것은 추상화 레벨1에 해당(Virtual Machine)
 그러나 하나의 VM에 동일한 어플리케이션 또는 여러버전의 어플리케이션을 설치 할 수 없는 문제가 존재
 이것을 여러개의 VM설치하여 해결, 그러나 이것은 비용이 많이들고 비효율적</p>
 
-<p><img src="/public/gcp/container3.PNG" alt="" /></p>
+<p><img src="/assets/post/gcp/container3.PNG" alt="" /></p>
 
 <p>이것을 해결한것이 다음 그림
 하드웨어와 하이퍼 바이저를 분리, 컨테이너를 사용하여 응용 및 종속성을 분리
 portable, 효율적, Container 내부는 커널이나 하드웨어와 종속성이 없음</p>
 
-<p><img src="/public/gcp/container4.PNG" alt="" /></p>
+<p><img src="/assets/post/gcp/container4.PNG" alt="" /></p>
 
-<p><img src="/public/gcp/container5.PNG" alt="" /></p>
+<p><img src="/assets/post/gcp/container5.PNG" alt="" /></p>
 
-<p><img src="/public/gcp/container6.PNG" alt="" /></p>
+<p><img src="/assets/post/gcp/container6.PNG" alt="" /></p>
 
 
   </article>
@@ -143,19 +149,42 @@ portable, 효율적, Container 내부는 커널이나 하드웨어와 종속성�
 
   </div> -->
 
-  <div class="related">
+  <!-- <div class="related">
     <h2>Related</h2>
     
-      <li><a href="/again-probability/" title="[길벗] 다시 확률통계 확률편 리뷰">[길벗] 다시 확률통계 확률편 리뷰
-       &nbsp; <span class="post-meta">January 06, 2021</span></a>
+      <li><a href="/nestjs-microservice/" title="Nestjs Microservice">Nestjs Microservice
+       &nbsp; <span class="post-meta">January 31, 2021</span></a>
     
-      <li><a href="/debounce-throttle/" title="자바스크립트 - 실시간검색과 무한스크롤(디바운스와 스로틀) ">자바스크립트 - 실시간검색과 무한스크롤(디바운스와 스로틀) 
-       &nbsp; <span class="post-meta">January 05, 2021</span></a>
+      <li><a href="/%EB%8F%84%EC%BB%A4/docker-aws-travis/" title="도커와 AWS기반으로 CI환경 구축하기">도커와 AWS기반으로 CI환경 구축하기
+       &nbsp; <span class="post-meta">January 30, 2021</span></a>
     
-      <li><a href="/image-resize/" title="파이썬 이미지 리사이즈">파이썬 이미지 리사이즈
-       &nbsp; <span class="post-meta">October 09, 2020</span></a>
+      <li><a href="/%EB%8F%84%EC%BB%A4/docker-swarm/" title="도커 스웜">도커 스웜
+       &nbsp; <span class="post-meta">January 28, 2021</span></a>
     
-  </div>
+  </div> -->
+
+  
+  
+    <div id="disqus_thread"></div>
+    <script>
+        /**
+        *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+        *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables    */
+        /*
+        var disqus_config = function () {
+        this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+        this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        };
+        */
+        (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        s.src = 'https://youngwonseo.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  
 
 </div>
 

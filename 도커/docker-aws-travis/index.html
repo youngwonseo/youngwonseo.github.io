@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width initial-scale=1">
+
+  <title>도커와 AWS기반으로 CI환경 구축하기</title>
+  <meta name="description" content="여기서는 다음과 같은 시스템을 구성하여 마스터 브런치에 코드가 머지될때 Travis CI에서 코드를 테스트하고 테스트가 완료되면 AWS의 Bean에 프로덕션이 배포가 되는 것을 자동적으로 구성하는…중요한점은 마스터 브런치에 풀리퀘스트가 머지되면 이후 테스트와 배포를 자동으로 해준다...">
+  
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="https://youngwonseo.github.io/%EB%8F%84%EC%BB%A4/docker-aws-travis/">
+  <link rel="alternate" type="application/atom+xml" title="서영원 블로그" href="https://youngwonseo.github.io/feed.xml" />  
+  <link rel="stylesheet" href="/assets/css/syntax.css">
+</head>
+
+  <body>
+    
+
+<div class="header-container" id="header-container">
+
+<!-- Site navigation -->
+  <nav class="site-nav">
+    <div class="trigger">
+      
+        
+        <a class="page-link" href="/about/">About</a>
+        
+      
+        
+        <a class="page-link" href="/archive/">Archive</a>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+        <a class="page-link" href="/category/">Paper</a>
+        
+      
+        
+        <a class="page-link" href="/projects/">Projects</a>
+        
+      
+        
+        <a class="page-link" href="/study/">Study</a>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+      <a class="page-link" href="/feed.xml">RSS</a>
+    </div>
+  </nav>
+
+  <!-- The title of the site -->
+  <header class="site-header">
+    <!-- <a href="/">
+      <div class="avatar">
+        <img src="/assets/images/avatar.png" />
+      </div>
+    </a> -->
+    <a class="site-title" href="/">서영원 블로그</a>
+  </header>
+
+</div>
+
+      <div class="wrapper">
+        <div class="page-content">
+          <div class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">도커와 AWS기반으로 CI환경 구축하기</h1>
+    <p class="post-meta">2021-01-30 / 서영원</p>
+  </header>
+
+
+
+  <article class="post-content">
+    <p>여기서는 다음과 같은 시스템을 구성하여 마스터 브런치에 코드가 머지될때 <strong>Travis CI</strong>에서 코드를 테스트하고 테스트가 완료되면 <strong>AWS의 Bean</strong>에 프로덕션이 배포가 되는 것을 자동적으로 구성하는…
+중요한점은 마스터 브런치에 풀리퀘스트가 머지되면 이후 테스트와 배포를 자동으로 해준다는 점입니다.</p>
+
+<p>TravisCI는 깃헙레포지토리에 변경이 생기면 코드를 pull하고 테스트를 진행합니다. 테스트가 성공정으로 통과되면 AWS에 배포를 진행합니다.</p>
+
+<p><img src="/assets/post/docker/docker-aws-travis.png" alt="" /></p>
+
+<p>완성된 코드는 <a href="https://github.com/youngwonseo/docker-react">여기</a>서 확인하실 수 있습니다.</p>
+
+<p><br /></p>
+
+<h2 id="1-깃허브-세팅">1. 깃허브 세팅</h2>
+<p>예제를 위해 docker-react라는 레포지토리를 깃헙에 생성하겠습니다.</p>
+
+<p><br /></p>
+
+<h2 id="2-travis-ci-세팅">2. Travis CI 세팅</h2>
+<h3 id="travisci-계정-생성과-레포지토리-연결">TravisCI 계정 생성과 레포지토리 연결</h3>
+<p><a href="https://travis-ci.com/" target="_blank">TravisCI</a> 웹사이트에서 깃헙아이디를 사용해 로그인 합니다. 로그인이 완료되면 Settings의 GitHub Apps Integration를 선택해서 1번과성에서 생성한 docker-react를 연결합니다. 연결과정에서 내 깃헙의 모든 레포지토리연결과 선택된 레포지토리만 연결하는 2가지 옵션중 하나를 선택할 수 있습니다.</p>
+
+<p><img src="/assets/post/docker/docker-travis-repository.png" alt="" /></p>
+
+<p>만약 sign up for beta라는 메세지가 출력된다면 Setting의 Migrate에서 해결할 수 있습니다.</p>
+
+<h3 id="travisyml-작성">.travis.yml 작성</h3>
+<p>Travis에 연결된 레포지토리에 머지가 완료될때 테스트를 어떻게 실행하고 어디에 어떻게 배포할지 설정하는 스트립트를 작성해야합니다. 이 파일이름을 .travis.yml</p>
+
+<ol>
+  <li></li>
+</ol>
+
+<ul>
+  <li>sudo : 명령어 실행에 있어 항상 루트권한이 필요하다는 것을 설정(도커 CLI를 사용하기 때문에)</li>
+  <li>services : docker를 실행하겠다는 것을 명시</li>
+  <li>before_install : 테스트를 수행하기전 실행해야하는 작업정의, 여기서는 도커 이미지를 생성합니다.
+    <ul>
+      <li>-t는 빌드된 이미지에 이름을 지정하는 옵션, travis내부에서만 사용되는 이름</li>
+      <li>-f는 도커파일을 지정하는 옵션</li>
+    </ul>
+  </li>
+  <li>script : 테스트를 수행하기 위한 명령어
+    <ul>
+      <li>– –coverage는 npm이 테스트를 실행하는지 확인하기 위한 옵션</li>
+    </ul>
+  </li>
+</ul>
+
+<p>Dockerfile과 Dockerfile.dev</p>
+
+<p>master에 푸시를 진행하겠습니다.</p>
+
+<p><img src="/assets/post/docker/docker-travis-testing.png" alt="" /></p>
+
+<p><br /></p>
+
+<p>테스트를 완료하면 다음과 같이 초록색으로 변경됩니다(위와 다른 커밋입니다)
+<img src="/assets/post/docker/docker-travis-test-completed.png" alt="" /></p>
+
+<p><br /></p>
+
+<h2 id="3-aws-elastic-beanstalk-세팅">3. AWS Elastic Beanstalk 세팅</h2>
+
+<p>AWS에 접속후 로그인을 합니다.
+로그인이 완료되면 Elastic Beanstalk에서 Create Application을 수행합니다.
+이때 플랫폼은 Docker, 플랫폼 브랜치를 Docker running on 64bit Amazon Linux를 선택합니다.</p>
+
+<p><img src="/assets/post/docker/docker-elasticbeanstalk-setting.png" alt="" /></p>
+
+<p>로드벨런스는 Elastic의 일부
+Elastic Beanstalk은 가상머신으로 접근하는 트래픽을 모니터링하고 트래픽양에따라 가상머신의 수를 조절합니다.</p>
+
+<p><img src="/assets/post/docker/docker-elasticbeanstalk1.png" alt="" />
+<img src="/assets/post/docker/docker-elasticbeanstalk2.png" alt="" /></p>
+
+<p>Elasktic Beanstalk 어플리케이션이 완료되면 콘솔에서 다음과 같은 화면을 확인할 수있습니다. 상단에 url에 접근하면 컨테이너내부의 어플리케이션에 접속할 수 있습니다.</p>
+
+<h2 id="4-travisci에서-aws-elastic-beanstalk으로-배포">4. TravisCI에서 AWS Elastic Beanstalk으로 배포</h2>
+<p>3단계에서 만든 Elastic Beanstalk 환경에 앱을 배포(deploy)하는 스크립트를 .travis.yml에 추가합니다.</p>
+
+<p>Dockerreact-env-1.eba-mexwcx4k.us-west-2.elasticbeanstalk.com</p>
+
+<ul>
+  <li>provider : 배포할 서비스</li>
+  <li>region: Elastic Beanstalk url에 포함되어 있는 region</li>
+  <li>app:</li>
+  <li>env: url의 가장 앞부분</li>
+  <li>bucket_name: S3버킷 이름</li>
+  <li>bucket_path: 버킷의 경로, 보통 앱이름으로 설정</li>
+  <li>on : 배포를 위한 브런치</li>
+  <li>access_key_id : AWS 공개키</li>
+  <li>secret_access_key: AWS 비밀키</li>
+</ul>
+
+<h3 id="s3-버킷">S3 버킷</h3>
+
+<h3 id="iam에서-키-생성">IAM에서 키 생성</h3>
+
+<h3 id="travisci에-환경변수-설정하기">TravisCI에 환경변수 설정하기</h3>
+
+<h2 id="references">References</h2>
+<ul>
+  <li><a href="https://www.udemy.com/course/docker-and-kubernetes-the-complete-guide" target="_blank">Docker and Kubernate: The Complete Guide - Stephen Grider</a></li>
+</ul>
+
+  </article>
+
+  <hr>
+
+  <!-- <div class="question">
+    <h2>Questions?</h2>
+    <p>Have a question regarding the post above? <br />Or any of my designs?</p>
+    
+
+  </div> -->
+
+  <!-- <div class="related">
+    <h2>Related</h2>
+    
+      <li><a href="/nestjs-microservice/" title="Nestjs Microservice">Nestjs Microservice
+       &nbsp; <span class="post-meta">January 31, 2021</span></a>
+    
+      <li><a href="/%EB%8F%84%EC%BB%A4/docker-swarm/" title="도커 스웜">도커 스웜
+       &nbsp; <span class="post-meta">January 28, 2021</span></a>
+    
+      <li><a href="/micro-service-from-scratch/" title="Micro Service From Scratch">Micro Service From Scratch
+       &nbsp; <span class="post-meta">January 24, 2021</span></a>
+    
+  </div> -->
+
+  
+  
+    <div id="disqus_thread"></div>
+    <script>
+        /**
+        *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+        *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables    */
+        /*
+        var disqus_config = function () {
+        this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+        this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        };
+        */
+        (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        s.src = 'https://youngwonseo.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  
+
+</div>
+
+        </div>
+        <footer class="site-footer">
+<p class="small">YOUNGWON &copy 2021
+</p>
+</footer>
+
+    </div>
+
+    <script src="//cdn.jsdelivr.net/headroomjs/0.5.0/headroom.min.js"></script>
+    <script type="text/javascript">
+      var el = document.querySelector(".header-container");
+      var headroom  = new Headroom(el, {
+        "offset": 205,
+        "tolerance": 5
+      });
+      headroom.init();
+    </script>
+
+
+    <!-- Twitter Shizzle -->
+    <script type="text/javascript">
+    window.twttr = (function (d, s, id) {
+      var t, js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src= "https://platform.twitter.com/widgets.js";
+      fjs.parentNode.insertBefore(js, fjs);
+      return window.twttr || (t = { _e: [], ready: function (f) { t._e.push(f) } });
+    }(document, "script", "twitter-wjs"));
+    </script>
+
+  </body>
+</html>

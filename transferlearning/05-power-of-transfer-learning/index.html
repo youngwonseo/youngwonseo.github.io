@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width initial-scale=1">
+
+  <title>전이학습 #5 - 전이학습의 위력 발휘하기</title>
+  <meta name="description" content="전이학습의 필요성">
+  
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="https://youngwonseo.github.io/transferlearning/05-power-of-transfer-learning/">
+  <link rel="alternate" type="application/atom+xml" title="서영원 블로그" href="https://youngwonseo.github.io/feed.xml" />  
+  <link rel="stylesheet" href="/assets/css/syntax.css">
+</head>
+
+  <body>
+    
+
+<div class="header-container" id="header-container">
+
+<!-- Site navigation -->
+  <nav class="site-nav">
+    <div class="trigger">
+      
+        
+        <a class="page-link" href="/about/">About</a>
+        
+      
+        
+        <a class="page-link" href="/archive/">Archive</a>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+        <a class="page-link" href="/category/">Paper</a>
+        
+      
+        
+        <a class="page-link" href="/projects/">Projects</a>
+        
+      
+        
+        <a class="page-link" href="/study/">Study</a>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+      <a class="page-link" href="/feed.xml">RSS</a>
+    </div>
+  </nav>
+
+  <!-- The title of the site -->
+  <header class="site-header">
+    <!-- <a href="/">
+      <div class="avatar">
+        <img src="/assets/images/avatar.png" />
+      </div>
+    </a> -->
+    <a class="site-title" href="/">서영원 블로그</a>
+  </header>
+
+</div>
+
+      <div class="wrapper">
+        <div class="page-content">
+          <div class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">전이학습 #5 - 전이학습의 위력 발휘하기</h1>
+    <p class="post-meta">2019-12-12 / 서영원</p>
+  </header>
+
+
+
+  <article class="post-content">
+    <h2 id="전이학습의-필요성">전이학습의 필요성</h2>
+
+<p>4장에서 알아본 전이학습의 이점은 다음과 같습니다.</p>
+<ul>
+  <li>기본 성능 향상</li>
+  <li>전반적인 모델 개발 및 훈련 시간 단축</li>
+  <li>처음부터 학습하는 것보다 전반적으로 우수한 모델 성능 도출
+이를 위해서는 사전 학습된 모델을 사용합니다.</li>
+</ul>
+
+<p>딥러닝 모델을 학습하기 위한 핵심 중 한 가지는 많은 데이터와 샘플이 필요하다는 것입니다. 이미지 분류 문제를 생각해보면</p>
+
+<p>스케일링(scaling), 변환(translation), 회전(rotation) 등의 패턴과 특성을 통해 학습하기 때문제 자체적으로 특성 엔지니어링을 할 필요가 없다는 점입니다(하지만 오버피팅이 발생할 수 있습니다).</p>
+
+<h3 id="모델-구축-단계">모델 구축 단계</h3>
+<p>다음과 같은 순서로 <strong>개와 고양이를 분류하는 모델</strong>을 학습하고 살펴봅니다. 각 과정을 거치면서 어떻게 과적합이 해결되는지 살펴봅시다.</p>
+<ol>
+  <li>기본 CNN</li>
+  <li>Dropout이 추가된 CNN</li>
+  <li>이미지 증폭</li>
+  <li>사전학습된 CNN(전이학습)</li>
+</ol>
+
+<p>https://www.tensorflow.org/tutorials/images/classification
+https://www.tensorflow.org/tutorials/images/transfer_learning</p>
+
+  </article>
+
+  <hr>
+
+  <!-- <div class="question">
+    <h2>Questions?</h2>
+    <p>Have a question regarding the post above? <br />Or any of my designs?</p>
+    
+
+  </div> -->
+
+  <!-- <div class="related">
+    <h2>Related</h2>
+    
+      <li><a href="/nestjs-microservice/" title="Nestjs Microservice">Nestjs Microservice
+       &nbsp; <span class="post-meta">January 31, 2021</span></a>
+    
+      <li><a href="/%EB%8F%84%EC%BB%A4/docker-aws-travis/" title="도커와 AWS기반으로 CI환경 구축하기">도커와 AWS기반으로 CI환경 구축하기
+       &nbsp; <span class="post-meta">January 30, 2021</span></a>
+    
+      <li><a href="/%EB%8F%84%EC%BB%A4/docker-swarm/" title="도커 스웜">도커 스웜
+       &nbsp; <span class="post-meta">January 28, 2021</span></a>
+    
+  </div> -->
+
+  
+  
+    <div id="disqus_thread"></div>
+    <script>
+        /**
+        *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+        *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables    */
+        /*
+        var disqus_config = function () {
+        this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+        this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        };
+        */
+        (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        s.src = 'https://youngwonseo.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  
+
+</div>
+
+        </div>
+        <footer class="site-footer">
+<p class="small">YOUNGWON &copy 2021
+</p>
+</footer>
+
+    </div>
+
+    <script src="//cdn.jsdelivr.net/headroomjs/0.5.0/headroom.min.js"></script>
+    <script type="text/javascript">
+      var el = document.querySelector(".header-container");
+      var headroom  = new Headroom(el, {
+        "offset": 205,
+        "tolerance": 5
+      });
+      headroom.init();
+    </script>
+
+
+    <!-- Twitter Shizzle -->
+    <script type="text/javascript">
+    window.twttr = (function (d, s, id) {
+      var t, js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src= "https://platform.twitter.com/widgets.js";
+      fjs.parentNode.insertBefore(js, fjs);
+      return window.twttr || (t = { _e: [], ready: function (f) { t._e.push(f) } });
+    }(document, "script", "twitter-wjs"));
+    </script>
+
+  </body>
+</html>

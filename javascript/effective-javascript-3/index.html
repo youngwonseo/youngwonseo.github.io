@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width initial-scale=1">
+
+  <title>이펙티브 자바스크립트 #3 - 함수 사용하기</title>
+  <meta name="description" content="Item18. 함수, 메서드, 생성자 호출의 차이를 이해하라객체지향의 요소인 함수, 클래스 생성자, 메서드를 자바스크립트에서는 단 하나의 키워드, function으로 정의한다.  그러므로 function이 어떤식으로 각각 사용되는지 정확하게 숙지하는것은 매우 중요하다.첫 번째, 가...">
+  
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="https://youngwonseo.github.io/javascript/effective-javascript-3/">
+  <link rel="alternate" type="application/atom+xml" title="서영원 블로그" href="https://youngwonseo.github.io/feed.xml" />  
+  <link rel="stylesheet" href="/assets/css/syntax.css">
+</head>
+
+  <body>
+    
+
+<div class="header-container" id="header-container">
+
+<!-- Site navigation -->
+  <nav class="site-nav">
+    <div class="trigger">
+      
+        
+        <a class="page-link" href="/about/">About</a>
+        
+      
+        
+        <a class="page-link" href="/archive/">Archive</a>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+        <a class="page-link" href="/category/">Paper</a>
+        
+      
+        
+        <a class="page-link" href="/projects/">Projects</a>
+        
+      
+        
+        <a class="page-link" href="/study/">Study</a>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+      <a class="page-link" href="/feed.xml">RSS</a>
+    </div>
+  </nav>
+
+  <!-- The title of the site -->
+  <header class="site-header">
+    <!-- <a href="/">
+      <div class="avatar">
+        <img src="/assets/images/avatar.png" />
+      </div>
+    </a> -->
+    <a class="site-title" href="/">서영원 블로그</a>
+  </header>
+
+</div>
+
+      <div class="wrapper">
+        <div class="page-content">
+          <div class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">이펙티브 자바스크립트 #3 - 함수 사용하기</h1>
+    <p class="post-meta">2018-05-13 / 서영원</p>
+  </header>
+
+
+
+  <article class="post-content">
+    <h2 id="item18-함수-메서드-생성자-호출의-차이를-이해하라">Item18. 함수, 메서드, 생성자 호출의 차이를 이해하라</h2>
+<p>객체지향의 요소인 함수, 클래스 생성자, 메서드를 자바스크립트에서는 단 하나의 키워드, <strong>function</strong>으로 정의한다.  그러므로 function이 어떤식으로 각각 사용되는지 정확하게 숙지하는것은 매우 중요하다.
+<strong>첫 번째</strong>, 가장 간단한 함수에 대한 사용이다.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">hello</span><span class="p">(</span><span class="nx">username</span><span class="p">){</span>
+  <span class="k">return</span> <span class="dl">"</span><span class="s2">hello, </span><span class="dl">"</span> <span class="o">+</span> <span class="nx">username</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nx">hello</span><span class="p">(</span><span class="dl">"</span><span class="s2">youngwon</span><span class="dl">"</span><span class="p">);</span> <span class="c1">// "hello, youngwon"</span>
+</code></pre></div></div>
+
+<p><strong>두 번째</strong>, 메서드에 대한 사용이다. 여기서 메서드는 전역 혹인 지역 함수가 아닌 클래스에 속한 맴버 함수를 의미한다.</p>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">obj</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">hello</span><span class="p">:</span> <span class="kd">function</span><span class="p">(){</span>
+    <span class="k">return</span> <span class="dl">"</span><span class="s2">hello, </span><span class="dl">"</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">username</span><span class="p">;</span>
+  <span class="p">},</span>
+  <span class="na">username</span><span class="p">:</span> <span class="dl">"</span><span class="s2">youngwon</span><span class="dl">"</span>
+<span class="p">}</span>
+<span class="nx">obj</span><span class="p">.</span><span class="nx">hello</span><span class="p">(</span><span class="dl">"</span><span class="s2">youngwon</span><span class="dl">"</span><span class="p">);</span> <span class="c1">// "hello, youngwon"</span>
+</code></pre></div></div>
+
+<p>메서드에서는 this가 해당 인스턴스로 바인딩이 되어있다.</p>
+
+<p><strong>세 번째</strong>, 생성자에 대한 사용이다. 다음과 같이 new연산자를 사용하여 function으로 정의된 클래스를 인스턴스화할 수 있다.</p>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">User</span><span class="p">(</span><span class="nx">name</span><span class="p">,</span> <span class="nx">passwordHash</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="nx">name</span><span class="p">;</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">passwordHash</span> <span class="o">=</span> <span class="nx">passwordHash</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kd">var</span> <span class="nx">u</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">User</span><span class="p">(</span><span class="dl">"</span><span class="s2">youngwon</span><span class="dl">"</span><span class="p">,</span><span class="dl">"</span><span class="s2">sjkadfhksdhfksd</span><span class="dl">"</span><span class="p">);</span>
+<span class="nx">u</span><span class="p">.</span><span class="nx">name</span> <span class="c1">// "youngwon"</span>
+</code></pre></div></div>
+
+<p>생성자의 주요한 역할은 객체를 초기화 하는 것이다.</p>
+
+<p><br /></p>
+
+<h2 id="item19-고차-함수에-익숙해져라">Item19. 고차 함수에 익숙해져라</h2>
+<p>고차함수(Higher-Order)는 함수의 인자로 함수를 받거나, 함수의 결과(return)로 함수를 반환하는 것을 말한다. 보통 인자로 함수를 받는것은 콜백함수로써 사용하기위한것이고, 이는 자바스크립트에서 자주 사용되는 패턴이다. 다음은 고차함수를 설명하기 위한 (다소 억지스러운)예시이다.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">aIndex</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">a</span><span class="dl">"</span><span class="p">.</span><span class="nx">charCodeAt</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span> <span class="c1">//97</span>
+<span class="kd">var</span> <span class="nx">alphabet</span> <span class="o">=</span> <span class="dl">""</span><span class="p">;</span>
+<span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="mi">26</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">alphabet</span> <span class="o">+=</span> <span class="nb">String</span><span class="p">.</span><span class="nx">fromCharCode</span><span class="p">(</span><span class="nx">aIndex</span><span class="o">+</span><span class="nx">i</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="nx">alphabet</span><span class="p">;</span> <span class="c1">//"abcdefghijklmnopqrstuvwxyz"</span>
+
+
+<span class="kd">var</span> <span class="nx">digits</span> <span class="o">=</span> <span class="dl">""</span><span class="p">;</span>
+<span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="nx">i</span><span class="o">&lt;</span><span class="mi">10</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">){</span>
+  <span class="nx">digits</span> <span class="o">+=</span> <span class="nx">i</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nx">digits</span><span class="p">;</span> <span class="c1">//"0123456789"</span>
+</code></pre></div></div>
+
+<p>코드 작성 시, 비슷하거나 중복된 코드가 보인다면 고차함수(콜백함수)를 적용하는 것이 좋다. 위 예제는 다소 억지스러운 면이 있지만, 특정한 반복을 통해 문자열을 만드는 로직이 두번 나타난다. 이는 다음과 같은 함수(buildString)를 정의한뒤, 각각의 콜백함수를 따로 정의하여 코드 중복을 피하고 보다 재사용가능한 코드로 변경할 수 있다.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">buildString</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">callback</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">result</span> <span class="o">=</span> <span class="dl">""</span><span class="p">;</span>
+  <span class="k">for</span><span class="p">(</span><span class="kd">var</span> <span class="nx">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">n</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">result</span> <span class="o">+=</span> <span class="nx">callback</span><span class="p">(</span><span class="nx">i</span><span class="p">);</span>
+  <span class="p">}</span>
+  <span class="k">return</span> <span class="nx">result</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kd">var</span> <span class="nx">alphabet</span> <span class="o">=</span> <span class="nx">buildString</span><span class="p">(</span><span class="mi">26</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">i</span><span class="p">){</span>
+  <span class="k">return</span> <span class="nb">String</span><span class="p">.</span><span class="nx">fromCharCode</span><span class="p">(</span><span class="nx">aIndex</span> <span class="o">+</span> <span class="nx">i</span><span class="p">);</span>
+<span class="p">});</span>
+
+<span class="kd">var</span> <span class="nx">digits</span> <span class="o">=</span> <span class="nx">buildString</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">i</span><span class="p">){</span>
+  <span class="k">return</span> <span class="nx">i</span><span class="p">;</span>
+<span class="p">});</span>
+</code></pre></div></div>
+
+<p>고차함수에서는 장점이 많이 존재한다. <strong>반복된 코드를 구조화해서 재사용성이 높은 코드를 생성</strong>함으로써, 유지보수하기 좋은 코드를 생성하고 라이브러리 또는 유틸리티를 제공할때 보다 높은 확장성을 통해 사용(가독성, 유연성)을 편리하게 한다. <strong>개발자라면 반복되는 코드를 유틸리티로 작성하여 재사용가능하게 만드는 습관이 매우 중요하다.</strong></p>
+
+<p><br /></p>
+
+<h2 id="item20-지정된-수신자-객체로-함수를-호출하기-위해-call메서드를-사용하라">Item20. 지정된 수신자 객체로 함수를 호출하기 위해 call메서드를 사용하라</h2>
+
+<p>함수나 메서드의 수신자 객체(this에 바인딩되는 값)를 내가원하는객체로 지정해줄때 <strong>call</strong>이라는 내장 메서드를 이용한다. 사용법은 다음과 같다.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">f</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="nx">obj</span><span class="p">,</span> <span class="nx">arg1</span><span class="p">,</span> <span class="nx">arg2</span><span class="p">,</span> <span class="nx">arg3</span><span class="p">);</span>
+<span class="nx">f</span><span class="p">(</span><span class="nx">arg1</span><span class="p">,</span> <span class="nx">arg2</span><span class="p">,</span> <span class="nx">arg3</span><span class="p">)</span> 
+<span class="c1">//첫 번째 호출은 두 번째 함수호출과 같으면서 obj가 this로 바인딩되어 있다. 즉 obj.f(arg1,arg2,arg3)와 같다.</span>
+</code></pre></div></div>
+<p>다소 추장적인(?) 예이다. 함수 f를 호출할 때, obj를 수신자 객체로 지정한다. 실제로 call은 아주 다양하게 사용될 수 있다. 
+현재 책에 존재하는 예는 다소 유용하지 않은 예라고 판단되어 추후 적절한 예를 찾아 수정하겠다.</p>
+
+<p><br /></p>
+
+<h2 id="item21-다른-개수의-인자로-함수를-호출하기-위해-apply를-사용하라">Item21. 다른 개수의 인자로 함수를 호출하기 위해 apply를 사용하라</h2>
+<p>함수호출 시 인자의 개수가 정해져 있지 않은경우(가변인수, Item22참조)를 생각해보자. 이때 함수를 호출하는 방법은 다음과 같이 크게 두 가지로 구분된다.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">//가변인수</span>
+<span class="nx">average</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">);</span>
+<span class="nx">average</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+<span class="nx">average</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">8</span><span class="p">);</span>
+
+<span class="c1">//배열</span>
+<span class="nx">averageOfArray</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]);</span>
+<span class="nx">averageOfArray</span><span class="p">([</span><span class="mi">1</span><span class="p">]);</span>
+<span class="nx">averageOfArray</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">8</span><span class="p">]);</span>
+</code></pre></div></div>
+
+<p><strong>apply</strong>는 위 상황에서 배열을 인자로 average(가변인수처리함수)를 호출하는 목적으로 사용된다.  즉 배열을 가변인수로 변환여 average를 호출한다. 이때, 첫 번째 인자는 call과 같이 this에 바인딩할 요소이다.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">average</span><span class="p">.</span><span class="nx">apply</span><span class="p">(</span><span class="kc">null</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]);</span>
+<span class="c1">//위의 호출은 아래와 같다. 즉 배열이 스칼라로 분해되어 각 인자로 넘어간다.</span>
+<span class="nx">average</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">);</span>
+</code></pre></div></div>
+<p>apply또한 call과 마찬가지로 다양하게 사용되고있다.</p>
+
+<p><br /></p>
+
+<h2 id="item22-가변-인자-함수를-생성하기-위해-arguments를-사용하라">Item22. 가변 인자 함수를 생성하기 위해 arguments를 사용하라</h2>
+<p>Item21에서 가변인자를 갖는 함수(average)를 보았다. 그러면 이 함수는 어떻게 생겼길래 인자의 수가 가변적일가? 그것은 <strong>arguments</strong>라는 객체가 존재하기 때문이다.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">average</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">for</span><span class="p">(</span><span class="kd">var</span> <span class="nx">i</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="nx">sum</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="nx">n</span><span class="o">=</span><span class="nx">arguments</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">&lt;</span><span class="nx">n</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">){</span>
+    <span class="nx">sum</span> <span class="o">+=</span> <span class="nx">arguments</span><span class="p">[</span><span class="nx">i</span><span class="p">];</span>
+  <span class="p">}</span>
+  <span class="k">return</span> <span class="nx">sum</span> <span class="o">/</span> <span class="nx">n</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>arguments는 해당 함수로 넘어오는 인자를 배열로 가진다(위 average함수에 인자로 선언된 변수가 없다는 것을 기억하자).
+혹시 위 예에서 sum과 n이 반복문 밖에서 가용가능한 것을 의문을 갖는다면, 클로저(Item11)를 참조하자.</p>
+
+<p><br /></p>
+
+<h2 id="item23-절대-arguments-객체를-수정하지-마라">Item23. 절대 arguments 객체를 수정하지 마라</h2>
+<p>Item22에서 arguments가 가변인자를 받는 객체라고 설명하였다.</p>
+
+<p><br /></p>
+
+<h2 id="item24-자바스크립트의-부동-소수점-숫자-이해하기">Item24. 자바스크립트의 부동 소수점 숫자 이해하기</h2>
+
+<p><br /></p>
+
+<h2 id="item25-고정된-수신자-객체로-메서드를-추출하기-위해-bind를-사용하라">Item25. 고정된 수신자 객체로 메서드를 추출하기 위해 bind를 사용하라.</h2>
+<p>메서드는 호출된 주체에 따라 바인딩되는 객체가 결정된다. 즉 메서드 안에서 this에 접근하는 객체의 종류는 메서드를 호출하는 주체에 따라 결정된다는 말이다.</p>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">buffer</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">entries</span><span class="p">:</span> <span class="p">[],</span>
+  <span class="na">add</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">s</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">entries</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">s</span><span class="p">);</span>
+  <span class="p">}</span>
+  <span class="nl">concat</span><span class="p">:</span> <span class="kd">function</span><span class="p">(){</span>
+  	<span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">entries</span><span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="dl">""</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">var</span> <span class="nx">source</span> <span class="o">=</span> <span class="p">[</span><span class="dl">"</span><span class="s2">867</span><span class="dl">"</span><span class="p">,</span><span class="dl">"</span><span class="s2">-</span><span class="dl">"</span><span class="p">,</span><span class="dl">"</span><span class="s2">5309</span><span class="dl">"</span><span class="p">];</span>
+<span class="nx">source</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">buffer</span><span class="p">.</span><span class="nx">add</span><span class="p">);</span> <span class="c1">//error, entries is undefined</span>
+</code></pre></div></div>
+
+<p>위 예에서, source의 각요소에 대해  buffer의 add를 적용하고자 한다. 이를 위해 ES5의 forEach를 사용하였지만 실제 forEach에서 바인딩되는 this는 전역객체이기 때문에 entries를 가지고 있지 않다. 이럴때 bind를 사용하여 해결한다.</p>
+
+<p>다음은 위 상황의 세 가지 해결법이다. <strong>첫 번째</strong>방법으로 해결이 가능한 이유는 <strong>forEach가 두 번째 인자로 바인딩할 객체</strong>를 받기 때문이다. <strong>두 번째</strong>방법은 익명함수를 통해 래퍼함수로 이용함으로써 바인딩 되는 영역과 분리되게 buffer.add를 사용한 것이다. <strong>세 번째</strong>방법은 bind메서드를 사용해서 해당 메서드가 호출될 때 바인딩 되는 객체를 직접적으로 지정한 것이다.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">//첫 번째</span>
+<span class="kd">var</span> <span class="nx">source</span> <span class="o">=</span> <span class="p">[</span><span class="dl">"</span><span class="s2">867</span><span class="dl">"</span><span class="p">,</span><span class="dl">"</span><span class="s2">-</span><span class="dl">"</span><span class="p">,</span><span class="dl">"</span><span class="s2">5309</span><span class="dl">"</span><span class="p">];</span>
+<span class="nx">source</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">buffer</span><span class="p">.</span><span class="nx">add</span><span class="p">,</span> <span class="nx">buffer</span><span class="p">);</span> <span class="c1">//forEach의 두 번째인자로 바인딩할 객체를 넘김</span>
+<span class="nx">buffer</span><span class="p">.</span><span class="nx">join</span><span class="p">();</span> <span class="c1">//"867-5309"</span>
+
+<span class="c1">//두 번째</span>
+<span class="kd">var</span> <span class="nx">source</span> <span class="o">=</span> <span class="p">[</span><span class="dl">"</span><span class="s2">867</span><span class="dl">"</span><span class="p">,</span><span class="dl">"</span><span class="s2">-</span><span class="dl">"</span><span class="p">,</span><span class="dl">"</span><span class="s2">5309</span><span class="dl">"</span><span class="p">];</span>
+<span class="nx">source</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">s</span><span class="p">){</span>
+  <span class="nx">buffer</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="nx">s</span><span class="p">)</span> <span class="c1">//buffer.add는 완전히 분리된 메서드, 즉 buffer.add안에서는 원래 buffer가 바인딩됨</span>
+<span class="p">});</span>
+<span class="nx">buffer</span><span class="p">.</span><span class="nx">join</span><span class="p">();</span> <span class="c1">//"867-5309"</span>
+
+<span class="c1">//세 번째</span>
+<span class="kd">var</span> <span class="nx">source</span> <span class="o">=</span> <span class="p">[</span><span class="dl">"</span><span class="s2">867</span><span class="dl">"</span><span class="p">,</span><span class="dl">"</span><span class="s2">-</span><span class="dl">"</span><span class="p">,</span><span class="dl">"</span><span class="s2">5309</span><span class="dl">"</span><span class="p">];</span>
+<span class="nx">source</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">buffer</span><span class="p">.</span><span class="nx">add</span><span class="p">.</span><span class="nx">bind</span><span class="p">(</span><span class="nx">buffer</span><span class="p">));</span> <span class="c1">//buffer.add를 호출할때 buffer로 바인딩</span>
+<span class="nx">buffer</span><span class="p">.</span><span class="nx">join</span><span class="p">();</span> <span class="c1">//"867-5309"</span>
+</code></pre></div></div>
+
+<p>여기서 한 가지 명심할 점은 다음과 같이 <strong>바인딩한 함수를 원래 함수와 구분된다는 것</strong>이다. 이는 bind메서드가 프로그램의 다른 부분에서 공유된 함수를 호출하는 데에도 안전하다는 뜻이다.</p>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">buffer</span><span class="p">.</span><span class="nx">add</span> <span class="o">===</span> <span class="nx">buffer</span><span class="p">.</span><span class="nx">add</span><span class="p">.</span><span class="nx">bind</span><span class="p">(</span><span class="nx">buffer</span><span class="p">);</span> <span class="c1">//false</span>
+</code></pre></div></div>
+
+<p><br /></p>
+
+<h2 id="item26-커링-함수에-bind를-사용하라">Item26. 커링 함수에 bind를 사용하라</h2>
+
+<p>Item25에서 살펴본 함수의 bind메서드는 수신자 객체를 바인딩하는 것 이상으로 유용하다. 다음의 예를 살펴보자.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">simpleURL</span><span class="p">(</span><span class="nx">protocol</span><span class="p">,</span> <span class="nx">domain</span><span class="p">,</span> <span class="nx">path</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="nx">protocol</span> <span class="o">+</span> <span class="dl">"</span><span class="s2">://</span><span class="dl">"</span> <span class="o">+</span> <span class="nx">domain</span> <span class="o">+</span> <span class="dl">"</span><span class="s2">/</span><span class="dl">"</span> <span class="o">+</span> <span class="nx">path</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kd">var</span> <span class="nx">siteDomain</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">...</span><span class="dl">'</span><span class="p">;</span>
+<span class="kd">var</span> <span class="nx">paths</span> <span class="o">=</span> <span class="p">[...];</span>
+<span class="kd">var</span> <span class="nx">urls</span> <span class="o">=</span> <span class="nx">paths</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">path</span><span class="p">){</span>
+  <span class="k">return</span> <span class="nx">simpleURL</span><span class="p">(</span><span class="dl">"</span><span class="s2">http</span><span class="dl">"</span><span class="p">,</span> <span class="nx">siteDomain</span><span class="p">,</span> <span class="nx">path</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre></div></div>
+
+<p>url의 각요소를 인자로 받아 full path로 만들어주는 simpleURL함수가 존재한다. 위 예에서는 특정 도메인 안의 존재하는 경로들을 가지고 있는 배열에 ES5의 map함수를 적용하여 URL들을 생성하는데, 실제 변경되는 값은 path뿐이다(3번째 인자만 필요). bind함수를 사용하면 이러한 함수를 자동으로 생성할 수 있다.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">urls</span> <span class="o">=</span> <span class="nx">paths</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="nx">simpleURL</span><span class="p">.</span><span class="nx">bind</span><span class="p">(</span><span class="kc">null</span><span class="p">,</span> <span class="dl">"</span><span class="s2">http</span><span class="dl">"</span><span class="p">,</span> <span class="nx">siteDomain</span><span class="p">));</span>
+</code></pre></div></div>
+
+<p>simpleURL이 this를 사용하지 않기 때문에 첫 번째 인자(바인딩할 객체)가 null이다. 그외 “http”와 siteDomain은 simpleURL이 호출될 때 넘겨지는 인자로 지정되고 map을 통해 입력되는 배열의 요소가 나머지 인자로 붙어져 실제 호출할려고 하는 simpleURL(“http”, siteDomain, paths[i]) 가 완성되는 것이다.</p>
+
+<p>이처럼, 함수를 그 인자의 부분집합으로 바인딩하는 기법은 논리학자 하스켈 커리(Haskel Curry)의 이름을 따 커링(curring)이라고 한다. 그는 수학에서 이 기법을 유명하게 만들었다.</p>
+
+<p><br /></p>
+
+<h2 id="item27-코드를-캡슐화하기-위해-문자열보다-클로저를-사용하라">Item27. 코드를 캡슐화하기 위해 문자열보다 클로저를 사용하라</h2>
+<p>자바스크립트에서는 코드를 함수로 표현이 가능(당연한말이다)하고 또한, eval을 사용하면 문자열로 코드를 표현 할 수있다. 즉 코드를 함수로 표현하거나 문자열로 표현해야할 상황에 마주하는데, 의심이 든다면 함수를 사용하라.</p>
+
+<p><br /></p>
+
+<h2 id="item28-함수의--tostring메서드에-의존하지-마라">Item28. 함수의  toString메서드에 의존하지 마라</h2>
+<p>자바스크립트에서는 객체가 아닌, 함수에 toString을 사용하면 해당 코드를 문자열로 반환 받을 수있다. 이는 함수의 소스코드를 다시 볼 수 있게 해주는 매우 강력하지만,  때때로 해킹의 위협에 대한 취약점을 가진다. 하지만 toString메서드에는</p>
+
+<p>첫 번째, ECMAScript 표준은 함수의 toString 메서드의 결과로 나오는 문자열에 대한 어떠한 요구사항도 강요하지 않는다. 이는 자바스크립트 엔진에 따라 결과가 달라질 수 있다는 말이다.<br />
+두 번째, 네이티브 언어로 구성된 자바스크립트 라이브러리는 소스코드를 반환하지 못한다.<br />
+세 번째, toString으로 생성된 소스코드는, 그 내부에서 연관된 클로저의 값을 표현하지 못한다.<br />
+이러한 이유들 때문에, 일반적으로 이 방법을 사용해서는 안된다.</p>
+
+<p><br /></p>
+
+<h2 id="item29-비표준-스택-검사-프로퍼티를-사용하지-마라">Item29. 비표준 스택 검사 프로퍼티를 사용하지 마라</h2>
+<p>자바스크립트에서는 현재 실행되고 있는 활성 함수의 체인(스택)을 검사(접근)하기 위한 몇 가지 방법을 제공한다. 인자와 함께 호출된 함수 참조하는 arguments.callee과 함수를 호출한 함수를 참조하는 arguments.caller가 그것이다. 전자는 보통 익명함수를 다시 호출하기 위해 사용된다.<br />
+다음은 callee의 예제로써 익명함수가 자신을 다시 호출하기 위해 callee를 호출한다.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">factorial</span> <span class="o">=</span> <span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">n</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="p">(</span><span class="nx">n</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">)</span> <span class="p">?</span> <span class="mi">1</span> <span class="p">:</span> <span class="p">(</span><span class="nx">n</span> <span class="o">*</span> <span class="nx">arguments</span><span class="p">.</span><span class="nx">callee</span><span class="p">(</span><span class="nx">n</span><span class="o">-</span><span class="mi">1</span><span class="p">));</span>
+<span class="p">});</span>
+</code></pre></div></div>
+
+<p>하지만 이는 특별히 유용한 방법은 아니다. 보통의 경우 프로그래머는 다음과 같이 코드를 작성할 것이고 더 일반적으로 보인다.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">factorial</span><span class="p">(</span><span class="nx">n</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="p">(</span><span class="nx">n</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">)</span> <span class="p">?</span> <span class="mi">1</span> <span class="p">:</span> <span class="p">(</span><span class="nx">n</span> <span class="o">*</span> <span class="nx">facotiral</span><span class="p">(</span><span class="nx">n</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>caller는 callee보다 유용하다. 그러나 대부분의 환경에서는 보안 문제로 caller에 대한 신뢰성을 제공하지 못하는데 비표준적인 방법으로 caller 프로퍼티를 통해 함수의 가장 최근 호출자를 참조할 수 있다.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">revealCaller</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="nx">revealCaller</span><span class="p">.</span><span class="nx">caller</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="kd">function</span> <span class="nx">start</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="nx">revealCaller</span><span class="p">();</span>
+<span class="p">}</span>
+<span class="nx">start</span><span class="p">()</span> <span class="o">===</span> <span class="nx">start</span><span class="p">;</span> <span class="c1">//truem start의 함수는 revelCaller를 가장 최근 호출한 함수이다.</span>
+</code></pre></div></div>
+
+<p>이러한 기능들을 이용하면 현재 함수의 호출 스택의 스냅샷을 보여주는 데이터 구조를 추출한 수 있다. 방법은 매우 간단한데 계속해서 현재에서 caller를 참조하는것이다.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">getCallStack</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">stack</span> <span class="o">=</span> <span class="p">[];</span>
+  <span class="k">for</span><span class="p">(</span><span class="kd">var</span> <span class="nx">f</span><span class="o">=</span><span class="nx">getCallStack</span><span class="p">.</span><span class="nx">caller</span><span class="p">;</span><span class="nx">f</span><span class="p">;</span><span class="nx">f</span><span class="o">=</span><span class="nx">f</span><span class="p">.</span><span class="nx">caller</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">stack</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">f</span><span class="p">);</span>
+  <span class="p">}</span>
+  <span class="k">return</span> <span class="nx">stack</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>위 함수는 정상적으로 동작할 것같아 보인다. 하지만 호출 스택에 함수가 두번 이상 나타나면 무한 루프에 빠지게 된다. 즉 재귀같은 부분에서 자기자신은 계속해서 caller로 자기자신을 참조한다(일반적인 호출스택을 검사하는 로직이아닌 위와 같이 caller를 통해 참조하도록 되어있기때문에).</p>
+
+<p>즉 비표준적으로 만들어 쓰는 위와 같은 방법을 포함하여 <strong>스택검사를 사용하지 않는 것이 최선의 정책</strong>이다. 여기에는 caller또는 callee 역시 포함되어있으므로 호출을 역으로 참조하지 말자.</p>
+
+<p><br /></p>
+
+<h2 id="references">References</h2>
+<ul>
+  <li><a href="http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&amp;mallGb=KOR&amp;barcode=9788966260850&amp;orderClick=LAG&amp;Kc=" target="_blank">이펙티브 자바스트립트 - 데이티브 허먼지음, 김준기 옮김(인사이트)</a></li>
+</ul>
+
+  </article>
+
+  <hr>
+
+  <!-- <div class="question">
+    <h2>Questions?</h2>
+    <p>Have a question regarding the post above? <br />Or any of my designs?</p>
+    
+
+  </div> -->
+
+  <!-- <div class="related">
+    <h2>Related</h2>
+    
+      <li><a href="/nestjs-microservice/" title="Nestjs Microservice">Nestjs Microservice
+       &nbsp; <span class="post-meta">January 31, 2021</span></a>
+    
+      <li><a href="/%EB%8F%84%EC%BB%A4/docker-aws-travis/" title="도커와 AWS기반으로 CI환경 구축하기">도커와 AWS기반으로 CI환경 구축하기
+       &nbsp; <span class="post-meta">January 30, 2021</span></a>
+    
+      <li><a href="/%EB%8F%84%EC%BB%A4/docker-swarm/" title="도커 스웜">도커 스웜
+       &nbsp; <span class="post-meta">January 28, 2021</span></a>
+    
+  </div> -->
+
+  
+  
+    <div id="disqus_thread"></div>
+    <script>
+        /**
+        *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+        *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables    */
+        /*
+        var disqus_config = function () {
+        this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+        this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        };
+        */
+        (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        s.src = 'https://youngwonseo.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  
+
+</div>
+
+        </div>
+        <footer class="site-footer">
+<p class="small">YOUNGWON &copy 2021
+</p>
+</footer>
+
+    </div>
+
+    <script src="//cdn.jsdelivr.net/headroomjs/0.5.0/headroom.min.js"></script>
+    <script type="text/javascript">
+      var el = document.querySelector(".header-container");
+      var headroom  = new Headroom(el, {
+        "offset": 205,
+        "tolerance": 5
+      });
+      headroom.init();
+    </script>
+
+
+    <!-- Twitter Shizzle -->
+    <script type="text/javascript">
+    window.twttr = (function (d, s, id) {
+      var t, js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src= "https://platform.twitter.com/widgets.js";
+      fjs.parentNode.insertBefore(js, fjs);
+      return window.twttr || (t = { _e: [], ready: function (f) { t._e.push(f) } });
+    }(document, "script", "twitter-wjs"));
+    </script>
+
+  </body>
+</html>
