@@ -6,20 +6,9 @@
 </description>
     <link>https://youngwonseo.github.io/</link>
     <atom:link href="https://youngwonseo.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sun, 31 Jan 2021 20:39:34 +0900</pubDate>
-    <lastBuildDate>Sun, 31 Jan 2021 20:39:34 +0900</lastBuildDate>
+    <pubDate>Mon, 01 Feb 2021 15:56:35 +0900</pubDate>
+    <lastBuildDate>Mon, 01 Feb 2021 15:56:35 +0900</lastBuildDate>
     <generator>Jekyll v4.2.0</generator>
-    
-      <item>
-        <title>Nestjs Microservice</title>
-        <description>
-</description>
-        <pubDate>Sun, 31 Jan 2021 00:00:00 +0900</pubDate>
-        <link>https://youngwonseo.github.io/nestjs-microservice/</link>
-        <guid isPermaLink="true">https://youngwonseo.github.io/nestjs-microservice/</guid>
-        
-        
-      </item>
     
       <item>
         <title>도커와 AWS기반으로 CI환경 구축하기</title>
@@ -36,8 +25,6 @@
 
 &lt;h2 id=&quot;1-깃허브-세팅&quot;&gt;1. 깃허브 세팅&lt;/h2&gt;
 &lt;p&gt;예제를 위해 docker-react라는 레포지토리를 깃헙에 생성하겠습니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;2-travis-ci-세팅&quot;&gt;2. Travis CI 세팅&lt;/h2&gt;
 &lt;h3 id=&quot;travisci-계정-생성과-레포지토리-연결&quot;&gt;TravisCI 계정 생성과 레포지토리 연결&lt;/h3&gt;
@@ -137,7 +124,7 @@ Elastic Beanstalk은 가상머신으로 접근하는 트래픽을 모니터링�
       </item>
     
       <item>
-        <title>도커 스웜</title>
+        <title>도커 스웜(Docker Swarm)</title>
         <description>&lt;p&gt;도커 스웜은 도커 엔진 자체에 내장되어 있습니다. 다음과 같은 명령어를 사용하면 inactive로 되어있는것을 확인 할 수 있습니다.&lt;/p&gt;
 &lt;blockquote&gt;
   &lt;p&gt;docker info | grep Swarm&lt;/p&gt;
@@ -401,6 +388,53 @@ docker inspect –type service myweb&lt;/p&gt;
         <link>https://youngwonseo.github.io/mnist-cnn-tf-serving/</link>
         <guid isPermaLink="true">https://youngwonseo.github.io/mnist-cnn-tf-serving/</guid>
         
+        
+      </item>
+    
+      <item>
+        <title>Learning Deep Features for Discriminative Localization</title>
+        <description>&lt;h2 id=&quot;abstract&quot;&gt;Abstract&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;이전에 제시된 Global average pooling layer를 다시 논의함&lt;/li&gt;
+  &lt;li&gt;이미지&lt;/li&gt;
+  &lt;li&gt;이전에는 regularizing training 으로 방법으로 제안됨&lt;/li&gt;
+  &lt;li&gt;generic localizable deep representation&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
+
+&lt;h2 id=&quot;related-work&quot;&gt;Related Work&lt;/h2&gt;
+&lt;h3 id=&quot;convolutional-nerual-networks-cnns&quot;&gt;Convolutional Nerual Networks (CNNs)&lt;/h3&gt;
+&lt;h3 id=&quot;weakly-supervised-object-localization&quot;&gt;Weakly-supervised object localization&lt;/h3&gt;
+&lt;h3 id=&quot;visualizing-cnns&quot;&gt;Visualizing CNNs&lt;/h3&gt;
+
+&lt;h2 id=&quot;class-activation-mapping&quot;&gt;Class Activation Mapping&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Network in Network, GoogLeNet&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;global-average-pooling-gap-vs-global-max-pooling-gmp&quot;&gt;Global average pooling (GAP) vs Global max pooling (GMP)&lt;/h3&gt;
+
+&lt;h2 id=&quot;weakly-supervied-object-localization&quot;&gt;Weakly-supervied Object Localization&lt;/h2&gt;
+
+&lt;h2 id=&quot;deep-features-for-generic-localization&quot;&gt;Deep Features for Generic Localization&lt;/h2&gt;
+
+&lt;h2 id=&quot;visulizing-class-specific-units&quot;&gt;Visulizing Class-Specific Units&lt;/h2&gt;
+
+&lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;
+
+</description>
+        <pubDate>Tue, 22 Sep 2020 00:00:00 +0900</pubDate>
+        <link>https://youngwonseo.github.io/deep%20learning/class-activation-map/</link>
+        <guid isPermaLink="true">https://youngwonseo.github.io/deep%20learning/class-activation-map/</guid>
+        
+        <category>Class Activation Map</category>
+        
+        <category>Convolutional Nerual Network</category>
+        
+        
+        <category>Deep Learning</category>
         
       </item>
     
