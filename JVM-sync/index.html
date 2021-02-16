@@ -4,9 +4,28 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width initial-scale=1">
+  
+  <!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>JVM Thread와 동기화 | 서영원 블로그</title>
+<meta name="generator" content="Jekyll v4.2.0" />
+<meta property="og:title" content="JVM Thread와 동기화" />
+<meta name="author" content="Youngwon Seo" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="1. 자바에서의 동기화 자바는 멀티쓰레딩을 지원합니다(정확하게 JVM이). 그리고 각 쓰레드를 동기화 하기 위해 Monitor를 사용합니다. 여기거 동기화란 여러 쓰레드가 동시에 한 메모리영역에 접근시 데이터의 무결정을 위해 락을 걸어 동시에 한 쓰레드만 접근가능하게 하는 것입니다. 자바는 동기화를 위해 문법적으로 synchronized를 이용하며 실제로는 Monitor의 메커니즘을 사용합니다. 정확하게 설명하면 Critical Section(여러쓰레드가 동시에 접근할려고 하는 구간)에 특정 쓰레드가 접근할 시 Lock 에대한 Object Monitor를 1증가시켜 해당 구간을 실행하고 빠져나오면 다시 1증가 시켰던 Monitor를 -1하여 다른 쓰레드가 접근가능하도록 만듭니다. 이를 위해 자바는 문법적으로 synchronized를 실행하는 것이죠. (멀티쓰레딩과 동기화 부분의 이론적 내용을 자세히 알고싶으신 분은 운영체제를 공부하시는 것을 추천합니다) 이렇게 쓰레드에 대한 동기화를 위해 각 쓰레드는 상태를 변경하며 프로그램이 실행되는데 이는 두 번째 절인 Thread의 상태 및 종류에서 살펴봅니다." />
+<meta property="og:description" content="1. 자바에서의 동기화 자바는 멀티쓰레딩을 지원합니다(정확하게 JVM이). 그리고 각 쓰레드를 동기화 하기 위해 Monitor를 사용합니다. 여기거 동기화란 여러 쓰레드가 동시에 한 메모리영역에 접근시 데이터의 무결정을 위해 락을 걸어 동시에 한 쓰레드만 접근가능하게 하는 것입니다. 자바는 동기화를 위해 문법적으로 synchronized를 이용하며 실제로는 Monitor의 메커니즘을 사용합니다. 정확하게 설명하면 Critical Section(여러쓰레드가 동시에 접근할려고 하는 구간)에 특정 쓰레드가 접근할 시 Lock 에대한 Object Monitor를 1증가시켜 해당 구간을 실행하고 빠져나오면 다시 1증가 시켰던 Monitor를 -1하여 다른 쓰레드가 접근가능하도록 만듭니다. 이를 위해 자바는 문법적으로 synchronized를 실행하는 것이죠. (멀티쓰레딩과 동기화 부분의 이론적 내용을 자세히 알고싶으신 분은 운영체제를 공부하시는 것을 추천합니다) 이렇게 쓰레드에 대한 동기화를 위해 각 쓰레드는 상태를 변경하며 프로그램이 실행되는데 이는 두 번째 절인 Thread의 상태 및 종류에서 살펴봅니다." />
+<link rel="canonical" href="https://youngwonseo.github.io/JVM-sync/" />
+<meta property="og:url" content="https://youngwonseo.github.io/JVM-sync/" />
+<meta property="og:site_name" content="서영원 블로그" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2018-08-11T00:00:00+09:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="JVM Thread와 동기화" />
+<script type="application/ld+json">
+{"datePublished":"2018-08-11T00:00:00+09:00","headline":"JVM Thread와 동기화","url":"https://youngwonseo.github.io/JVM-sync/","mainEntityOfPage":{"@type":"WebPage","@id":"https://youngwonseo.github.io/JVM-sync/"},"author":{"@type":"Person","name":"Youngwon Seo"},"description":"1. 자바에서의 동기화 자바는 멀티쓰레딩을 지원합니다(정확하게 JVM이). 그리고 각 쓰레드를 동기화 하기 위해 Monitor를 사용합니다. 여기거 동기화란 여러 쓰레드가 동시에 한 메모리영역에 접근시 데이터의 무결정을 위해 락을 걸어 동시에 한 쓰레드만 접근가능하게 하는 것입니다. 자바는 동기화를 위해 문법적으로 synchronized를 이용하며 실제로는 Monitor의 메커니즘을 사용합니다. 정확하게 설명하면 Critical Section(여러쓰레드가 동시에 접근할려고 하는 구간)에 특정 쓰레드가 접근할 시 Lock 에대한 Object Monitor를 1증가시켜 해당 구간을 실행하고 빠져나오면 다시 1증가 시켰던 Monitor를 -1하여 다른 쓰레드가 접근가능하도록 만듭니다. 이를 위해 자바는 문법적으로 synchronized를 실행하는 것이죠. (멀티쓰레딩과 동기화 부분의 이론적 내용을 자세히 알고싶으신 분은 운영체제를 공부하시는 것을 추천합니다) 이렇게 쓰레드에 대한 동기화를 위해 각 쓰레드는 상태를 변경하며 프로그램이 실행되는데 이는 두 번째 절인 Thread의 상태 및 종류에서 살펴봅니다.","@type":"BlogPosting","dateModified":"2018-08-11T00:00:00+09:00","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
 
-  <title>JVM Thread와 동기화</title>
-  <meta name="description" content="1. 자바에서의 동기화자바는 멀티쓰레딩을 지원합니다(정확하게 JVM이). 그리고 각 쓰레드를 동기화 하기 위해 Monitor를 사용합니다. 여기거 동기화란 여러 쓰레드가 동시에 한 메모리영역에 접근시 데이터의 무결정을 위해 락을 걸어 동시에 한 쓰레드만 접근가능하게 하는 것입니다....">
+
+  
   
   <link rel="stylesheet" href="/css/main.css">
   <link rel="canonical" href="https://youngwonseo.github.io/JVM-sync/">
@@ -48,8 +67,6 @@
       
         
         <a class="page-link" href="/study/">Study</a>
-        
-      
         
       
         
@@ -289,14 +306,14 @@ JNI global references: 14
   <!-- <div class="related">
     <h2>Related</h2>
     
-      <li><a href="/%EB%8F%84%EC%BB%A4/docker-aws-travis/" title="도커와 AWS기반으로 CI환경 구축하기">도커와 AWS기반으로 CI환경 구축하기
-       &nbsp; <span class="post-meta">January 30, 2021</span></a>
+      <li><a href="/replica-set/" title="Replica Set">Replica Set
+       &nbsp; <span class="post-meta">February 16, 2021</span></a>
     
-      <li><a href="/%EB%8F%84%EC%BB%A4/docker-swarm/" title="도커 스웜(Docker Swarm)">도커 스웜(Docker Swarm)
-       &nbsp; <span class="post-meta">January 28, 2021</span></a>
+      <li><a href="/docker-java-deployment/" title="Docker Java Deployment">Docker Java Deployment
+       &nbsp; <span class="post-meta">February 16, 2021</span></a>
     
-      <li><a href="/micro-service-from-scratch/" title="Micro Service From Scratch">Micro Service From Scratch
-       &nbsp; <span class="post-meta">January 24, 2021</span></a>
+      <li><a href="/%EC%BF%A0%EB%B2%84%EB%84%A4%ED%8B%B0%EC%8A%A4/pod/" title="쿠버네티스 - 포드(Pod)">쿠버네티스 - 포드(Pod)
+       &nbsp; <span class="post-meta">February 15, 2021</span></a>
     
   </div> -->
 
@@ -327,8 +344,7 @@ JNI global references: 14
 
         </div>
         <footer class="site-footer">
-<p class="small">YOUNGWON &copy 2021
-</p>
+<p class="small"></p>
 </footer>
 
     </div>

@@ -4,9 +4,28 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width initial-scale=1">
+  
+  <!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>구글맵에 레이어 표기하기 | 서영원 블로그</title>
+<meta name="generator" content="Jekyll v4.2.0" />
+<meta property="og:title" content="구글맵에 레이어 표기하기" />
+<meta name="author" content="Youngwon Seo" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="1. background 웹 기반 지도에 시도/구/동 단위의 정보를 시각화할 필요가 생겼다. 솔루션 구매할 비용은 없다. 그러므로 일단 만들어야된다. 지도 본연의 interactive한 요소들이 필요하여 D3나 Echart등의 시각화에 도구대신 구글맵을 사용한다(시각화도구를 사용하면 레이어를 보다 쉽게 그릴수 있다). 초기 TopoJSON으로 개발한 모듈이 존재했지만 TopoJson이 아닌 순수 구글맵라이브러리가 필요했다. 이유는 같이 일하던 친구가 TopoJSON이 마음에 안들다는 식으로 말을했다. 구글에서는 GeoJSON이 적용된다고 하니, 한국지리정보를 포함하고 있는 GeoJSON를 구하거나 만들면된다. 구글의 GeoJSON을 사용하기 위해서는 GeoJSON의 Type이 Topology가 아닌 FeatureCollection가 되어야 한다는 것을 명심하자(왜 그런것인지는 모르겠다)." />
+<meta property="og:description" content="1. background 웹 기반 지도에 시도/구/동 단위의 정보를 시각화할 필요가 생겼다. 솔루션 구매할 비용은 없다. 그러므로 일단 만들어야된다. 지도 본연의 interactive한 요소들이 필요하여 D3나 Echart등의 시각화에 도구대신 구글맵을 사용한다(시각화도구를 사용하면 레이어를 보다 쉽게 그릴수 있다). 초기 TopoJSON으로 개발한 모듈이 존재했지만 TopoJson이 아닌 순수 구글맵라이브러리가 필요했다. 이유는 같이 일하던 친구가 TopoJSON이 마음에 안들다는 식으로 말을했다. 구글에서는 GeoJSON이 적용된다고 하니, 한국지리정보를 포함하고 있는 GeoJSON를 구하거나 만들면된다. 구글의 GeoJSON을 사용하기 위해서는 GeoJSON의 Type이 Topology가 아닌 FeatureCollection가 되어야 한다는 것을 명심하자(왜 그런것인지는 모르겠다)." />
+<link rel="canonical" href="https://youngwonseo.github.io/google-map-layer/" />
+<meta property="og:url" content="https://youngwonseo.github.io/google-map-layer/" />
+<meta property="og:site_name" content="서영원 블로그" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2019-02-13T00:00:00+09:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="구글맵에 레이어 표기하기" />
+<script type="application/ld+json">
+{"datePublished":"2019-02-13T00:00:00+09:00","headline":"구글맵에 레이어 표기하기","url":"https://youngwonseo.github.io/google-map-layer/","mainEntityOfPage":{"@type":"WebPage","@id":"https://youngwonseo.github.io/google-map-layer/"},"author":{"@type":"Person","name":"Youngwon Seo"},"description":"1. background 웹 기반 지도에 시도/구/동 단위의 정보를 시각화할 필요가 생겼다. 솔루션 구매할 비용은 없다. 그러므로 일단 만들어야된다. 지도 본연의 interactive한 요소들이 필요하여 D3나 Echart등의 시각화에 도구대신 구글맵을 사용한다(시각화도구를 사용하면 레이어를 보다 쉽게 그릴수 있다). 초기 TopoJSON으로 개발한 모듈이 존재했지만 TopoJson이 아닌 순수 구글맵라이브러리가 필요했다. 이유는 같이 일하던 친구가 TopoJSON이 마음에 안들다는 식으로 말을했다. 구글에서는 GeoJSON이 적용된다고 하니, 한국지리정보를 포함하고 있는 GeoJSON를 구하거나 만들면된다. 구글의 GeoJSON을 사용하기 위해서는 GeoJSON의 Type이 Topology가 아닌 FeatureCollection가 되어야 한다는 것을 명심하자(왜 그런것인지는 모르겠다).","@type":"BlogPosting","dateModified":"2019-02-13T00:00:00+09:00","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
 
-  <title>구글맵에 레이어 표기하기</title>
-  <meta name="description" content="1. background  웹 기반 지도에 시도/구/동 단위의 정보를 시각화할 필요가 생겼다.  솔루션 구매할 비용은 없다. 그러므로 일단 만들어야된다.  지도 본연의 interactive한 요소들이 필요하여 D3나 Echart등의 시각화에 도구대신 구글맵을 사용한다(시각화도구를 ...">
+
+  
   
   <link rel="stylesheet" href="/css/main.css">
   <link rel="canonical" href="https://youngwonseo.github.io/google-map-layer/">
@@ -48,8 +67,6 @@
       
         
         <a class="page-link" href="/study/">Study</a>
-        
-      
         
       
         
@@ -194,14 +211,14 @@
   <!-- <div class="related">
     <h2>Related</h2>
     
-      <li><a href="/%EB%8F%84%EC%BB%A4/docker-aws-travis/" title="도커와 AWS기반으로 CI환경 구축하기">도커와 AWS기반으로 CI환경 구축하기
-       &nbsp; <span class="post-meta">January 30, 2021</span></a>
+      <li><a href="/replica-set/" title="Replica Set">Replica Set
+       &nbsp; <span class="post-meta">February 16, 2021</span></a>
     
-      <li><a href="/%EB%8F%84%EC%BB%A4/docker-swarm/" title="도커 스웜(Docker Swarm)">도커 스웜(Docker Swarm)
-       &nbsp; <span class="post-meta">January 28, 2021</span></a>
+      <li><a href="/docker-java-deployment/" title="Docker Java Deployment">Docker Java Deployment
+       &nbsp; <span class="post-meta">February 16, 2021</span></a>
     
-      <li><a href="/micro-service-from-scratch/" title="Micro Service From Scratch">Micro Service From Scratch
-       &nbsp; <span class="post-meta">January 24, 2021</span></a>
+      <li><a href="/%EC%BF%A0%EB%B2%84%EB%84%A4%ED%8B%B0%EC%8A%A4/pod/" title="쿠버네티스 - 포드(Pod)">쿠버네티스 - 포드(Pod)
+       &nbsp; <span class="post-meta">February 15, 2021</span></a>
     
   </div> -->
 
@@ -232,8 +249,7 @@
 
         </div>
         <footer class="site-footer">
-<p class="small">YOUNGWON &copy 2021
-</p>
+<p class="small"></p>
 </footer>
 
     </div>

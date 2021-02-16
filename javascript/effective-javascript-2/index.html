@@ -4,9 +4,28 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width initial-scale=1">
+  
+  <!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>이펙티브 자바스크립트 #2 - 변수 스코프 | 서영원 블로그</title>
+<meta name="generator" content="Jekyll v4.2.0" />
+<meta property="og:title" content="이펙티브 자바스크립트 #2 - 변수 스코프" />
+<meta name="author" content="서영원" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Item8. 전역 객체의 사용을 최소화하라 자바스크립트는 쉽게 전역변수를 만들 수 있다(선언하지 않고 사용하면된다). 그러나 숙련된 프로그래머라면 전역변수를 사용하지 않아야 하는 이유을 알고 있을 것이다. 공통 네임스페이스에 대한 침해(이름충돌의 가능성) 그럼에도 불구하고 전역변수는, 특히 자바스크립트에서의 전역변수는 “일단 사용하고 나중에 정리하자” 라는 식으로 사용될 정도로 편리하다. 그러나 당연히 좋지 않은 방법이다. 다음과 같은 경우에는 전역 변수의 사용은 불가피하다. 외부 라이브러리나 컴포넌트들을 사용자에게 제공하기 위해서는 window(전역변수)에 바인딩된다. 기능탐지 여부를 위해 해당기능에 대한 전역변수의 존재여부를 검사한다." />
+<meta property="og:description" content="Item8. 전역 객체의 사용을 최소화하라 자바스크립트는 쉽게 전역변수를 만들 수 있다(선언하지 않고 사용하면된다). 그러나 숙련된 프로그래머라면 전역변수를 사용하지 않아야 하는 이유을 알고 있을 것이다. 공통 네임스페이스에 대한 침해(이름충돌의 가능성) 그럼에도 불구하고 전역변수는, 특히 자바스크립트에서의 전역변수는 “일단 사용하고 나중에 정리하자” 라는 식으로 사용될 정도로 편리하다. 그러나 당연히 좋지 않은 방법이다. 다음과 같은 경우에는 전역 변수의 사용은 불가피하다. 외부 라이브러리나 컴포넌트들을 사용자에게 제공하기 위해서는 window(전역변수)에 바인딩된다. 기능탐지 여부를 위해 해당기능에 대한 전역변수의 존재여부를 검사한다." />
+<link rel="canonical" href="https://youngwonseo.github.io/javascript/effective-javascript-2/" />
+<meta property="og:url" content="https://youngwonseo.github.io/javascript/effective-javascript-2/" />
+<meta property="og:site_name" content="서영원 블로그" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2018-05-07T00:00:00+09:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="이펙티브 자바스크립트 #2 - 변수 스코프" />
+<script type="application/ld+json">
+{"datePublished":"2018-05-07T00:00:00+09:00","headline":"이펙티브 자바스크립트 #2 - 변수 스코프","url":"https://youngwonseo.github.io/javascript/effective-javascript-2/","mainEntityOfPage":{"@type":"WebPage","@id":"https://youngwonseo.github.io/javascript/effective-javascript-2/"},"author":{"@type":"Person","name":"서영원"},"description":"Item8. 전역 객체의 사용을 최소화하라 자바스크립트는 쉽게 전역변수를 만들 수 있다(선언하지 않고 사용하면된다). 그러나 숙련된 프로그래머라면 전역변수를 사용하지 않아야 하는 이유을 알고 있을 것이다. 공통 네임스페이스에 대한 침해(이름충돌의 가능성) 그럼에도 불구하고 전역변수는, 특히 자바스크립트에서의 전역변수는 “일단 사용하고 나중에 정리하자” 라는 식으로 사용될 정도로 편리하다. 그러나 당연히 좋지 않은 방법이다. 다음과 같은 경우에는 전역 변수의 사용은 불가피하다. 외부 라이브러리나 컴포넌트들을 사용자에게 제공하기 위해서는 window(전역변수)에 바인딩된다. 기능탐지 여부를 위해 해당기능에 대한 전역변수의 존재여부를 검사한다.","@type":"BlogPosting","dateModified":"2018-05-07T00:00:00+09:00","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
 
-  <title>이펙티브 자바스크립트 #2 - 변수 스코프</title>
-  <meta name="description" content="Item8. 전역 객체의 사용을 최소화하라  자바스크립트는 쉽게 전역변수를 만들 수 있다(선언하지 않고 사용하면된다).  그러나 숙련된 프로그래머라면 전역변수를 사용하지 않아야 하는 이유을 알고 있을 것이다.          공통 네임스페이스에 대한 침해(이름충돌의 가능성)    ...">
+
+  
   
   <link rel="stylesheet" href="/css/main.css">
   <link rel="canonical" href="https://youngwonseo.github.io/javascript/effective-javascript-2/">
@@ -48,8 +67,6 @@
       
         
         <a class="page-link" href="/study/">Study</a>
-        
-      
         
       
         
@@ -337,14 +354,14 @@
   <!-- <div class="related">
     <h2>Related</h2>
     
-      <li><a href="/%EB%8F%84%EC%BB%A4/docker-aws-travis/" title="도커와 AWS기반으로 CI환경 구축하기">도커와 AWS기반으로 CI환경 구축하기
-       &nbsp; <span class="post-meta">January 30, 2021</span></a>
+      <li><a href="/replica-set/" title="Replica Set">Replica Set
+       &nbsp; <span class="post-meta">February 16, 2021</span></a>
     
-      <li><a href="/%EB%8F%84%EC%BB%A4/docker-swarm/" title="도커 스웜(Docker Swarm)">도커 스웜(Docker Swarm)
-       &nbsp; <span class="post-meta">January 28, 2021</span></a>
+      <li><a href="/docker-java-deployment/" title="Docker Java Deployment">Docker Java Deployment
+       &nbsp; <span class="post-meta">February 16, 2021</span></a>
     
-      <li><a href="/micro-service-from-scratch/" title="Micro Service From Scratch">Micro Service From Scratch
-       &nbsp; <span class="post-meta">January 24, 2021</span></a>
+      <li><a href="/%EC%BF%A0%EB%B2%84%EB%84%A4%ED%8B%B0%EC%8A%A4/pod/" title="쿠버네티스 - 포드(Pod)">쿠버네티스 - 포드(Pod)
+       &nbsp; <span class="post-meta">February 15, 2021</span></a>
     
   </div> -->
 
@@ -375,8 +392,7 @@
 
         </div>
         <footer class="site-footer">
-<p class="small">YOUNGWON &copy 2021
-</p>
+<p class="small"></p>
 </footer>
 
     </div>

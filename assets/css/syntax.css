@@ -173,9 +173,9 @@
 .highlight {
   color: #ffffff;
   background-color: #272822;
-  padding: 10px;
-  border-radius: 10px;
-  
+  padding: 0px 3px;
+  border-radius: 3px;
+  overflow: auto;
 }
 .highlight .n, .highlight .py, .highlight .nx {
   color: #ffffff;

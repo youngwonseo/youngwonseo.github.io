@@ -2,439 +2,318 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>서영원 블로그</title>
-    <description>YOUNGWON &amp;copy 2021
-</description>
+    <description></description>
     <link>https://youngwonseo.github.io/</link>
     <atom:link href="https://youngwonseo.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Mon, 01 Feb 2021 15:56:35 +0900</pubDate>
-    <lastBuildDate>Mon, 01 Feb 2021 15:56:35 +0900</lastBuildDate>
+    <pubDate>Tue, 16 Feb 2021 23:43:16 +0900</pubDate>
+    <lastBuildDate>Tue, 16 Feb 2021 23:43:16 +0900</lastBuildDate>
     <generator>Jekyll v4.2.0</generator>
     
       <item>
-        <title>도커와 AWS기반으로 CI환경 구축하기</title>
-        <description>&lt;p&gt;여기서는 다음과 같은 시스템을 구성하여 마스터 브런치에 코드가 머지될때 &lt;strong&gt;Travis CI&lt;/strong&gt;에서 코드를 테스트하고 테스트가 완료되면 &lt;strong&gt;AWS의 Bean&lt;/strong&gt;에 프로덕션이 배포가 되는 것을 자동적으로 구성하는…
-중요한점은 마스터 브런치에 풀리퀘스트가 머지되면 이후 테스트와 배포를 자동으로 해준다는 점입니다.&lt;/p&gt;
+        <title>Replica Set</title>
+        <description>
+</description>
+        <pubDate>Tue, 16 Feb 2021 00:00:00 +0900</pubDate>
+        <link>https://youngwonseo.github.io/replica-set/</link>
+        <guid isPermaLink="true">https://youngwonseo.github.io/replica-set/</guid>
+        
+        
+      </item>
+    
+      <item>
+        <title>Docker Java Deployment</title>
+        <description>
+</description>
+        <pubDate>Tue, 16 Feb 2021 00:00:00 +0900</pubDate>
+        <link>https://youngwonseo.github.io/docker-java-deployment/</link>
+        <guid isPermaLink="true">https://youngwonseo.github.io/docker-java-deployment/</guid>
+        
+        
+      </item>
+    
+      <item>
+        <title>쿠버네티스 - 포드(Pod)</title>
+        <description>&lt;p&gt;포드는 쿠버네티스에서 컨테이너 어플리케이션에 대한 기본 단위
+포드는 1개이상의 컨테이로 구성된 컨테이너의 집합
+포드는 쿠버네티스에서 가장 기초적이고 중요한 개념&lt;/p&gt;
 
-&lt;p&gt;TravisCI는 깃헙레포지토리에 변경이 생기면 코드를 pull하고 테스트를 진행합니다. 테스트가 성공정으로 통과되면 AWS에 배포를 진행합니다.&lt;/p&gt;
+&lt;p&gt;도커에서는 컨테이너, 도커 스웜에서는 서비스, 쿠버네티스에서는 포드가 기본 배포단위&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/post/docker/docker-aws-travis.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;kubectl apply -f nginx-pod.yaml
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;완성된 코드는 &lt;a href=&quot;https://github.com/youngwonseo/docker-react&quot;&gt;여기&lt;/a&gt;서 확인하실 수 있습니다.&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;kubectl get pods
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;kubectl describe pods my-nginx-pod
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;h2 id=&quot;1-깃허브-세팅&quot;&gt;1. 깃허브 세팅&lt;/h2&gt;
-&lt;p&gt;예제를 위해 docker-react라는 레포지토리를 깃헙에 생성하겠습니다.&lt;/p&gt;
+&lt;p&gt;포드 vs 컨테이너&lt;/p&gt;
+</description>
+        <pubDate>Mon, 15 Feb 2021 00:00:00 +0900</pubDate>
+        <link>https://youngwonseo.github.io/%EC%BF%A0%EB%B2%84%EB%84%A4%ED%8B%B0%EC%8A%A4/pod/</link>
+        <guid isPermaLink="true">https://youngwonseo.github.io/%EC%BF%A0%EB%B2%84%EB%84%A4%ED%8B%B0%EC%8A%A4/pod/</guid>
+        
+        
+        <category>쿠버네티스</category>
+        
+      </item>
+    
+      <item>
+        <title>스프링 클라우드 스트림</title>
+        <description>&lt;p&gt;이벤트 기반 마이크로 서비스
+논블로킹 동기 REST API&lt;/p&gt;
 
-&lt;h2 id=&quot;2-travis-ci-세팅&quot;&gt;2. Travis CI 세팅&lt;/h2&gt;
-&lt;h3 id=&quot;travisci-계정-생성과-레포지토리-연결&quot;&gt;TravisCI 계정 생성과 레포지토리 연결&lt;/h3&gt;
-&lt;p&gt;&lt;a href=&quot;https://travis-ci.com/&quot; target=&quot;_blank&quot;&gt;TravisCI&lt;/a&gt; 웹사이트에서 깃헙아이디를 사용해 로그인 합니다. 로그인이 완료되면 Settings의 GitHub Apps Integration를 선택해서 1번과성에서 생성한 docker-react를 연결합니다. 연결과정에서 내 깃헙의 모든 레포지토리연결과 선택된 레포지토리만 연결하는 2가지 옵션중 하나를 선택할 수 있습니다.&lt;/p&gt;
+&lt;p&gt;이벤트 드리븐 시스템&lt;/p&gt;
+</description>
+        <pubDate>Wed, 10 Feb 2021 00:00:00 +0900</pubDate>
+        <link>https://youngwonseo.github.io/stream/</link>
+        <guid isPermaLink="true">https://youngwonseo.github.io/stream/</guid>
+        
+        
+      </item>
+    
+      <item>
+        <title>Routing</title>
+        <description>
+&lt;p&gt;zuul 
+블로킹 API&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/post/docker/docker-travis-repository.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;spring cloud gateway
+스프링5
+프로젝트 리액터
+스브링 부트2 기반 논블로킹 API&lt;/p&gt;
 
-&lt;p&gt;만약 sign up for beta라는 메세지가 출력된다면 Setting의 Migrate에서 해결할 수 있습니다.&lt;/p&gt;
+&lt;p&gt;더 많은 양의 동시 요청을 처리 가능&lt;/p&gt;
 
-&lt;h3 id=&quot;travisyml-작성&quot;&gt;.travis.yml 작성&lt;/h3&gt;
-&lt;p&gt;Travis에 연결된 레포지토리에 머지가 완료될때 테스트를 어떻게 실행하고 어디에 어떻게 배포할지 설정하는 스트립트를 작성해야합니다. 이 파일이름을 .travis.yml&lt;/p&gt;
+&lt;p&gt;istio&lt;/p&gt;
 
+&lt;p&gt;service mesh&lt;/p&gt;
+</description>
+        <pubDate>Tue, 09 Feb 2021 00:00:00 +0900</pubDate>
+        <link>https://youngwonseo.github.io/routing/</link>
+        <guid isPermaLink="true">https://youngwonseo.github.io/routing/</guid>
+        
+        
+      </item>
+    
+      <item>
+        <title>클라이언트 회복성 패턴</title>
+        <description>&lt;h3 id=&quot;1-클라이언트-측-부하-분산&quot;&gt;1. 클라이언트 측 부하 분산&lt;/h3&gt;
+
+&lt;h3 id=&quot;2-회로-차단기&quot;&gt;2. 회로 차단기&lt;/h3&gt;
+
+&lt;h3 id=&quot;3-폴백&quot;&gt;3. 폴백&lt;/h3&gt;
+
+&lt;h3 id=&quot;4-벌크헤드&quot;&gt;4. 벌크헤드&lt;/h3&gt;
+</description>
+        <pubDate>Mon, 08 Feb 2021 00:00:00 +0900</pubDate>
+        <link>https://youngwonseo.github.io/recovery/</link>
+        <guid isPermaLink="true">https://youngwonseo.github.io/recovery/</guid>
+        
+        
+      </item>
+    
+      <item>
+        <title>스프링 클라우드 유레카</title>
+        <description>&lt;h2 id=&quot;유레카-서비스-구축&quot;&gt;유레카 서비스 구축&lt;/h2&gt;
+
+&lt;p&gt;https://cloud.spring.io/spring-cloud-netflix&lt;/p&gt;
+
+&lt;h2 id=&quot;서비스-디스커버리&quot;&gt;서비스 디스커버리&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;스프링 디스커버리 클라이언트&lt;/li&gt;
+  &lt;li&gt;RestTemplate이 활성화된 스프링 디스커버리 클라이언트&lt;/li&gt;
+  &lt;li&gt;넷플릭스 Feign 클라이언트&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;feign&quot;&gt;Feign&lt;/h3&gt;
 &lt;ol&gt;
+  &lt;li&gt;자바인터페이스 정의&lt;/li&gt;
   &lt;li&gt;&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;ul&gt;
-  &lt;li&gt;sudo : 명령어 실행에 있어 항상 루트권한이 필요하다는 것을 설정(도커 CLI를 사용하기 때문에)&lt;/li&gt;
-  &lt;li&gt;services : docker를 실행하겠다는 것을 명시&lt;/li&gt;
-  &lt;li&gt;before_install : 테스트를 수행하기전 실행해야하는 작업정의, 여기서는 도커 이미지를 생성합니다.
-    &lt;ul&gt;
-      &lt;li&gt;-t는 빌드된 이미지에 이름을 지정하는 옵션, travis내부에서만 사용되는 이름&lt;/li&gt;
-      &lt;li&gt;-f는 도커파일을 지정하는 옵션&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;script : 테스트를 수행하기 위한 명령어
-    &lt;ul&gt;
-      &lt;li&gt;– –coverage는 npm이 테스트를 실행하는지 확인하기 위한 옵션&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
+&lt;p&gt;정기적으로 heartbeat메세지를 보낸다&lt;/p&gt;
 
-&lt;p&gt;Dockerfile과 Dockerfile.dev&lt;/p&gt;
-
-&lt;p&gt;master에 푸시를 진행하겠습니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/post/docker/docker-travis-testing.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;p&gt;테스트를 완료하면 다음과 같이 초록색으로 변경됩니다(위와 다른 커밋입니다)
-&lt;img src=&quot;/assets/post/docker/docker-travis-test-completed.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;3-aws-elastic-beanstalk-세팅&quot;&gt;3. AWS Elastic Beanstalk 세팅&lt;/h2&gt;
-
-&lt;p&gt;AWS에 접속후 로그인을 합니다.
-로그인이 완료되면 Elastic Beanstalk에서 Create Application을 수행합니다.
-이때 플랫폼은 Docker, 플랫폼 브랜치를 Docker running on 64bit Amazon Linux를 선택합니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/post/docker/docker-elasticbeanstalk-setting.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;로드벨런스는 Elastic의 일부
-Elastic Beanstalk은 가상머신으로 접근하는 트래픽을 모니터링하고 트래픽양에따라 가상머신의 수를 조절합니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/post/docker/docker-elasticbeanstalk1.png&quot; alt=&quot;&quot; /&gt;
-&lt;img src=&quot;/assets/post/docker/docker-elasticbeanstalk2.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Elasktic Beanstalk 어플리케이션이 완료되면 콘솔에서 다음과 같은 화면을 확인할 수있습니다. 상단에 url에 접근하면 컨테이너내부의 어플리케이션에 접속할 수 있습니다.&lt;/p&gt;
-
-&lt;h2 id=&quot;4-travisci에서-aws-elastic-beanstalk으로-배포&quot;&gt;4. TravisCI에서 AWS Elastic Beanstalk으로 배포&lt;/h2&gt;
-&lt;p&gt;3단계에서 만든 Elastic Beanstalk 환경에 앱을 배포(deploy)하는 스크립트를 .travis.yml에 추가합니다.&lt;/p&gt;
-
-&lt;p&gt;Dockerreact-env-1.eba-mexwcx4k.us-west-2.elasticbeanstalk.com&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;provider : 배포할 서비스&lt;/li&gt;
-  &lt;li&gt;region: Elastic Beanstalk url에 포함되어 있는 region&lt;/li&gt;
-  &lt;li&gt;app:&lt;/li&gt;
-  &lt;li&gt;env: url의 가장 앞부분&lt;/li&gt;
-  &lt;li&gt;bucket_name: S3버킷 이름&lt;/li&gt;
-  &lt;li&gt;bucket_path: 버킷의 경로, 보통 앱이름으로 설정&lt;/li&gt;
-  &lt;li&gt;on : 배포를 위한 브런치&lt;/li&gt;
-  &lt;li&gt;access_key_id : AWS 공개키&lt;/li&gt;
-  &lt;li&gt;secret_access_key: AWS 비밀키&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;s3-버킷&quot;&gt;S3 버킷&lt;/h3&gt;
-
-&lt;h3 id=&quot;iam에서-키-생성&quot;&gt;IAM에서 키 생성&lt;/h3&gt;
-
-&lt;h3 id=&quot;travisci에-환경변수-설정하기&quot;&gt;TravisCI에 환경변수 설정하기&lt;/h3&gt;
-
-&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://www.udemy.com/course/docker-and-kubernetes-the-complete-guide&quot; target=&quot;_blank&quot;&gt;Docker and Kubernate: The Complete Guide - Stephen Grider&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-</description>
-        <pubDate>Sat, 30 Jan 2021 00:00:00 +0900</pubDate>
-        <link>https://youngwonseo.github.io/%EB%8F%84%EC%BB%A4/docker-aws-travis/</link>
-        <guid isPermaLink="true">https://youngwonseo.github.io/%EB%8F%84%EC%BB%A4/docker-aws-travis/</guid>
-        
-        
-        <category>도커</category>
-        
-      </item>
-    
-      <item>
-        <title>도커 스웜(Docker Swarm)</title>
-        <description>&lt;p&gt;도커 스웜은 도커 엔진 자체에 내장되어 있습니다. 다음과 같은 명령어를 사용하면 inactive로 되어있는것을 확인 할 수 있습니다.&lt;/p&gt;
-&lt;blockquote&gt;
-  &lt;p&gt;docker info | grep Swarm&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h3 id=&quot;도커-스웜-모드-구조&quot;&gt;도커 스웜 모드 구조&lt;/h3&gt;
-&lt;p&gt;스웜모드는 &lt;strong&gt;매니저 노드&lt;/strong&gt;와 &lt;strong&gt;워커 노드&lt;/strong&gt;로 구성됩니다.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;매니저 노드 : 워커노드를 관리하는 노드&lt;/li&gt;
-  &lt;li&gt;워커 노드 : 컨테이너가 생성되고 관리되는 노드&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;매니저 노드에도 컨테이너가 생성되고 관리되지만 구분해서 사용하는 것이 권장됩니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/post/docker/swarm-diagram.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;도커-스웜-모드-클러스터-구축&quot;&gt;도커 스웜 모드 클러스터 구축&lt;/h3&gt;
-
-&lt;p&gt;도커 스웜 모드 클러스터를 구축에 대한 실습을하기 위해서 3대의 머신이 필요합니다. 버추얼박스의 가상머신이나 AWS의 EC2, GCP의 Compute Engine을 사용하면되는데 저는 GCP의 Compute Engine에서 ubuntu 인스턴스 3개를 생성하고 사용하겠습니다.&lt;/p&gt;
-
-&lt;p&gt;생성한 인스턴스의 정보는 다음과 같습니다.&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;매니저노드
-    &lt;ul&gt;
-      &lt;li&gt;instance-1 10.128.0.2&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;워커노드
-    &lt;ul&gt;
-      &lt;li&gt;instance-2 10.128.0.3&lt;/li&gt;
-      &lt;li&gt;instance-3 10.128.0.4&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h4 id=&quot;매니저-노드-생성-및-워커노드-연결&quot;&gt;매니저 노드 생성 및 워커노드 연결&lt;/h4&gt;
-&lt;p&gt;매니저 노드로 사용할 인스턴스에서 swarm init 명령어를 사용해 스웜 클러스터를 시작합니다.&lt;/p&gt;
-&lt;blockquote&gt;
-  &lt;p&gt;docker swarm init –advertise-addr 10.128.0.2&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;위 명령어의 결과로 다음과 같이 명령어(매니저에 접속하기 위한 토큰)가 반환됩니다. 아래의 결과를 복사해 워커노드에서 실행합니다.&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;docker swarm join –token SWMTKN-1-32vopdffl4nx33dm1mq80t5b1ddoi7srz46l88dmzsy7rctqim-6ubdek2ne48hr03a179e8kvkn 10.128.0.2:2377&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;다음과 같은 명령어로 매니저노드의 토큰을 확인하거나 새로운토큰발급을 할 수 있습니다.&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;docker swarm join-token manager
-docker swarm join-token –rotate manager&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;여기서는 실습환경으로 매니저노드를 한대만 사용하지만 실제운영환경에서는 여러개의 매니저노드를 사용하는것을 권장합니다. 매니저노드의 장애나 부하를 분산하기위함입니다. 그러나 매니저노드 개수가 많아진다고 해서 스웜 클러스터의 성능이 좋아지는것은 아닙니다.&lt;/p&gt;
-
-&lt;p&gt;매니저는 홀수로 구성하는 것이 바람직합니다. 절반 이상의 매니저 노드에 장애가 발생하면 클러스터 운영이 중단되는데 홀수로 구성시 짝수일때 보다 매니저 노드 장애를 더 허용하기 때문이고, 일관성을 유지할 수 있기 때문입니다.&lt;/p&gt;
-
-&lt;p&gt;클러스터를 구축하면 다음의 명령어로 클러스터내 노드들을 확인할 수 있습니다. 별표(*)가 붙어있는 노드가 매니저 노드입니다.&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;docker node ls&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;다음은 노드를 삭제하는 명령어 입니다. 이는 두단계로 진행됩니다.&lt;/p&gt;
+&lt;h2 id=&quot;유레카-서버&quot;&gt;유레카 서버&lt;/h2&gt;
+&lt;p&gt;유레카 서버를 구축하기 위해 다음과 같은 단계를 실행한다.&lt;/p&gt;
 &lt;ol&gt;
-  &lt;li&gt;삭제할 워커노드에서 명령어를 실행합니다.
-    &lt;blockquote&gt;
-      &lt;p&gt;docker swarm leave&lt;/p&gt;
-    &lt;/blockquote&gt;
-  &lt;/li&gt;
-  &lt;li&gt;매니저 노드에서 삭제한 워커노드를 삭제합니다.
-    &lt;blockquote&gt;
-      &lt;p&gt;docker node rm instance-2&lt;/p&gt;
-    &lt;/blockquote&gt;
-  &lt;/li&gt;
+  &lt;li&gt;스프링 부트 프로젝트 생성&lt;/li&gt;
+  &lt;li&gt;eureka-server 의존성 추가&lt;/li&gt;
+  &lt;li&gt;애플리케이션 클래스에 @EnableEurekaServer 어노테이션 추가&lt;/li&gt;
+  &lt;li&gt;application.yml 파일 수정&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;p&gt;매니저 노드 삭제 명령어는 –force 옵션을 지정합니다. 삭제할 매니저 노드에서 실행합니다.&lt;/p&gt;
-&lt;blockquote&gt;
-  &lt;p&gt;docker swarm leave –force&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;상용환경에서는 고가용성을 보장하기 위해 유레카 서버를 두대 이상 운용해야한다.&lt;/p&gt;
 
-&lt;p&gt;다음은 워커노드를 매니저 노드로 변경하는 명령어 입니다.&lt;/p&gt;
-&lt;blockquote&gt;
-  &lt;p&gt;docker node promote instance-2&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;다음은 매니저 노드를 워커노드로 변경합니다.&lt;/p&gt;
-&lt;blockquote&gt;
-  &lt;p&gt;docker node demote instance-2&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h3 id=&quot;스웜-모드-서비스&quot;&gt;스웜 모드 서비스&lt;/h3&gt;
-
-&lt;p&gt;스웜 모드에서 제어하는 단위는 컨테이너가 아닌 &lt;strong&gt;서비스(Service)&lt;/strong&gt;입니다. 서비스는 &lt;strong&gt;같은 이미지&lt;/strong&gt;에서 생성된 컨테이너의 집합이며 서비스내에는 1개 이상의 컨테이너가 존재할 수 있으며, 컨테이너들을 태스크(Task)라고 합니다.&lt;/p&gt;
-
-&lt;p&gt;스웜 스케줄러는 서비스의 정의에 따라 컨테이너를 할당할 적합한 노드를 선정하고 해당 노드에 컨테이너를 분산해서 할당합니다. 이때 함께 생성된 &lt;strong&gt;레플리카(replica)&lt;/strong&gt;라고 하며 서비스에 설정된 레플리카의 수만큼의 컨테이너가 클러스터내에 존재해야 합니다. 스웜 매니저는 노드에 장애가 발생해도 다른 노드를 사용해 지정된 레플리카수만큼의 컨테이너를 유지합니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/post/docker/docker-swarm-replica.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;h4 id=&quot;서비스-생성&quot;&gt;서비스 생성&lt;/h4&gt;
-&lt;p&gt;서비스제어에 대한 명령어는 모두 매니저 노드에서 실행합니다.&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;docker service create –name myweb –replicas 2 -p 80:80 nginx&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;다음은 구동중인 서비스 목록을 확인하는 명령어 입니다.&lt;/p&gt;
-&lt;blockquote&gt;
-  &lt;p&gt;docker service ls&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;다음은 서비스의 자세한 정보 확인하는 명령어 입니다. 서비스내 컨테이너 목록, 상태, 할당 노드등을 확인할 수 있습니다.&lt;/p&gt;
-&lt;blockquote&gt;
-  &lt;p&gt;docker service ps myweb&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;다음은 서비스를 삭제하는 명령어 입니다. 당연히 내부컨테이너들을 함께 삭제합니다. 이때 컨테이너 가동유무는 관계없이 무조건 삭제합니다.&lt;/p&gt;
-&lt;blockquote&gt;
-  &lt;p&gt;docker service rm myweb&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;생성된 서비스의 어느 노드를 접근해도, 서비스가 생성되지 않은 노드를 사용해서도 위에서 생성한 nginx에 접근이 가능합니다. 스웜 모드는 라운드 로빈으로 서비스 내 접근할 컨테이너를 결정, 트래픽이나 리소스사용에 따른 로드 밸런싱을 적용해야할 상황에서는 적합하지 않습니다. 실제 로드벨런싱은 노드별 가능합니다.&lt;/p&gt;
-
-&lt;p&gt;다음은 서비스내의 nginx컨테이너를 4개로 유지하도록 변경하는 명령어 입니다.&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;docker service scale myweb=4&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;docker service ps myweb&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h4 id=&quot;서비스-롤링-업데이트&quot;&gt;서비스 롤링 업데이트&lt;/h4&gt;
-&lt;p&gt;스웜 모드는 서비스내의 상태를 일괄 업데이트하는 롤링 업데이트를 지원합니다. 만약 이미지를 특정 버전으로 변경하고 싶다면 다음의 명령어를 사용합니다.&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;docker service update –image nginx:1.11 myweb&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;서비스 생성시 롤링 업데이트 주기, 업데이트를 동시에 진행할 컨테이너 개수, 업데이트 실패시 동작등을 설정할 수 있습니다. 다음은 각 컨테이너 레플리카를 10초단위로 업데이트하며 컨테이너 2개씩 업데이트하는 서비스를 생성하는 명령어 입니다.&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;docker service create –replicas 4 –name myweb –update-delay 10s –update-parallelism 2 nginx&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;다음은 롤링 업데이트 설정을 확인하는 명령어입니다.&lt;/p&gt;
-&lt;blockquote&gt;
-  &lt;p&gt;docker service inspect –pretty myweb
-docker inspect –type service myweb&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&amp;amp;mallGb=KOR&amp;amp;barcode=9791158392291&amp;amp;orderClick=LEa&amp;amp;Kc=&quot; target=&quot;_blank&quot;&gt;시작하세요! 도커/쿠버네티스 - 용찬호&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;https://docs.docker.com/engine/install/ubuntu/&lt;/li&gt;
-&lt;/ul&gt;
-
+&lt;h2 id=&quot;유레카-클라이언트&quot;&gt;유레카 클라이언트&lt;/h2&gt;
+&lt;ol&gt;
+  &lt;li&gt;스프링 부트 프로젝트 생성&lt;/li&gt;
+  &lt;li&gt;eureka-client 의존성 추가&lt;/li&gt;
+  &lt;li&gt;&lt;/li&gt;
+&lt;/ol&gt;
 </description>
-        <pubDate>Thu, 28 Jan 2021 00:00:00 +0900</pubDate>
-        <link>https://youngwonseo.github.io/%EB%8F%84%EC%BB%A4/docker-swarm/</link>
-        <guid isPermaLink="true">https://youngwonseo.github.io/%EB%8F%84%EC%BB%A4/docker-swarm/</guid>
+        <pubDate>Sun, 07 Feb 2021 00:00:00 +0900</pubDate>
+        <link>https://youngwonseo.github.io/service-discovery/</link>
+        <guid isPermaLink="true">https://youngwonseo.github.io/service-discovery/</guid>
         
-        
-        <category>도커</category>
         
       </item>
     
       <item>
-        <title>Micro Service From Scratch</title>
+        <title>스프링 클라우드 컨피그</title>
+        <description>&lt;p&gt;기존에 존재했던 저수준의 프로퍼티 파일(YAML, JSON, XML등)은 수백 개의 마이크로서비스와 수많은 마이크로서비스 인스턴스가 실행되는 클라우드 환경에서는 적합하지 않음&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;깃&lt;/li&gt;
+  &lt;li&gt;로컬 파일 시스템&lt;/li&gt;
+  &lt;li&gt;하시코프 볼트&lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;JDBC 데이터베이스&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;배포되는 코드와 설정정보들을 완전히 분리&lt;/li&gt;
+  &lt;li&gt;서버 및 애플리케이션을 빌드하고 배포하는 과정에서 변경되지 않는 이미지를 빌드&lt;/li&gt;
+  &lt;li&gt;서비스가 시작할때 마이크로서비스가 읽어 올 수 있는 중앙 저장소를 이용해 애플리케이션 구성 정보를 주입&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;애플리케이션-구성관리-4가지-원칙&quot;&gt;애플리케이션 구성관리 4가지 원칙&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;분리 : 실제 물리적인 서비스의 배포와 구성 정보를 완전히 분리, 즉 애플리케이션에 구성정보가 포함되어있으면 안됨&lt;/li&gt;
+  &lt;li&gt;추상화 : 구성데이터를 파일이나 JDBC등을 사용한 직접적인 접근보다 RESTful로 Json과 같은 형태로 조회되도록 해야함&lt;/li&gt;
+  &lt;li&gt;중앙 집중화 : 구성데이터를 가능한 소수의 저장소에 집중화함&lt;/li&gt;
+  &lt;li&gt;견고성 : 구성데이터를 서비스와 완전히 분리하고 중앙 집중화하므로 어떤 솔루션을 사용하더라도 고가용성과 다중성을 구현할 수 있어야함&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;구성-관리-시스템-선택하상&quot;&gt;구성 관리 시스템 선택하상&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;Etcd&lt;/li&gt;
+  &lt;li&gt;Eureka&lt;/li&gt;
+  &lt;li&gt;Consul&lt;/li&gt;
+  &lt;li&gt;Zookeeper&lt;/li&gt;
+  &lt;li&gt;Spring Cloud Config Server&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        <pubDate>Sat, 06 Feb 2021 00:00:00 +0900</pubDate>
+        <link>https://youngwonseo.github.io/config-server/</link>
+        <guid isPermaLink="true">https://youngwonseo.github.io/config-server/</guid>
+        
+        
+      </item>
+    
+      <item>
+        <title>스프링 마이크로서비스</title>
+        <description>&lt;h3 id=&quot;스프링-클라우드-컨피그&quot;&gt;스프링 클라우드 컨피그&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;마이크로서비스에서 구성 데이터를 관리&lt;/li&gt;
+  &lt;li&gt;애플리케이션과 구성 데이터를 완전히 분리&lt;/li&gt;
+  &lt;li&gt;마이크로서비스 인스턴스가 많아도 항상 동일한 구성을 유지할수 있도록 함&lt;/li&gt;
+  &lt;li&gt;다음과 같은 오픈 소스 프로젝트들과 통합
+    &lt;ul&gt;
+      &lt;li&gt;깃&lt;/li&gt;
+      &lt;li&gt;콘설(Consul) : 서비스 인스턴스를 서비스에 등록하는 디스커버리 도구&lt;/li&gt;
+      &lt;li&gt;유레카(Eureka) : 콘설과 유사, 서비스 디스커버리를 제공&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;스프링-클라우드-서비스-디스커버리&quot;&gt;스프링 클라우드 서비스 디스커버리&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;서비스가 배포된 물리적 위치(IP주소나 서비스 이름)를 추상화&lt;/li&gt;
+  &lt;li&gt;서비스 소비자는 논리적 위치를 사용해 비즈니스 로직을 콜&lt;/li&gt;
+  &lt;li&gt;서비스 인스턴스의 시작, 종료시점에 등록과 말소를 처리&lt;/li&gt;
+  &lt;li&gt;콘실, 유레카 등을 사용&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;스프링-클라우드넷플릭스-히스트릭스와-리본&quot;&gt;스프링 클라우드/넷플릭스 히스트릭스와 리본&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;마이크로서비스 클라이언트의 회복성 패턴을 위해 사용&lt;/li&gt;
+  &lt;li&gt;히스트릭스는 회로 차단기(circuit breaker), 벌크헤드(bulkhead)와 같은 서비스 클라이언트 회복성 패턴을 위한 기능 제공&lt;/li&gt;
+  &lt;li&gt;리본은 디스커버리 에이전트 통합 및 서비스 사용에 대한 부하 분산기능 제공&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;스프링-클라우드넷플릭스-주울&quot;&gt;스프링 클라우드/넷플릭스 주울&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;주울을 사용해서 라우팅 구현&lt;/li&gt;
+  &lt;li&gt;즉 서비스 게이트웨이를 구현할 수 있음&lt;/li&gt;
+  &lt;li&gt;보안, 인증, 컨텐츠 필터링, 라우팅 규칙 등을 필터로 적용가능&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;스프링-클라우드-스트림&quot;&gt;스프링 클라우드 스트림&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;마이크로서비스에 경량 메시지 프로세싱을 통합 제공&lt;/li&gt;
+  &lt;li&gt;비동기 이벤트를 사용하는 마이크로 서비스 구축&lt;/li&gt;
+  &lt;li&gt;RabbitMQ, Kafka와 통합기능 제공&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;스프링-클라우드-슬루스&quot;&gt;스프링 클라우드 슬루스&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;슬루스(sleuth)는 애플리케이션 안에서 사용되는 HTTP호출과 메시지 채널(RabbitMQ, Kafka)에 고유 추적 식별자를 통합하는 기능을 제공&lt;/li&gt;
+  &lt;li&gt;추적 식별자를 사용해 트렌젝셕을 추적, 로깅&lt;/li&gt;
+  &lt;li&gt;페이퍼트레일(Papertrail) 같은 로그 수집용 기술 도구, 집킨(Zipkin) 같은 추적 도구와 결합하여 사용
+    &lt;ul&gt;
+      &lt;li&gt;페이퍼트레일: 여러 마이크로서비스의 로그를 실시간으로 질의 가능한 데이터베이스&lt;/li&gt;
+      &lt;li&gt;오픈집킨: 슬루스가 생성한 데이터를 사용해 단일 트랜젝션에 연관된 서비스의 호출 흐름을 시각화하는 도구&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;스프링-클라우드-시큐리티&quot;&gt;스프링 클라우드 시큐리티&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;인증 및 인가 처리&lt;/li&gt;
+  &lt;li&gt;토큰 기반 사용자 검증 및 접근 권한 검증&lt;/li&gt;
+  &lt;li&gt;JWT 지원, JWT기반 OAuth2 토큰 생성과 디지털 서명에 대한 표준 제공&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;프로비저닝&quot;&gt;프로비저닝&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;스프링에서는 프로비저닝에 대한 기능을 제공하지는 않음&lt;/li&gt;
+  &lt;li&gt;Travis CI, Docker등을 사용&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;디자인 패턴&lt;/td&gt;
+      &lt;td&gt;소프트웨어 컴포넌트&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;서비스 검색&lt;/td&gt;
+      &lt;td&gt;넷플릭스 유레카 및 스프링 클라우드 로드 벨런서&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;에지 서버&lt;/td&gt;
+      &lt;td&gt;스프링 클라우드 게이트웨이 및 스프링 시큐리티 OAuth&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;구성 중앙화&lt;/td&gt;
+      &lt;td&gt;스프링 클라우드 컨피그 서버&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;서킷 브레이커&lt;/td&gt;
+      &lt;td&gt;Resilience4j&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;분산 추적&lt;/td&gt;
+      &lt;td&gt;스프링 클라우드 슬루스 및 집킨&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+</description>
+        <pubDate>Fri, 05 Feb 2021 00:00:00 +0900</pubDate>
+        <link>https://youngwonseo.github.io/spring-microservice/</link>
+        <guid isPermaLink="true">https://youngwonseo.github.io/spring-microservice/</guid>
+        
+        
+      </item>
+    
+      <item>
+        <title>Docker Summary</title>
         <description>
 </description>
-        <pubDate>Sun, 24 Jan 2021 00:00:00 +0900</pubDate>
-        <link>https://youngwonseo.github.io/micro-service-from-scratch/</link>
-        <guid isPermaLink="true">https://youngwonseo.github.io/micro-service-from-scratch/</guid>
+        <pubDate>Tue, 02 Feb 2021 00:00:00 +0900</pubDate>
+        <link>https://youngwonseo.github.io/docker-summary/</link>
+        <guid isPermaLink="true">https://youngwonseo.github.io/docker-summary/</guid>
         
-        
-      </item>
-    
-      <item>
-        <title>[길벗] 다시 확률통계 확률편 리뷰</title>
-        <description>&lt;p&gt;본 글은 이번에 길벗에서 출간(번역)한 &lt;a href=&quot;https://www.gilbut.co.kr/book/view?bookcode=BN002794&quot; target=&quot;_blank&quot;&gt;다시 확률 통계 : 확률편&lt;/a&gt;에 대한 리뷰글입니다.&lt;/p&gt;
-
-&lt;h2 id=&quot;통계의-기본기&quot;&gt;통계의 기본기&lt;/h2&gt;
-&lt;p&gt;본 도서는 확률에 대한 기본 내용을 다루고 있습니다. 집합부터 경우의 수, 순열, 조합, 확률계산, 베이즈이론 등을 설명하고 있으며 각 항목에서는 관련용어 용어, 법칙 그리고 예제를 그림과 함께 친절히 설명하고 있습니다. 이는 확률관련 지식을 공부한적이 없는 사람, 또는 학교를 졸업한지 오래되어 관련내용을 다시 상기시키고 싶으신 분들에게 아주 좋은 학습접근법을 제공할 것입니다. 대학 교양과목의 확률론에서 다루는 확률분포나 극한 등의 내용은 다루지 않기 때문에 이쪽 분야 전공이 아닌 학생들도 부담없이 읽으며 기본기를 쌓을 수 있는 도서입니다.&lt;/p&gt;
-
-&lt;h2 id=&quot;수-많은-연습문제&quot;&gt;수 많은 연습문제&lt;/h2&gt;
-&lt;p&gt;총 4장으로 구성되어 있는 본 도서는 1,2장에서 경우의 수와 확률을 다루고 있으며 3,4장에서는 앞장에서 배운내용들에 대한 연습문제를 제공하고 있습니다. 각 연습문제의 해설 또한 포함되어있으며 문제를 풀면서 확률문제에 대한 논리력을 키울수 있습니다. 이러한 논리력 연습을 통해 프로그래머의 개발능력을 한 단계 발전시킬 것이라고 믿어의심치 않습니다. 그러므로 코딩능력을 발전시키고 싶거나 문제해결 능력을 발전시키고 싶은 프로그래머들에게 특히 본 도서를 추천합니다. 또한 연습문제를 코드로 작성해보며 해결하는것을 추천합니다.&lt;/p&gt;
-</description>
-        <pubDate>Wed, 06 Jan 2021 00:00:00 +0900</pubDate>
-        <link>https://youngwonseo.github.io/again-probability/</link>
-        <guid isPermaLink="true">https://youngwonseo.github.io/again-probability/</guid>
-        
-        
-      </item>
-    
-      <item>
-        <title>자바스크립트 - 실시간검색과 무한스크롤(디바운스와 스로틀) </title>
-        <description>&lt;p&gt;이번 포스트에서는 실시간검색과 무한스크롤 기능구현에 대해 살펴보겠습니다. 전체 코드는 &lt;a href=&quot;https://github.com/youngwonseo/debounce-throttle&quot; target=&quot;_blank&quot;&gt;깃허브&lt;/a&gt;를 참조해주세요.&lt;/p&gt;
-
-&lt;p&gt;인스타그램과 페이스북과 같은 서비스를 살펴보면&lt;/p&gt;
-
-&lt;h1 id=&quot;references&quot;&gt;References&lt;/h1&gt;
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&amp;amp;mallGb=KOR&amp;amp;barcode=9791163031451&amp;amp;orderClick=LAG&amp;amp;Kc=&quot; target=&quot;_blank&quot;&gt;Do it! 리액트 프로그래밍 정석&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-</description>
-        <pubDate>Tue, 05 Jan 2021 00:00:00 +0900</pubDate>
-        <link>https://youngwonseo.github.io/debounce-throttle/</link>
-        <guid isPermaLink="true">https://youngwonseo.github.io/debounce-throttle/</guid>
-        
-        
-      </item>
-    
-      <item>
-        <title>계층화</title>
-        <description>&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&amp;amp;mallGb=KOR&amp;amp;barcode=9788965400950&amp;amp;orderClick=LEa&amp;amp;Kc=&quot; target=&quot;_blank&quot;&gt;대용량 아키텍처와 성능 튜닝 - 조대협&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-</description>
-        <pubDate>Sun, 03 Jan 2021 00:00:00 +0900</pubDate>
-        <link>https://youngwonseo.github.io/%EC%97%94%ED%84%B0%ED%94%84%EB%9D%BC%EC%9D%B4%EC%A6%88%EC%95%A0%ED%94%8C%EB%A6%AC%EC%BC%80%EC%9D%B4%EC%85%98/01-layering/</link>
-        <guid isPermaLink="true">https://youngwonseo.github.io/%EC%97%94%ED%84%B0%ED%94%84%EB%9D%BC%EC%9D%B4%EC%A6%88%EC%95%A0%ED%94%8C%EB%A6%AC%EC%BC%80%EC%9D%B4%EC%85%98/01-layering/</guid>
-        
-        
-        <category>엔터프라이즈애플리케이션</category>
-        
-      </item>
-    
-      <item>
-        <title>Mongoose Query</title>
-        <description>
-</description>
-        <pubDate>Sat, 02 Jan 2021 00:00:00 +0900</pubDate>
-        <link>https://youngwonseo.github.io/mongoose-query/</link>
-        <guid isPermaLink="true">https://youngwonseo.github.io/mongoose-query/</guid>
-        
-        
-      </item>
-    
-      <item>
-        <title>파이썬 이미지 리사이즈</title>
-        <description>
-</description>
-        <pubDate>Fri, 09 Oct 2020 00:00:00 +0900</pubDate>
-        <link>https://youngwonseo.github.io/image-resize/</link>
-        <guid isPermaLink="true">https://youngwonseo.github.io/image-resize/</guid>
-        
-        
-      </item>
-    
-      <item>
-        <title>텐서플로우 모델 서빙(feat MNIST, ReactJS)</title>
-        <description>
-</description>
-        <pubDate>Thu, 01 Oct 2020 00:00:00 +0900</pubDate>
-        <link>https://youngwonseo.github.io/mnist-cnn-tf-serving/</link>
-        <guid isPermaLink="true">https://youngwonseo.github.io/mnist-cnn-tf-serving/</guid>
-        
-        
-      </item>
-    
-      <item>
-        <title>Learning Deep Features for Discriminative Localization</title>
-        <description>&lt;h2 id=&quot;abstract&quot;&gt;Abstract&lt;/h2&gt;
-&lt;ul&gt;
-  &lt;li&gt;이전에 제시된 Global average pooling layer를 다시 논의함&lt;/li&gt;
-  &lt;li&gt;이미지&lt;/li&gt;
-  &lt;li&gt;이전에는 regularizing training 으로 방법으로 제안됨&lt;/li&gt;
-  &lt;li&gt;generic localizable deep representation&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
-
-&lt;h2 id=&quot;related-work&quot;&gt;Related Work&lt;/h2&gt;
-&lt;h3 id=&quot;convolutional-nerual-networks-cnns&quot;&gt;Convolutional Nerual Networks (CNNs)&lt;/h3&gt;
-&lt;h3 id=&quot;weakly-supervised-object-localization&quot;&gt;Weakly-supervised object localization&lt;/h3&gt;
-&lt;h3 id=&quot;visualizing-cnns&quot;&gt;Visualizing CNNs&lt;/h3&gt;
-
-&lt;h2 id=&quot;class-activation-mapping&quot;&gt;Class Activation Mapping&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Network in Network, GoogLeNet&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;global-average-pooling-gap-vs-global-max-pooling-gmp&quot;&gt;Global average pooling (GAP) vs Global max pooling (GMP)&lt;/h3&gt;
-
-&lt;h2 id=&quot;weakly-supervied-object-localization&quot;&gt;Weakly-supervied Object Localization&lt;/h2&gt;
-
-&lt;h2 id=&quot;deep-features-for-generic-localization&quot;&gt;Deep Features for Generic Localization&lt;/h2&gt;
-
-&lt;h2 id=&quot;visulizing-class-specific-units&quot;&gt;Visulizing Class-Specific Units&lt;/h2&gt;
-
-&lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;
-
-</description>
-        <pubDate>Tue, 22 Sep 2020 00:00:00 +0900</pubDate>
-        <link>https://youngwonseo.github.io/deep%20learning/class-activation-map/</link>
-        <guid isPermaLink="true">https://youngwonseo.github.io/deep%20learning/class-activation-map/</guid>
-        
-        <category>Class Activation Map</category>
-        
-        <category>Convolutional Nerual Network</category>
-        
-        
-        <category>Deep Learning</category>
         
       </item>
     
