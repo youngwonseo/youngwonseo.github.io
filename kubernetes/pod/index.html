@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width initial-scale=1">
+  
+  <!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>쿠버네티스 - 포드(Pod) | 서영원 블로그</title>
+<meta name="generator" content="Jekyll v4.2.0" />
+<meta property="og:title" content="쿠버네티스 - 포드(Pod)" />
+<meta name="author" content="서영원" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="포드: 컨테이너의 기본단위 포드는 1개이상의 컨테이로 구성된 컨테이너의 집합 포드는 쿠버네티스에서 가장 기초적이고 중요한 개념 도커에서는 컨테이너, 도커 스웜에서는 서비스, 쿠버네티스에서는 포드가 기본 배포단위" />
+<meta property="og:description" content="포드: 컨테이너의 기본단위 포드는 1개이상의 컨테이로 구성된 컨테이너의 집합 포드는 쿠버네티스에서 가장 기초적이고 중요한 개념 도커에서는 컨테이너, 도커 스웜에서는 서비스, 쿠버네티스에서는 포드가 기본 배포단위" />
+<link rel="canonical" href="https://youngwonseo.github.io/kubernetes/pod/" />
+<meta property="og:url" content="https://youngwonseo.github.io/kubernetes/pod/" />
+<meta property="og:site_name" content="서영원 블로그" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2021-02-15T00:00:00+09:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="쿠버네티스 - 포드(Pod)" />
+<script type="application/ld+json">
+{"datePublished":"2021-02-15T00:00:00+09:00","url":"https://youngwonseo.github.io/kubernetes/pod/","mainEntityOfPage":{"@type":"WebPage","@id":"https://youngwonseo.github.io/kubernetes/pod/"},"dateModified":"2021-02-15T00:00:00+09:00","author":{"@type":"Person","name":"서영원"},"description":"포드: 컨테이너의 기본단위 포드는 1개이상의 컨테이로 구성된 컨테이너의 집합 포드는 쿠버네티스에서 가장 기초적이고 중요한 개념 도커에서는 컨테이너, 도커 스웜에서는 서비스, 쿠버네티스에서는 포드가 기본 배포단위","@type":"BlogPosting","headline":"쿠버네티스 - 포드(Pod)","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+  
+  
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="https://youngwonseo.github.io/kubernetes/pod/">
+  <link rel="alternate" type="application/atom+xml" title="서영원 블로그" href="https://youngwonseo.github.io/feed.xml" />  
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/moonspam/NanumBarunGothic@latest/nanumbarungothicsubset.css">
+  <link rel="stylesheet" href="/assets/css/syntax.css">
+</head>
+
+  <body>
+    
+
+<div class="header-container" id="header-container">
+
+<!-- Site navigation -->
+  <nav class="site-nav">
+    <div class="trigger">
+      
+        
+        <a class="page-link" href="/about/">About</a>
+        
+      
+        
+        <a class="page-link" href="/archive/">Archive</a>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+        <a class="page-link" href="/category/">Paper</a>
+        
+      
+        
+        <a class="page-link" href="/projects/">Projects</a>
+        
+      
+        
+        <a class="page-link" href="/study/">Study</a>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+      <a class="page-link" href="/feed.xml">RSS</a>
+    </div>
+  </nav>
+
+  <!-- The title of the site -->
+  <header class="site-header">
+    <!-- <a href="/">
+      <div class="avatar">
+        <img src="/assets/images/avatar.png" />
+      </div>
+    </a> -->
+    <a class="site-title" href="/">서영원 블로그</a>
+  </header>
+
+</div>
+
+      <div class="wrapper">
+        <div class="page-content">
+          <div class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">쿠버네티스 - 포드(Pod)</h1>
+    <p class="post-meta">2021-02-15 / 서영원</p>
+  </header>
+
+
+
+  <article class="post-content">
+    <h3 id="포드-컨테이너의-기본단위">포드: 컨테이너의 기본단위</h3>
+<ul>
+  <li>포드는 1개이상의 컨테이로 구성된 컨테이너의 집합</li>
+  <li>포드는 쿠버네티스에서 가장 기초적이고 중요한 개념</li>
+  <li>도커에서는 컨테이너, 도커 스웜에서는 서비스, 쿠버네티스에서는 포드가 기본 배포단위</li>
+</ul>
+
+<p>nginx를 쿠버네티스에서 생성하는 예제입니다. 쿠버네티스상의 많은 작업은 yaml파일로 정의되고 실행됩니다.</p>
+
+<h4 id="nginx-podyaml">nginx-pod.yaml</h4>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">apiVersion</span><span class="pi">:</span> <span class="s">v1</span>
+<span class="na">kind</span><span class="pi">:</span> <span class="s">Pod</span>
+<span class="na">metadata</span><span class="pi">:</span>
+  <span class="na">name</span><span class="pi">:</span> <span class="s">my-nginx-pod</span>
+<span class="na">spec</span><span class="pi">:</span>
+  <span class="na">containers</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">my-nginx-container</span>
+    <span class="na">image</span><span class="pi">:</span> <span class="s">nginx:latest</span>
+    <span class="na">ports</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="na">containerPort</span><span class="pi">:</span> <span class="m">80</span>
+      <span class="na">protocol</span><span class="pi">:</span> <span class="s">TCP</span>
+</code></pre></div></div>
+<ul>
+  <li>apiVersion : yaml파일에 정의한 오브젝트의 api 버전</li>
+  <li>kind : 리소스의 종류, kubectl api-resouces에서 kind의 종류를 확인가능</li>
+  <li>metadata : lable, annotation, name등과 같이 리소스의 부가 정보</li>
+  <li>spec : 생성할 리소스의 상세정보</li>
+</ul>
+
+<p>다음은 위에서 작성한 yaml파일로 포드를 생성하는 명령어 입니다.</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>kubectl apply -f nginx-pod.yaml
+</code></pre></div></div>
+
+<p>kubectl get [오브젝트 이름]를 활용해 특정 오브젝트의 목록을 확인할 수 있습니다.</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>kubectl get pods
+</code></pre></div></div>
+
+<p>다음은 위에서 생성했던 my-nginx-pod의 상세정보(포드의 IP 등)를 확인하는 명령어 입니다.</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>kubectl describe pods my-nginx-pod
+</code></pre></div></div>
+<p>아직까지는 위 포드에 접근할 수 없습니다(describe에서 출력되는 IP는 내부 IP입니다). 포드에 접근할려면 <strong>서비스 오브젝트</strong>를 따로 생성해야합니다.</p>
+
+<p>다음은 포드 내부에 접속하는 명령어 입니다.</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>kubectl exec -it my-nginx-pod bash
+</code></pre></div></div>
+
+<p>다음은 포드 로그를 확인합니다.</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>kubectl logs my-nginx-pod
+</code></pre></div></div>
+
+<p>다음은 포드를 삭제합니다.</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>kubectl delete -f nginx-pod.yaml
+</code></pre></div></div>
+<p>또는 아래와 같습니다.</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>kubectl delete pod my-nginx-pod
+</code></pre></div></div>
+
+<p><br /></p>
+
+<h2 id="포드-vs-도커-컨테이너">포드 vs 도커 컨테이너</h2>
+
+<h2 id="완전한-어플리케이션으로서-포드">완전한 어플리케이션으로서 포드</h2>
+<p>실제 환경에서는 1개의 컨테이너로 구성된 포드를 사용하는 경우가 많습니다. 이유는 하나의 포드는 하나의 완전한 어플리케이션을 유지하기 위해서입니다.</p>
+
+<p>예외적인 경우도 존재합니다. 로깅과 같이 특정 컨테이너의 부가적인 기능을 지원하기 위한 컨테이너를 사이드카 컨테이너라고 하는데 이런경우 주 기능을 당담하는 컨테이너와 함께 동일한 포드내에서 실행합니다.</p>
+
+<h2 id="references">References</h2>
+<ul>
+  <li><a href="http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&amp;mallGb=KOR&amp;barcode=9791158392291&amp;orderClick=LEa&amp;Kc=" target="_blank">시작하세요! 도커/쿠버네티스 - 용찬호</a></li>
+</ul>
+
+  </article>
+
+  <hr>
+
+  <!-- <div class="question">
+    <h2>Questions?</h2>
+    <p>Have a question regarding the post above? <br />Or any of my designs?</p>
+    
+
+  </div> -->
+
+  <!-- <div class="related">
+    <h2>Related</h2>
+    
+      <li><a href="/artillery/artillery-intro/" title="소프트웨어 부하 테스트 도구 Artillery 소개">소프트웨어 부하 테스트 도구 Artillery 소개
+       &nbsp; <span class="post-meta">February 17, 2021</span></a>
+    
+      <li><a href="/kubernetes/replica-set/" title="쿠버네티스 - 레프리카셋(Replica Set)">쿠버네티스 - 레프리카셋(Replica Set)
+       &nbsp; <span class="post-meta">February 16, 2021</span></a>
+    
+      <li><a href="/kubernetes/intro/" title="쿠버네티스 소개">쿠버네티스 소개
+       &nbsp; <span class="post-meta">February 14, 2021</span></a>
+    
+  </div> -->
+
+  
+  
+    <div id="disqus_thread"></div>
+    <script>
+        /**
+        *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+        *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables    */
+        /*
+        var disqus_config = function () {
+        this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+        this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        };
+        */
+        (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        s.src = 'https://youngwonseo.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  
+
+</div>
+
+        </div>
+        <footer class="site-footer">
+<p class="small"></p>
+</footer>
+
+    </div>
+
+    <script src="//cdn.jsdelivr.net/headroomjs/0.5.0/headroom.min.js"></script>
+    <script type="text/javascript">
+      var el = document.querySelector(".header-container");
+      var headroom  = new Headroom(el, {
+        "offset": 205,
+        "tolerance": 5
+      });
+      headroom.init();
+    </script>
+
+
+    <!-- Twitter Shizzle -->
+    <script type="text/javascript">
+    window.twttr = (function (d, s, id) {
+      var t, js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src= "https://platform.twitter.com/widgets.js";
+      fjs.parentNode.insertBefore(js, fjs);
+      return window.twttr || (t = { _e: [], ready: function (f) { t._e.push(f) } });
+    }(document, "script", "twitter-wjs"));
+    </script>
+
+  </body>
+</html>

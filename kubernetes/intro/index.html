@@ -6,29 +6,27 @@
   <meta name="viewport" content="width=device-width initial-scale=1">
   
   <!-- Begin Jekyll SEO tag v2.7.1 -->
-<title>쿠버네티스 - 포드(Pod) | 서영원 블로그</title>
+<title>쿠버네티스 소개 | 서영원 블로그</title>
 <meta name="generator" content="Jekyll v4.2.0" />
-<meta property="og:title" content="쿠버네티스 - 포드(Pod)" />
+<meta property="og:title" content="쿠버네티스 소개" />
 <meta name="author" content="서영원" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="포드는 쿠버네티스에서 컨테이너 어플리케이션에 대한 기본 단위 포드는 1개이상의 컨테이로 구성된 컨테이너의 집합 포드는 쿠버네티스에서 가장 기초적이고 중요한 개념" />
-<meta property="og:description" content="포드는 쿠버네티스에서 컨테이너 어플리케이션에 대한 기본 단위 포드는 1개이상의 컨테이로 구성된 컨테이너의 집합 포드는 쿠버네티스에서 가장 기초적이고 중요한 개념" />
-<link rel="canonical" href="https://youngwonseo.github.io/%EC%BF%A0%EB%B2%84%EB%84%A4%ED%8B%B0%EC%8A%A4/pod/" />
-<meta property="og:url" content="https://youngwonseo.github.io/%EC%BF%A0%EB%B2%84%EB%84%A4%ED%8B%B0%EC%8A%A4/pod/" />
+<link rel="canonical" href="https://youngwonseo.github.io/kubernetes/intro/" />
+<meta property="og:url" content="https://youngwonseo.github.io/kubernetes/intro/" />
 <meta property="og:site_name" content="서영원 블로그" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2021-02-15T00:00:00+09:00" />
+<meta property="article:published_time" content="2021-02-14T00:00:00+09:00" />
 <meta name="twitter:card" content="summary" />
-<meta property="twitter:title" content="쿠버네티스 - 포드(Pod)" />
+<meta property="twitter:title" content="쿠버네티스 소개" />
 <script type="application/ld+json">
-{"datePublished":"2021-02-15T00:00:00+09:00","url":"https://youngwonseo.github.io/%EC%BF%A0%EB%B2%84%EB%84%A4%ED%8B%B0%EC%8A%A4/pod/","mainEntityOfPage":{"@type":"WebPage","@id":"https://youngwonseo.github.io/%EC%BF%A0%EB%B2%84%EB%84%A4%ED%8B%B0%EC%8A%A4/pod/"},"dateModified":"2021-02-15T00:00:00+09:00","author":{"@type":"Person","name":"서영원"},"description":"포드는 쿠버네티스에서 컨테이너 어플리케이션에 대한 기본 단위 포드는 1개이상의 컨테이로 구성된 컨테이너의 집합 포드는 쿠버네티스에서 가장 기초적이고 중요한 개념","@type":"BlogPosting","headline":"쿠버네티스 - 포드(Pod)","@context":"https://schema.org"}</script>
+{"datePublished":"2021-02-14T00:00:00+09:00","url":"https://youngwonseo.github.io/kubernetes/intro/","mainEntityOfPage":{"@type":"WebPage","@id":"https://youngwonseo.github.io/kubernetes/intro/"},"dateModified":"2021-02-14T00:00:00+09:00","author":{"@type":"Person","name":"서영원"},"@type":"BlogPosting","headline":"쿠버네티스 소개","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 
   
   
   <link rel="stylesheet" href="/css/main.css">
-  <link rel="canonical" href="https://youngwonseo.github.io/%EC%BF%A0%EB%B2%84%EB%84%A4%ED%8B%B0%EC%8A%A4/pod/">
+  <link rel="canonical" href="https://youngwonseo.github.io/kubernetes/intro/">
   <link rel="alternate" type="application/atom+xml" title="서영원 블로그" href="https://youngwonseo.github.io/feed.xml" />  
   <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/moonspam/NanumBarunGothic@latest/nanumbarungothicsubset.css">
   <link rel="stylesheet" href="/assets/css/syntax.css">
@@ -110,29 +108,14 @@
           <div class="post">
 
   <header class="post-header">
-    <h1 class="post-title">쿠버네티스 - 포드(Pod)</h1>
-    <p class="post-meta">2021-02-15 / 서영원</p>
+    <h1 class="post-title">쿠버네티스 소개</h1>
+    <p class="post-meta">2021-02-14 / 서영원</p>
   </header>
 
 
 
   <article class="post-content">
-    <p>포드는 쿠버네티스에서 컨테이너 어플리케이션에 대한 기본 단위
-포드는 1개이상의 컨테이로 구성된 컨테이너의 집합
-포드는 쿠버네티스에서 가장 기초적이고 중요한 개념</p>
-
-<p>도커에서는 컨테이너, 도커 스웜에서는 서비스, 쿠버네티스에서는 포드가 기본 배포단위</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>kubectl apply -f nginx-pod.yaml
-</code></pre></div></div>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>kubectl get pods
-</code></pre></div></div>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>kubectl describe pods my-nginx-pod
-</code></pre></div></div>
-
-<p>포드 vs 컨테이너</p>
+    
 
   </article>
 
@@ -148,14 +131,14 @@
   <!-- <div class="related">
     <h2>Related</h2>
     
-      <li><a href="/replica-set/" title="Replica Set">Replica Set
+      <li><a href="/artillery/artillery-intro/" title="소프트웨어 부하 테스트 도구 Artillery 소개">소프트웨어 부하 테스트 도구 Artillery 소개
+       &nbsp; <span class="post-meta">February 17, 2021</span></a>
+    
+      <li><a href="/kubernetes/replica-set/" title="쿠버네티스 - 레프리카셋(Replica Set)">쿠버네티스 - 레프리카셋(Replica Set)
        &nbsp; <span class="post-meta">February 16, 2021</span></a>
     
-      <li><a href="/docker-java-deployment/" title="Docker Java Deployment">Docker Java Deployment
-       &nbsp; <span class="post-meta">February 16, 2021</span></a>
-    
-      <li><a href="/stream/" title="스프링 클라우드 스트림">스프링 클라우드 스트림
-       &nbsp; <span class="post-meta">February 10, 2021</span></a>
+      <li><a href="/kubernetes/pod/" title="쿠버네티스 - 포드(Pod)">쿠버네티스 - 포드(Pod)
+       &nbsp; <span class="post-meta">February 15, 2021</span></a>
     
   </div> -->
 

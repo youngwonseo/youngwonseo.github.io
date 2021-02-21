@@ -5,57 +5,252 @@
     <description></description>
     <link>https://youngwonseo.github.io/</link>
     <atom:link href="https://youngwonseo.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Tue, 16 Feb 2021 23:58:08 +0900</pubDate>
-    <lastBuildDate>Tue, 16 Feb 2021 23:58:08 +0900</lastBuildDate>
+    <pubDate>Sun, 21 Feb 2021 21:19:40 +0900</pubDate>
+    <lastBuildDate>Sun, 21 Feb 2021 21:19:40 +0900</lastBuildDate>
     <generator>Jekyll v4.2.0</generator>
     
       <item>
-        <title>Replica Set</title>
-        <description>
+        <title>소프트웨어 부하 테스트 도구 Artillery 소개</title>
+        <description>&lt;p&gt;여기서는 소프트웨어 부하 테스트 도구인 &lt;a href=&quot;https://artillery.io/&quot; target=&quot;_blank&quot;&gt;Artillery&lt;/a&gt;를 소개합니다.&lt;/p&gt;
+
+&lt;p&gt;Artillery를 설치하기위해서 다음과 같은 노드 패키지를 설치합니다(노드가 설치되어있지 않다면 노드를 먼저 설치해주세요).&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;npm install -g artillery
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;테스트-항목-정의&quot;&gt;테스트 항목 정의&lt;/h3&gt;
+&lt;p&gt;Artillery를 사용해서 테스트를 수행하기 위해서 테스트 시나리오를 yaml파일로 정의합니다.&lt;/p&gt;
+
+&lt;h3 id=&quot;cpu-testyaml&quot;&gt;cpu-test.yaml&lt;/h3&gt;
+&lt;div class=&quot;language-yaml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;na&quot;&gt;config&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;target&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;http://localhost:8080&quot;&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;phases&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;duration&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;60&lt;/span&gt;
+      &lt;span class=&quot;na&quot;&gt;arrivalRate&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;5&lt;/span&gt;
+      &lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;Warm up&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;scenarios&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;CPU&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;Test&quot;&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;flow&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+      &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+          &lt;span class=&quot;na&quot;&gt;url&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;/cpu-test&quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;설명을 간략하게 하면 다음과 같습니다.&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;target : localhost:8080가 테스트를 수행할 서버&lt;/li&gt;
+  &lt;li&gt;duration : 60초 동안 테스트를 수행&lt;/li&gt;
+  &lt;li&gt;arrivalRate : 매초 5명의 가상유저를 생성&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;cpu-test.yaml이 정의된 디렉토리에서 다음과 같은 명령어를 실행합니다. 아래의 명령어는 테스트 결과를 report.json으로 출력합니다.&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;artillery run --output report.json ./cpu-test.yaml
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;테스트의 결과로 생성된 report.json을 다음의 명령어로 시각화로 리포팅된 결과를 확인할 수 있습니다.&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;artillery report ./report.json
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/post/artillery/aritllery-report.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;latency&quot;&gt;Latency&lt;/h3&gt;
+&lt;p&gt;테스트를 
+Scale-up
+Scale-out&lt;/p&gt;
+
+&lt;h3 id=&quot;테스시-고려사항&quot;&gt;테스시 고려사항&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;예상 TPS보다 여유롭게&lt;/li&gt;
+  &lt;li&gt;기대 Latency를 말족할 때까지&lt;/li&gt;
+  &lt;li&gt;Scale-out을 해도 성능이 좋아지지 않으면 병목을 의심&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://class101.net/products/T6HT0bUDKIH1V5i3Ji2M&quot; target=&quot;_blank&quot;&gt;클래스101-현직 대기업 개발자 푸와 함께하는 진짜 백엔드 시스템 실무!&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://artillery.io/&quot; target=&quot;_blank&quot;&gt;Artillery.io&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
 </description>
-        <pubDate>Tue, 16 Feb 2021 00:00:00 +0900</pubDate>
-        <link>https://youngwonseo.github.io/replica-set/</link>
-        <guid isPermaLink="true">https://youngwonseo.github.io/replica-set/</guid>
+        <pubDate>Wed, 17 Feb 2021 00:00:00 +0900</pubDate>
+        <link>https://youngwonseo.github.io/artillery/artillery-intro/</link>
+        <guid isPermaLink="true">https://youngwonseo.github.io/artillery/artillery-intro/</guid>
         
+        
+        <category>artillery</category>
         
       </item>
     
       <item>
-        <title>Docker Java Deployment</title>
-        <description>
+        <title>쿠버네티스 - 레프리카셋(Replica Set)</title>
+        <description>&lt;h3 id=&quot;레플리카셋-일정-개수의-포드를-유지하는-컨트롤러&quot;&gt;레플리카셋: 일정 개수의 포드를 유지하는 컨트롤러&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;마이크로 서비스등과 같이 동일한 포드를 여러개 유지하며 서비스를 운영하는 환경에서 동일한 포드를 여러개 실행함&lt;/li&gt;
+  &lt;li&gt;이런 특징은 노드 장애 등과 같이 문제가 발생시 고가용성을 제공&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;위 같은 특징으로 포드를 직접생성하고 관리하는 일은 거의 없고 레프리카셋을 생성함으로써 포드를 관리합니다.&lt;/p&gt;
+
+&lt;h3 id=&quot;replicaset-nginxyaml&quot;&gt;replicaset-nginx.yaml&lt;/h3&gt;
+&lt;div class=&quot;language-yaml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;na&quot;&gt;apiVersion&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;apps/v1&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;kind&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;ReplicaSet&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;metadata&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;replicaset-nginx&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;spec&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;replicas&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;3&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;selector&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;matchLabels&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+      &lt;span class=&quot;na&quot;&gt;app&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;my-nginx-pods-label&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;template&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;metadata&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+      &lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;my-nginx-pod&lt;/span&gt;
+      &lt;span class=&quot;na&quot;&gt;labels&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;app&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;my-nginx-pods-label&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;spec&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+      &lt;span class=&quot;na&quot;&gt;containers&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+      &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;nginx&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;image&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;nginx:latest&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;ports&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;containerPort&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;80&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;spec.replicas : 유지할 포드 개수&lt;/li&gt;
+  &lt;li&gt;spec.selector : template항목은 포드를 정의, 이전의 포드 정의와 비슷하다는것을 알 수 있음&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;apply로 실행을 합니다.&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;kubectl apply -f replicaset-nginx.yaml
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;다음의 명령어를 실행하면 포드가 3개 실행되는것을 확인할 수 있습니다.&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;kubectl get pod
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;결과&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;NAME                     READY   STATUS    RESTARTS   AGE
+replicaset-nginx-f2khk   1/1     Running   0          5m41s
+replicaset-nginx-hvwm7   1/1     Running   0          5m41s
+replicaset-nginx-xbppw   1/1     Running   0          5m41s
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;레프리카셋과 포드는 느슨한 연결(loosely coupled)로 연결되어 있으며 이때 레플리카셋 정의에 사용했던 &lt;strong&gt;label selector&lt;/strong&gt;를 사용합니다. 위 레플리카셋 정의파일을 살펴보면 spec.selector.matchLabels.app과 spec.template.metadata.labels.app과 동일한 my-nginx-pods-label로 설정되어 있는것을 확인할 수 있습니다. 
+레플리카셋을 처음생성했을땐 app:my-nginx-pods-label의 포드가 생성되어있지 않기 때문에 template에 정의된 포드를 3개 생성하는 것입니다. &lt;strong&gt;만약 실행중이 포드 하나를 삭제하면 3개로 포드를 유지하기 위해 하나의 포드를 다시 생성합니다.
+이것이 레플리카셋의 역할입니다.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;my-nginx-pods-label을 사용한 것과 같이 라벨은 쿠버네티스 리소스의 부가적인 정보를 표현할 뿐만 아니라, 서로 다은 오브젝트가 서로 찾아야 할때 사용할 수 있습니다.&lt;/p&gt;
+
+&lt;p&gt;실행했던 레플리카셋은 다음의 명령어로 삭제합니다.&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;kubectl delete replicaset replicaset-nginx
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&amp;amp;mallGb=KOR&amp;amp;barcode=9791158392291&amp;amp;orderClick=LEa&amp;amp;Kc=&quot; target=&quot;_blank&quot;&gt;시작하세요! 도커/쿠버네티스 - 용찬호&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
 </description>
         <pubDate>Tue, 16 Feb 2021 00:00:00 +0900</pubDate>
-        <link>https://youngwonseo.github.io/docker-java-deployment/</link>
-        <guid isPermaLink="true">https://youngwonseo.github.io/docker-java-deployment/</guid>
+        <link>https://youngwonseo.github.io/kubernetes/replica-set/</link>
+        <guid isPermaLink="true">https://youngwonseo.github.io/kubernetes/replica-set/</guid>
         
+        
+        <category>kubernetes</category>
         
       </item>
     
       <item>
         <title>쿠버네티스 - 포드(Pod)</title>
-        <description>&lt;p&gt;포드는 쿠버네티스에서 컨테이너 어플리케이션에 대한 기본 단위
-포드는 1개이상의 컨테이로 구성된 컨테이너의 집합
-포드는 쿠버네티스에서 가장 기초적이고 중요한 개념&lt;/p&gt;
+        <description>&lt;h3 id=&quot;포드-컨테이너의-기본단위&quot;&gt;포드: 컨테이너의 기본단위&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;포드는 1개이상의 컨테이로 구성된 컨테이너의 집합&lt;/li&gt;
+  &lt;li&gt;포드는 쿠버네티스에서 가장 기초적이고 중요한 개념&lt;/li&gt;
+  &lt;li&gt;도커에서는 컨테이너, 도커 스웜에서는 서비스, 쿠버네티스에서는 포드가 기본 배포단위&lt;/li&gt;
+&lt;/ul&gt;
 
-&lt;p&gt;도커에서는 컨테이너, 도커 스웜에서는 서비스, 쿠버네티스에서는 포드가 기본 배포단위&lt;/p&gt;
+&lt;p&gt;nginx를 쿠버네티스에서 생성하는 예제입니다. 쿠버네티스상의 많은 작업은 yaml파일로 정의되고 실행됩니다.&lt;/p&gt;
 
+&lt;h4 id=&quot;nginx-podyaml&quot;&gt;nginx-pod.yaml&lt;/h4&gt;
+&lt;div class=&quot;language-yaml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;na&quot;&gt;apiVersion&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;v1&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;kind&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;Pod&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;metadata&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;my-nginx-pod&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;spec&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;containers&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;my-nginx-container&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;image&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;nginx:latest&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;ports&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;containerPort&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;80&lt;/span&gt;
+      &lt;span class=&quot;na&quot;&gt;protocol&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;TCP&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;ul&gt;
+  &lt;li&gt;apiVersion : yaml파일에 정의한 오브젝트의 api 버전&lt;/li&gt;
+  &lt;li&gt;kind : 리소스의 종류, kubectl api-resouces에서 kind의 종류를 확인가능&lt;/li&gt;
+  &lt;li&gt;metadata : lable, annotation, name등과 같이 리소스의 부가 정보&lt;/li&gt;
+  &lt;li&gt;spec : 생성할 리소스의 상세정보&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;다음은 위에서 작성한 yaml파일로 포드를 생성하는 명령어 입니다.&lt;/p&gt;
 &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;kubectl apply -f nginx-pod.yaml
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
+&lt;p&gt;kubectl get [오브젝트 이름]를 활용해 특정 오브젝트의 목록을 확인할 수 있습니다.&lt;/p&gt;
 &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;kubectl get pods
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
+&lt;p&gt;다음은 위에서 생성했던 my-nginx-pod의 상세정보(포드의 IP 등)를 확인하는 명령어 입니다.&lt;/p&gt;
 &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;kubectl describe pods my-nginx-pod
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;아직까지는 위 포드에 접근할 수 없습니다(describe에서 출력되는 IP는 내부 IP입니다). 포드에 접근할려면 &lt;strong&gt;서비스 오브젝트&lt;/strong&gt;를 따로 생성해야합니다.&lt;/p&gt;
 
-&lt;p&gt;포드 vs 컨테이너&lt;/p&gt;
+&lt;p&gt;다음은 포드 내부에 접속하는 명령어 입니다.&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;kubectl exec -it my-nginx-pod bash
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;다음은 포드 로그를 확인합니다.&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;kubectl logs my-nginx-pod
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;다음은 포드를 삭제합니다.&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;kubectl delete -f nginx-pod.yaml
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;또는 아래와 같습니다.&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;kubectl delete pod my-nginx-pod
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;포드-vs-도커-컨테이너&quot;&gt;포드 vs 도커 컨테이너&lt;/h2&gt;
+
+&lt;h2 id=&quot;완전한-어플리케이션으로서-포드&quot;&gt;완전한 어플리케이션으로서 포드&lt;/h2&gt;
+&lt;p&gt;실제 환경에서는 1개의 컨테이너로 구성된 포드를 사용하는 경우가 많습니다. 이유는 하나의 포드는 하나의 완전한 어플리케이션을 유지하기 위해서입니다.&lt;/p&gt;
+
+&lt;p&gt;예외적인 경우도 존재합니다. 로깅과 같이 특정 컨테이너의 부가적인 기능을 지원하기 위한 컨테이너를 사이드카 컨테이너라고 하는데 이런경우 주 기능을 당담하는 컨테이너와 함께 동일한 포드내에서 실행합니다.&lt;/p&gt;
+
+&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&amp;amp;mallGb=KOR&amp;amp;barcode=9791158392291&amp;amp;orderClick=LEa&amp;amp;Kc=&quot; target=&quot;_blank&quot;&gt;시작하세요! 도커/쿠버네티스 - 용찬호&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
 </description>
         <pubDate>Mon, 15 Feb 2021 00:00:00 +0900</pubDate>
-        <link>https://youngwonseo.github.io/%EC%BF%A0%EB%B2%84%EB%84%A4%ED%8B%B0%EC%8A%A4/pod/</link>
-        <guid isPermaLink="true">https://youngwonseo.github.io/%EC%BF%A0%EB%B2%84%EB%84%A4%ED%8B%B0%EC%8A%A4/pod/</guid>
+        <link>https://youngwonseo.github.io/kubernetes/pod/</link>
+        <guid isPermaLink="true">https://youngwonseo.github.io/kubernetes/pod/</guid>
         
         
-        <category>쿠버네티스</category>
+        <category>kubernetes</category>
+        
+      </item>
+    
+      <item>
+        <title>쿠버네티스 소개</title>
+        <description>
+</description>
+        <pubDate>Sun, 14 Feb 2021 00:00:00 +0900</pubDate>
+        <link>https://youngwonseo.github.io/kubernetes/intro/</link>
+        <guid isPermaLink="true">https://youngwonseo.github.io/kubernetes/intro/</guid>
+        
+        
+        <category>kubernetes</category>
         
       </item>
     
@@ -302,17 +497,6 @@
         <pubDate>Fri, 05 Feb 2021 00:00:00 +0900</pubDate>
         <link>https://youngwonseo.github.io/spring-microservice/</link>
         <guid isPermaLink="true">https://youngwonseo.github.io/spring-microservice/</guid>
-        
-        
-      </item>
-    
-      <item>
-        <title>Docker Summary</title>
-        <description>
-</description>
-        <pubDate>Tue, 02 Feb 2021 00:00:00 +0900</pubDate>
-        <link>https://youngwonseo.github.io/docker-summary/</link>
-        <guid isPermaLink="true">https://youngwonseo.github.io/docker-summary/</guid>
         
         
       </item>
