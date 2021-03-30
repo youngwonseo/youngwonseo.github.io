@@ -21,7 +21,7 @@
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="쿠버네티스 - 포드(Pod)" />
 <script type="application/ld+json">
-{"datePublished":"2021-02-15T00:00:00+09:00","url":"https://youngwonseo.github.io/kubernetes/pod/","mainEntityOfPage":{"@type":"WebPage","@id":"https://youngwonseo.github.io/kubernetes/pod/"},"dateModified":"2021-02-15T00:00:00+09:00","author":{"@type":"Person","name":"서영원"},"description":"포드: 컨테이너의 기본단위 포드는 1개이상의 컨테이로 구성된 컨테이너의 집합 포드는 쿠버네티스에서 가장 기초적이고 중요한 개념 도커에서는 컨테이너, 도커 스웜에서는 서비스, 쿠버네티스에서는 포드가 기본 배포단위","@type":"BlogPosting","headline":"쿠버네티스 - 포드(Pod)","@context":"https://schema.org"}</script>
+{"url":"https://youngwonseo.github.io/kubernetes/pod/","author":{"@type":"Person","name":"서영원"},"headline":"쿠버네티스 - 포드(Pod)","dateModified":"2021-02-15T00:00:00+09:00","datePublished":"2021-02-15T00:00:00+09:00","description":"포드: 컨테이너의 기본단위 포드는 1개이상의 컨테이로 구성된 컨테이너의 집합 포드는 쿠버네티스에서 가장 기초적이고 중요한 개념 도커에서는 컨테이너, 도커 스웜에서는 서비스, 쿠버네티스에서는 포드가 기본 배포단위","mainEntityOfPage":{"@type":"WebPage","@id":"https://youngwonseo.github.io/kubernetes/pod/"},"@type":"BlogPosting","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -30,7 +30,6 @@
   <link rel="stylesheet" href="/css/main.css">
   <link rel="canonical" href="https://youngwonseo.github.io/kubernetes/pod/">
   <link rel="alternate" type="application/atom+xml" title="서영원 블로그" href="https://youngwonseo.github.io/feed.xml" />  
-  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/moonspam/NanumBarunGothic@latest/nanumbarungothicsubset.css">
   <link rel="stylesheet" href="/assets/css/syntax.css">
 </head>
 
@@ -157,7 +156,7 @@
 <p>다음은 위에서 생성했던 my-nginx-pod의 상세정보(포드의 IP 등)를 확인하는 명령어 입니다.</p>
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>kubectl describe pods my-nginx-pod
 </code></pre></div></div>
-<p>아직까지는 위 포드에 접근할 수 없습니다(describe에서 출력되는 IP는 내부 IP입니다). 포드에 접근할려면 <strong>서비스 오브젝트</strong>를 따로 생성해야합니다.</p>
+<p>아직까지는 위 포드의 Nginx에 접근할 수 없습니다(describe에서 출력되는 IP는 내부 IP입니다, 클러스터 내부에서는 위 포드에 접근할 수 있습니다). 포드에 접근할려면 <strong>서비스 오브젝트</strong>를 따로 생성해야합니다.</p>
 
 <p>다음은 포드 내부에 접속하는 명령어 입니다.</p>
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>kubectl exec -it my-nginx-pod bash
@@ -177,6 +176,7 @@
 <p><br /></p>
 
 <h2 id="포드-vs-도커-컨테이너">포드 vs 도커 컨테이너</h2>
+<p>쿠버네티스가 컨테이너가 아닌 포드를 기본 단위로 사용하는 이유중 하나는 포드 내부의 컨테이너들은 <strong>네트워크와 같은 리눅스 네임스페이스를 공유</strong>하는 추상화된 집합으로 사용하기 위해서 입니다.</p>
 
 <h2 id="완전한-어플리케이션으로서-포드">완전한 어플리케이션으로서 포드</h2>
 <p>실제 환경에서는 1개의 컨테이너로 구성된 포드를 사용하는 경우가 많습니다. 이유는 하나의 포드는 하나의 완전한 어플리케이션을 유지하기 위해서입니다.</p>
@@ -202,38 +202,26 @@
   <!-- <div class="related">
     <h2>Related</h2>
     
-      <li><a href="/artillery/artillery-intro/" title="소프트웨어 부하 테스트 도구 Artillery 소개">소프트웨어 부하 테스트 도구 Artillery 소개
+      <li><a href="/kubernetes/ingress/" title="쿠버네티스 - 인그레스(Ingress)">쿠버네티스 - 인그레스(Ingress)
+       &nbsp; <span class="post-meta">February 19, 2021</span></a>
+    
+      <li><a href="/kubernetes/service/" title="쿠버네티스 - 서비스(Service)">쿠버네티스 - 서비스(Service)
+       &nbsp; <span class="post-meta">February 18, 2021</span></a>
+    
+      <li><a href="/kubernetes/deployment/" title="쿠버네티스 - 디플로이먼트(Deployment)">쿠버네티스 - 디플로이먼트(Deployment)
        &nbsp; <span class="post-meta">February 17, 2021</span></a>
-    
-      <li><a href="/kubernetes/replica-set/" title="쿠버네티스 - 레프리카셋(Replica Set)">쿠버네티스 - 레프리카셋(Replica Set)
-       &nbsp; <span class="post-meta">February 16, 2021</span></a>
-    
-      <li><a href="/kubernetes/intro/" title="쿠버네티스 소개">쿠버네티스 소개
-       &nbsp; <span class="post-meta">February 14, 2021</span></a>
     
   </div> -->
 
   
   
-    <div id="disqus_thread"></div>
-    <script>
-        /**
-        *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
-        *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables    */
-        /*
-        var disqus_config = function () {
-        this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
-        this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
-        };
-        */
-        (function() { // DON'T EDIT BELOW THIS LINE
-        var d = document, s = d.createElement('script');
-        s.src = 'https://youngwonseo.disqus.com/embed.js';
-        s.setAttribute('data-timestamp', +new Date());
-        (d.head || d.body).appendChild(s);
-        })();
+    <script src="https://utteranc.es/client.js"
+      repo="youngwonseo/youngwonseo.github.io"
+      issue-term="pathname"
+      theme="github-light"
+      crossorigin="anonymous"
+      async>
     </script>
-    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
   
 
 </div>

@@ -21,7 +21,7 @@
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="자바스크립트 Promise" />
 <script type="application/ld+json">
-{"datePublished":"2018-04-05T00:00:00+09:00","url":"https://youngwonseo.github.io/javascript-promise/","mainEntityOfPage":{"@type":"WebPage","@id":"https://youngwonseo.github.io/javascript-promise/"},"dateModified":"2018-04-05T00:00:00+09:00","author":{"@type":"Person","name":"Youngwon Seo"},"description":"Promise 1. Promise의 탄생 비동기 대한 디자인 패턴 Promise!! 자바스크립트는 단일쓰레드 기반에서 동작한다. 실제 모든 작업이 단일큐에 들어간다. 파일에 대한 I/O가 필요한 경우 I/O가 실행되는 동안 모든 작업이 멈춘다! 이것을 blocking 된다라고 표현한다. 하지만 우리는 특정 I/O가 발행되는 시점에서도 사용자 레벨의 코드가 멈추기를 원하지 않는다. 그래서 비동기 작업이 필요한 시점에는 콜백(이벤트 등)을 이용해 왔다(아래는 몇 가지 예시이다). 비동기 통신이 필요한경우 통신완료 시 실행될 콜백함수를 작성하고 ajax를 호출한다. 통신이 완료되면 정의해놓은 콜백함수가 실행된다. addEventListener등을 통해 특정 이벤트에 콜백함수를 정의해 놓으면 해당 이벤트가 발생할 때 콜백함수가 실행된다. DOM Load등 이러한 사용에는 몇 가지 문제점이 있다. 비동기가 많아질수록 이해하기 힘든 코드가 작성된다. 콜백에 콜백에 콜백이 추가되는 코드를 작성하기도 한다. 콜백이 완료된 후 또 다른 콜백이 필요한 경우 이를 콜백지옥이라고 부른다(http://callbackhell.com/). 에러를 감지하지 못한다. 비동기 처리(I/O)중에 발생한 에러(reject, timeout 등)는 api에서 어느정도 처리하지만 콜백함수안에서 에러가 발생한 경우는 문제가 있다. 그렇다! 이러한 비동기에 대한 문제점을 해결하기 위한 것이 Promise이다! 통일된 비동기 처리방식 이해하기 쉬운 비동기 루틴 비동기의 성공/실패를 감지 기존에는 여러 라이브러리를 통해 Promise를 구현했지만 지금은 브라우에서 제공! 지원안하는 경우 polyfill 사용","@type":"BlogPosting","headline":"자바스크립트 Promise","@context":"https://schema.org"}</script>
+{"url":"https://youngwonseo.github.io/javascript-promise/","author":{"@type":"Person","name":"Youngwon Seo"},"headline":"자바스크립트 Promise","dateModified":"2018-04-05T00:00:00+09:00","datePublished":"2018-04-05T00:00:00+09:00","description":"Promise 1. Promise의 탄생 비동기 대한 디자인 패턴 Promise!! 자바스크립트는 단일쓰레드 기반에서 동작한다. 실제 모든 작업이 단일큐에 들어간다. 파일에 대한 I/O가 필요한 경우 I/O가 실행되는 동안 모든 작업이 멈춘다! 이것을 blocking 된다라고 표현한다. 하지만 우리는 특정 I/O가 발행되는 시점에서도 사용자 레벨의 코드가 멈추기를 원하지 않는다. 그래서 비동기 작업이 필요한 시점에는 콜백(이벤트 등)을 이용해 왔다(아래는 몇 가지 예시이다). 비동기 통신이 필요한경우 통신완료 시 실행될 콜백함수를 작성하고 ajax를 호출한다. 통신이 완료되면 정의해놓은 콜백함수가 실행된다. addEventListener등을 통해 특정 이벤트에 콜백함수를 정의해 놓으면 해당 이벤트가 발생할 때 콜백함수가 실행된다. DOM Load등 이러한 사용에는 몇 가지 문제점이 있다. 비동기가 많아질수록 이해하기 힘든 코드가 작성된다. 콜백에 콜백에 콜백이 추가되는 코드를 작성하기도 한다. 콜백이 완료된 후 또 다른 콜백이 필요한 경우 이를 콜백지옥이라고 부른다(http://callbackhell.com/). 에러를 감지하지 못한다. 비동기 처리(I/O)중에 발생한 에러(reject, timeout 등)는 api에서 어느정도 처리하지만 콜백함수안에서 에러가 발생한 경우는 문제가 있다. 그렇다! 이러한 비동기에 대한 문제점을 해결하기 위한 것이 Promise이다! 통일된 비동기 처리방식 이해하기 쉬운 비동기 루틴 비동기의 성공/실패를 감지 기존에는 여러 라이브러리를 통해 Promise를 구현했지만 지금은 브라우에서 제공! 지원안하는 경우 polyfill 사용","mainEntityOfPage":{"@type":"WebPage","@id":"https://youngwonseo.github.io/javascript-promise/"},"@type":"BlogPosting","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -30,7 +30,6 @@
   <link rel="stylesheet" href="/css/main.css">
   <link rel="canonical" href="https://youngwonseo.github.io/javascript-promise/">
   <link rel="alternate" type="application/atom+xml" title="서영원 블로그" href="https://youngwonseo.github.io/feed.xml" />  
-  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/moonspam/NanumBarunGothic@latest/nanumbarungothicsubset.css">
   <link rel="stylesheet" href="/assets/css/syntax.css">
 </head>
 
@@ -390,38 +389,26 @@ new Promise(function(resolve){
   <!-- <div class="related">
     <h2>Related</h2>
     
-      <li><a href="/artillery/artillery-intro/" title="소프트웨어 부하 테스트 도구 Artillery 소개">소프트웨어 부하 테스트 도구 Artillery 소개
+      <li><a href="/kubernetes/ingress/" title="쿠버네티스 - 인그레스(Ingress)">쿠버네티스 - 인그레스(Ingress)
+       &nbsp; <span class="post-meta">February 19, 2021</span></a>
+    
+      <li><a href="/kubernetes/service/" title="쿠버네티스 - 서비스(Service)">쿠버네티스 - 서비스(Service)
+       &nbsp; <span class="post-meta">February 18, 2021</span></a>
+    
+      <li><a href="/kubernetes/deployment/" title="쿠버네티스 - 디플로이먼트(Deployment)">쿠버네티스 - 디플로이먼트(Deployment)
        &nbsp; <span class="post-meta">February 17, 2021</span></a>
-    
-      <li><a href="/kubernetes/replica-set/" title="쿠버네티스 - 레프리카셋(Replica Set)">쿠버네티스 - 레프리카셋(Replica Set)
-       &nbsp; <span class="post-meta">February 16, 2021</span></a>
-    
-      <li><a href="/kubernetes/pod/" title="쿠버네티스 - 포드(Pod)">쿠버네티스 - 포드(Pod)
-       &nbsp; <span class="post-meta">February 15, 2021</span></a>
     
   </div> -->
 
   
   
-    <div id="disqus_thread"></div>
-    <script>
-        /**
-        *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
-        *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables    */
-        /*
-        var disqus_config = function () {
-        this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
-        this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
-        };
-        */
-        (function() { // DON'T EDIT BELOW THIS LINE
-        var d = document, s = d.createElement('script');
-        s.src = 'https://youngwonseo.disqus.com/embed.js';
-        s.setAttribute('data-timestamp', +new Date());
-        (d.head || d.body).appendChild(s);
-        })();
+    <script src="https://utteranc.es/client.js"
+      repo="youngwonseo/youngwonseo.github.io"
+      issue-term="pathname"
+      theme="github-light"
+      crossorigin="anonymous"
+      async>
     </script>
-    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
   
 
 </div>
