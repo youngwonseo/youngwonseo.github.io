@@ -11,8 +11,8 @@
 <meta property="og:title" content="이펙티브자바 #2 - 모든 객체의 공통 메서드" />
 <meta name="author" content="서영원" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="References" />
-<meta property="og:description" content="References" />
+<meta name="description" content="모든 객체의 공통 메서드에서는 Object의 final이 아닌 메서드(equals, hashCode, toString, clone, finalize)의 재정의(overriding)시 지켜야 하는 규약을 설명합니다." />
+<meta property="og:description" content="모든 객체의 공통 메서드에서는 Object의 final이 아닌 메서드(equals, hashCode, toString, clone, finalize)의 재정의(overriding)시 지켜야 하는 규약을 설명합니다." />
 <link rel="canonical" href="https://youngwonseo.github.io/effectivejava/effective-java-02/" />
 <meta property="og:url" content="https://youngwonseo.github.io/effectivejava/effective-java-02/" />
 <meta property="og:site_name" content="서영원 블로그" />
@@ -21,7 +21,7 @@
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="이펙티브자바 #2 - 모든 객체의 공통 메서드" />
 <script type="application/ld+json">
-{"url":"https://youngwonseo.github.io/effectivejava/effective-java-02/","author":{"@type":"Person","name":"서영원"},"headline":"이펙티브자바 #2 - 모든 객체의 공통 메서드","dateModified":"2020-01-01T00:00:00+09:00","datePublished":"2020-01-01T00:00:00+09:00","description":"References","mainEntityOfPage":{"@type":"WebPage","@id":"https://youngwonseo.github.io/effectivejava/effective-java-02/"},"@type":"BlogPosting","@context":"https://schema.org"}</script>
+{"datePublished":"2020-01-01T00:00:00+09:00","url":"https://youngwonseo.github.io/effectivejava/effective-java-02/","mainEntityOfPage":{"@type":"WebPage","@id":"https://youngwonseo.github.io/effectivejava/effective-java-02/"},"dateModified":"2020-01-01T00:00:00+09:00","author":{"@type":"Person","name":"서영원"},"description":"모든 객체의 공통 메서드에서는 Object의 final이 아닌 메서드(equals, hashCode, toString, clone, finalize)의 재정의(overriding)시 지켜야 하는 규약을 설명합니다.","@type":"BlogPosting","headline":"이펙티브자바 #2 - 모든 객체의 공통 메서드","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -86,8 +86,6 @@
       
         
       
-        
-      
       <a class="page-link" href="/feed.xml">RSS</a>
     </div>
   </nav>
@@ -116,9 +114,70 @@
 
 
   <article class="post-content">
-    <h1 id="references">References</h1>
+    <p><strong>모든 객체의 공통 메서드</strong>에서는 Object의 final이 아닌 메서드(equals, hashCode, toString, clone, finalize)의 재정의(overriding)시 지켜야 하는 규약을 설명합니다.</p>
+
+<p><br /></p>
+
+<h2 id="아이템-10-equals는-일반-규약을-지켜-재정의하라">아이템 10. equals는 일반 규약을 지켜 재정의하라</h2>
 <ul>
-  <li></li>
+  <li>equals 객체를 비교하는 함수로 재정의하기 쉬워보이지만 곳곳에 위험요소가 존재하므로 재정의 하지 않는것이 최전임</li>
+  <li>재정의 하지 않으면 오직 자신과만 동일하다고 판단
+    <h5 id="재정의-하지-않는것이-최선인-상황">재정의 하지 않는것이 최선인 상황</h5>
+  </li>
+  <li>각 인스턴스가 본질적으로 고유, 여기에는 값을 표현하는 것이아닌 동작하는 객체를 표현하는 인스턴스가 해당됨</li>
+  <li>인스턴스의 논리적 동치성(logical equality)를 검사할일이 없음</li>
+  <li>상위 클래스에서 재정의한 equals로 하위클래스가 커버됨</li>
+  <li>클래스가 private이나 package-private 인 경우, equals이 호출될 일이 없음</li>
+</ul>
+
+<h5 id="재정의-해야할-상황">재정의 해야할 상황</h5>
+<ul>
+  <li>객체의 식별성이 논리적 동치성으로 판단될 경우</li>
+</ul>
+
+<h5 id="equals메서드의-동치관계는-다음을-만족함">equals메서드의 동치관계는 다음을 만족함</h5>
+<ul>
+  <li>반사성 - x.equals(x)는 true</li>
+  <li>대칭성 - x.equals(y)가 true면 y.equals(x)도 true</li>
+  <li>추이성 - x.equals(y)가 true, y.equals(z)가 true 면 x.euqlas(z)도 true</li>
+  <li>일관성 - x.equals(y)가 true면 항상 true만 반환</li>
+  <li>null-아님 - x.equals(null)은 false</li>
+</ul>
+
+<p><br /></p>
+
+<h2 id="아이템-11-equals를-재정의하려거든-hashcode도-재정의하라">아이템 11. equals를 재정의하려거든 hashCode도 재정의하라</h2>
+
+<p><br /></p>
+
+<h2 id="아이템-12-tostring을-항상-재정의하라">아이템 12. toString을 항상 재정의하라</h2>
+
+<p><br /></p>
+
+<h2 id="아이템-13-clone-재정의는-주의해서-진행하라">아이템 13. clone 재정의는 주의해서 진행하라</h2>
+
+<p><br /></p>
+
+<h2 id="아이템-14-comparable을-구현할지-고려하라">아이템 14. Comparable을 구현할지 고려하라</h2>
+<ul>
+  <li>compareTo는 Comparable 인터페이스의 유일한 메서드</li>
+  <li>즉 다른 아이템들과 달리 Object의 메서드가 아님
+    <h5 id="equals와의-차이점">equals와의 차이점</h5>
+  </li>
+  <li>동치성 비교와 함께 순서까지 비교가능</li>
+  <li>예로들어 Arrays.sort를 통해 인스턴스의 정렬이 가능
+    <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">Arrays</span><span class="o">.</span><span class="na">sort</span><span class="o">(</span><span class="n">a</span><span class="o">);</span>
+</code></pre></div>    </div>
+  </li>
+  <li>제네릭함</li>
+  <li>즉 Comparable을 활용하는 <strong>수많은 제네릭 알고리즘과 컬렉션 관련 기능을 사용가능</strong> (위 sort도 포함)</li>
+</ul>
+
+<p><br /></p>
+
+<h1 id="references">References</h1>
+<ul>
+  <li><a href="http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&amp;mallGb=KOR&amp;barcode=9788966262281&amp;orderClick=LEA&amp;Kc=" target="_blank">이펙티브 자바 3/e</a></li>
 </ul>
 
   </article>

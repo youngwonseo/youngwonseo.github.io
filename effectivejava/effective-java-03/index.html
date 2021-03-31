@@ -11,6 +11,8 @@
 <meta property="og:title" content="이펙티브자바 #3 - 클래스와 인터페이스" />
 <meta name="author" content="서영원" />
 <meta property="og:locale" content="en_US" />
+<meta name="description" content="클래스와 인터페이스에서는 추상화의 기본 단위인 클래스와 인터페이스를 쓰기 편하고, 견고하며, 유연하게 만드는 방법을 안내합니다." />
+<meta property="og:description" content="클래스와 인터페이스에서는 추상화의 기본 단위인 클래스와 인터페이스를 쓰기 편하고, 견고하며, 유연하게 만드는 방법을 안내합니다." />
 <link rel="canonical" href="https://youngwonseo.github.io/effectivejava/effective-java-03/" />
 <meta property="og:url" content="https://youngwonseo.github.io/effectivejava/effective-java-03/" />
 <meta property="og:site_name" content="서영원 블로그" />
@@ -19,7 +21,7 @@
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="이펙티브자바 #3 - 클래스와 인터페이스" />
 <script type="application/ld+json">
-{"url":"https://youngwonseo.github.io/effectivejava/effective-java-03/","author":{"@type":"Person","name":"서영원"},"headline":"이펙티브자바 #3 - 클래스와 인터페이스","dateModified":"2020-01-01T00:00:00+09:00","datePublished":"2020-01-01T00:00:00+09:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://youngwonseo.github.io/effectivejava/effective-java-03/"},"@type":"BlogPosting","@context":"https://schema.org"}</script>
+{"datePublished":"2020-01-01T00:00:00+09:00","url":"https://youngwonseo.github.io/effectivejava/effective-java-03/","mainEntityOfPage":{"@type":"WebPage","@id":"https://youngwonseo.github.io/effectivejava/effective-java-03/"},"dateModified":"2020-01-01T00:00:00+09:00","author":{"@type":"Person","name":"서영원"},"description":"클래스와 인터페이스에서는 추상화의 기본 단위인 클래스와 인터페이스를 쓰기 편하고, 견고하며, 유연하게 만드는 방법을 안내합니다.","@type":"BlogPosting","headline":"이펙티브자바 #3 - 클래스와 인터페이스","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -84,8 +86,6 @@
       
         
       
-        
-      
       <a class="page-link" href="/feed.xml">RSS</a>
     </div>
   </nav>
@@ -114,7 +114,135 @@
 
 
   <article class="post-content">
-    
+    <p><strong>클래스와 인터페이스</strong>에서는 추상화의 기본 단위인 클래스와 인터페이스를 쓰기 편하고, 견고하며, 유연하게 만드는 방법을 안내합니다.</p>
+
+<p><br /></p>
+
+<h2 id="아이템-15-클래스와-멤버의-접근-권한을-최소화하라">아이템 15. 클래스와 멤버의 접근 권한을 최소화하라</h2>
+<ul>
+  <li>컴포넌트의 설계에 대한 수준은 클래스 내부 데이터와 구현 정보를 외부로부터 얼마나 잘 숨겼느냐에 결정됨</li>
+  <li>즉, 잘 설계된 컴포넌트는 내부를 잘숨겨 구현과 API를 깔끔히 분리됨</li>
+  <li>이는 <strong>캡슐화</strong>라고 하는 소프트웨어 설계의 근간이 되는 원리</li>
+</ul>
+
+<h5 id="자바에서-캡슐화시-주의점">자바에서 캡슐화시 주의점</h5>
+<ul>
+  <li>모든 클래스와 맴버의 접근성을 가능한 좁혀야함</li>
+  <li>public 클래스의 인스턴스의 맴버는 되도록 public이 아니어야 함</li>
+  <li>클래스의 맴버로 public static final 배열이 존재하거나 이 필드를 반환하는 접근자 메서드를 제공해서는 안됨</li>
+</ul>
+
+<p><br /></p>
+
+<h2 id="아이템-16-public-클래스에서는-public-필드가-아닌-접근자-메서드를-사용하라">아이템 16. public 클래스에서는 public 필드가 아닌 접근자 메서드를 사용하라</h2>
+<ul>
+  <li>public 클래스의 맴버를 public하면 캡슐화의 이점을 제공하지 못함</li>
+  <li>맴버를 private로 정의하고 접근자(getter) 메서드를 제공해야함</li>
+  <li>package-private 클래스 또는 private 중첩클래스라면 맴버가 public이어도 상관없음</li>
+</ul>
+
+<p><br /></p>
+
+<h2 id="아이템-17-변경-가능성을-최소화하라">아이템 17. 변경 가능성을 최소화하라</h2>
+
+<p><br /></p>
+
+<h2 id="아이템-18-상속보다는-컴포지션을-사용하라">아이템 18. 상속보다는 컴포지션을 사용하라</h2>
+
+<p><br /></p>
+
+<h2 id="아이템-19-상속을-고려해-설계하고-문서화하라-그러지-않았다면-상속을-금지하라">아이템 19. 상속을 고려해 설계하고 문서화하라. 그러지 않았다면 상속을 금지하라</h2>
+
+<p><br /></p>
+
+<h2 id="아이템-20-추상-클래스보다는-인터페이스를-우선하라">아이템 20. 추상 클래스보다는 인터페이스를 우선하라</h2>
+
+<p><br /></p>
+
+<h2 id="아이템-21-인터페이스는-구현하는-쪽을-생각해-설계하라">아이템 21. 인터페이스는 구현하는 쪽을 생각해 설계하라</h2>
+
+<p><br /></p>
+
+<h2 id="아이템-22-인터페이스는-타입을-정의하는-용도로만-사용하라">아이템 22. 인터페이스는 타입을 정의하는 용도로만 사용하라</h2>
+<ul>
+  <li>인터페이스는 자신을 구현하는 클래스를 참조하는 타입역할을 함</li>
+  <li>참조역할 아닌 인터페이스 내부에 상수를 구현해서 사용하는 것은 안티패턴임</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">interface</span> <span class="nc">MathConstants</span> <span class="o">{</span>
+    <span class="kd">static</span> <span class="kd">final</span> <span class="kt">double</span> <span class="no">PI</span> <span class="o">=</span> <span class="mf">3.14</span><span class="o">;</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li>클래스 내부에서 사용할 상수를 인터페이스에 정의하는 것은 내부 구현을 외부로 노출하는 행위, 사용자에게 의미도 없고 혼란만 줌</li>
+  <li>해당 인터페이스를 구현한 클래스나 구현한 클래스의 하위 클래스의 이름공간이 인터페이스에 정의된 상수로 오염됨</li>
+</ul>
+
+<p><br /></p>
+
+<h2 id="아이템-23-태그-달린-클래스보다는-클래스-계층구조를-활용하라">아이템 23. 태그 달린 클래스보다는 클래스 계층구조를 활용하라</h2>
+<ul>
+  <li>다음과 같이 하나의 클래스에 현재 상태표현을 태그로 알려주는 클래스보다는 계층구조를 사용해야함</li>
+  <li>다음 클래스는 Shape 맴버로 현재 상태를 의미</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">Figure</span> <span class="o">{</span>
+  <span class="kd">enum</span> <span class="nc">Shape</span> <span class="o">{</span> <span class="no">RECTANGE</span><span class="o">,</span> <span class="no">CIRCLE</span><span class="o">}</span> <span class="o">;</span>
+  <span class="kt">double</span> <span class="n">length</span><span class="o">;</span>
+  <span class="kt">double</span> <span class="n">width</span><span class="o">;</span>
+
+  <span class="kt">double</span> <span class="n">radius</span><span class="o">;</span>
+<span class="o">}</span>
+</code></pre></div></div>
+<h5 id="태그-기반-표현의-단점">태그 기반 표현의 단점</h5>
+<ul>
+  <li>내부에 열거형 선언, 태그 필드, 공통로직에서 swtich 등 쓸데없는 코드가 많아짐</li>
+  <li>한가지 타입에 포함될 것이지만 두가지 타입을 처리하는 로직이 함께 존재해 메모리 사용랴잉 많아짐</li>
+  <li>사용하지 않을 타입에서 사용할 final 필드도 같이 초기화 해야함</li>
+  <li>즉 클래스가 장황해지고 오류를 내기 쉽고 비효율적임</li>
+</ul>
+
+<h5 id="클래스-계층구조를-이용">클래스 계층구조를 이용</h5>
+<ul>
+  <li>위 클래스를 계층구조로 나타내면 다음과 같음</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">abstract</span> <span class="kd">class</span> <span class="nc">Figure</span> <span class="o">{...}</span>
+
+<span class="kd">class</span> <span class="nc">Circle</span> <span class="kd">extends</span> <span class="nc">Figure</span> <span class="o">{</span>
+  <span class="kt">double</span> <span class="n">radius</span><span class="o">;</span>
+  <span class="o">...</span>
+<span class="o">}</span>
+
+<span class="kd">class</span> <span class="nc">Rectangle</span> <span class="kd">extends</span> <span class="nc">Figure</span> <span class="o">{</span>
+  <span class="kt">double</span> <span class="n">length</span><span class="o">;</span>
+  <span class="kt">double</span> <span class="n">width</span><span class="o">;</span>
+  <span class="o">...</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p><br /></p>
+
+<h2 id="아이템-24-멤버-클래스는-되도록-static으로-만들라">아이템 24. 멤버 클래스는 되도록 static으로 만들라</h2>
+<ul>
+  <li></li>
+</ul>
+
+<p><br /></p>
+
+<h2 id="아이템-25-톱레벨-클래스는-한-파일에-하나만-담으라">아이템 25. 톱레벨 클래스는 한 파일에 하나만 담으라</h2>
+<ul>
+  <li>하나의 소스 파일에는 하나의 톱 레벨 클래스(또는 톱 레벨 인터페이스)만 작성해야함</li>
+  <li>톱 레벨 클래스란 맴버 클래스가 아닌 클래스</li>
+</ul>
+
+<p><br /></p>
+
+<h1 id="references">References</h1>
+<ul>
+  <li><a href="http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&amp;mallGb=KOR&amp;barcode=9788966262281&amp;orderClick=LEA&amp;Kc=" target="_blank">이펙티브 자바 3/e</a></li>
+</ul>
 
   </article>
 
