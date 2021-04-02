@@ -5,9 +5,121 @@
     <description></description>
     <link>https://youngwonseo.github.io/</link>
     <atom:link href="https://youngwonseo.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Wed, 31 Mar 2021 23:04:38 +0900</pubDate>
-    <lastBuildDate>Wed, 31 Mar 2021 23:04:38 +0900</lastBuildDate>
+    <pubDate>Fri, 02 Apr 2021 21:27:47 +0900</pubDate>
+    <lastBuildDate>Fri, 02 Apr 2021 21:27:47 +0900</lastBuildDate>
     <generator>Jekyll v4.2.0</generator>
+    
+      <item>
+        <title>경매 서비스</title>
+        <description>&lt;h2 id=&quot;설명&quot;&gt;설명&lt;/h2&gt;
+&lt;p&gt;개인적으로 진행한 사이드 프로젝트입니다. 백엔드와 프론트엔드를 모두 포함하지만 배포목적의 서비스가 아니다 보니 제가 백엔드 개발자인 만큼 UI보다는 기능적관점 위주의 개발을 진행하였습니다. 백엔드의 테스트코드, API 문서화에 중점을 두고 개발을 진행하였습니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://github.com/youngwonseo/auction-market&quot; target=&quot;_blank&quot;&gt;github&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;기술스택&quot;&gt;기술스택&lt;/h2&gt;
+&lt;h3 id=&quot;백엔드&quot;&gt;백엔드&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;Java8&lt;/li&gt;
+  &lt;li&gt;Spring boot&lt;/li&gt;
+  &lt;li&gt;Spring Data JPA&lt;/li&gt;
+  &lt;li&gt;Spring Validation&lt;/li&gt;
+  &lt;li&gt;Spring AMQP&lt;/li&gt;
+  &lt;li&gt;Spring Websocket&lt;/li&gt;
+  &lt;li&gt;Spring Security&lt;/li&gt;
+  &lt;li&gt;Spring OAuth2 Client&lt;/li&gt;
+  &lt;li&gt;Spring Rest Docs&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;프론트엔드&quot;&gt;프론트엔드&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;Typescript&lt;/li&gt;
+  &lt;li&gt;ReactJS&lt;/li&gt;
+  &lt;li&gt;Redux-Saga&lt;/li&gt;
+  &lt;li&gt;Typesafe Action&lt;/li&gt;
+  &lt;li&gt;Socket.io&lt;/li&gt;
+  &lt;li&gt;Sementic UI&lt;/li&gt;
+  &lt;li&gt;Echart&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;데이터베이스&quot;&gt;데이터베이스&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;MySql&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;etc&quot;&gt;Etc&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;Docker&lt;/li&gt;
+  &lt;li&gt;Nginx&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;기능&quot;&gt;기능&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;소셜 로그인
+    &lt;ul&gt;
+      &lt;li&gt;네이버&lt;/li&gt;
+      &lt;li&gt;카카오&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;상품목록
+    &lt;ul&gt;
+      &lt;li&gt;카테고리별 전체 상품목록&lt;/li&gt;
+      &lt;li&gt;내가 경매 참여중인 상품목록&lt;/li&gt;
+      &lt;li&gt;경매 완료된 상품목록&lt;/li&gt;
+      &lt;li&gt;내가 판매중인 상품목록&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;상품검색
+    &lt;ul&gt;
+      &lt;li&gt;상품 이름&lt;/li&gt;
+      &lt;li&gt;상품 판매자&lt;/li&gt;
+      &lt;li&gt;태그 기반&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;상품등록
+    &lt;ul&gt;
+      &lt;li&gt;기본 정보 등록&lt;/li&gt;
+      &lt;li&gt;경매 관련 정보 등록
+        &lt;ul&gt;
+          &lt;li&gt;경매 시작/종료 시간&lt;/li&gt;
+          &lt;li&gt;경매 시작가격&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;이미지 등록
+        &lt;ul&gt;
+          &lt;li&gt;썸네일 저장&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;실시간 경매기능
+    &lt;ul&gt;
+      &lt;li&gt;가격제시&lt;/li&gt;
+      &lt;li&gt;종료시간에 대한 경매종료&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;시스템-구성도&quot;&gt;시스템 구성도&lt;/h2&gt;
+
+&lt;h2 id=&quot;데이터베이스-설계&quot;&gt;데이터베이스 설계&lt;/h2&gt;
+
+&lt;h2 id=&quot;상세개발&quot;&gt;상세개발&lt;/h2&gt;
+
+&lt;h2 id=&quot;ui&quot;&gt;UI&lt;/h2&gt;
+
+&lt;h2 id=&quot;기타-산출물&quot;&gt;기타 산출물&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;스프링부트, 리액트 기반 소셜 로그인(카카오, 네이버) [blog][github]&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        <pubDate>Mon, 29 Mar 2021 00:00:00 +0900</pubDate>
+        <link>https://youngwonseo.github.io/projects/auction-market/</link>
+        <guid isPermaLink="true">https://youngwonseo.github.io/projects/auction-market/</guid>
+        
+        
+        <category>projects</category>
+        
+      </item>
     
       <item>
         <title>쿠버네티스 - 인그레스(Ingress)</title>
@@ -483,52 +595,6 @@ replicaset-nginx-xbppw   1/1     Running   0          5m41s
         <pubDate>Mon, 08 Feb 2021 00:00:00 +0900</pubDate>
         <link>https://youngwonseo.github.io/recovery/</link>
         <guid isPermaLink="true">https://youngwonseo.github.io/recovery/</guid>
-        
-        
-      </item>
-    
-      <item>
-        <title>스프링 클라우드 유레카</title>
-        <description>&lt;h2 id=&quot;유레카-서비스-구축&quot;&gt;유레카 서비스 구축&lt;/h2&gt;
-
-&lt;p&gt;https://cloud.spring.io/spring-cloud-netflix&lt;/p&gt;
-
-&lt;h2 id=&quot;서비스-디스커버리&quot;&gt;서비스 디스커버리&lt;/h2&gt;
-&lt;ul&gt;
-  &lt;li&gt;스프링 디스커버리 클라이언트&lt;/li&gt;
-  &lt;li&gt;RestTemplate이 활성화된 스프링 디스커버리 클라이언트&lt;/li&gt;
-  &lt;li&gt;넷플릭스 Feign 클라이언트&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;feign&quot;&gt;Feign&lt;/h3&gt;
-&lt;ol&gt;
-  &lt;li&gt;자바인터페이스 정의&lt;/li&gt;
-  &lt;li&gt;&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;정기적으로 heartbeat메세지를 보낸다&lt;/p&gt;
-
-&lt;h2 id=&quot;유레카-서버&quot;&gt;유레카 서버&lt;/h2&gt;
-&lt;p&gt;유레카 서버를 구축하기 위해 다음과 같은 단계를 실행한다.&lt;/p&gt;
-&lt;ol&gt;
-  &lt;li&gt;스프링 부트 프로젝트 생성&lt;/li&gt;
-  &lt;li&gt;eureka-server 의존성 추가&lt;/li&gt;
-  &lt;li&gt;애플리케이션 클래스에 @EnableEurekaServer 어노테이션 추가&lt;/li&gt;
-  &lt;li&gt;application.yml 파일 수정&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;상용환경에서는 고가용성을 보장하기 위해 유레카 서버를 두대 이상 운용해야한다.&lt;/p&gt;
-
-&lt;h2 id=&quot;유레카-클라이언트&quot;&gt;유레카 클라이언트&lt;/h2&gt;
-&lt;ol&gt;
-  &lt;li&gt;스프링 부트 프로젝트 생성&lt;/li&gt;
-  &lt;li&gt;eureka-client 의존성 추가&lt;/li&gt;
-  &lt;li&gt;&lt;/li&gt;
-&lt;/ol&gt;
-</description>
-        <pubDate>Sun, 07 Feb 2021 00:00:00 +0900</pubDate>
-        <link>https://youngwonseo.github.io/service-discovery/</link>
-        <guid isPermaLink="true">https://youngwonseo.github.io/service-discovery/</guid>
         
         
       </item>
