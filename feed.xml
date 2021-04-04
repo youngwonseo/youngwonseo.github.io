@@ -5,9 +5,67 @@
     <description></description>
     <link>https://youngwonseo.github.io/</link>
     <atom:link href="https://youngwonseo.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Fri, 02 Apr 2021 22:04:32 +0900</pubDate>
-    <lastBuildDate>Fri, 02 Apr 2021 22:04:32 +0900</lastBuildDate>
+    <pubDate>Sun, 04 Apr 2021 21:38:34 +0900</pubDate>
+    <lastBuildDate>Sun, 04 Apr 2021 21:38:34 +0900</lastBuildDate>
     <generator>Jekyll v4.2.0</generator>
+    
+      <item>
+        <title>Building a Reactive RESTful Web Service</title>
+        <description>&lt;p&gt;본 글은 &lt;a href=&quot;https://spring.io/guides/gs/reactive-rest-service&quot; target=&quot;_blank&quot;&gt;스프링 공식 가이드 - Building a Reactive RESTful Web Service&lt;/a&gt; 를 기반으로 작성되었습니다.&lt;/p&gt;
+
+&lt;p&gt;이 가이드는 Spring WebFlux를 사용해 RESTful API를 개발하고 해당 API를 호출하는 WebClient 개발에 대한 예제입니다.&lt;/p&gt;
+
+&lt;h2 id=&quot;webflux-handler&quot;&gt;WebFlux Handler&lt;/h2&gt;
+&lt;p&gt;Spring Reactive환경에서는 Handler를 사용해 요청과 응답을 처리합니다. Spring MVC의 Controller 같은 역활입니다.&lt;/p&gt;
+
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;ul&gt;
+  &lt;li&gt;Mono :&lt;/li&gt;
+  &lt;li&gt;ServerRequest :&lt;/li&gt;
+  &lt;li&gt;ServerResponse :&lt;/li&gt;
+  &lt;li&gt;BodyInserters :&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;router&quot;&gt;Router&lt;/h2&gt;
+
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;RouterFunction :&lt;/li&gt;
+  &lt;li&gt;RequestPredicates :&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;webclient&quot;&gt;WebClient&lt;/h2&gt;
+
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;ul&gt;
+  &lt;li&gt;WebClient :&lt;/li&gt;
+  &lt;li&gt;ClientResponse :&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;test&quot;&gt;Test&lt;/h2&gt;
+
+&lt;p&gt;Mono
+Flux&lt;/p&gt;
+
+&lt;p&gt;스레드 풀을 이용한 동기식 호출 방식&lt;/p&gt;
+
+&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;https://spring.io/guides/gs/reactive-rest-service/&lt;/li&gt;
+  &lt;li&gt;https://d2.naver.com/helloworld/6080222&lt;/li&gt;
+&lt;/ul&gt;
+
+</description>
+        <pubDate>Sun, 04 Apr 2021 00:00:00 +0900</pubDate>
+        <link>https://youngwonseo.github.io/spring-guide/reactive-rest-service/</link>
+        <guid isPermaLink="true">https://youngwonseo.github.io/spring-guide/reactive-rest-service/</guid>
+        
+        
+        <category>spring-guide</category>
+        
+      </item>
     
       <item>
         <title>경매 서비스</title>
@@ -110,6 +168,12 @@
 &lt;h2 id=&quot;기타-산출물&quot;&gt;기타 산출물&lt;/h2&gt;
 &lt;ul&gt;
   &lt;li&gt;스프링부트, 리액트 기반 소셜 로그인(카카오, 네이버) [blog][github]&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&amp;amp;mallGb=KOR&amp;amp;barcode=9788965402602&amp;amp;orderClick=LEa&amp;amp;Kc=&quot; target=&quot;_blank&quot;&gt;스프링 부트와 AWS로 혼자 구현하는 웹 서비스 - 이동욱지음&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/cheese10yun/spring-jpa-best-practices&quot; target=&quot;_blank&quot;&gt;https://github.com/cheese10yun/spring-jpa-best-practices&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </description>
         <pubDate>Mon, 29 Mar 2021 00:00:00 +0900</pubDate>
@@ -578,23 +642,6 @@ replicaset-nginx-xbppw   1/1     Running   0          5m41s
         <pubDate>Tue, 09 Feb 2021 00:00:00 +0900</pubDate>
         <link>https://youngwonseo.github.io/routing/</link>
         <guid isPermaLink="true">https://youngwonseo.github.io/routing/</guid>
-        
-        
-      </item>
-    
-      <item>
-        <title>클라이언트 회복성 패턴</title>
-        <description>&lt;h3 id=&quot;1-클라이언트-측-부하-분산&quot;&gt;1. 클라이언트 측 부하 분산&lt;/h3&gt;
-
-&lt;h3 id=&quot;2-회로-차단기&quot;&gt;2. 회로 차단기&lt;/h3&gt;
-
-&lt;h3 id=&quot;3-폴백&quot;&gt;3. 폴백&lt;/h3&gt;
-
-&lt;h3 id=&quot;4-벌크헤드&quot;&gt;4. 벌크헤드&lt;/h3&gt;
-</description>
-        <pubDate>Mon, 08 Feb 2021 00:00:00 +0900</pubDate>
-        <link>https://youngwonseo.github.io/recovery/</link>
-        <guid isPermaLink="true">https://youngwonseo.github.io/recovery/</guid>
         
         
       </item>
