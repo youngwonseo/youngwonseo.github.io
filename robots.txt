@@ -1,1 +1,3 @@
-Sitemap: https://youngwonseo.github.io/sitemap.xml
+User-agent: *
+
+sitemap: https://minimal-blog.lekoarts.de/sitemap.xml
